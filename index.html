@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <title>Linked Data notifications</title>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <link href="https://dokie.li/media/css/basic.css" media="all" rel="stylesheet alternate" title="Basic" />
+        <link href="https://dokie.li/media/css/lncs.css" media="all" rel="stylesheet" title="LNCS" />
+        <link href="https://dokie.li/media/css/acm.css" media="all" rel="stylesheet alternate" title="ACM" />
+        <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-UD" media="all" rel="stylesheet alternate" title="W3C-UD" />
+        <link href="https://dokie.li/media/css/do.css" media="all" rel="stylesheet" />
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" media="all" rel="stylesheet" />
+        <link href="https://dokie.li/media/css/editor.css" media="all" rel="stylesheet" />
+        <script src="https://dokie.li/scripts/simplerdf.js"></script>
+        <script src="https://dokie.li/scripts/medium-editor.min.js"></script>
+        <script src="https://dokie.li/scripts/medium-editor-tables.min.js"></script>
+        <script src="https://dokie.li/scripts/do.js"></script>
+    </head>
+
+    <body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ v: http://www.w3.org/2006/vcard/ns# pimspace: http://www.w3.org/ns/pim/space# cc: http://creativecommons.org/ns# skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# schema: https://schema.org/ rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# cal: http://www.w3.org/2002/12/cal/ical# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# org: http://www.w3.org/ns/org# biblio: http://purl.org/net/biblio# bibo: http://purl.org/ontology/bibo/ book: http://purl.org/NET/book/vocab# ov: http://open.vocab.org/terms/ doap: http://usefulinc.com/ns/doap# dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ oa: http://www.w3.org/ns/oa# solid: http://www.w3.org/ns/solid/terms#" typeof="schema:CreativeWork sioc:Post prov:Entity">
+        <main>
+            <article about="" typeof="schema:Article">
+                <h1 property="schema:name">Linked Data notifications</h1>
+
+                <div id="authors">
+                    <dl id="author-name">
+                        <dt>Authors</dt>
+                        <dd id="Sarven-Capadisli" inlist="" rel="bibo:authorList" resource="http://csarven.ca/#i"><span about="" rel="schema:creator schema:publisher schema:author"><a about="http://csarven.ca/#i" href="http://csarven.ca/" property="schema:name" rel="schema:url" typeof="schema:Person"><span property="schema:givenName">Sarven</span> <span property="schema:familyName">Capadisli</span></a></span><sup><a about="http://csarven.ca/#i" href="#author-org-1" rel="schema:memberOf" resource="http://dbpedia.org/resource/University_of_Bonn">1</a></sup><sup><a href="#author-email-1">✊</a></sup></dd>
+                        <dd id="Amy-Guy" inlist="" rel="bibo:authorList" resource="http://rhiaro.co.uk/about#me"><span about="" rel=" schema:author"><a about="http://rhiaro.co.uk/about#me" href="http://rhiaro.co.uk/" property="schema:name" rel="schema:url" typeof="schema:Person"><span property="schema:givenName">Amy</span> <span property="schema:familyName">Guy</span></a></span><sup><a about="http://rhiaro.co.uk/about#me" href="#author-org-2" rel="schema:memberOf" resource="http://dbpedia.org/resource/University_of_Edinburgh">2</a></sup><sup><a href="#author-email-2">🐦</a></sup></dd>
+                    </dl>
+
+                    <ul id="author-org">
+                        <li id="author-org-1"><sup>1</sup>Enterprise Information Systems Department, <a about="http://dbpedia.org/resource/University_of_Bonn" href="http://uni-bonn.de/" property="schema:name" rel="schema:url" typeof="schema:Organization">University of Bonn</a>, Bonn, Germany</li>
+                        <li id="author-org-2"><sup>2</sup>School of Informatics, <a about="http://dbpedia.org/resource/University_of_Edinburgh" href="http://www.ed.ac.uk/" property="schema:name" rel="schema:url" typeof="schema:Organization">University of Edinburgh</a>, Edinburgh, UK</li>
+                    </ul>
+
+                    <ul id="author-email">
+                        <li id="author-email-1"><sup>✊</sup><a about="http://csarven.ca/#i" href="mailto:info@csarven.ca" rel="schema:email">info@csarven.ca</a></li>
+                        <li id="author-email-2"><sup>🐦</sup><a about="http://rhiaro.co.uk/about#me" href="mailto:amy@rhiaro.co.uk" rel="schema:email">amy@rhiaro.co.uk</a></li>
+                    </ul>
+                </div>
+
+                <dl id="document-identifier">
+                    <dt>Document ID</dt>
+                    <dd><a href="http://csarven.ca/linked-data-notifications" rel="owl:sameAs">http://csarven.ca/linked-data-notifications</a></dd>
+                </dl>
+
+                <dl id="document-inbox">
+                    <dt>Notifications Inbox</dt>
+                    <dd><a href="https://linkedresearch.org/inbox/" rel="solid:inbox">inbox/</a></dd>
+                </dl>
+
+                <dl id="document-published">
+                    <dt>Published</dt>
+                    <dd><time datatype="xsd:dateTime" datetime="2016-05-01T00:00:00Z" property="schema:datePublished">2016-05-01</time></dd>
+                </dl>
+
+                <dl id="document-modified">
+                    <dt>Modified</dt>
+                    <dd><time datatype="xsd:dateTime" datetime="2016-05-01T00:00:00Z" property="schema:dateModified">2016-05-01</time></dd>
+                </dl>
+
+                <dl id="document-license">
+                    <dt>License</dt>
+                    <dd><a href="https://creativecommons.org/licenses/by/4.0/" rel="schema:license" title="Creative Commons Attribution 4.0 Unported">CC BY 4.0</a></dd>
+                </dl>
+
+                <div id="content">
+                    <section id="abstract">
+                        <h2>Abstract</h2>
+                        <div datatype="rdf:HTML" property="schema:abstract">
+                          <p>This article describes a protocol to deliver and use notifications on the Web.</p>
+                        </div>
+                    </section>
+
+                    <section id="keywords">
+                        <h2>Keywords</h2>
+                        <div>
+                            <ul rel="schema:about">
+                                <li><a href="https://en.wikipedia.org/wiki/Decentralization" resource="http://dbpedia.org/resource/Decentralization">Decentralization</a></li>
+                                <li><a href="https://en.wikipedia.org/wiki/Semantic_Web" resource="http://dbpedia.org/resource/Semantic_Web">Semantic Web</a></li>
+                                <li><a href="https://en.wikipedia.org/wiki/Social_web" resource="http://dbpedia.org/resource/Social_web">Social web</a></li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
+                        <h2 property="schema:name">Introduction</h2>
+                        <div datatype="rdf:HTML" property="schema:description">
+                            <p>...</p>
+                            <p>What's the edge?</p>
+                            <p>We have a problem and it requires a solution..</p>
+                            <p>How is this better/different?</p>
+                            <p>Why bother doing this?</p>
+                            <p>..</p>
+                        </div>
+                    </section>
+
+                    <section id="conformance" inlist="" rel="schema:hasPart" resource="#conformance">
+                        <h2 property="schema:name">Conformance</h2>
+                        <div datatype="rdf:HTML" property="schema:description">
+
+                        </div>
+                    </section>
+
+                    <section id="concepts" inlist="" rel="schema:hasPart" resource="#concepts">
+                        <h2 property="schema:name">Concepts</h2>
+                        <div datatype="rdf:HTML" property="schema:description">
+                            <p>.. Given context, definition of the common terms in this space can diverge, we clarify ours here ..</p>
+                            <dl>
+                                <dt>Decentralised</dt>
+                                <dd>..</dd>
+                                <dt>Inbox and Container</dt>
+                                <dd>..</dd>
+                                <dt>Notification</dt>
+                                <dd>synonym: <em>message</em></dd>
+                            </dl>
+                        </div>
+                    </section>
+
+                    <section id="protocol" inlist="" rel="schema:hasPart" resource="#protocol">
+                        <h2 property="schema:name">Protocol</h2>
+                        <div datatype="rdf:HTML" property="schema:description" resource="#protocol" typeof="deo:RelatedWork">
+                            <p>..</p>
+                        </div>
+                    </section>
+
+                    <section id="design-considerations" inlist="" rel="schema:hasPart" resource="#design-considerations">
+                        <h2 property="schema:name">Design Considerations</h2>
+                        <div datatype="rdf:HTML" property="schema:description">
+                            <p>...</p>
+
+                            <section id="architectural-considerations" inlist="" rel="schema:hasPart" resource="#architectural-considerations">
+                                <h3 property="schema:name">Architectural Considerations</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>The Representational State Transfer (REST) is an architectural style that describes the abstract model of the Web architecture. <q cite="https:/dx.doi.org/10.1145/337180.337228">The World Wide Web has succeeded in large part because its software architecture has been designed to meet the needs of an Internet-scale distributed hypermedia system.</q> [<span class="ref">Fielding, R. T.; Taylor, R. N. (2000). "Principled design of the modern Web architecture": 407–416. doi:<a href="https:/dx.doi.org/10.1145/337180.337228">10.1145/337180.337228</a></span>]</p>
+                                </div>
+                            </section>
+
+                            <section id="security-considerations" inlist="" rel="schema:hasPart" resource="#security-considerations">
+                                <h3 property="schema:name">Security Considerations</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>Verifying the Sender</p>
+                                    <p>Public endpoints.</p>
+                                </div>
+                            </section>
+
+                            <section id="authentication-considerations" inlist="" rel="schema:hasPart" resource="#security-considerations">
+                                <h3 property="schema:name">Authentication Considerations</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>What's required? What's possible? Where does WebID+TLS fit in? What about HTTP Basic Auth? OAuth? Alternatives? Describe what's required and what's optional.</p>
+                                </div>
+                            </section>
+
+                            <section id="payload-considerations" inlist="" rel="schema:hasPart" resource="#payload-considerations">
+                                <h3 property="schema:name">Payload Considerations</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>What is a message/notification? What can it contain? Are there constraints/shapes in needs to fulfil? How does it look (vocabularies)?</p>
+                                </div>
+                            </section>
+
+                            <section id="integrity-considerations" inlist="" rel="schema:hasPart" resource="#integrity-considerations">
+                                <h3 property="schema:name">Integrity Considerations</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>Persistent?</p>
+                                    <p>Permanent/Archived?</p>
+                                    <p>Canonical URIs?</p>
+                                    <p>License?</p>
+                                    <p>Shape</p>
+                                </div>
+                            </section>
+
+                            <section id="resource-management-considerations" inlist="" rel="schema:hasPart" resource="#security-considerations">
+                                <h3 property="schema:name">Resource Management Considerations</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>This is about volume, paging (https://www.w3.org/TR/ldp/), filtering, moving things around?</p>
+                                    <p>Update and Delete operations on sent notifications</p>
+                                </div>
+                            </section>
+
+                            <section id="involved-paries-considerations" inlist="" rel="schema:hasPart" resource="#involved-paries-considerations">
+                                <h3 property="schema:name">Involved Parties Considerations</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>Notifications could be sent client-to-server, server-to-server. We should be clear about the intentions in our proposal. Default being a client (user-application?) sends a notification to a server.</p>
+                                </div>
+                            </section>
+                        </div>
+                    </section>
+
+                    <section id="inbox-and-notifications" inlist="" rel="schema:hasPart" resource="#inbox-and-notifications">
+                        <h2 property="schema:name">Inboxes and notifications</h2>
+                        <div datatype="rdf:HTML" property="schema:description" resource="#inbox-and-notifications" typeof="deo:Contribution">
+                            <p>Inboxes are repositories for notifications. <code>ldp:Inbox</code> is a specialisation of the <a href="https://www.w3.org/TR/ldp/#ldpc">LDP Container</a> used for notifications. A resource can have one or more inboxes in order to facilitate different social interactions and notifications. For instance, user profile inboxes are typically intended to receive notifications like messages from other profiles, or application specific activities. An article may have an inbox to receive replies about it, and another inbox for a particular section in the article. Inboxes can have different access controls, as well as information for the constraints set about the notifications it can hold. The assignment and management of inboxes for resources is at the discretion of applications. For example, servers may want to create an inbox if an account also creates an identity (e.g., a WebID profile).</p>
+
+                            <p>Notifications are intended to announce social interactions and data. A notification is an <a href="https://www.w3.org/TR/ldp/#ldpr">LDP Resource</a> which is submitted to and resides in an inbox.</p>
+
+                            <p>The contents of a notification is application specific. We derive two core principles from this:</p>
+
+                            <ul>
+                                <li>a notification can contain arbitrary data</li>
+                                <li>a notification is vocabulary agnostic</li>
+                            </ul>
+
+                            <p>Applications can create notifications to use any vocabulary to describe its contents in any shape and form. Multiple notifications can be contained inside a single resource or span across different resources. A single resource with multiple notifications may be suitable for <code>HTTP PATCH</code>, whereas multiple resources containing a single notification may be suitable for <code>HTTP POST</code> or <code>PUT</code>. If different access controls are desired for inboxes and notifications, implementing a multiple notification approach with <code>HTTP POST</code> or <code>PUT</code> may be preferable.</p>
+
+                            <section id="namespaces-and-document-conventions" inlist="" rel="schema:hasPart" resource="#namespaces-and-document-conventions">
+                                <h3 property="schema:name">Namespaces and document conventions</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>The following namespaces are used in this document:</p>
+
+                                    <table id="prefix-and-namespaces">
+                                        <caption>Prefixes and namespaces</caption>
+                                        <thead>
+                                            <tr>
+                                                <th>Prefix</th>
+                                                <th>Namespace</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><code>solid</code></td>
+                                                <td><a href="http://www.w3.org/ns/solid/terms#">http://www.w3.org/ns/solid/terms#</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>xsd</code></td>
+                                                <td><a href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>dcterms</code></td>
+                                                <td><a href="http://purl.org/dc/terms/">http://purl.org/dc/terms/</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>sioc</code></td>
+                                                <td><a href="http://rdfs.org/sioc/ns#">http://rdfs.org/sioc/ns#</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>foaf</code></td>
+                                                <td><a href="http://xmlns.com/foaf/0.1/">http://xmlns.com/foaf/0.1/</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>pingback</code></td>
+                                                <td><a href="http://purl.org/net/pingback/">http://purl.org/net/pingback/</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>as</code></td>
+                                                <td><a href="http://www.w3.org/ns/activitystreams#">http://www.w3.org/ns/activitystreams#</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td><code>schema</code></td>
+                                                <td><a href="https://schema.org/">https://schema.org/</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <p>All RDF examples are written in Turtle syntax.</p>
+                                </div>
+                            </section>
+
+
+                            <section id="discovery" inlist="" rel="schema:hasPart" resource="#discovery">
+                                <h3 property="schema:name">Discovery</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>An inbox container <strong class="rfc2119">MUST</strong> be discoverable via the <code>solid:inbox</code> property, and should be instances of <code>solid:Inbox</code>. Each notification can be discovered via <code>solid:notification</code> (or <code>ldp:contains</code> for LDP based applications) relations. Notifications that are of LDP RDF Source should be instances of <code>solid:Notification</code>.  Although neither <code>solid:Inbox</code> or <code>solid:Notification</code> is ultimately required to discover inboxes or notifications, it is good practice to instantiate resources for the purpose of data integrity and reuse. An example:</p>
+
+                                    <figure class="listing" id="solid-notification-discovery" rel="schema:hasPart" resource="#solid-notification-example-discovery">
+                                        <pre about="#solid-notification-example-discovery" property="schema:description" typeof="fabio:Script">
+<code>&lt;https://example.org/profile&gt; solid:inbox &lt;https://example.net/inbox/&gt; .</code>
+<code>&lt;https://example.net/inbox/&gt; a solid:Inbox .</code>
+<code>&lt;https://example.net/inbox/&gt; solid:notification &lt;https://example.net/inbox/abc123&gt; .</code>
+<code>&lt;https://example.net/inbox/abc123&gt; a solid:Notification .</code>
+                                        </pre>
+                                        <figcaption property="schema:name">Discovery of inbox and notifications.</figcaption>
+                                    </figure>
+                                </div>
+                            </section>
+
+                            <section id="notification-integrity" inlist="" rel="schema:hasPart" resource="#notification-integrity">
+                                <h3 property="schema:name">Notification integrity</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>Adhering to the integrity rules of an inbox notification e.g., for the purpose of a verification criteria or discovery is the responsibility of applications which submit and verify them. An inbox may be accompanied with constraint information e.g., by employing the <a href="https://www.w3.org/TR/shacl/">Shapes Constraint Language</a> (<abbr title="Shapes Constraint Language">SHACL</abbr>) or <a href="https://www.w3.org/2001/sw/wiki/ShEx">Shape Expressions</a> (<abbr title="Shapes Expressions">ShEx</abbr>).</p>
+                                </div>
+                            </section>
+
+
+                            <section id="enrichment" inlist="" rel="schema:hasPart" resource="#enrichment">
+                                <h3 property="schema:name">Enrichment</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>Although providing enriched (meta)data is optional, provenance level data like the date in which the request was submitted, who submitted, and its license, can be purposed towards the verification process as well as for displaying.</p>
+                                </div>
+                            </section>
+
+
+                            <section id="authorisation" inlist="" rel="schema:hasPart" resource="#authorisation">
+                                <h3 property="schema:name">Authorisation</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>The owner of the inbox typically sets its ACL rules and thereby for the notifications it contains. By default, when profile inboxes are created, inboxes must be public append only as they are inherently private. Other types of inboxes e.g., for blog posts, may be set to public read and append so that applications can use a <em>follow-your-nose</em> approach to discover and display the contents of a notification, as well as submit new notifications. Further, the ACL settings for the inbox may determine which agents can send notifications.</p>
+                                </div>
+                            </section>
+
+
+                            <section id="notification-types" inlist="" rel="schema:hasPart" resource="#notification-types">
+                                <h3 property="schema:name">Notification Types</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>Here we exemplify some types of notifications:</p>
+
+                                    <section id="single-statement" inlist="" rel="schema:hasPart" resource="#single-statement">
+                                        <h4 property="schema:name">Single Statement</h4>
+                                        <div datatype="rdf:HTML" property="schema:description">
+                                            <p>A single triple statement is the simplest notification in terms of its data payload. It contains the most essential data which makes up a notification e.g, Alice liked an article:</p>
+
+                                            <figure class="listing" id="solid-notification-single-statement" rel="schema:hasPart" resource="#solid-notification-example-single-statement">
+                                                <pre about="#solid-notification-example-single-statement" property="schema:description" typeof="fabio:Script">
+<code>&lt;http://example.org/profile/card#alice&gt; :liked &lt;http://example.net/article&gt; .</code>
+                                                </pre>
+                                                <figcaption property="schema:name">Example notification type: single statement.</figcaption>
+                                            </figure>
+
+                                            <p>This approach is useful if there is a need to further extend the statement's description or refer to it as a whole.</p>
+                                        </div>
+                                    </section>
+
+
+                                    <section id="qualified-relations" inlist="" rel="schema:hasPart" resource="#qualified-relations">
+                                        <h4 property="schema:name">Qualified relations</h4>
+                                        <div datatype="rdf:HTML" property="schema:description">
+                                            <p>A particular grouping of triples which describe and qualify the relations, i.e., the vocabulary in use typically gives meaning to the statements when consumed as a whole. The examples below tend to refer to external resources where the body of the content can be discovered.</p>
+
+                                            <p>ActivityStreams:</p>
+                                            <figure class="listing" id="solid-notification-qualified-relation" rel="schema:hasPart" resource="#solid-notification-example-qualified-relation">
+                                                <pre about="#solid-notification-example-qualified-relation" property="schema:description" typeof="fabio:Script">
+<code>&lt;> a solid:Notification , as:Announce ;</code>
+<code>  as:object &lt;https://example.org/abcdef&gt; ;</code>
+<code>  as:target &lt;https://example.net/article#introduction&gt; ;</code>
+<code>  as:updated "2016-02-02T18:58:50.719Z"^^xsd:dateTime ;</code>
+<code>  as:actor &lt;http://example.com/profile/card#alice&gt; ;</code>
+<code>  schema:license &lt;https://creativecommons.org/licenses/by/4.0/&gt; .</code>
+                                                </pre>
+                                                <figcaption property="schema:name">Example notification type: qualified relation.</figcaption>
+                                            </figure>
+
+                                            <p>Semantic Pingback:</p>
+                                            <figure class="listing" id="solid-notification-example-semantic-pingback" rel="schema:hasPart" resource="#solid-notification-example-semantic-pingback">
+                                                <pre about="#solid-notification-example-semantic-pingback" property="schema:description" typeof="fabio:Script">
+<code>&lt;&gt; a solid:Notification , pingback:Request ;</code>
+<code>  pingback:source &lt;http://example.net/foo/abc123&gt; ;</code>
+<code>  pingback:target &lt;http://example.org/article/index&gt; .</code>
+                                                </pre>
+                                                <figcaption property="schema:name">Example notification type: Semantic Pingback.</figcaption>
+                                            </figure>
+                                        </div>
+                                    </section>
+
+
+                                    <section id="any-data" inlist="" rel="schema:hasPart" resource="#any-data">
+                                        <h4 property="schema:name">Any data</h4>
+                                        <div datatype="rdf:HTML" property="schema:description">
+                                            <p>This is typically in cases where an application may want to notify with any information. A notification may contain the complete payload and not necessarily refer to the origin data (external resource).</p>
+
+                                            <figure class="listing" id="solid-notification-example-any-data" rel="schema:hasPart" resource="#solid-notification-example-any-data">
+                                                <pre about="#solid-notification-example-any-data" property="schema:description" typeof="fabio:Script">
+<code>&lt;&gt; a solid:Notification , sioc:Post ;</code>
+<code>  dcterms:created "2015-12-23T16:44:21Z"^^xsd:#dateTime ;</code>
+<code>  dcterms:title "New blog post" ;</code>
+<code>  sioc:content "Lorem ipsum dolor sit amet.." ;</code>
+<code>  sioac:has_creator &lt;#author&gt; .</code>
+
+<code>&lt;#author&gt; a sioc:UserAccount ;</code>
+<code>  sioc:account_of &lt;../profile#me&gt; ;</code>
+<code>  sioc:avatar &lt;../avatar.jpg&gt; ;</code>
+<code>  foaf:name "Alice" .</code>
+                                                </pre>
+                                                <figcaption property="schema:name">Example notification type: any data.</figcaption>
+                                            </figure>
+                                        </div>
+                                    </section>
+                                </div>
+                            </section>
+                        </div>
+                    </section>
+
+                    <section id="results" inlist="" rel="schema:hasPart" resource="#results">
+                        <h2 property="schema:name">Results</h2>
+                        <div datatype="rdf:HTML" property="schema:description" resource="#results" typeof="deo:Results">
+                            <p>In this article, ...</p>
+                        </div>
+                    </section>
+
+                    <section id="acknowledgements" inlist="" rel="schema:hasPart" resource="#acknowledgements">
+                        <h2 about="#acknowledgements" property="schema:name" typeof="deo:Acknowledgements">Acknowledgements</h2>
+                        <div datatype="rdf:HTML" property="schema:description">
+                            <p>The motivation and work on notifications is inspired by ...</p>
+
+                        </div>
+                    </section>
+
+                    <section id="references">
+                        <h2>References</h2>
+                        <div>
+                        </div>
+                    </section>
+                </div>
+            </article>
+        </main>
+    </body>
+</html>
