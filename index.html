@@ -112,9 +112,7 @@
                     <section id="conformance" inlist="" rel="schema:hasPart" resource="#conformance">
                         <h2 property="schema:name">Conformance</h2>
                         <div datatype="rdf:HTML" property="schema:description">
-                            <p>Implementations may be one or more of <em>senders</em>, <em>receivers</em> or <em>consumers</em>.</p>
-
-                            <p>Senders generate the notification data, discover where to deliver it, and deliver it. Receivers advertise where notifications should be delivered to, and store them upon receipt, and optionally expose the notifications for use by consumers. Consumers discover where to read notifications from, and may do additional processing on them.</p>
+                            <p>Implementations may be one or more of <em>senders</em>, <em>receivers</em> or <em>consumers</em>. For each feature, the specification indicates the role(s) for which the feature is normatively required.</p>
                         </div>
                     </section>
 
@@ -124,27 +122,23 @@
                         <div datatype="rdf:HTML" property="schema:description">
                             <p>..</p>
 
-                            <section id="discovery" inlist="" rel="schema:hasPart" resource="#discovery">
-                                <h3 property="schema:name">Discovery</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p>An inbox container <strong class="rfc2119">MUST</strong> be discoverable via the <code>ldp:inbox</code> property, and should be instances of <code>ldp:Inbox</code>. Each notification can be discovered via <code>ldp:notification</code> (or <code>ldp:contains</code> for LDP based applications) relations. Notifications that are of LDP RDF Source should be instances of <code>ldp:Notification</code>. Although neither <code>ldp:Inbox</code> or <code>ldp:Notification</code> is ultimately required to discover inboxes or notifications, it is good practice to instantiate resources for the purpose of data integrity and reuse. An example:</p>
-
-                                    <figure class="listing" id="notification-discovery" rel="schema:hasPart" resource="#notification-example-discovery">
-                                        <pre about="#notification-example-discovery" property="schema:description" typeof="fabio:Script">
-<code>&lt;https://example.org/profile&gt; ldp:inbox &lt;https://example.net/inbox/&gt; .</code>
-<code>&lt;https://example.net/inbox/&gt; a ldp:Inbox .</code>
-<code>&lt;https://example.net/inbox/&gt; ldp:notification &lt;https://example.net/inbox/abc123&gt; .</code>
-<code>&lt;https://example.net/inbox/abc123&gt; a ldp:Notification .</code>
-                                        </pre>
-                                        <figcaption property="schema:name">Discovery of inbox and notifications.</figcaption>
-                                    </figure>
-                                </div>
-                            </section>
-
                             <section id="sending" inlist="" rel="schema:hasPart" resource="#sending">
                                 <h3 property="schema:name">Sending</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
 
+                                </div>
+                            </section>
+
+                            <section id="receiving" inlist="" rel="schema:hasPart" resource="#receiving">
+                                <h3 property="schema:name">Receiving</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>Receivers <strong class="rfc2119">MUST</strong> advertise an <em>Inbox</em> URL. In LDP terms, an Inbox may be either a <code>ldp:Container</code> or a <code>ldp:Resource</code>. Receivers must support <em>either</em> <code>POST</code> (for <code>Containers</code>) or <code>PATCH</code> (for <code>ldp:Resources</code>) at this URL (not both).</p>
+
+                                    <p>If <code>POST</code> is supported, upon receipt of a <code>POST</code> request to this URL, the receiver <strong class="rfc2119">MUST</strong> create a new resource containing the RDF data from the body of the <code>POST</code> request and <strong class="rfc2119">MUST</strong> return either <code>HTTP 200 OK</code>, <code>HTTP 201 Created</code>, <code>HTTP 202 Accepted</code> or <code>HTTP 204 No Content</code>. In the case of a or 200 a <code>Content-Location</code> header pointing to the created resource <strong class="rfc2119">MUST</strong> also be returned. In the case of a <code>201</code> a <code>Location</code> header pointing to the created resource <strong class="rfc2119">MUST</strong> also be returned.</p>
+
+                                    <p>If <code>PATCH</code> is supported, upon receipt of a <code>PATCH</code> request to this URL, the receiver <strong class="rfc2119">MUST</strong> update the resource at the URL to append the data in the body of the <code>PATCH</code> request and <strong class="rfc2119">MUST</strong> return either <code>HTTP 200 OK</code>, <code>HTTP 202 Accepted</code> or <code>HTTP 204 No Content</code>.</p>
+
+                                    <p class="todo">Error for the ones not supported</p>
                                 </div>
                             </section>
 
