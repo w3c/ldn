@@ -47,7 +47,7 @@
 
                 <dl id="document-inbox">
                     <dt>Notifications Inbox</dt>
-                    <dd><a href="https://linkedresearch.org/inbox/" rel="solid:inbox">inbox/</a></dd>
+                    <dd><a href="https://linkedresearch.org/inbox/" rel="ldp:inbox">inbox/</a></dd>
                 </dl>
 
                 <dl id="document-published">
@@ -73,17 +73,6 @@
                         </div>
                     </section>
 
-                    <section id="keywords">
-                        <h2>Keywords</h2>
-                        <div>
-                            <ul rel="schema:about">
-                                <li><a href="https://en.wikipedia.org/wiki/Decentralization" resource="http://dbpedia.org/resource/Decentralization">Decentralization</a></li>
-                                <li><a href="https://en.wikipedia.org/wiki/Semantic_Web" resource="http://dbpedia.org/resource/Semantic_Web">Semantic Web</a></li>
-                                <li><a href="https://en.wikipedia.org/wiki/Social_web" resource="http://dbpedia.org/resource/Social_web">Social web</a></li>
-                            </ul>
-                        </div>
-                    </section>
-
                     <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
                         <h2 property="schema:name">Introduction</h2>
                         <div datatype="rdf:HTML" property="schema:description">
@@ -100,21 +89,6 @@
                         <h2 property="schema:name">Conformance</h2>
                         <div datatype="rdf:HTML" property="schema:description">
 
-                        </div>
-                    </section>
-
-                    <section id="concepts" inlist="" rel="schema:hasPart" resource="#concepts">
-                        <h2 property="schema:name">Concepts</h2>
-                        <div datatype="rdf:HTML" property="schema:description">
-                            <p>.. Given context, definition of the common terms in this space can diverge, we clarify ours here ..</p>
-                            <dl>
-                                <dt>Decentralised</dt>
-                                <dd>..</dd>
-                                <dt>Inbox and Container</dt>
-                                <dd>..</dd>
-                                <dt>Notification</dt>
-                                <dd>synonym: <em>message</em></dd>
-                            </dl>
                         </div>
                     </section>
 
@@ -175,13 +149,6 @@
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>This is about volume, paging (https://www.w3.org/TR/ldp/), filtering, moving things around?</p>
                                     <p>Update and Delete operations on sent notifications</p>
-                                </div>
-                            </section>
-
-                            <section id="involved-paries-considerations" inlist="" rel="schema:hasPart" resource="#involved-paries-considerations">
-                                <h3 property="schema:name">Involved Parties Considerations</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Notifications could be sent client-to-server, server-to-server. We should be clear about the intentions in our proposal. Default being a client (user-application?) sends a notification to a server.</p>
                                 </div>
                             </section>
                         </div>
@@ -260,14 +227,14 @@
                             <section id="discovery" inlist="" rel="schema:hasPart" resource="#discovery">
                                 <h3 property="schema:name">Discovery</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>An inbox container <strong class="rfc2119">MUST</strong> be discoverable via the <code>solid:inbox</code> property, and should be instances of <code>solid:Inbox</code>. Each notification can be discovered via <code>solid:notification</code> (or <code>ldp:contains</code> for LDP based applications) relations. Notifications that are of LDP RDF Source should be instances of <code>solid:Notification</code>.  Although neither <code>solid:Inbox</code> or <code>solid:Notification</code> is ultimately required to discover inboxes or notifications, it is good practice to instantiate resources for the purpose of data integrity and reuse. An example:</p>
+                                    <p>An inbox container <strong class="rfc2119">MUST</strong> be discoverable via the <code>ldp:inbox</code> property, and should be instances of <code>ldp:Inbox</code>. Each notification can be discovered via <code>ldp:notification</code> (or <code>ldp:contains</code> for LDP based applications) relations. Notifications that are of LDP RDF Source should be instances of <code>ldp:Notification</code>.  Although neither <code>ldp:Inbox</code> or <code>ldp:Notification</code> is ultimately required to discover inboxes or notifications, it is good practice to instantiate resources for the purpose of data integrity and reuse. An example:</p>
 
-                                    <figure class="listing" id="solid-notification-discovery" rel="schema:hasPart" resource="#solid-notification-example-discovery">
-                                        <pre about="#solid-notification-example-discovery" property="schema:description" typeof="fabio:Script">
-<code>&lt;https://example.org/profile&gt; solid:inbox &lt;https://example.net/inbox/&gt; .</code>
-<code>&lt;https://example.net/inbox/&gt; a solid:Inbox .</code>
-<code>&lt;https://example.net/inbox/&gt; solid:notification &lt;https://example.net/inbox/abc123&gt; .</code>
-<code>&lt;https://example.net/inbox/abc123&gt; a solid:Notification .</code>
+                                    <figure class="listing" id="notification-discovery" rel="schema:hasPart" resource="#notification-example-discovery">
+                                        <pre about="#notification-example-discovery" property="schema:description" typeof="fabio:Script">
+<code>&lt;https://example.org/profile&gt; ldp:inbox &lt;https://example.net/inbox/&gt; .</code>
+<code>&lt;https://example.net/inbox/&gt; a ldp:Inbox .</code>
+<code>&lt;https://example.net/inbox/&gt; ldp:notification &lt;https://example.net/inbox/abc123&gt; .</code>
+<code>&lt;https://example.net/inbox/abc123&gt; a ldp:Notification .</code>
                                         </pre>
                                         <figcaption property="schema:name">Discovery of inbox and notifications.</figcaption>
                                     </figure>
@@ -308,8 +275,8 @@
                                         <div datatype="rdf:HTML" property="schema:description">
                                             <p>A single triple statement is the simplest notification in terms of its data payload. It contains the most essential data which makes up a notification e.g, Alice liked an article:</p>
 
-                                            <figure class="listing" id="solid-notification-single-statement" rel="schema:hasPart" resource="#solid-notification-example-single-statement">
-                                                <pre about="#solid-notification-example-single-statement" property="schema:description" typeof="fabio:Script">
+                                            <figure class="listing" id="notification-single-statement" rel="schema:hasPart" resource="#notification-example-single-statement">
+                                                <pre about="#notification-example-single-statement" property="schema:description" typeof="fabio:Script">
 <code>&lt;http://example.org/profile/card#alice&gt; :liked &lt;http://example.net/article&gt; .</code>
                                                 </pre>
                                                 <figcaption property="schema:name">Example notification type: single statement.</figcaption>
@@ -326,9 +293,9 @@
                                             <p>A particular grouping of triples which describe and qualify the relations, i.e., the vocabulary in use typically gives meaning to the statements when consumed as a whole. The examples below tend to refer to external resources where the body of the content can be discovered.</p>
 
                                             <p>ActivityStreams:</p>
-                                            <figure class="listing" id="solid-notification-qualified-relation" rel="schema:hasPart" resource="#solid-notification-example-qualified-relation">
-                                                <pre about="#solid-notification-example-qualified-relation" property="schema:description" typeof="fabio:Script">
-<code>&lt;> a solid:Notification , as:Announce ;</code>
+                                            <figure class="listing" id="notification-qualified-relation" rel="schema:hasPart" resource="#notification-example-qualified-relation">
+                                                <pre about="#notification-example-qualified-relation" property="schema:description" typeof="fabio:Script">
+<code>&lt;> a ldp:Notification , as:Announce ;</code>
 <code>  as:object &lt;https://example.org/abcdef&gt; ;</code>
 <code>  as:target &lt;https://example.net/article#introduction&gt; ;</code>
 <code>  as:updated "2016-02-02T18:58:50.719Z"^^xsd:dateTime ;</code>
@@ -339,9 +306,9 @@
                                             </figure>
 
                                             <p>Semantic Pingback:</p>
-                                            <figure class="listing" id="solid-notification-example-semantic-pingback" rel="schema:hasPart" resource="#solid-notification-example-semantic-pingback">
-                                                <pre about="#solid-notification-example-semantic-pingback" property="schema:description" typeof="fabio:Script">
-<code>&lt;&gt; a solid:Notification , pingback:Request ;</code>
+                                            <figure class="listing" id="notification-example-semantic-pingback" rel="schema:hasPart" resource="#notification-example-semantic-pingback">
+                                                <pre about="#notification-example-semantic-pingback" property="schema:description" typeof="fabio:Script">
+<code>&lt;&gt; a ldp:Notification , pingback:Request ;</code>
 <code>  pingback:source &lt;http://example.net/foo/abc123&gt; ;</code>
 <code>  pingback:target &lt;http://example.org/article/index&gt; .</code>
                                                 </pre>
@@ -356,9 +323,9 @@
                                         <div datatype="rdf:HTML" property="schema:description">
                                             <p>This is typically in cases where an application may want to notify with any information. A notification may contain the complete payload and not necessarily refer to the origin data (external resource).</p>
 
-                                            <figure class="listing" id="solid-notification-example-any-data" rel="schema:hasPart" resource="#solid-notification-example-any-data">
-                                                <pre about="#solid-notification-example-any-data" property="schema:description" typeof="fabio:Script">
-<code>&lt;&gt; a solid:Notification , sioc:Post ;</code>
+                                            <figure class="listing" id="notification-example-any-data" rel="schema:hasPart" resource="#notification-example-any-data">
+                                                <pre about="#notification-example-any-data" property="schema:description" typeof="fabio:Script">
+<code>&lt;&gt; a ldp:Notification , sioc:Post ;</code>
 <code>  dcterms:created "2015-12-23T16:44:21Z"^^xsd:#dateTime ;</code>
 <code>  dcterms:title "New blog post" ;</code>
 <code>  sioc:content "Lorem ipsum dolor sit amet.." ;</code>
