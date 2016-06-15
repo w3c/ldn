@@ -11,6 +11,10 @@
         <link href="https://dokie.li/media/css/do.css" media="all" rel="stylesheet" />
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" media="all" rel="stylesheet" />
         <link href="https://dokie.li/media/css/editor.css" media="all" rel="stylesheet" />
+        <style>
+em.rfc2119 { color: #900; }
+code { color: #c83500; }
+        </style>
         <script src="https://dokie.li/scripts/simplerdf.js"></script>
         <script src="https://dokie.li/scripts/medium-editor.min.js"></script>
         <script src="https://dokie.li/scripts/medium-editor-tables.min.js"></script>
@@ -132,11 +136,11 @@
                             <section id="receiving" inlist="" rel="schema:hasPart" resource="#receiving">
                                 <h3 property="schema:name">Receiving</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Receivers <strong class="rfc2119">MUST</strong> advertise an <em>Inbox</em> URL. In LDP terms, an Inbox may be either a <code>ldp:Container</code> or a <code>ldp:Resource</code>. Receivers must support <em>either</em> <code>POST</code> (for <code>Containers</code>) or <code>PATCH</code> (for <code>ldp:Resources</code>) at this URL (not both).</p>
+                                    <p>Receivers <em class="rfc2119">MUST</em> advertise an <em>Inbox</em> URL. In LDP terms, an Inbox may be either a <code>ldp:Container</code> or a <code>ldp:Resource</code>. Receivers <em class="rfc2119">MUST</em> support <em>either</em> <code>POST</code> (for <code>Containers</code>) or <code>PATCH</code> (for <code>ldp:Resources</code>) at this URL (not both).</p>
 
-                                    <p>If <code>POST</code> is supported, upon receipt of a <code>POST</code> request to this URL, the receiver <strong class="rfc2119">MUST</strong> create a new resource containing the RDF data from the body of the <code>POST</code> request and <strong class="rfc2119">MUST</strong> return either <code>HTTP 200 OK</code>, <code>HTTP 201 Created</code>, <code>HTTP 202 Accepted</code> or <code>HTTP 204 No Content</code>. In the case of a or 200 a <code>Content-Location</code> header pointing to the created resource <strong class="rfc2119">MUST</strong> also be returned. In the case of a <code>201</code> a <code>Location</code> header pointing to the created resource <strong class="rfc2119">MUST</strong> also be returned.</p>
+                                    <p>If <code>POST</code> is supported, upon receipt of a <code>POST</code> request to this URL, the receiver <em class="rfc2119">MUST</em> create a new resource containing the RDF data from the body of the <code>POST</code> request and <em class="rfc2119">MUST</em> return either <code>HTTP 200 OK</code>, <code>HTTP 201 Created</code>, <code>HTTP 202 Accepted</code> or <code>HTTP 204 No Content</code>. In the case of a or 200 a <code>Content-Location</code> header pointing to the created resource <em class="rfc2119">MUST</em> also be returned. In the case of a <code>201</code> a <code>Location</code> header pointing to the created resource <em class="rfc2119">MUST</em> also be returned.</p>
 
-                                    <p>If <code>PATCH</code> is supported, upon receipt of a <code>PATCH</code> request to this URL, the receiver <strong class="rfc2119">MUST</strong> update the resource at the URL to append the data in the body of the <code>PATCH</code> request and <strong class="rfc2119">MUST</strong> return either <code>HTTP 200 OK</code>, <code>HTTP 202 Accepted</code> or <code>HTTP 204 No Content</code>.</p>
+                                    <p>If <code>PATCH</code> is supported, upon receipt of a <code>PATCH</code> request to this URL, the receiver <em class="rfc2119">MUST</em> update the resource at the URL to append the data in the body of the <code>PATCH</code> request and <em class="rfc2119">MUST</em> return either <code>HTTP 200 OK</code>, <code>HTTP 202 Accepted</code> or <code>HTTP 204 No Content</code>.</p>
 
                                     <p class="todo">Error for the ones not supported</p>
                                 </div>
