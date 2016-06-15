@@ -154,8 +154,7 @@ code { color: #c83500; }
 
                                     <p>Receivers MUST accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>, and MAY accept other RDF content types (eg. <code>Content-Type: text/turtle</code>). Receivers SHOULD advertise the content types they accept with an <code>Accept</code> header on the Inbox. Receivers MAY reserialize a notification into a different syntax upon delivery, prior to doing anything else with it.</p>
 
-                                    <p>If a request is made to the Inbox with an HTTP method the receiver does not support, a <code>4xx/5xx</code> error code MUST be returned. If the request is made with a content type the receiver does not support, a <code>4xx/5xx</code> error code MUST be returned.</p>
-
+                                    <p>If a request is made to the Inbox with an HTTP method the receiver does not support, a <code>HTTP 405 Method Not Allowed</code> error code MUST be returned. If the request is made with a content type the receiver does not support, a <code>4xx/5xx</code> error code MUST be returned.</p>
                                 </div>
                             </section>
 
