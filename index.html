@@ -129,7 +129,15 @@ code { color: #c83500; }
                             <section id="sending" inlist="" rel="schema:hasPart" resource="#sending">
                                 <h3 property="schema:name">Sending</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
+                                    <p>Senders <em class="rfc2119">MUST</em> support delivering notifications through both <code>POST</code> and <code>PATCH</code>.</p>
 
+                                    <p>Senders MAY do a <code>HEAD</code> request on the Inbox to determine its type. If the Inbox returns a Link header with <code>rel="type"</code> and the value is <code>ldp:Container</code> the sender should use <code>POST</code>. If the value is <code>ldp:Resource</code> the sender should use PATCH.</p>
+
+                                    <p>Senders MAY make an <code>OPTIONS</code> request on the Inbox, and if <code>Accept-Post</code> header is returned the sender MUST use POST.</p>
+
+                                    <p>If no type is returned, or the Sender does not make a <code>HEAD</code> request first, the Sender SHOULD try <code>POST</code> first, and if that fails, try <code>PATCH</code>.</p>
+
+                                    <p>The body of the <code>POST</code> or <code>PATCH</code> request MUST contain the notification in JSON-LD.</p>
                                 </div>
                             </section>
 
