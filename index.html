@@ -124,33 +124,38 @@ code { color: #c83500; }
                     <section id="protocol" inlist="" rel="schema:hasPart" resource="#protocol">
                         <h2 property="schema:name">Protocol</h2>
                         <div datatype="rdf:HTML" property="schema:description">
-                            <p>..</p>
+                            <p>This section describes the discovery of the URL to which notifications may be delivered or read from (the <em>Inbox</em>) and the delivery mechanism. Notification contents are described in <a href="#payload">Payload</a>.</p>
 
                             <section id="sending" inlist="" rel="schema:hasPart" resource="#sending">
                                 <h3 property="schema:name">Sending</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>Senders <em class="rfc2119">MUST</em> support delivering notifications through both <code>POST</code> and <code>PATCH</code>.</p>
+ 
+                                    <p>Senders SHOULD first make an <code>OPTIONS</code> request to the Inbox; if <code>Accept-Post</code> header is returned the sender MUST use <code>POST</code>, and if the <code>Accept-Patch</code> header is returned the sender MUST use <code>PATCH</code>.</p>
 
-                                    <p>Senders MAY do a <code>HEAD</code> request on the Inbox to determine its type. If the Inbox returns a Link header with <code>rel="type"</code> and the value is <code>ldp:Container</code> the sender should use <code>POST</code>. If the value is <code>ldp:Resource</code> the sender should use PATCH.</p>
+                                    <p>Senders MAY make a <code>HEAD</code> request on the Inbox to determine how to send the notification. If the Inbox returns a <code>Link</code> header with <code>rel="type"</code> and the target contains <code>http://www.w3.org/ns/ldp#Container</code> the sender MUST use <code>POST</code>. If the target contains <code>http://www.w3.org/ns/ldp#Resource</code> the sender MUST use <code>PATCH</code>.</p>
 
-                                    <p>Senders MAY make an <code>OPTIONS</code> request on the Inbox, and if <code>Accept-Post</code> header is returned the sender MUST use POST.</p>
+                                    <p>If there is no adequate response from the <code>OPTIONS</code> or <code>HEAD</code> requests, or the sender cannot make either request, the sender MUST try <code>POST</code> first, and if that fails (with a <code>4xx/5xx</code> error code), try <code>PATCH</code>.</p>
 
-                                    <p>If no type is returned, or the Sender does not make a <code>HEAD</code> request first, the Sender SHOULD try <code>POST</code> first, and if that fails, try <code>PATCH</code>.</p>
-
-                                    <p>The body of the <code>POST</code> or <code>PATCH</code> request MUST contain the notification in JSON-LD.</p>
+                                    <p>The sender MAY use a <code>HEAD</code> request to determine the RDF content types accepted by the server, and serialize the notification in the request body according to the value of the <code>Accept</code> header returned. Otherwise, the body of the <code>POST</code> or <code>PATCH</code> request MUST contain the notification in JSON-LD.</p>
                                 </div>
                             </section>
 
                             <section id="receiving" inlist="" rel="schema:hasPart" resource="#receiving">
                                 <h3 property="schema:name">Receiving</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Receivers <em class="rfc2119">MUST</em> advertise an <em>Inbox</em> URL. In LDP terms, an Inbox may be either a <code>ldp:Container</code> or a <code>ldp:Resource</code>. Receivers <em class="rfc2119">MUST</em> support <em>either</em> <code>POST</code> (for <code>Containers</code>) or <code>PATCH</code> (for <code>ldp:Resources</code>) at this URL (not both).</p>
+                                    <p>Receivers <em class="rfc2119">MUST</em> advertise an <em>Inbox</em> URL. In LDP terms, an Inbox may be either a <em>Container</em> or a <em>Resource</em>. Recievers MUST support <code>GET</code> requests on the Inbox. Receivers <em class="rfc2119">MUST</em> also support <em>either</em> <code>POST</code> (for Container) or <code>PATCH</code> (for Resource) at this URL (not both).</p>
 
-                                    <p>If <code>POST</code> is supported, upon receipt of a <code>POST</code> request to this URL, the receiver <em class="rfc2119">MUST</em> create a new resource containing the RDF data from the body of the <code>POST</code> request and <em class="rfc2119">MUST</em> return either <code>HTTP 200 OK</code>, <code>HTTP 201 Created</code>, <code>HTTP 202 Accepted</code> or <code>HTTP 204 No Content</code>. In the case of a <code>200</code> a <code>Content-Location</code> header pointing to the created resource <em class="rfc2119">MUST</em> also be returned. In the case of a <code>201</code> a <code>Location</code> header pointing to the created resource <em class="rfc2119">MUST</em> also be returned.</p>
+                                    <p>A <code>GET</code> request on the Inbox MUST return the notifications in the Inbox ...</p>
 
-                                    <p>If <code>PATCH</code> is supported, upon receipt of a <code>PATCH</code> request to this URL, the receiver <em class="rfc2119">MUST</em> update the resource at the URL to append the data in the body of the <code>PATCH</code> request and <em class="rfc2119">MUST</em> return either <code>HTTP 200 OK</code>, <code>HTTP 202 Accepted</code> or <code>HTTP 204 No Content</code>.</p>
+                                    <p>To support <code>POST</code>, <code>OPTIONS</code>, <code>GET</code> or <code>HEAD</code> requests on the Inbox SHOULD return an <code>Accept-Post</code> header and MAY return <code>Link: &lt;http://www.w3.org/ns/ldp#Container&gt;; rel="type"</code>, and MUST NOT return <code>Link: &lt;http://www.w3.org/ns/ldp#Resource&gt;; rel="type"</code>. Upon receipt of a <code>POST</code> request to the Inbox, the receiver <em class="rfc2119">MUST</em> create a new resource containing the RDF data from the body of the <code>POST</code> request and <em class="rfc2119">MUST</em> return either <code>HTTP 200 OK</code>, <code>HTTP 201 Created</code>, <code>HTTP 202 Accepted</code> or <code>HTTP 204 No Content</code>. In the case of a <code>200</code> a <code>Content-Location</code> header pointing to the created resource <em class="rfc2119">MUST</em> also be returned. In the case of a <code>201</code> a <code>Location</code> header pointing to the created resource <em class="rfc2119">MUST</em> also be returned.</p>
 
-                                    <p class="todo">Error for the ones not supported</p>
+                                    <p>To support <code>PATCH</code>, <code>OPTIONS</code>, <code>GET</code> or <code>HEAD</code> requests on the Inbox SHOULD return an <code>Accept-Patch</code> header and MAY return <code>Link: &lt;http://www.w3.org/ns/ldp#Resource&gt;; rel="type"</code>, and MUST NOT return <code>Link: &lt;http://www.w3.org/ns/ldp#Container&gt;; rel="type"</code>. Upon receipt of a <code>PATCH</code> request to this URL, the receiver <em class="rfc2119">MUST</em> update the resource at the URL to append the data from the body of the <code>PATCH</code> request and <em class="rfc2119">MUST</em> return either <code>HTTP 200 OK</code>, <code>HTTP 202 Accepted</code> or <code>HTTP 204 No Content</code>.</p>
+
+                                    <p>Receivers MUST accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>, and MAY accept other RDF content types (eg. <code>Content-Type: text/turtle</code>). Receivers SHOULD advertise the content types they accept with an <code>Accept</code> header on the Inbox. Receivers MAY reserialize a notification into a different syntax upon delivery, prior to doing anything else with it.</p>
+
+                                    <p>If a request is made to the Inbox with an HTTP verb the receiver does not support, a <code>4xx/5xx</code> error code MUST be returned. If the request is made with a content type the receiver does not support, a <code>4xx/5xx</code> error code MUST be returned.</p>
+
                                 </div>
                             </section>
 
@@ -163,23 +168,15 @@ code { color: #c83500; }
                         </div>
                     </section>
 
-
-                    <section id="authorization" inlist="" rel="schema:hasPart" resource="#authorization">
-                        <h2 property="schema:name">Authorization</h2>
-                        <div datatype="rdf:HTML" property="schema:description">
-                            <p>The owner of the inbox typically sets its ACL rules and thereby for the notifications it contains. By default, when profile inboxes are created, inboxes must be public append only as they are inherently private. Other types of inboxes e.g., for blog posts, may be set to public read and append so that applications can use a <em>follow-your-nose</em> approach to discover and display the contents of a notification, as well as submit new notifications. Further, the ACL settings for the inbox may determine which agents can send notifications.</p>
-                        </div>
-                    </section>
-
                     <section id="payload" inlist="" rel="schema:hasPart" resource="#payload">
                         <h2 property="schema:name">Payload</h2>
                         <div datatype="rdf:HTML" property="schema:description">
-                            <p>What is a message/notification? What can it contain? Are there constraints/shapes in needs to fulfil? How does it look (vocabularies)?</p>
+                            <p>To allow for a wide variety of use cases, the actual payload of the notifiction (the request body) is deliberately left to the discretion of the sender. The sender MUST NOT assume that the receiver can fetch or infer anything additional from the payload, and thus MUST include everything they want the reciever to know.</p>
 
-                            <section id="notification-types" inlist="" rel="schema:hasPart" resource="#notification-types">
-                                <h3 property="schema:name">Notification Types</h3>
+                            <section id="examples" inlist="" rel="schema:hasPart" resource="#examples">
+                                <h3 property="schema:name">Examples</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Here we exemplify some types of notifications:</p>
+                                    <p>Here are some examples of notification content:</p>
 
                                     <section id="single-statement" inlist="" rel="schema:hasPart" resource="#single-statement">
                                         <h4 property="schema:name">Single Statement</h4>
@@ -260,6 +257,13 @@ code { color: #c83500; }
                         <h2 property="schema:name">Extensibility</h2>
                         <div datatype="rdf:HTML" property="schema:description">
                             <p>..</p>
+                        </div>
+                    </section>
+
+                    <section id="authorization" inlist="" rel="schema:hasPart" resource="#authorization">
+                        <h2 property="schema:name">Authorization</h2>
+                        <div datatype="rdf:HTML" property="schema:description">
+                            <p>The owner of the inbox typically sets its ACL rules and thereby for the notifications it contains. By default, when profile inboxes are created, inboxes must be public append only as they are inherently private. Other types of inboxes e.g., for blog posts, may be set to public read and append so that applications can use a <em>follow-your-nose</em> approach to discover and display the contents of a notification, as well as submit new notifications. Further, the ACL settings for the inbox may determine which agents can send notifications.</p>
                         </div>
                     </section>
 
