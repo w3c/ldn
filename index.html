@@ -163,8 +163,10 @@ code { color: #c83500; }
                             <section id="consuming" inlist="" rel="schema:hasPart" resource="#consuming">
                                 <h3 property="schema:name">Consuming</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Inbox URLs may enter consuming systems either by direct input or via discovery.</p>
-                                    <p>Inbox URL discovery .. FYN to ldp:inbox or a property (sioc:has_discussion, as:replies) it is interested in. MUST use GET Inbox URL. SHOULD check if there is ldp:Inbox on the Inbox URL.</p>
+                                    <p>Inbox URLs may enter consuming systems either by direct input or through discovery.</p>
+
+                                    <p>Consumers <em class="rfc2119">MUST</em> either fetch the target URL (and follow redirects) or make a <code>HEAD</code> request and check for an HTTP Link header [<cite><a class="bibref" href="#bib-RFC5988">RFC5988</a></cite>] with a <code>rel</code> value of <code>inbox</code>. If no such Link header found, consumers <em class="rfc2119">MUST</em> use the object URI(s) of the predicate <code>ldp:inbox</code> in RDF Sources [<cite><a class="bibref" href="#bib-LDP-RS">LDP-RS</a></cite>] (e.g., serialised as Turtle, JSON-LD, or HTML+RDFa). Consumers <em class="rfc2119">MAY</em> utilise application specific relations (e.g., <code>sioc:has_discussion</code>, <code>as:replies</code>) to discover specific Inbox URLs for any subject URI provided that the Inbox URL is an instance of <code>ldp:Inbox</code>. As a last resort, consumers <em class="rfc2119">MAY</em> want to look for HTML <code>link</code> or <code>a</code> element with a <code>rel</code> containing <code>inbox</code>.</p>
+
                                     <p>Additional fetching or inferring additional information from the payload is at the discretion of the consumer.</p>
                                 </div>
                             </section>
