@@ -133,7 +133,7 @@ code { color: #c83500; }
  
                                     <p>Senders <em class="rfc2119">SHOULD</em> first make an <code>OPTIONS</code> request to the Inbox; if <code>Accept-Post</code> header is returned the sender <em class="rfc2119">MUST</em> use <code>POST</code>, and if the <code>Accept-Patch</code> header is returned the sender <em class="rfc2119">MUST</em> use <code>PATCH</code>.</p>
 
-                                    <p>Senders <em class="rfc2119">MAY</em> make a <code>HEAD</code> request on the Inbox to determine how to send the notification. If the Inbox returns a <code>Link</code> header with <code>rel="type"</code> and the target contains <code>http://www.w3.org/ns/ldp#Container</code> the sender <em class="rfc2119">MUST</em> use <code>POST</code>. If the target contains <code>http://www.w3.org/ns/ldp#RDFSource</code> (and <em>does not</em> contain <code>http://www.w3.org/ns/ldp#Container</code>) the sender <em class="rfc2119">MUST</em> use <code>PATCH</code>.</p>
+                                    <p>Senders <em class="rfc2119">MAY</em> make a <code>HEAD</code> request on the Inbox to determine how to send the notification. If the Inbox returns an HTTP <code>Link</code> header [<cite><a class="bibref" href="#bib-RFC5988">RFC5988</a></cite>] with <code>rel="type"</code> and the target contains <code>http://www.w3.org/ns/ldp#Container</code> the sender <em class="rfc2119">MUST</em> use <code>POST</code>. If the target contains <code>http://www.w3.org/ns/ldp#RDFSource</code> (and <em>does not</em> contain <code>http://www.w3.org/ns/ldp#Container</code>) the sender <em class="rfc2119">MUST</em> use <code>PATCH</code>.</p>
 
                                     <p>If there is no adequate response from the <code>OPTIONS</code> or <code>HEAD</code> requests, or the sender cannot make either request, the sender <em class="rfc2119">MUST</em> try <code>POST</code> first, and if that fails with <code>HTTP 405 Method Not Allowed</code> or <code>HTTP 406 Not Acceptable</code>, try <code>PATCH</code>.</p>
 
@@ -154,7 +154,7 @@ code { color: #c83500; }
 
                                     <p>To support <code>OPTIONS</code>: servers <em class="rfc2119">MUST</em> enable CORS pre-flight requests [<a href="#bib-cors">cors</a>].</p>
 
-                                    <p>Receivers <em class="rfc2119">MUST</em> accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>, and <em class="rfc2119">MAY</em> accept other RDF content types (eg. <code>Content-Type: text/turtle</code>). Receivers <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept</code> header on the Inbox URL. Receivers <em class="rfc2119">MAY</em> reserialize a notification into a different syntax upon delivery, prior to doing anything else with it.</p>
+                                    <p>Receivers <em class="rfc2119">MUST</em> accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>, and <em class="rfc2119">MAY</em> accept other RDF content types (eg. <code>text/turtle</code>, <code>text/html</code>). Receivers <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept</code> header on the Inbox URL. Receivers <em class="rfc2119">MAY</em> reserialize a notification into a different syntax upon delivery, prior to doing anything else with it.</p>
 
                                     <p>If a request is made to the Inbox with an HTTP method the receiver does not support, a <code>HTTP 405 Method Not Allowed</code> error code <em class="rfc2119">MUST</em> be returned. If the request is made with a content type the receiver does not support, a <code>HTTP 406 Not Acceptable</code> error code <em class="rfc2119">MUST</em> be returned.</p>
                                 </div>
@@ -173,7 +173,7 @@ code { color: #c83500; }
                             <section id="discovery" inlist="" rel="schema:hasPart" resource="#discovery">
                                 <h3 property="schema:name">Discovery</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Senders and consumers <em class="rfc2119">MUST</em> either fetch the target URL (and follow redirects) or make a <code>HEAD</code> request and check for an HTTP Link header [<cite><a class="bibref" href="#bib-RFC5988">RFC5988</a></cite>] with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code>. If no such Link header found, consumers <em class="rfc2119">MUST</em> use the object URI(s) of the predicate <code>http://www.w3.org/ns/ldp#inbox</code> in RDF Sources [<cite><a class="bibref" href="#bib-LDP-RS">LDP-RS</a></cite>] (e.g., serialised as Turtle, JSON-LD, or HTML+RDFa). Consumers <em class="rfc2119">MAY</em> utilise application specific relations (e.g., <code>sioc:has_discussion</code>, <code>as:replies</code>, <code>oa:annotationService</code>) to discover specific Inbox URLs for any subject URI provided that the Inbox URL is an instance of <code>http://www.w3.org/ns/ldp#Inbox</code>. As a last resort, consumers <em class="rfc2119">MAY</em> want to look for an HTML element with a <code>rel</code> containing value <code>http://www.w3.org/ns/ldp#inbox</code> along with the corresponding attribute for the destination URL.</p>
+                                    <p>Senders and consumers <em class="rfc2119">MUST</em> either fetch the target URL (and follow redirects) or make a <code>HEAD</code> request and check for an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code>. If no such Link header found, consumers <em class="rfc2119">MUST</em> use the object URI(s) of the predicate <code>http://www.w3.org/ns/ldp#inbox</code> in RDF Sources [<cite><a class="bibref" href="#bib-LDP-RS">LDP-RS</a></cite>] (e.g., serialised as Turtle, JSON-LD, or HTML+RDFa). Consumers <em class="rfc2119">MAY</em> utilise application specific relations (e.g., <code>sioc:has_discussion</code>, <code>as:replies</code>, <code>oa:annotationService</code>) to discover specific Inbox URLs for any subject URI provided that the Inbox URL is an instance of <code>http://www.w3.org/ns/ldp#Inbox</code>. As a last resort, consumers <em class="rfc2119">MAY</em> want to look for an HTML element with a <code>rel</code> containing value <code>http://www.w3.org/ns/ldp#inbox</code> along with the corresponding attribute for the destination URL.</p>
                                 </div>
                             </section>
                         </div>
@@ -182,6 +182,8 @@ code { color: #c83500; }
                     <section id="payload" inlist="" rel="schema:hasPart" resource="#payload">
                         <h2 property="schema:name">Payload</h2>
                         <div datatype="rdf:HTML" property="schema:description">
+                            <p class="todo">Should this section be renamed to 'Notifications'?</p>
+
                             <p>To allow for a wide variety of use cases, the actual payload of the notification (the request body) is deliberately left to the discretion of the sender. The sender <em class="rfc2119">MUST NOT</em> assume that the receiver can fetch or infer anything additional from the payload, and thus <em class="rfc2119">MUST</em> include everything they want the receiver to know.</p>
 
                             <section id="examples" inlist="" rel="schema:hasPart" resource="#examples">
@@ -194,8 +196,8 @@ code { color: #c83500; }
                                         <div datatype="rdf:HTML" property="schema:description">
                                             <p>A single triple statement is the simplest notification in terms of its data payload. It contains the most essential data which makes up a notification e.g, Alice liked an article:</p>
 
-                                            <figure class="listing" id="notification-single-statement" rel="schema:hasPart" resource="#notification-example-single-statement">
-                                                <pre about="#notification-example-single-statement" property="schema:description" typeof="fabio:Script">
+                                            <figure class="listing" id="notification-single-statement" rel="schema:hasPart" resource="#notification-single-statement">
+                                                <pre about="#notification-single-statement" property="schema:description" typeof="fabio:Script">
 <code>&lt;http://example.org/profile/card#alice&gt; :liked &lt;http://example.net/article&gt; .</code>
                                                 </pre>
                                                 <figcaption property="schema:name">Example notification type: single statement.</figcaption>
@@ -212,9 +214,9 @@ code { color: #c83500; }
                                             <p>A particular grouping of triples which describe and qualify the relations, i.e., the vocabulary in use typically gives meaning to the statements when consumed as a whole. The examples below tend to refer to external resources where the body of the content can be discovered.</p>
 
                                             <p>ActivityStreams:</p>
-                                            <figure class="listing" id="notification-qualified-relation" rel="schema:hasPart" resource="#notification-example-qualified-relation">
-                                                <pre about="#notification-example-qualified-relation" property="schema:description" typeof="fabio:Script">
-<code>&lt;> a ldp:Notification , as:Announce ;</code>
+                                            <figure class="listing" id="notification-qualified-relation" rel="schema:hasPart" resource="#notification-qualified-relation">
+                                                <pre about="#notification-qualified-relation" property="schema:description" typeof="fabio:Script">
+<code>&lt;&gt; a ldp:Notification , as:Announce ;</code>
 <code>  as:object &lt;https://example.org/abcdef&gt; ;</code>
 <code>  as:target &lt;https://example.net/article#introduction&gt; ;</code>
 <code>  as:updated "2016-02-02T18:58:50.719Z"^^xsd:dateTime ;</code>
@@ -225,8 +227,8 @@ code { color: #c83500; }
                                             </figure>
 
                                             <p>Semantic Pingback:</p>
-                                            <figure class="listing" id="notification-example-semantic-pingback" rel="schema:hasPart" resource="#notification-example-semantic-pingback">
-                                                <pre about="#notification-example-semantic-pingback" property="schema:description" typeof="fabio:Script">
+                                            <figure class="listing" id="notification-semantic-pingback" rel="schema:hasPart" resource="#notification-semantic-pingback">
+                                                <pre about="#notification-semantic-pingback" property="schema:description" typeof="fabio:Script">
 <code>&lt;&gt; a ldp:Notification , pingback:Request ;</code>
 <code>  pingback:source &lt;http://example.net/foo/abc123&gt; ;</code>
 <code>  pingback:target &lt;http://example.org/article/index&gt; .</code>
@@ -242,8 +244,8 @@ code { color: #c83500; }
                                         <div datatype="rdf:HTML" property="schema:description">
                                             <p>This is typically in cases where an application may want to notify with any information. A notification may contain the complete payload and not necessarily refer to the origin data (external resource).</p>
 
-                                            <figure class="listing" id="notification-example-any-data" rel="schema:hasPart" resource="#notification-example-any-data">
-                                                <pre about="#notification-example-any-data" property="schema:description" typeof="fabio:Script">
+                                            <figure class="listing" id="notification-any-data" rel="schema:hasPart" resource="#notification-any-data">
+                                                <pre about="#notification-any-data" property="schema:description" typeof="fabio:Script">
 <code>&lt;&gt; a ldp:Notification , sioc:Post ;</code>
 <code>  dcterms:created "2015-12-23T16:44:21Z"^^xsd:#dateTime ;</code>
 <code>  dcterms:title "New blog post" ;</code>
@@ -267,34 +269,35 @@ code { color: #c83500; }
                     <section id="extensibility" inlist="" rel="schema:hasPart" resource="#extensibility">
                         <h2 property="schema:name">Extensibility</h2>
                         <div datatype="rdf:HTML" property="schema:description">
-                            <p>..</p>
+                            <p class="todo">This section may not be needed. Anything in particular?</p>
                         </div>
                     </section>
 
                     <section id="authorization" inlist="" rel="schema:hasPart" resource="#authorization">
                         <h2 property="schema:name">Authorization</h2>
                         <div datatype="rdf:HTML" property="schema:description">
-                            <p>The owner of the inbox typically sets its ACL rules and thereby for the notifications it contains. By default, when profile inboxes are created, inboxes must be public append only as they are inherently private. Other types of inboxes e.g., for blog posts, may be set to public read and append so that applications can use a <em>follow-your-nose</em> approach to discover and display the contents of a notification, as well as submit new notifications. Further, the ACL settings for the inbox may determine which agents can send notifications.</p>
+                            <p class="todo">The owner of the inbox typically sets its <abbr title="Access Control List">ACL</abbr> rules and thereby for the notifications it contains. By default, when profile inboxes are created, inboxes must be public append only as they are inherently private. Other types of inboxes e.g., for blog posts, may be set to public read and append so that applications can use a <em>follow-your-nose</em> approach to discover and display the contents of a notification, as well as submit new notifications. Further, the ACL settings for the inbox may determine which agents can send notifications.</p>
                         </div>
                     </section>
 
                     <section id="integrity" inlist="" rel="schema:hasPart" resource="#integrity">
                         <h2 property="schema:name">Integrity</h2>
                         <div datatype="rdf:HTML" property="schema:description">
-                            <p>Persistent?</p>
-                            <p>Permanent/Archived?</p>
-                            <p>Canonical URIs?</p>
-                            <p>License?</p>
+                            <p id="constraints"><strong>Constraints</strong>: Inbox URLs <em class="rfc2119">SHOULD</em> announce their own shape constraints (e.g., <cite><a class="bibref" href="https://www.w3.org/TR/shacl/">SHACL</a></cite>, <a href="http://www.w3.org/TR/annotation-protocol/">Web Annotation Protocol</a>) via an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#constrainedBy</code> at a target URL. Senders <em class="rfc2119">SHOULD</em> comply with constraint specifications.</p>
 
-                            <p>Inbox URLs <em class="rfc2119">SHOULD</em> announce their own shape constraints (e.g., using <cite><a class="bibref" href="https://www.w3.org/TR/shacl/">SHACL</a></cite>) via an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#constrainedBy</code> at a target URL. Senders <em class="rfc2119">SHOULD</em> comply with constraint specifications.</p>
+                            <p>Persistence?</p>
+                            <p>Canonical URIs?</p>
+
+                            <p class="todo"><strong>Rights and License</strong>: .. this is important but does it belong here or in this spec?</p>
+                            <p class="todo">Permanent/Archived?: .. this is out of scope I think</p>
                         </div>
                     </section>
 
                     <section id="security-and-privacy-considerations" inlist="" rel="schema:hasPart" resource="#security-and-privacy-considerations">
                         <h2 property="schema:name">Security and Privacy Considerations</h2>
                         <div datatype="rdf:HTML" property="schema:description">
-                            <p>Verifying the Sender</p>
-                            <p>Public endpoints</p>
+                            <p id="sender-verification"><strong>Sender verification</strong>: </p>
+                            <p id="public-endpoints"><strong>Public endpoints</strong>: </p>
                         </div>
                     </section>
 
