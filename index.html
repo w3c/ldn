@@ -181,8 +181,8 @@ code { color: #c83500; }
 
                             <p id="rights-and-license">Senders <em class="rfc2119">SHOULD</em> include rights or license information in the payload as the notification may be reused or displayed by different software.</p>
 
-                            <section id="examples" inlist="" rel="schema:hasPart" resource="#examples">
-                                <h3 property="schema:name">Examples</h3>
+                            <section id="payload-examples" inlist="" rel="schema:hasPart" resource="#payload-examples">
+                                <h3 property="schema:name">Payload Examples</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>Here are some examples of notification content:</p>
 
@@ -193,7 +193,7 @@ code { color: #c83500; }
 
                                             <figure class="listing" id="notification-single-statement" rel="schema:hasPart" resource="#notification-single-statement">
                                                 <pre about="#notification-single-statement" property="schema:description" typeof="fabio:Script">
-<code>&lt;https://example.org/profile/card#alice&gt; :liked &lt;https://example.net/article&gt; .</code>
+<code>&lt;https://example.org/profile#alice&gt; :liked &lt;https://example.net/article&gt; .</code>
                                                 </pre>
                                                 <figcaption property="schema:name">Example notification type: single statement.</figcaption>
                                             </figure>
@@ -215,7 +215,7 @@ code { color: #c83500; }
 <code>  as:object &lt;https://example.org/abcdef&gt; ;</code>
 <code>  as:target &lt;https://example.net/article#introduction&gt; ;</code>
 <code>  as:updated "2016-02-02T18:58:50.719Z"^^xsd:dateTime ;</code>
-<code>  as:actor &lt;https://example.com/profile/card#alice&gt; ;</code>
+<code>  as:actor &lt;https://example.com/profile#alice&gt; ;</code>
 <code>  schema:license &lt;https://creativecommons.org/licenses/by/4.0/&gt; .</code>
 <code>&lt;https://example.org/abcdef&gt; a as:Note ;</code>
 <code>  as:inReplyTo &lt;https://example.net/article#introduction&gt; .</code>
@@ -260,7 +260,7 @@ code { color: #c83500; }
 <code>  sioac:has_creator &lt;#author&gt; .</code>
 
 <code>&lt;#author&gt; a sioc:UserAccount ;</code>
-<code>  sioc:account_of &lt;../profile#me&gt; ;</code>
+<code>  sioc:account_of &lt;../profile#alice&gt; ;</code>
 <code>  sioc:avatar &lt;../avatar.jpg&gt; ;</code>
 <code>  foaf:name "Alice" .</code>
                                                 </pre>
@@ -281,7 +281,7 @@ code { color: #c83500; }
                             <section id="constraints" inlist="" rel="schema:hasPart" resource="#constraints">
                                 <h3 property="schema:name">Constraints</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Inbox URLs <em class="rfc2119">SHOULD</em> announce their own shape constraints (e.g., <cite><a class="bibref" href="https://www.w3.org/TR/shacl/">SHACL</a></cite>, <a href="http://www.w3.org/TR/annotation-protocol/">Web Annotation Protocol</a>) via an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#constrainedBy</code> at a target URL. Senders <em class="rfc2119">SHOULD</em> comply with constraint specifications.</p>
+                                    <p>Inbox URLs <em class="rfc2119">SHOULD</em> announce their own shape constraints (e.g., <cite><a class="bibref" href="https://www.w3.org/TR/shacl/">SHACL</a></cite>, <cite><a href="http://www.w3.org/TR/annotation-protocol/">Web Annotation Protocol</a></cite>) via an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#constrainedBy</code> at a target URL. Senders <em class="rfc2119">SHOULD</em> comply with constraint specifications.</p>
                                 </div>
                             </section>
 
@@ -295,7 +295,7 @@ code { color: #c83500; }
                             <section id="authorization" inlist="" rel="schema:hasPart" resource="#authorization">
                                 <h3 property="schema:name">Authorization</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>The owner of the inbox typically sets its <abbr title="Access Control List">ACL</abbr> rules and thereby for the notifications it contains. By default, when profile inboxes are created, inboxes must be public append only as they are inherently private. Other types of inboxes e.g., for blog posts, may be set to public read and append so that applications can use a <em>follow-your-nose</em> approach to discover and display the contents of a notification, as well as submit new notifications. Further, the ACL settings for the inbox may determine which agents can send notifications.</p>
+                                    <p>The owner of the inbox typically sets its <abbr title="access control list">ACL</abbr> rules and thereby for the notifications it contains. By default, when profile inboxes are created, inboxes <em class="rfc2119">MUST</em> be public append-only as they are inherently private. Other types of inboxes e.g., for blog comments, <em class="rfc2119">SHOULD</em> be set to public read and append so that applications can discover and display the contents of a notification, as well as submit new notifications. Further, the ACL settings for the inbox may determine which agents can send notifications.</p>
                                 </div>
                             </section>
 
