@@ -207,9 +207,13 @@ code { color: #c83500; }
                             <section id="consuming" inlist="" rel="schema:hasPart" resource="#consuming">
                                 <h3 property="schema:name">Consuming</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Inbox URLs may enter consuming systems either by direct input or through discovery.</p>
+                                    <p>Consumers retrieve the URIs of notifications in an Inbox through making a <code>GET</code> request on the Inbox URL.</p>
 
-                                    <p>Additional fetching or inferring additional information from the payload is at the discretion of the consumer.</p>
+                                    <p>Consumers which discovered the Inbox URL through a domain specific relation can expect the URIs of the notifications to be discoverable through a suitable predicate from the same vocabulary. Similarly, the notifications themselves <em class="rfc2119">SHOULD</em> be expressed in this vocabulary too.</p>
+
+                                    <p>Otherwise, the URIs of the notifications will be discoverable through the <code>ldp:contains</code> predicate.</p>
+
+                                    <p>Consumers <em class="rfc2119">MAY</em> perform additional fetching or inferring of information from the payload (eg. dereferencing resources referenced in the notification to fetch their contents) at their discretion.</p>
                                 </div>
                             </section>
                         </div>
