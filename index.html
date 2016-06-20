@@ -11,12 +11,133 @@
         <link href="https://dokie.li/media/css/do.css" media="all" rel="stylesheet" />
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" media="all" rel="stylesheet" />
         <link href="https://dokie.li/media/css/editor.css" media="all" rel="stylesheet" />
-        <style>
+<style>
+/* github.com style (c) Vasily Polovnyov*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+  -webkit-text-size-adjust: none;
+}
+
+.hljs-comment,
+.diff .hljs-header {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.css .rule .hljs-keyword,
+.hljs-winutils,
+.nginx .hljs-title,
+.hljs-subst,
+.hljs-request,
+.hljs-status {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-hexcolor,
+.ruby .hljs-constant {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-tag .hljs-value,
+.hljs-doctag,
+.tex .hljs-formula {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-id,
+.scss .hljs-preprocessor {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-list .hljs-keyword,
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-class .hljs-title,
+.hljs-type,
+.vhdl .hljs-literal,
+.tex .hljs-command {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-tag .hljs-title,
+.hljs-rule .hljs-property,
+.django .hljs-tag .hljs-keyword {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-attribute,
+.hljs-variable,
+.lisp .hljs-body,
+.hljs-name {
+  color: #008080;
+}
+
+.hljs-regexp {
+  color: #009926;
+}
+
+.hljs-symbol,
+.ruby .hljs-symbol .hljs-string,
+.lisp .hljs-keyword,
+.clojure .hljs-keyword,
+.scheme .hljs-keyword,
+.tex .hljs-special,
+.hljs-prompt {
+  color: #990073;
+}
+
+.hljs-built_in {
+  color: #0086b3;
+}
+
+.hljs-preprocessor,
+.hljs-pragma,
+.hljs-pi,
+.hljs-doctype,
+.hljs-shebang,
+.hljs-cdata {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.diff .hljs-change {
+  background: #0086b3;
+}
+
+.hljs-chunk {
+  color: #aaa;
+}
+</style>
+<style>
 em.rfc2119 { color: #900; }
 code { color: #c83500; }
 .do.fragment a { border-bottom:0; }
 .do.fragment a:hover { background:none; border-bottom:0; }
-        </style>
+.hljs { background: transparent !important; }
+</style>
         <script src="https://dokie.li/scripts/simplerdf.js"></script>
         <script src="https://dokie.li/scripts/medium-editor.min.js"></script>
         <script src="https://dokie.li/scripts/medium-editor-tables.min.js"></script>
@@ -216,6 +337,45 @@ code { color: #c83500; }
                                     <p>Consumers <em class="rfc2119">MAY</em> perform additional fetching or inferring of information from the payload (eg. dereferencing resources referenced in the notification to fetch their contents) at their discretion.</p>
                                 </div>
                             </section>
+
+                            <p>Example Request and Response</p>
+                            <p>Request:</p>
+                            <figure class="listing example" id="request-example" rel="schema:hasPart" resource="#request-example">
+                                <pre about="#request-example" class="highlight hljs http" property="schema:description" typeof="fabio:Script">
+<code><span class="hljs-request">GET <span class="hljs-string">/annotations/</span> HTTP/1.1</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
+<code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json; profile="http://www.w3.org/ns/anno.jsonld"</span></code>
+                                </pre>
+                                <figcaption property="schema:name">Example request</figcaption>
+                            </figure>
+
+                            <p>Response:</p>
+                            <figure class="listing example" id="response-example" rel="schema:hasPart" resource="#response-example">
+                                <pre about="#response-example" class="highlight hljs http" property="schema:description" typeof="fabio:Script">
+<code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
+<code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json; profile="http://www.w3.org/ns/anno.jsonld"</span></code>
+<code><span class="hljs-attribute">ETag</span>: <span class="hljs-string">"_87e52ce123123"</span></code>
+<code><span class="hljs-attribute">Link</span>: <span class="hljs-string">&lt;http://www.w3.org/ns/ldp#BasicContainer&gt;; rel="type"</span></code>
+<code><span class="hljs-attribute">Link</span>: <span class="hljs-string">&lt;http://www.w3.org/TR/annotation-protocol/&gt;; rel="http://www.w3.org/ns/ldp#constrainedBy"</span></code>
+<code><span class="hljs-attribute">Allow</span>: <span class="hljs-string">POST,GET,OPTIONS,HEAD</span></code>
+<code><span class="hljs-attribute">Vary</span>: <span class="hljs-string">Accept</span></code>
+<code><span class="hljs-attribute">Content-Length</span>: <span class="hljs-string">368</span></code>
+
+<code><span class="json">{</span></code>
+<code>  "<span class="hljs-attribute">@context</span>": <span class="hljs-value">[</span></code>
+<code>    <span class="hljs-string">"http://www.w3.org/ns/anno.jsonld"</span>,</code>
+<code>    <span class="hljs-string">"http://www.w3.org/ns/ldp.jsonld"</span></code>
+<code>  <span class="hljs-value">]</span>,</code>
+<code>  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/annotations/"</span></span>,</code>
+<code>  "<span class="hljs-attribute">type</span>": <span class="hljs-value">[<span class="hljs-string">"BasicContainer"</span>, <span class="hljs-string">"AnnotationCollection"</span>]</span>,</code>
+<code>  "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">42023</span></span>,</code>
+<code>  "<span class="hljs-attribute">label</span>": <span class="hljs-value"><span class="hljs-string">"A Container for Web Annotations"</span></span>,</code>
+<code>  "<span class="hljs-attribute">first</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/annotations/?page=0"</span></span>,</code>
+<code>  "<span class="hljs-attribute">last</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/annotations/?page=42"</span></span></code>
+<code><span class="json">}</span></code>
+                                </pre>
+                                <figcaption property="schema:name">Example response</figcaption>
+                            </figure>
                         </div>
                     </section>
 
