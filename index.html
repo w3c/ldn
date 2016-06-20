@@ -283,24 +283,18 @@ code { color: #c83500; }
                         </div>
                     </section>
 
-                    <section id="integrity" inlist="" rel="schema:hasPart" resource="#integrity">
-                        <h2 property="schema:name">Integrity</h2>
+                    <section id="considerations" inlist="" rel="schema:hasPart" resource="#integrity">
+                        <h2 property="schema:name">Considerations</h2>
                         <div datatype="rdf:HTML" property="schema:description">
                             <p id="constraints"><strong>Constraints</strong>: Inbox URLs <em class="rfc2119">SHOULD</em> announce their own shape constraints (e.g., <cite><a class="bibref" href="https://www.w3.org/TR/shacl/">SHACL</a></cite>, <a href="http://www.w3.org/TR/annotation-protocol/">Web Annotation Protocol</a>) via an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#constrainedBy</code> at a target URL. Senders <em class="rfc2119">SHOULD</em> comply with constraint specifications.</p>
 
-                            <p>Persistence?</p>
-                            <p>Canonical URIs?</p>
+                            <p id="rights-and-license"><strong>Rights and License</strong>: Senders <em class="rfc2119">SHOULD</em> include rights or license information in the payload as the notification may be reused or displayed by different software.</p>
 
-                            <p class="todo"><strong>Rights and License</strong>: .. this is important but does it belong here or in this spec?</p>
-                            <p class="todo">Permanent/Archived?: .. this is out of scope I think</p>
-                        </div>
-                    </section>
+                            <p id="verification"><strong>Verification</strong>: The payload can contain arbitrary data and is vocabulary agnostic, thus the validity of the claims in the notification are at the discretion of the receiver and consumers.</p>
 
-                    <section id="security-and-privacy-considerations" inlist="" rel="schema:hasPart" resource="#security-and-privacy-considerations">
-                        <h2 property="schema:name">Security and Privacy Considerations</h2>
-                        <div datatype="rdf:HTML" property="schema:description">
                             <p id="sender-verification"><strong>Sender verification</strong>: </p>
-                            <p id="public-endpoints"><strong>Public endpoints</strong>: </p>
+
+                            <p id="preventing-abuse"><strong>Preventing abuse</strong>: </p>
                         </div>
                     </section>
 
