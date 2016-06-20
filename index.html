@@ -142,9 +142,11 @@ code { color: #c83500; }
                             <section id="sending" inlist="" rel="schema:hasPart" resource="#sending">
                                 <h3 property="schema:name">Sending</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Senders <em class="rfc2119">MUST</em> support delivering notifications through a <code>POST</code> request to the Inbox URL. Senders can expect a <code>200 OK</code> (with a <code>Content-Location</code> Link header), <code>201 Created</code> (with a <code>Location</code> Link header), or <code>202 Accepted</code> in response to a successful request.</p>
+                                    <p>Senders <em class="rfc2119">MUST</em> deliver notifications through a <code>POST</code> request to the Inbox URL. Senders can expect a <code>200 OK</code> (with a <code>Content-Location</code> Link header), <code>201 Created</code> (with a <code>Location</code> Link header), or <code>202 Accepted</code> in response to a successful request.</p>
  
-                                    <p>The sender <em class="rfc2119">MAY</em> use a <code>HEAD</code> request to determine the RDF content types accepted by the server, and serialize the notification in the request body according to the value of the <code>Accept</code> header returned. Otherwise, the body of the <code>POST</code> request <em class="rfc2119">MUST</em> contain the notification in JSON-LD.</p>
+                                    <p>The sender <em class="rfc2119">MAY</em> use a <code>HEAD</code> request to determine the RDF content types accepted by the server, and serialize the notification in the request body according to the value of the <code>Accept</code> header returned. Otherwise, the body of the <code>POST</code> request <em class="rfc2119">MUST</em> contain the notification <a href="#payload">payload</a> in JSON-LD.</p>
+
+                                    <p>If the sender discovered the Inbox through a domain specific relation to the target resource, the sender <em class="rfc2119">SHOULD</em> use the same vocabulary in the notification content.</p>
                                 </div>
                             </section>
 
