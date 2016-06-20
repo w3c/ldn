@@ -218,7 +218,7 @@ code { color: #c83500; }
                                             <p>ActivityStreams:</p>
                                             <figure class="listing" id="notification-qualified-relation" rel="schema:hasPart" resource="#notification-qualified-relation">
                                                 <pre about="#notification-qualified-relation" property="schema:description" typeof="fabio:Script">
-<code>&lt;&gt; a ldp:Notification , as:Announce ;</code>
+<code>&lt;&gt; a as:Announce ;</code>
 <code>  as:object &lt;https://example.org/abcdef&gt; ;</code>
 <code>  as:target &lt;https://example.net/article#introduction&gt; ;</code>
 <code>  as:updated "2016-02-02T18:58:50.719Z"^^xsd:dateTime ;</code>
@@ -231,11 +231,21 @@ code { color: #c83500; }
                                             <p>Semantic Pingback:</p>
                                             <figure class="listing" id="notification-semantic-pingback" rel="schema:hasPart" resource="#notification-semantic-pingback">
                                                 <pre about="#notification-semantic-pingback" property="schema:description" typeof="fabio:Script">
-<code>&lt;&gt; a ldp:Notification , pingback:Request ;</code>
+<code>&lt;&gt; a pingback:Request ;</code>
 <code>  pingback:source &lt;http://example.net/foo/abc123&gt; ;</code>
 <code>  pingback:target &lt;http://example.org/article/index&gt; .</code>
                                                 </pre>
                                                 <figcaption property="schema:name">Example notification type: Semantic Pingback.</figcaption>
+                                            </figure>
+
+                                            <p>Webmention:</p>
+                                            <figure class="listing" id="notification-webmention" rel="schema:hasPart" resource="#notification-webmention">
+                                                <pre about="#notification-webmention" property="schema:description" typeof="fabio:Script">
+<code>&lt;&gt;</code>
+<code>  wm:source &lt;http://example.net/foo/abc123&gt; ;</code>
+<code>  wm:target &lt;http://example.org/article/index&gt; .</code>
+                                                </pre>
+                                                <figcaption property="schema:name">Example notification type: Webmention.</figcaption>
                                             </figure>
                                         </div>
                                     </section>
