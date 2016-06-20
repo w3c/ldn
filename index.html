@@ -330,7 +330,7 @@ code { color: #c83500; }
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>Consumers retrieve the URIs of notifications in an Inbox through making a <code>GET</code> request on the Inbox URL.</p>
 
-                                    <p>Consumers which discovered the Inbox URL through a domain specific relation can expect the URIs of the notifications to be discoverable through a suitable predicate from the same vocabulary. Similarly, the notifications themselves <em class="rfc2119">SHOULD</em> be expressed in this vocabulary too.</p>
+                                    <p>Consumers which discovered the Inbox URL through a domain specific relation <em class="rfc2119">SHOULD</em> expect the URIs of the notifications to be discoverable through a suitable predicate from the same vocabulary. Similarly, consumers <em class="rfc2119">SHOULD</em> expect the notifications themselves to be expressed in this vocabulary too.</p>
 
                                     <p>Otherwise, the URIs of the notifications will be discoverable through the <code>ldp:contains</code> predicate.</p>
 
