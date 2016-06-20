@@ -174,7 +174,7 @@ code { color: #c83500; }
     ]
 }
                                         </pre>
-                                        <figcaption>An example with LDP vocabulary.</figcaption>
+                                        <figcaption>Results of GET request on Inbox with LDP vocabulary.</figcaption>
                                     </figure>
 
                                     <figure class="listing">
@@ -195,7 +195,7 @@ code { color: #c83500; }
     ]
 }
                                         </pre>
-                                        <figcaption>An example with a domain specific vocabulary (ActivityStreams 2.0).</figcaption>
+                                        <figcaption>Results of GET request on Inbox with a domain specific vocabulary (ActivityStreams 2.0).</figcaption>
                                     </figure>
 
                                     <p>Upon receipt of a <code>POST</code> request to the Inbox, the receiver <em class="rfc2119">MUST</em> create a new resource containing the RDF data from the body of the <code>POST</code> request and <em class="rfc2119">MUST</em> return either <code>HTTP 200 OK</code>, <code>HTTP 201 Created</code>, <code>HTTP 202 Accepted</code> or <code>HTTP 204 No Content</code>. In the case of a <code>200</code> a <code>Content-Location</code> header pointing to the created resource <em class="rfc2119">MUST</em> also be returned. In the case of a <code>201</code> a <code>Location</code> header pointing to the created resource <em class="rfc2119">MUST</em> also be returned. In the case of a <code>204</code> a <code>Content-Location</code> header pointing to the created resource <em class="rfc2119">SHOULD</em> also be returned.</p>
