@@ -139,7 +139,7 @@ code { color: #c83500; }
 
                                     <p>If there is no adequate response from the <code>OPTIONS</code> or <code>HEAD</code> requests, or the sender cannot make either request, the sender <em class="rfc2119">MUST</em> try <code>POST</code> first, and if that fails with <code>HTTP 405 Method Not Allowed</code> or <code>HTTP 406 Not Acceptable</code>, try <code>PATCH</code>.</p>
 
-                                    <p>The sender <em class="rfc2119">MAY</em> use a <code>HEAD</code> request to determine the RDF content types accepted by the server, and serialize the notification in the request body according to the value of the <code>Accept</code> header returned. Otherwise, the body of the <code>POST</code> or <code>PATCH</code> request <em class="rfc2119">MUST</em> contain the notification in JSON-LD.</p>
+                                    <p>The sender <em class="rfc2119">MAY</em> use a <code>HEAD</code> request to determine the RDF content types accepted by the server, and serialize the notification in the request body according to the value of the <code>Accept</code> header returned. Otherwise, the body of the <code>POST</code> or <code>PATCH</code> request <em class="rfc2119">MUST</em> contain the notification in JSON-LD. <span class="todo">Mention using RFC 6902 <a href="https://tools.ietf.org/html/rfc6902">JSON Patch</a>?</span></p>
                                 </div>
                             </section>
 
@@ -188,8 +188,6 @@ code { color: #c83500; }
                     <section id="payload" inlist="" rel="schema:hasPart" resource="#payload">
                         <h2 property="schema:name">Payload</h2>
                         <div datatype="rdf:HTML" property="schema:description">
-                            <p class="todo">Should this section be renamed to 'Notifications'?</p>
-
                             <p>To allow for a wide variety of use cases, the actual payload of the notification (the request body) is deliberately left to the discretion of the sender. The sender <em class="rfc2119">MUST NOT</em> assume that the receiver can fetch or infer anything additional from the payload, and thus <em class="rfc2119">MUST</em> include everything they want the receiver to know.</p>
 
                             <section id="examples" inlist="" rel="schema:hasPart" resource="#examples">
@@ -222,12 +220,14 @@ code { color: #c83500; }
                                             <p>ActivityStreams:</p>
                                             <figure class="listing" id="notification-qualified-relation" rel="schema:hasPart" resource="#notification-qualified-relation">
                                                 <pre about="#notification-qualified-relation" property="schema:description" typeof="fabio:Script">
-<code>&lt;&gt; a ldp:Notification , as:Announce ;</code>
+<code>&lt;&gt; a as:Announce ;</code>
 <code>  as:object &lt;https://example.org/abcdef&gt; ;</code>
 <code>  as:target &lt;https://example.net/article#introduction&gt; ;</code>
 <code>  as:updated "2016-02-02T18:58:50.719Z"^^xsd:dateTime ;</code>
 <code>  as:actor &lt;http://example.com/profile/card#alice&gt; ;</code>
 <code>  schema:license &lt;https://creativecommons.org/licenses/by/4.0/&gt; .</code>
+<code>&lt;https://example.org/abcdef&gt;</code>
+<code>  as:inReplyTo &lt;https://example.net/article#introduction&gt; .</code>
                                                 </pre>
                                                 <figcaption property="schema:name">Example notification type: qualified relation.</figcaption>
                                             </figure>
@@ -235,11 +235,21 @@ code { color: #c83500; }
                                             <p>Semantic Pingback:</p>
                                             <figure class="listing" id="notification-semantic-pingback" rel="schema:hasPart" resource="#notification-semantic-pingback">
                                                 <pre about="#notification-semantic-pingback" property="schema:description" typeof="fabio:Script">
-<code>&lt;&gt; a ldp:Notification , pingback:Request ;</code>
+<code>&lt;&gt; a pingback:Request ;</code>
 <code>  pingback:source &lt;http://example.net/foo/abc123&gt; ;</code>
 <code>  pingback:target &lt;http://example.org/article/index&gt; .</code>
                                                 </pre>
                                                 <figcaption property="schema:name">Example notification type: Semantic Pingback.</figcaption>
+                                            </figure>
+
+                                            <p>Webmention:</p>
+                                            <figure class="listing" id="notification-webmention" rel="schema:hasPart" resource="#notification-webmention">
+                                                <pre about="#notification-webmention" property="schema:description" typeof="fabio:Script">
+<code>&lt;&gt;</code>
+<code>  wm:source &lt;http://example.net/foo/abc123&gt; ;</code>
+<code>  wm:target &lt;http://example.org/article/index&gt; .</code>
+                                                </pre>
+                                                <figcaption property="schema:name">Example notification type: Webmention.</figcaption>
                                             </figure>
                                         </div>
                                     </section>
@@ -252,7 +262,7 @@ code { color: #c83500; }
 
                                             <figure class="listing" id="notification-any-data" rel="schema:hasPart" resource="#notification-any-data">
                                                 <pre about="#notification-any-data" property="schema:description" typeof="fabio:Script">
-<code>&lt;&gt; a ldp:Notification , sioc:Post ;</code>
+<code>&lt;&gt; a sioc:Post ;</code>
 <code>  dcterms:created "2015-12-23T16:44:21Z"^^xsd:#dateTime ;</code>
 <code>  dcterms:title "New blog post" ;</code>
 <code>  sioc:content "Lorem ipsum dolor sit amet.." ;</code>
