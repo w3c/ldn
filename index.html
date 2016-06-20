@@ -179,6 +179,8 @@ code { color: #c83500; }
                         <div datatype="rdf:HTML" property="schema:description">
                             <p>To allow for a wide variety of use cases, the actual payload of the notification (the request body) is deliberately left to the discretion of the sender. The sender <em class="rfc2119">MUST NOT</em> assume that the receiver can fetch or infer anything additional from the payload, and thus <em class="rfc2119">MUST</em> include everything they want the receiver to know.</p>
 
+                            <p id="rights-and-license">Senders <em class="rfc2119">SHOULD</em> include rights or license information in the payload as the notification may be reused or displayed by different software.</p>
+
                             <section id="examples" inlist="" rel="schema:hasPart" resource="#examples">
                                 <h3 property="schema:name">Examples</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
@@ -271,32 +273,45 @@ code { color: #c83500; }
                         </div>
                     </section>
 
-                    <section id="extensibility" inlist="" rel="schema:hasPart" resource="#extensibility">
-                        <h2 property="schema:name">Extensibility</h2>
+                    <section id="security-and-content-considerations" inlist="" rel="schema:hasPart" resource="#security-and-content-considerations">
+                        <h2 property="schema:name">Security and Content Considerations</h2>
                         <div datatype="rdf:HTML" property="schema:description">
-                            <p class="todo">This section may not be needed. Anything in particular?</p>
-                        </div>
-                    </section>
+                            <p>..</p>
 
-                    <section id="authorization" inlist="" rel="schema:hasPart" resource="#authorization">
-                        <h2 property="schema:name">Authorization</h2>
-                        <div datatype="rdf:HTML" property="schema:description">
-                            <p class="todo">The owner of the inbox typically sets its <abbr title="Access Control List">ACL</abbr> rules and thereby for the notifications it contains. By default, when profile inboxes are created, inboxes must be public append only as they are inherently private. Other types of inboxes e.g., for blog posts, may be set to public read and append so that applications can use a <em>follow-your-nose</em> approach to discover and display the contents of a notification, as well as submit new notifications. Further, the ACL settings for the inbox may determine which agents can send notifications.</p>
-                        </div>
-                    </section>
+                            <section id="constraints" inlist="" rel="schema:hasPart" resource="#constraints">
+                                <h3 property="schema:name">Constraints</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>Inbox URLs <em class="rfc2119">SHOULD</em> announce their own shape constraints (e.g., <cite><a class="bibref" href="https://www.w3.org/TR/shacl/">SHACL</a></cite>, <a href="http://www.w3.org/TR/annotation-protocol/">Web Annotation Protocol</a>) via an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#constrainedBy</code> at a target URL. Senders <em class="rfc2119">SHOULD</em> comply with constraint specifications.</p>
+                                </div>
+                            </section>
 
-                    <section id="considerations" inlist="" rel="schema:hasPart" resource="#integrity">
-                        <h2 property="schema:name">Considerations</h2>
-                        <div datatype="rdf:HTML" property="schema:description">
-                            <p id="constraints"><strong>Constraints</strong>: Inbox URLs <em class="rfc2119">SHOULD</em> announce their own shape constraints (e.g., <cite><a class="bibref" href="https://www.w3.org/TR/shacl/">SHACL</a></cite>, <a href="http://www.w3.org/TR/annotation-protocol/">Web Annotation Protocol</a>) via an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#constrainedBy</code> at a target URL. Senders <em class="rfc2119">SHOULD</em> comply with constraint specifications.</p>
+                            <section id="payload-verification" inlist="" rel="schema:hasPart" resource="#payload-verification">
+                                <h3 property="schema:name">Payload Verification</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>The payload can contain arbitrary data and is vocabulary agnostic, thus the validity of the claims in the notification are at the discretion of the receiver and consumers.</p>
+                                </div>
+                            </section>
 
-                            <p id="rights-and-license"><strong>Rights and License</strong>: Senders <em class="rfc2119">SHOULD</em> include rights or license information in the payload as the notification may be reused or displayed by different software.</p>
+                            <section id="authorization" inlist="" rel="schema:hasPart" resource="#authorization">
+                                <h3 property="schema:name">Authorization</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>The owner of the inbox typically sets its <abbr title="Access Control List">ACL</abbr> rules and thereby for the notifications it contains. By default, when profile inboxes are created, inboxes must be public append only as they are inherently private. Other types of inboxes e.g., for blog posts, may be set to public read and append so that applications can use a <em>follow-your-nose</em> approach to discover and display the contents of a notification, as well as submit new notifications. Further, the ACL settings for the inbox may determine which agents can send notifications.</p>
+                                </div>
+                            </section>
 
-                            <p id="verification"><strong>Verification</strong>: The payload can contain arbitrary data and is vocabulary agnostic, thus the validity of the claims in the notification are at the discretion of the receiver and consumers.</p>
+                            <section id="sender-verification" inlist="" rel="schema:hasPart" resource="#sender-verification">
+                                <h3 property="schema:name">Sender Verification</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>..</p>
+                                </div>
+                            </section>
 
-                            <p id="sender-verification"><strong>Sender verification</strong>: </p>
-
-                            <p id="preventing-abuse"><strong>Preventing abuse</strong>: </p>
+                            <section id="preventing-abuse" inlist="" rel="schema:hasPart" resource="#preventing-abuse">
+                                <h3 property="schema:name">Preventing Abuse</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>..</p>
+                                </div>
+                            </section>
                         </div>
                     </section>
 
