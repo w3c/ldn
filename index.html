@@ -139,7 +139,7 @@ code { color: #c83500; }
 
                                     <p>If there is no adequate response from the <code>OPTIONS</code> or <code>HEAD</code> requests, or the sender cannot make either request, the sender <em class="rfc2119">MUST</em> try <code>POST</code> first, and if that fails with <code>HTTP 405 Method Not Allowed</code> or <code>HTTP 406 Not Acceptable</code>, try <code>PATCH</code>.</p>
 
-                                    <p>The sender <em class="rfc2119">MAY</em> use a <code>HEAD</code> request to determine the RDF content types accepted by the server, and serialize the notification in the request body according to the value of the <code>Accept</code> header returned. Otherwise, the body of the <code>POST</code> or <code>PATCH</code> request <em class="rfc2119">MUST</em> contain the notification in JSON-LD.</p>
+                                    <p>The sender <em class="rfc2119">MAY</em> use a <code>HEAD</code> request to determine the RDF content types accepted by the server, and serialize the notification in the request body according to the value of the <code>Accept</code> header returned. Otherwise, the body of the <code>POST</code> or <code>PATCH</code> request <em class="rfc2119">MUST</em> contain the notification in JSON-LD. <span class="todo">Mention using RFC 6902 <a href="https://tools.ietf.org/html/rfc6902">JSON Patch</a>?</span></p>
                                 </div>
                             </section>
 
