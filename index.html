@@ -122,7 +122,7 @@ figure pre { margin:1em 0; }
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>A sender is triggered, either by a human or an automatic process, to deliver a notification to a server. The notification is data intended for the attention of the receiver, for example: a personal message from a friend; a pingback link; a comment on a blog post; an invitation to collaborate; a calendar reminder.</p>
 
-                                    <p>The sender discovers where to deliver the notification based on the addressee or subject of the notification - the receiver - who advertises the appropriate location to send it to. The receiver also exposes the notification data (according to appropriate access control) for use by consumers.</p>
+                                    <p>The sender discovers where to deliver the notification based on the addressee or subject of the notification (the receiver) who advertises the appropriate location to send it to (the Inbox). The receiver also exposes the notification data (according to appropriate access control) for use by consumers.</p>
 
                                     <p>Consumers discover the notifications in the same way as the sender, and may perform further processing on it, combine it with some other data, or simply present it in a suitable human-readable way.</p>
                                 </div>
@@ -131,7 +131,19 @@ figure pre { margin:1em 0; }
                             <section id="summary" inlist="" rel="schema:hasPart" resource="#summary">
                                 <h3 property="schema:name">Summary</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
+                                    <p><strong>Sender:</strong></p>
+                                    <ul>
+                                        <li>Discover an Inbox through a relation with the target of the notification, which is either <code>ldp:inbox</code> or a domain specific property (whence the Inbox has type <code>ldp:Inbox</code>).</li>
+                                        <li>Create the body of the notification according to the needs of application.</li>
+                                        <li>Send the notification to the target by making a <code>POST</code> request, containing the body, to the Inbox URL.</li>
+                                    </ul>
+                                    <p><strong>Consumer</strong></p>:
+                                    <ul>
+                                        <li>Discover an Inbox through a relation with the target of the notification, which is either <code>ldp:inbox</code> or a domain specific property (whence the Inbox has type <code>ldp:Inbox</code>).</li>
+                                        <li>Retreive the contents of the Inbox and use according to the needs of application.</li>
+                                    </ul>
 
+                                    <p><strong>Receiver:</strong></p>:
                                 </div>
                             </section>
                         </div>
@@ -249,6 +261,8 @@ figure pre { margin:1em 0; }
 
                                 <p>If the receiver is advertising the Inbox using a domain specific vocabulary for the relation with the target, these results <em class="rfc2119">SHOULD</em> also use this vocabulary. Otherwise, each notification URI <em class="rfc2119">SHOULD</em> be related to the Inbox URL with the <code>ldp:contains</code> predicate.</p>
 
+                                <p class="todo">Making sure the actual individual notifications are available to consumers</p>
+
                                 <p>Example using LDP vocabulary:</p>
 
                                 <figure class="listing example" id="results-example-inbox-discovery-ldp" rel="schema:hasPart" resource="#results-example-inbox-discovery-ldp">
@@ -299,7 +313,7 @@ figure pre { margin:1em 0; }
                                     </pre>
                                     <figcaption>Results of GET request on Inbox.</figcaption>
                                 </figure>
-                                
+
                             </section>
 
                         </div>
