@@ -202,6 +202,8 @@ figure pre { margin:1em 0; }
 
                                     <p>If the receiver is advertising the Inbox using a domain specific vocabulary for the relation with the target, these results <em class="rfc2119">SHOULD</em> also use this vocabulary. Otherwise, each notification URI <em class="rfc2119">SHOULD</em> be related to the Inbox URL with the <code>ldp:contains</code> predicate.</p>
 
+                                    <p>Example using LDP vocabulary:</p>
+
                                     <figure class="listing example" id="results-example-inbox-discovery-ldp" rel="schema:hasPart" resource="#results-example-inbox-discovery-ldp">
                                         <pre about="#results-example-inbox-discovery-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
 <code>{</code>
@@ -209,22 +211,23 @@ figure pre { margin:1em 0; }
 <code>  "<span class="hljs-attribute">ldp:inbox</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/messages/"</span></span></code>
 <code>}</code>
                                         </pre>
-                                        <figcaption>Inbox discovery through LDP vocabulary.</figcaption>
+                                        <figcaption>Inbox discovery.</figcaption>
                                     </figure>
-
 
                                     <figure class="listing example" id="results-example-inbox-contains-ldp" rel="schema:hasPart" resource="#results-example-inbox-contains-ldp">
                                         <pre about="#results-example-inbox-contains-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
 <code>{</code>
-<code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/messages"</span></span>,</code>
+<code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/messages/"</span></span>,</code>
 <code>  "<span class="hljs-attribute">ldp:contains</span>": <span class="hljs-value">[</span></code>
-<code>    { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/notif-1"</span></span> },</code>
-<code>    { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/notif-2"</span></span> }</code>
+<code>    { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/notification-1"</span></span> },</code>
+<code>    { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/notification-2"</span></span> }</code>
 <code>  <span class="hljs-value">]</span></code>
 <code>}</code>
                                         </pre>
-                                        <figcaption>Results of GET request on Inbox with LDP vocabulary.</figcaption>
+                                        <figcaption>Results of GET request on Inbox.</figcaption>
                                     </figure>
+
+                                    <p>Example using domain specific vocabulary (ActivityStreams 2.0):</p>
 
                                     <figure class="listing example" id="results-example-inbox-discovery-as" rel="schema:hasPart" resource="#results-example-inbox-discovery-as">
                                         <pre about="#results-example-inbox-discovery-as" class="hljs" property="schema:description" typeof="fabio:Script">
@@ -233,13 +236,13 @@ figure pre { margin:1em 0; }
 <code>  "<span class="hljs-attribute">as:replies</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/messages/"</span></span></code>
 <code>}</code>
                                         </pre>
-                                        <figcaption>Inbox discovery through domain specific vocabulary (ActivityStreams 2.0).</figcaption>
+                                        <figcaption>Inbox discovery.</figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="results-example-inbox-contains-as" rel="schema:hasPart" resource="#results-example-inbox-contains-as">
                                         <pre about="#results-example-inbox-contains-as" class="hljs" property="schema:description" typeof="fabio:Script">
 <code>{</code>
-<code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/messages"</span></span>,</code>
+<code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/messages/"</span></span>,</code>
 <code>  "<span class="hljs-attribute">@type</span>": <span class="hljs-value">[<span class="hljs-string">"ldp:Inbox"</span>, <span class="hljs-string">"as:Collection"</span>]</span>,</code>
 <code>  "<span class="hljs-attribute">as:items</span>": <span class="hljs-value">[</span></code>
 <code>    <span class="hljs-value">{ "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/notification-1"</span></span> }</span>,</code>
@@ -247,7 +250,7 @@ figure pre { margin:1em 0; }
 <code>  <span class="hljs-value">}</span></code>
 <code>}</code>
                                         </pre>
-                                        <figcaption>Results of GET request on Inbox with a domain specific vocabulary (ActivityStreams 2.0).</figcaption>
+                                        <figcaption>Results of GET request on Inbox.</figcaption>
                                     </figure>
 
                                     <p>Upon receipt of a <code>POST</code> request to the Inbox, the receiver <em class="rfc2119">MUST</em> create a new resource containing the RDF data from the body of the <code>POST</code> request and <em class="rfc2119">MUST</em> return either <code>HTTP 200 OK</code>, <code>HTTP 201 Created</code>, <code>HTTP 202 Accepted</code> or <code>HTTP 204 No Content</code>. In the case of a <code>200</code> a <code>Content-Location</code> header pointing to the created resource <em class="rfc2119">MUST</em> also be returned. In the case of a <code>201</code> a <code>Location</code> header pointing to the created resource <em class="rfc2119">MUST</em> also be returned. In the case of a <code>204</code> a <code>Content-Location</code> header pointing to the created resource <em class="rfc2119">SHOULD</em> also be returned.</p>
