@@ -178,13 +178,23 @@ code { color: #c83500; }
 
                                     <p>A <code>GET</code> request on the Inbox <em class="rfc2119">MUST</em> return a <code>HTTP 200 OK</code> with the URIs of all of the notifications. If the <code>GET</code> request has no <code>Accept</code> header, the results <em class="rfc2119">MUST</em> be returned as JSON-LD; otherwise the receiver <em class="rfc2119">SHOULD</em> return the results in the serialization requested, or a <code>415 Unsupported Media Type</code> error if the requested serialization is not available. These results <em class="rfc2119">MAY</em> be paged or subject to access control restrictions at the receivers discretion. Data about the Inbox itself <em class="rfc2119">MAY</em> also be returned. If the receiver is advertising the Inbox using a domain specific vocabulary for the relation with the target, these results <em class="rfc2119">SHOULD</em> also use this vocabulary. Otherwise, each notification URI <em class="rfc2119">SHOULD</em> be related to the Inbox URL with the <code>ldp:contains</code> predicate.</p>
 
-                                    <figure class="listing example" id="results-example-ldp" rel="schema:hasPart" resource="#results-example-ldp">
-                                        <pre about="#results-example-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
+                                    <figure class="listing example" id="results-example-inbox-discovery-ldp" rel="schema:hasPart" resource="#results-example-inbox-discovery-ldp">
+                                        <pre about="#results-example-inbox-discovery-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
 <code>{</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/profile"</span></span>,</code>
 <code>  "<span class="hljs-attribute">ldp:inbox</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/messages/"</span></span></code>
 <code>}</code>
-...
+                                        </pre>
+                                        <figcaption>Inbox discovery through LDP vocabulary.</figcaption>
+                                    </figure>
+
+
+                                    <figure class="listing example" id="results-example-inbox-contains-ldp" rel="schema:hasPart" resource="#results-example-inbox-contains-ldp">
+                                        <pre about="#results-example-inbox-contains-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
+<code>{</code>
+<code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/profile"</span></span>,</code>
+<code>  "<span class="hljs-attribute">ldp:inbox</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/messages/"</span></span></code>
+<code>}</code>
 <code>{</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/messages"</span></span>,</code>
 <code>  "<span class="hljs-attribute">ldp:contains</span>": <span class="hljs-value">[</span></code>
@@ -196,19 +206,24 @@ code { color: #c83500; }
                                         <figcaption>Results of GET request on Inbox with LDP vocabulary.</figcaption>
                                     </figure>
 
-                                    <figure class="listing example" id="results-example-as-collection" rel="schema:hasPart" resource="#results-example-as-collection">
-                                        <pre about="#results-example-as-collection" class="hljs" property="schema:description" typeof="fabio:Script">
+                                    <figure class="listing example" id="results-example-inbox-discovery-as" rel="schema:hasPart" resource="#results-example-inbox-discovery-as">
+                                        <pre about="#results-example-inbox-discovery-as" class="hljs" property="schema:description" typeof="fabio:Script">
 <code>{</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/profile"</span></span>,</code>
 <code>  "<span class="hljs-attribute">as:replies</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/messages/"</span></span></code>
 <code>}</code>
-...
+                                        </pre>
+                                        <figcaption>Inbox discovery through domain specific vocabulary (ActivitStreams 2.0).</figcaption>
+                                    </figure>
+
+                                    <figure class="listing example" id="results-example-inbox-contains-as" rel="schema:hasPart" resource="#results-example-inbox-contains-as">
+                                        <pre about="#results-example-inbox-contains-as" class="hljs" property="schema:description" typeof="fabio:Script">
 <code>{</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/messages"</span></span>,</code>
 <code>  "<span class="hljs-attribute">@type</span>": <span class="hljs-value">[<span class="hljs-string">"ldp:Inbox"</span>, <span class="hljs-string">"as:Collection"</span>]</span>,</code>
 <code>  "<span class="hljs-attribute">as:items</span>": <span class="hljs-value">[</span></code>
-<code>    <span class="hljs-value">{ "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/notif-1"</span></span> }</span>,</code>
-<code>    <span class="hljs-value">{ "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/notif-2"</span></span> }</span></code>
+<code>    <span class="hljs-value">{ "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/notification-1"</span></span> }</span>,</code>
+<code>    <span class="hljs-value">{ "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/notification-2"</span></span> }</span></code>
 <code>  <span class="hljs-value">}</span></code>
 <code>}</code>
                                         </pre>
