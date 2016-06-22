@@ -360,7 +360,7 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
                         <div datatype="rdf:HTML" property="schema:description">
                             <p>To allow for a wide variety of use cases, the actual payload of the notification (the request body) is deliberately left to the discretion of the sender. The sender <em class="rfc2119">MUST NOT</em> assume that the receiver can fetch or infer anything additional from the payload, and thus <em class="rfc2119">MUST</em> include everything they want the receiver to know.</p>
 
-                            <p id="rights-and-license">Senders <em class="rfc2119">SHOULD</em> include rights or license information in the payload as the notification may be reused or displayed by different software.</p>
+                            <p id="rights-and-license">Senders <em class="rfc2119">SHOULD</em> include rights or license information in the payload as the notification may be reused or displayed by different consumers and environments.</p>
 
                             <section id="payload-examples" inlist="" rel="schema:hasPart" resource="#payload-examples">
                                 <h3 property="schema:name">Payload Examples</h3>
@@ -393,12 +393,12 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
                                             <figure class="listing example" id="notification-qualified-relation" rel="schema:hasPart" resource="#notification-qualified-relation">
                                                 <pre about="#notification-qualified-relation" property="schema:description" typeof="fabio:Script">
 <code>&lt;&gt; a as:Announce ;</code>
-<code>  as:object &lt;https://example.org/abcdef&gt; ;</code>
+<code>  as:object &lt;https://example.org/foo&gt; ;</code>
 <code>  as:target &lt;https://example.net/article#introduction&gt; ;</code>
 <code>  as:updated "2016-02-02T18:58:50.719Z"^^xsd:dateTime ;</code>
 <code>  as:actor &lt;https://example.com/profile#alice&gt; ;</code>
 <code>  schema:license &lt;https://creativecommons.org/licenses/by/4.0/&gt; .</code>
-<code>&lt;https://example.org/abcdef&gt; a as:Note ;</code>
+<code>&lt;https://example.org/foo&gt; a as:Note ;</code>
 <code>  as:inReplyTo &lt;https://example.net/article#introduction&gt; .</code>
                                                 </pre>
                                                 <figcaption property="schema:name">Example notification type: qualified relation.</figcaption>
@@ -408,7 +408,7 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
                                             <figure class="listing example" id="notification-semantic-pingback" rel="schema:hasPart" resource="#notification-semantic-pingback">
                                                 <pre about="#notification-semantic-pingback" property="schema:description" typeof="fabio:Script">
 <code>&lt;&gt; a pingback:Request ;</code>
-<code>  pingback:source &lt;https://example.org/abc123&gt; ;</code>
+<code>  pingback:source &lt;https://example.org/foo&gt; ;</code>
 <code>  pingback:target &lt;https://example.net/article&gt; .</code>
                                                 </pre>
                                                 <figcaption property="schema:name">Example notification type: Semantic Pingback.</figcaption>
@@ -418,7 +418,7 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
                                             <figure class="listing example" id="notification-webmention" rel="schema:hasPart" resource="#notification-webmention">
                                                 <pre about="#notification-webmention" property="schema:description" typeof="fabio:Script">
 <code>&lt;&gt;</code>
-<code>  wm:source &lt;https://example.org/abc123&gt; ;</code>
+<code>  wm:source &lt;https://example.org/foo&gt; ;</code>
 <code>  wm:target &lt;https://example.net/article&gt; .</code>
                                                 </pre>
                                                 <figcaption property="schema:name">Example notification type: Webmention.</figcaption>
@@ -469,14 +469,19 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
                             <section id="payload-verification" inlist="" rel="schema:hasPart" resource="#payload-verification">
                                 <h3 property="schema:name">Payload Verification</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>The payload can contain arbitrary data and is vocabulary agnostic, thus the validity of the claims in the notification are at the discretion of the receiver and consumers.</p>
+                                    <p>The payload can contain arbitrary data and is vocabulary agnostic, thus the validity of the statements in the notification are at the discretion of the receivers and consumers - <q>anyone can say anything about anything.</q></p>
                                 </div>
                             </section>
 
                             <section id="sender-verification" inlist="" rel="schema:hasPart" resource="#sender-verification">
                                 <h3 property="schema:name">Sender Verification</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>..</p>
+                                    <p>Receivers <em class="rfc2119">MAY</em> want to ensure or verify the sender of the notification in a number of different ways (but not limited to):</p>
+                                    <ul>
+                                        <li>by having a whitelist of senders whom can access the Inbox</li>
+                                        <li>senders having a copy (or hash) of the notification in their own <em>Sent</em> container that can be accessed by the intended recipients</li>
+                                        <li>digital signature</li>
+                                    </ul>
                                 </div>
                             </section>
 
