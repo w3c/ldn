@@ -113,7 +113,7 @@ figure pre { margin:1em 0; }
                     <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
                         <h2 property="schema:name">Introduction</h2>
                         <div datatype="rdf:HTML" property="schema:description">
-                            <p>Linked Data Notifications is a specialised use of Linked Data Platform for sending and consuming notifications. It is not dependent on a complete implementation of LDP but designed to be compatible. This specification describes the particular features necessary to make it easy to exchange notifications in a decentralised, interoperable way.</p>
+                            <p>Linked Data Notifications is a specialised use of Linked Data Platform [<cite><a class="bibref" href="#bib-LDP">LDP</a></cite>] for sending and consuming notifications. It is not dependent on a complete implementation of LDP but designed to be compatible. This specification describes the particular features necessary to make it easy to exchange notifications in a decentralised, interoperable way.</p>
 
                             <p>This protocol assumes a modular approach to creating and storing data, in particular a decoupling between applications and data storage. Thus, where senders, receivers and consumers of notifications are independently implemented and run on different technology stacks, this protocol allows them to seamlessly work together.</p>
 
@@ -131,23 +131,23 @@ figure pre { margin:1em 0; }
                             <section id="summary" inlist="" rel="schema:hasPart" resource="#summary">
                                 <h3 property="schema:name">Summary</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p id="summary-discovery"><strong>Discovery</strong>: Senders and consumers can discover resources' <em>Inbox(es)</em> URL(s) through a relation in the HTTP <code>Link</code> header or payload, which is either <code>ldp:inbox</code> or a domain specific property eg. <code>as:replies</code> (whence the Inbox has type <code>ldp:Inbox</code>).</p>
+                                    <p id="summary-discovery"><strong><a href="#discovery">Discovery</a></strong>: Senders and consumers can discover resources' <em>Inbox(es)</em> URL(s) through a relation in the HTTP <code>Link</code> header or body, which is either <code>ldp:inbox</code> or a domain specific property eg. <code>as:replies</code> (whence the Inbox has type <code>ldp:Inbox</code>).</p>
 
-                                    <p id="summary-sender"><strong>Sender</strong>:</p>
+                                    <p id="summary-sender"><strong><a href="#sending">Sender</a></strong>:</p>
                                     <ul>
                                         <li>Create the body of the notification according to the needs of application.</li>
                                         <li>Send the notification to the Inbox URL by making a <code>POST</code> request, containing the body.</li>
                                     </ul>
 
-                                    <p id="summary-receiver"><strong>Receiver</strong>:</p>
+                                    <p id="summary-consumer"><strong><a href="#consuming">Consumer</a></strong>:</p>
+                                    <ul>
+                                        <li>Retrieve and use the contents of the Inbox URL according to the needs of application.</li>
+                                    </ul>
+
+                                    <p id="summary-receiver"><strong><a href="#receiving">Receiver</a></strong>:</p>
                                     <ul>
                                         <li>Accept <code>GET</code> requests for the Inbox URL and respond with JSON-LD or if possible, requested serialization.</li>
                                         <li>Accept <code>POST</code> requests to create notifications at the Inbox URL, and be discoverable through the Inbox URL.</li>
-                                    </ul>
-
-                                    <p id="summary-consumer"><strong>Consumer</strong>:</p>
-                                    <ul>
-                                        <li><code>GET</code> the Inbox URL and use its contents according to the needs of application.</li>
                                     </ul>
                                 </div>
                             </section>
