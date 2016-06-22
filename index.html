@@ -136,7 +136,7 @@ figure pre { margin:1em 0; }
                                     <p id="summary-sender"><strong><a href="#sending">Sender</a></strong>:</p>
                                     <ul>
                                         <li>Create the body of the notification according to the needs of application.</li>
-                                        <li>Send the notification to the Inbox URL by making a <code>POST</code> request, containing the body.</li>
+                                        <li>Send the notification to the Inbox URL by making a <code>POST</code> request, containing the body in JSON-LD or in another serialization acceptable by the server.</li>
                                     </ul>
 
                                     <p id="summary-consumer"><strong><a href="#consuming">Consumer</a></strong>:</p>
@@ -211,26 +211,26 @@ figure pre { margin:1em 0; }
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>Receivers <em class="rfc2119">MUST</em> support <code>GET</code> and <code>POST</code> requests on the Inbox URL. In LDP terms, an Inbox is a <em>Container</em>.</p>
 
-                                    <h4>Receiving notifications</h4>
+                                    <section id="receiving-notifications" inlist="" rel="schema:hasPart" resource="#receiving-notifications">
+                                        <h4 property="schema:name">Receiving notifications</h4>
+                                        <div datatype="rdf:HTML" property="schema:description">
+                                            <p>Upon receipt of a <code>POST</code> request to the Inbox, the receiver <em class="rfc2119">MUST</em> create a new resource containing the RDF data from the body of the <code>POST</code> request and <em class="rfc2119">MUST</em> return either <code>HTTP 200 OK</code>, <code>HTTP 201 Created</code>, <code>HTTP 202 Accepted</code> or <code>HTTP 204 No Content</code>. In the case of a <code>200</code> a <code>Content-Location</code> header pointing to the created resource <em class="rfc2119">MUST</em> also be returned. In the case of a <code>201</code> a <code>Location</code> header pointing to the created resource <em class="rfc2119">MUST</em> also be returned. In the case of a <code>204</code> a <code>Content-Location</code> header pointing to the created resource <em class="rfc2119">SHOULD</em> also be returned.</p>
 
-                                    <p>Upon receipt of a <code>POST</code> request to the Inbox, the receiver <em class="rfc2119">MUST</em> create a new resource containing the RDF data from the body of the <code>POST</code> request and <em class="rfc2119">MUST</em> return either <code>HTTP 200 OK</code>, <code>HTTP 201 Created</code>, <code>HTTP 202 Accepted</code> or <code>HTTP 204 No Content</code>. In the case of a <code>200</code> a <code>Content-Location</code> header pointing to the created resource <em class="rfc2119">MUST</em> also be returned. In the case of a <code>201</code> a <code>Location</code> header pointing to the created resource <em class="rfc2119">MUST</em> also be returned. In the case of a <code>204</code> a <code>Content-Location</code> header pointing to the created resource <em class="rfc2119">SHOULD</em> also be returned.</p>
+                                            <p>Receivers <em class="rfc2119">MUST</em> accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>, and <em class="rfc2119">MAY</em> accept other RDF content types (eg. <code>text/turtle</code>, <code>text/html</code>). Receivers <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept</code> header on the Inbox URL. Receivers <em class="rfc2119">MAY</em> reserialize a notification into a different syntax upon delivery, prior to doing anything else with it.</p>
 
-                                    <p>Receivers <em class="rfc2119">MUST</em> accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>, and <em class="rfc2119">MAY</em> accept other RDF content types (eg. <code>text/turtle</code>, <code>text/html</code>). Receivers <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept</code> header on the Inbox URL. Receivers <em class="rfc2119">MAY</em> reserialize a notification into a different syntax upon delivery, prior to doing anything else with it.</p>
-                                </div>
-                                <p>Example Request and Response</p>
-                                <p>Request:</p>
-                                <figure class="listing example" id="request-example" rel="schema:hasPart" resource="#request-example">
-                                    <pre about="#request-example" class="hljs http" property="schema:description" typeof="fabio:Script">
+                                            <p>Example Request:</p>
+                                            <figure class="listing example" id="request-example" rel="schema:hasPart" resource="#request-example">
+                                                <pre about="#request-example" class="hljs http" property="schema:description" typeof="fabio:Script">
 <code><span class="hljs-request">GET <span class="hljs-string">/annotations/</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json; profile="http://www.w3.org/ns/anno.jsonld"</span></code>
-                                    </pre>
-                                    <figcaption property="schema:name">Example request</figcaption>
-                                </figure>
+                                                </pre>
+                                                <figcaption property="schema:name">Example request</figcaption>
+                                            </figure>
 
-                                <p>Response:</p>
-                                <figure class="listing example" id="response-example" rel="schema:hasPart" resource="#response-example">
-                                    <pre about="#response-example" class="hljs http" property="schema:description" typeof="fabio:Script">
+                                            <p>Example Response:</p>
+                                            <figure class="listing example" id="response-example" rel="schema:hasPart" resource="#response-example">
+                                                <pre about="#response-example" class="hljs http" property="schema:description" typeof="fabio:Script">
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json; profile="http://www.w3.org/ns/anno.jsonld"</span></code>
 <code><span class="hljs-attribute">ETag</span>: <span class="hljs-string">"_87e52ce123123"</span></code>
@@ -252,36 +252,39 @@ figure pre { margin:1em 0; }
 <code>  "<span class="hljs-attribute">first</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/annotations/?page=0"</span></span>,</code>
 <code>  "<span class="hljs-attribute">last</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/annotations/?page=42"</span></span></code>
 <code>}</code>
-                                    </pre>
-                                    <figcaption property="schema:name">Example response</figcaption>
-                                </figure>
+                                                </pre>
+                                                <figcaption property="schema:name">Example response</figcaption>
+                                            </figure>
+                                        </div>
+                                    </section>
 
-                                <h4>Making Inbox contents available to consumers</h4>
+                                    <section id="receiving-inbox-contents" inlist="" rel="schema:hasPart" resource="#receiving-inbox-contents">
+                                        <h4 property="schema:name">Making Inbox contents available to consumers</h4>
+                                        <div datatype="rdf:HTML" property="schema:description">
+                                            <p>A successful <code>GET</code> request on the Inbox <em class="rfc2119">MUST</em> return a <code>HTTP 200 OK</code> with the URIs of notifications, which <em class="rfc2119">MAY</em> be subject to paging or access control restrictions at the receivers discretion (returning <code>4xx</code> error codes as applicable).</p>
 
-                                <p>A successful <code>GET</code> request on the Inbox <em class="rfc2119">MUST</em> return a <code>HTTP 200 OK</code> with the URIs of notifications, which <em class="rfc2119">MAY</em> be subject to paging or access control restrictions at the receivers discretion (returning <code>4xx</code> error codes as applicable).</p>
+                                            <p>If the <code>GET</code> request has no <code>Accept</code> header, the results <em class="rfc2119">MUST</em> be returned as JSON-LD; otherwise the receiver <em class="rfc2119">SHOULD</em> return the results in the serialization requested, or a <code>415 Unsupported Media Type</code> error if the requested serialization is not available.</p>
 
-                                <p>If the <code>GET</code> request has no <code>Accept</code> header, the results <em class="rfc2119">MUST</em> be returned as JSON-LD; otherwise the receiver <em class="rfc2119">SHOULD</em> return the results in the serialization requested, or a <code>415 Unsupported Media Type</code> error if the requested serialization is not available.</p>
+                                            <p>Data about the Inbox itself <em class="rfc2119">MAY</em> also be returned.</p>
 
-                                <p>Data about the Inbox itself <em class="rfc2119">MAY</em> also be returned.</p>
+                                            <p>If the receiver is advertising the Inbox using a domain specific vocabulary for the relation with the target, these results <em class="rfc2119">SHOULD</em> also use this vocabulary. Otherwise, each notification URI <em class="rfc2119">SHOULD</em> be related to the Inbox URL with the <code>ldp:contains</code> predicate.</p>
 
-                                <p>If the receiver is advertising the Inbox using a domain specific vocabulary for the relation with the target, these results <em class="rfc2119">SHOULD</em> also use this vocabulary. Otherwise, each notification URI <em class="rfc2119">SHOULD</em> be related to the Inbox URL with the <code>ldp:contains</code> predicate.</p>
+                                            <p class="todo">Making sure the actual individual notifications are available to consumers</p>
 
-                                <p class="todo">Making sure the actual individual notifications are available to consumers</p>
+                                            <p>Example using LDP vocabulary:</p>
 
-                                <p>Example using LDP vocabulary:</p>
-
-                                <figure class="listing example" id="results-example-inbox-discovery-ldp" rel="schema:hasPart" resource="#results-example-inbox-discovery-ldp">
-                                    <pre about="#results-example-inbox-discovery-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
+                                            <figure class="listing example" id="results-example-inbox-discovery-ldp" rel="schema:hasPart" resource="#results-example-inbox-discovery-ldp">
+                                                <pre about="#results-example-inbox-discovery-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
 <code>{</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/profile"</span></span>,</code>
 <code>  "<span class="hljs-attribute">ldp:inbox</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/messages/"</span></span></code>
 <code>}</code>
-                                    </pre>
-                                    <figcaption>Inbox discovery.</figcaption>
-                                </figure>
+                                                </pre>
+                                                <figcaption>Inbox discovery.</figcaption>
+                                            </figure>
 
-                                <figure class="listing example" id="results-example-inbox-contains-ldp" rel="schema:hasPart" resource="#results-example-inbox-contains-ldp">
-                                    <pre about="#results-example-inbox-contains-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
+                                            <figure class="listing example" id="results-example-inbox-contains-ldp" rel="schema:hasPart" resource="#results-example-inbox-contains-ldp">
+                                                <pre about="#results-example-inbox-contains-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
 <code>{</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/messages/"</span></span>,</code>
 <code>  "<span class="hljs-attribute">ldp:contains</span>": <span class="hljs-value">[</span></code>
@@ -289,24 +292,24 @@ figure pre { margin:1em 0; }
 <code>    { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/notification-2"</span></span> }</code>
 <code>  <span class="hljs-value">]</span></code>
 <code>}</code>
-                                    </pre>
-                                    <figcaption>Results of GET request on Inbox.</figcaption>
-                                </figure>
+                                                </pre>
+                                                <figcaption>Results of GET request on Inbox.</figcaption>
+                                            </figure>
 
-                                <p>Example using domain specific vocabulary (ActivityStreams 2.0):</p>
+                                            <p>Example using domain specific vocabulary (ActivityStreams 2.0):</p>
 
-                                <figure class="listing example" id="results-example-inbox-discovery-as" rel="schema:hasPart" resource="#results-example-inbox-discovery-as">
-                                    <pre about="#results-example-inbox-discovery-as" class="hljs" property="schema:description" typeof="fabio:Script">
+                                            <figure class="listing example" id="results-example-inbox-discovery-as" rel="schema:hasPart" resource="#results-example-inbox-discovery-as">
+                                                <pre about="#results-example-inbox-discovery-as" class="hljs" property="schema:description" typeof="fabio:Script">
 <code>{</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/profile"</span></span>,</code>
 <code>  "<span class="hljs-attribute">as:replies</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/messages/"</span></span></code>
 <code>}</code>
-                                    </pre>
-                                    <figcaption>Inbox discovery.</figcaption>
-                                </figure>
+                                                </pre>
+                                                <figcaption>Inbox discovery.</figcaption>
+                                            </figure>
 
-                                <figure class="listing example" id="results-example-inbox-contains-as" rel="schema:hasPart" resource="#results-example-inbox-contains-as">
-                                    <pre about="#results-example-inbox-contains-as" class="hljs" property="schema:description" typeof="fabio:Script">
+                                            <figure class="listing example" id="results-example-inbox-contains-as" rel="schema:hasPart" resource="#results-example-inbox-contains-as">
+                                                <pre about="#results-example-inbox-contains-as" class="hljs" property="schema:description" typeof="fabio:Script">
 <code>{</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/messages/"</span></span>,</code>
 <code>  "<span class="hljs-attribute">@type</span>": <span class="hljs-value">[<span class="hljs-string">"ldp:Inbox"</span>, <span class="hljs-string">"as:Collection"</span>]</span>,</code>
@@ -315,12 +318,13 @@ figure pre { margin:1em 0; }
 <code>    <span class="hljs-value">{ "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/notification-2"</span></span> }</span></code>
 <code>  <span class="hljs-value">}</span></code>
 <code>}</code>
-                                    </pre>
-                                    <figcaption>Results of GET request on Inbox.</figcaption>
-                                </figure>
-
+                                                </pre>
+                                                <figcaption>Results of GET request on Inbox.</figcaption>
+                                            </figure>
+                                        </div>
+                                    </section>
+                                </div>
                             </section>
-
                         </div>
                     </section>
 
