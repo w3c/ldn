@@ -131,19 +131,24 @@ figure pre { margin:1em 0; }
                             <section id="summary" inlist="" rel="schema:hasPart" resource="#summary">
                                 <h3 property="schema:name">Summary</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p><strong>Sender:</strong></p>
+                                    <p id="summary-discovery"><strong>Discovery</strong>: Senders and consumers can discover resources' <em>Inbox(es)</em> URL(s) through a relation, which is either <code>ldp:inbox</code> or a domain specific property eg. <code>as:replies</code> (whence the Inbox has type <code>ldp:Inbox</code>).</p>
+
+                                    <p id="summary-sender"><strong>Sender</strong>:</p>
                                     <ul>
-                                        <li>Discover an Inbox through a relation with the target of the notification, which is either <code>ldp:inbox</code> or a domain specific property (whence the Inbox has type <code>ldp:Inbox</code>).</li>
                                         <li>Create the body of the notification according to the needs of application.</li>
-                                        <li>Send the notification to the target by making a <code>POST</code> request, containing the body, to the Inbox URL.</li>
-                                    </ul>
-                                    <p><strong>Consumer</strong></p>:
-                                    <ul>
-                                        <li>Discover an Inbox through a relation with the target of the notification, which is either <code>ldp:inbox</code> or a domain specific property (whence the Inbox has type <code>ldp:Inbox</code>).</li>
-                                        <li>Retreive the contents of the Inbox and use according to the needs of application.</li>
+                                        <li>Send the notification to the Inbox URL by making a <code>POST</code> request, containing the body.</li>
                                     </ul>
 
-                                    <p><strong>Receiver:</strong></p>:
+                                    <p id="summary-receiver"><strong>Receiver</strong>:</p>
+                                    <ul>
+                                        <li>Accept <code>GET</code> requests for the Inbox URL and respond with JSON-LD or if possible, requested serialization.</li>
+                                        <li>Accept <code>POST</code> requests to create notifications at the Inbox URL, and be discoverable through the Inbox URL.</li>
+                                    </ul>
+
+                                    <p id="summary-consumer"><strong>Consumer</strong>:</p>
+                                    <ul>
+                                        <li><code>GET</code> the Inbox URL and use its contents according to the needs of application.</li>
+                                    </ul>
                                 </div>
                             </section>
                         </div>
