@@ -486,6 +486,8 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
                                 <h3 property="schema:name">Preventing Abuse</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>Receivers <em class="rfc2119">SHOULD</em> utilise the <a href="#constraints">constraints</a> to verify the complacency of the notifications, thereby filtering unwarranted notifications from being created on the server and referenced from Inbox's contents. Consumers <em class="rfc2119">MAY</em> also want to check the notifications against the shape constraints as announced by the receiver's Inbox before further processing or use.</p>
+
+                                    <p>Senders and consumers <em class="rfc2119">SHOULD NOT</em> make requests to Inbox or notifications that are localhost or a loopback IP address.</em>
                                 </div>
                             </section>
                         </div>
