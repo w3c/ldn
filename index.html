@@ -476,8 +476,9 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>Receivers <em class="rfc2119">MAY</em> want to ensure or verify the sender of the notification in a number of different ways (but not limited to):</p>
                                     <ul>
-                                        <li>by having a whitelist of senders whom can access the Inbox or receiver's knowledge of the sender whom created the notification</li>
-                                        <li>senders having a copy (or hash) of the notification in their own <em>sent</em> container that can be accessed by the intended recipients</li>
+                                        <li>by having a whitelist of senders with write access to the Inbox</li>
+                                        <li>requiring authentication to enforce receiver's knowledge of every sender</li>
+                                        <li>senders publishing a copy (or hash) of the notification that the receiver can retrieve and verify</li>
                                         <li>digitally signing the notification</li>
                                     </ul>
                                 </div>
@@ -489,6 +490,15 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
                                     <p>Receivers <em class="rfc2119">SHOULD</em> utilise the <a href="#constraints">constraints</a> to verify the complacency of the notifications, thereby filtering unwarranted notifications from being created on the server and referenced from Inbox's contents. Consumers <em class="rfc2119">MAY</em> also want to check the notifications against the shape constraints as announced by the receiver's Inbox before further processing or use.</p>
 
                                     <p>Senders and consumers <em class="rfc2119">SHOULD NOT</em> make requests to Inbox or notifications that are localhost or a loopback IP address.</em>
+
+                                    <p>Receivers could consider implementing access control on the Inbox URL to restrict both reading and writing.</p>
+                                </div>
+                            </section>
+
+                            <section id="privacy" inlist="" rel="schema:hasPart" resource="#privacy">
+                                <h3 property="schema:name">Privacy</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>In the case of sending sensitive information, the sender should be aware that the receiver may implement access control on the Inbox that allows for public reading of the contents.</p>
                                 </div>
                             </section>
                         </div>
