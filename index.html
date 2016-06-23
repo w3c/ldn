@@ -134,7 +134,7 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
                     <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
                         <h2 property="schema:name">Introduction</h2>
                         <div datatype="rdf:HTML" property="schema:description">
-                            <p>Linked Data Notifications is a specialised use of Linked Data Platform [<cite><a class="bibref" href="#bib-LDP">LDP</a></cite>] for sending and consuming notifications. It is not dependent on a complete implementation of LDP but designed to be compatible. This specification describes the particular features necessary to make it easy to exchange notifications in a decentralised, interoperable way.</p>
+                            <p>Linked Data Notifications is a specialized use of Linked Data Platform [<cite><a class="bibref" href="#bib-LDP">LDP</a></cite>] for sending and consuming notifications. It is not dependent on a complete implementation of LDP but designed to be compatible. This specification describes the particular features necessary to make it easy to exchange notifications in a decentralised, interoperable way.</p>
 
                             <p>This protocol assumes a modular approach to creating and storing data, in particular a decoupling between applications and data storage. Thus, where senders, receivers and consumers of notifications are independently implemented and run on different technology stacks, this protocol allows them to seamlessly work together.</p>
 
@@ -212,6 +212,34 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
                                     <p>If the sender discovered the Inbox through a domain specific relation to the target resource, the sender <em class="rfc2119">SHOULD</em> use the same vocabulary in the notification content.</p>
 
                                     <p>The sender <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization.</p>
+
+                                    <p>Request:</p>
+                                    <figure class="listing example" id="sending-notification" rel="schema:hasPart" resource="#sending-notification">
+                                        <pre about="sending-notification" property="schema:description" typeof="fabio:Script">
+<code><span class="hljs-request">POST <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.net</span></code>
+<code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json</span></code>
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams.jsonld",
+  "@type": "Announce",
+  "actor": "https://example.org/profile#alice",
+  "object": "https://example.org/foo",
+  "target": "https://example.net/article#introduction",
+  "updated": "2016-06-23T15:03:01Z",
+}
+                                        </pre>
+                                        <figcaption property="schema:name">Example notification send request to an Inbox.</figcaption>
+                                    </figure>
+
+                                    <p>Response:</p>
+                                    <figure class="listing example" id="sending-notification-response" rel="schema:hasPart" resource="#sending-notification-response">
+                                        <pre about="sending-notification-response" property="schema:description" typeof="fabio:Script">
+<code><span class="hljs-request">HTTP/1.1 <span class="hljs-string">201</span> Created</span></code>
+<code><span class="hljs-attribute">Location</span>: <span class="hljs-string">https://example.net/inbox/abcdef</span></code>
+                                        </pre>
+                                        <figcaption property="schema:name">Example response to a request</figcaption>
+                                    </figure>
                                 </div>
                             </section>
 
