@@ -153,23 +153,24 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
                             <section id="summary" inlist="" rel="schema:hasPart" resource="#summary">
                                 <h3 property="schema:name">Summary</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p id="summary-discovery"><strong><a href="#discovery">Discovery</a></strong>: Senders and consumers can discover resources' <em>Inbox(es)</em> URL(s) through a relation in the HTTP <code>Link</code> header or body, which is either <code>ldp:inbox</code> or a domain specific property eg. <code>as:replies</code> (whence the Inbox has type <code>ldp:Inbox</code>).</p>
+                                    <p id="summary-discovery">Senders and consumers <strong><a href="#discovery">discover</a></strong> a resource's <em>Inbox</em> URL(s) through a relation in the HTTP <code>Link</code> header or body of the resource, which is either <code>ldp:inbox</code> or a domain specific property (eg. <code>as:replies</code>).</p>
 
-                                    <p id="summary-sender"><strong><a href="#sending">Sender</a></strong>:</p>
+                                    <p id="summary-sender">The <strong><a href="#sending">Sender</a></strong>:</p>
                                     <ul>
-                                        <li>Create the body of the notification according to the needs of application.</li>
-                                        <li>Send the notification to the Inbox URL by making a <code>POST</code> request, containing the body in JSON-LD or in another serialization acceptable by the server.</li>
+                                        <li>Creates the body of the notification according to the needs of application.</li>
+                                        <li>Sends the notification to the Inbox URL by making a <code>POST</code> request, containing the body in JSON-LD or in another serialization acceptable by the server.</li>
                                     </ul>
 
-                                    <p id="summary-consumer"><strong><a href="#consuming">Consumer</a></strong>:</p>
+                                    <p id="summary-consumer">The <strong><a href="#consuming">Consumer</a></strong>:</p>
                                     <ul>
-                                        <li>Retrieve and use the contents of the Inbox URL according to the needs of application.</li>
+                                        <li>Retrieves the contents of the Inbox URL with a <code>GET</code> request, and uses according to the needs of application.</li>
                                     </ul>
 
                                     <p id="summary-receiver"><strong><a href="#receiving">Receiver</a></strong>:</p>
                                     <ul>
-                                        <li>Accept <code>GET</code> requests for the Inbox URL and respond with JSON-LD or if possible, requested serialization.</li>
-                                        <li>Accept <code>POST</code> requests to create notifications at the Inbox URL, and be discoverable through the Inbox URL.</li>
+                                        <li>Responds to <code>GET</code> requests made to the Inbox URL with a JSON-LD representation (or if possible, requested serialization) of the URLs of the notifications that have previously been sent to the Inbox.</li>
+                                        <li>Accepts <code>POST</code> requests at the Inbox URL to create notifications.</li>
+                                        <li>Optionally enforces constraints on notifications sent to the Inbox.</li>
                                     </ul>
                                 </div>
                             </section>
