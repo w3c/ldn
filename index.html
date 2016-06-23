@@ -86,7 +86,7 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
 
                 <dl id="document-inbox">
                     <dt>Notifications Inbox</dt>
-                    <dd><a href="https://linkedresearch.org/inbox/temp/" rel="ldp:inbox">inbox/</a></dd>
+                    <dd><a href="https://linkedresearch.org/inbox/temp/ldn/" rel="ldp:inbox">inbox/</a></dd>
                 </dl>
 
                 <dl id="document-published">
@@ -96,7 +96,7 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
 
                 <dl id="document-modified">
                     <dt>Modified</dt>
-                    <dd><time datatype="xsd:dateTime" datetime="2016-06-15T00:00:00Z" property="schema:dateModified">2016-06-15</time></dd>
+                    <dd><time datatype="xsd:dateTime" datetime="2016-06-23T00:00:00Z" property="schema:dateModified">2016-06-23</time></dd>
                 </dl>
 
                 <dl id="document-repository">
@@ -104,7 +104,7 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
                     <dd><a href="https://github.com/csarven/ldn">Github Repository</a></dd>
                 </dl>
 
-                <p class="copyright"><mark class="todo"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2016 <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). <abbr title="World Wide Web Consortium">W3C</abbr> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a rel="license" href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</mark></p>
+                <p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2016 <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). <abbr title="World Wide Web Consortium">W3C</abbr> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a rel="license" href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p>
 
                 <div id="content">
                     <section id="abstract">
@@ -484,7 +484,7 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>Receivers <em class="rfc2119">SHOULD</em> utilise the <a href="#constraints">constraints</a> to verify the complacency of the notifications, thereby filtering unwarranted notifications from being created on the server and referenced from Inbox's contents. Consumers <em class="rfc2119">MAY</em> also want to check the notifications against the shape constraints as announced by the receiver's Inbox before further processing or use.</p>
 
-                                    <p>Senders and consumers <em class="rfc2119">SHOULD NOT</em> make requests to Inbox or notifications that are localhost or a loopback IP address.</em>
+                                    <p>Senders and consumers <em class="rfc2119">SHOULD NOT</em> make requests to Inbox or notifications that are localhost or a loopback IP address.</p>
 
                                     <p>Receivers could consider implementing access control on the Inbox URL to restrict both reading and writing.</p>
                                 </div>
