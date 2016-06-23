@@ -59,7 +59,6 @@ content:counter(section) "." counter(sub-section) "\00a0\00a0\00a0";
 section > h4:before {
 content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0\00a0\00a0";
 }
-
 </style>
         <script src="https://dokie.li/scripts/simplerdf.js"></script>
         <script src="https://dokie.li/scripts/medium-editor.min.js"></script>
@@ -286,15 +285,13 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
                                     <section id="receiving-inbox-contents" inlist="" rel="schema:hasPart" resource="#receiving-inbox-contents">
                                         <h4 property="schema:name">Making Inbox contents available to consumers</h4>
                                         <div datatype="rdf:HTML" property="schema:description">
-                                            <p>A successful <code>GET</code> request on the Inbox <em class="rfc2119">MUST</em> return a <code>HTTP 200 OK</code> with the URIs of notifications, which <em class="rfc2119">MAY</em> be subject to paging or access control restrictions at the receivers discretion (returning <code>4xx</code> error codes as applicable).</p>
+                                            <p>A successful <code>GET</code> request on the Inbox <em class="rfc2119">MUST</em> return a <code>HTTP 200 OK</code> with the URIs of notifications, which <em class="rfc2119">MAY</em> be subject to paging or access control restrictions at the receivers discretion (returning <code>4xx</code> error codes as applicable). The receivers <em class="rfc2119">SHOULD</em> only return URIs of notifications in the Inbox that the consumer is able to access.</p>
 
                                             <p>If the <code>GET</code> request has no <code>Accept</code> header, the results <em class="rfc2119">MUST</em> be returned as JSON-LD; otherwise the receiver <em class="rfc2119">SHOULD</em> return the results in the serialization requested, or a <code>415 Unsupported Media Type</code> error if the requested serialization is not available.</p>
 
                                             <p>Data about the Inbox itself <em class="rfc2119">MAY</em> also be returned.</p>
 
                                             <p>If the receiver is advertising the Inbox using a domain specific vocabulary for the relation with the target, these results <em class="rfc2119">SHOULD</em> also use this vocabulary. Otherwise, each notification URI <em class="rfc2119">SHOULD</em> be related to the Inbox URL with the <code>ldp:contains</code> predicate.</p>
-
-                                            <p class="todo">Making sure the actual individual notifications are available to consumers</p>
 
                                             <p>Example using LDP vocabulary:</p>
 
@@ -452,11 +449,9 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
                         </div>
                     </section>
 
-                    <section id="security-and-content-considerations" inlist="" rel="schema:hasPart" resource="#security-and-content-considerations">
-                        <h2 property="schema:name">Security and Content Considerations</h2>
+                    <section id="security-privacy-and-content-considerations" inlist="" rel="schema:hasPart" resource="#security-privacy-and-content-considerations">
+                        <h2 property="schema:name">Security, Privacy and Content Considerations</h2>
                         <div datatype="rdf:HTML" property="schema:description">
-                            <p>..</p>
-
                             <section id="constraints" inlist="" rel="schema:hasPart" resource="#constraints">
                                 <h3 property="schema:name">Constraints</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
