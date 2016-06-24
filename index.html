@@ -138,6 +138,12 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
 
                             <p>This protocol supports a modular approach to creating and storing data, in particular a decoupling between applications and data storage. Thus, where senders, receivers and consumers of notifications are independently implemented and run on different technology stacks, this protocol allows them to seamlessly work together.</p>
 
+                            <ul>
+                                <li>This specification enables the notion of a notification as an individual entity with its own URI which can be retrieved and reused.</li>
+                                <li>This specification deliberately does not define the vocabulary of the notification contents in order to allow for use in a range of different application domains.</li>
+                                <li>Authentication and verification of notifications is encouraged, but the mechanism to do so is at the discretion of receivers and consumers, as needs differ according to types of notification and different application domains.</li>
+                            </ul>
+
                             <section id="overview" inlist="" rel="schema:hasPart" resource="#overview">
                                 <h3 property="schema:name">Overview</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
