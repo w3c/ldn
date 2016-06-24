@@ -291,7 +291,7 @@ Link: &lt;http://www.w3.org/ns/ldp#Inbox&gt;; rel="type"
                             <section id="sending" inlist="" rel="schema:hasPart" resource="#sending">
                                 <h3 property="schema:name">Sending</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Senders <em class="rfc2119">MUST</em> deliver notifications through a <code>POST</code> request to the Inbox URL. Senders can expect a <code>200 OK</code> (with a <code>Content-Location</code> Link header), <code>201 Created</code> (with a <code>Location</code> Link header), or <code>202 Accepted</code> in response to a successful request.</p>
+                                    <p>Senders <em class="rfc2119">MUST</em> deliver notifications through a <code>POST</code> request to the Inbox URL. Senders can expect a <code>201 Created</code> (with a <code>Location</code> Link header) in response to a successful request.</p>
  
                                     <p>The sender <em class="rfc2119">MAY</em> use a <code>HEAD</code> request to determine the RDF content types accepted by the server, and serialize the notification in the request body according to the value of the <code>Accept</code> header returned. Otherwise, the body of the <code>POST</code> request <em class="rfc2119">MUST</em> contain the notification <a href="#payload">payload</a> in JSON-LD.</p>
 
@@ -352,7 +352,7 @@ Link: &lt;http://www.w3.org/ns/ldp#Inbox&gt;; rel="type"
                                     <section id="receiving-notifications" inlist="" rel="schema:hasPart" resource="#receiving-notifications">
                                         <h4 property="schema:name">Receiving notifications</h4>
                                         <div datatype="rdf:HTML" property="schema:description">
-                                            <p>Upon receipt of a <code>POST</code> request to the Inbox, the receiver <em class="rfc2119">MUST</em> create a new resource containing the RDF data from the body of the <code>POST</code> request and <em class="rfc2119">MUST</em> return either <code>HTTP 200 OK</code>, <code>HTTP 201 Created</code>, <code>HTTP 202 Accepted</code> or <code>HTTP 204 No Content</code>. In the case of a <code>200</code> a <code>Content-Location</code> header pointing to the created resource <em class="rfc2119">MUST</em> also be returned. In the case of a <code>201</code> a <code>Location</code> header pointing to the created resource <em class="rfc2119">MUST</em> also be returned. In the case of a <code>204</code> a <code>Content-Location</code> header pointing to the created resource <em class="rfc2119">SHOULD</em> also be returned.</p>
+                                            <p>Upon receipt of a <code>POST</code> request to the Inbox, the receiver <em class="rfc2119">MUST</em> create a new resource containing the RDF data from the body of the <code>POST</code> request and <em class="rfc2119">MUST</em> return <code>HTTP 201 Created</code> with a <code>Location</code> header pointing to the created resource.</p>
 
                                             <p>Receivers <em class="rfc2119">MUST</em> accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>, and <em class="rfc2119">MAY</em> accept other RDF content types (eg. <code>text/turtle</code>, <code>text/html</code>). Receivers <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept</code> header on the Inbox URL. Receivers <em class="rfc2119">MAY</em> reserialize a notification into a different syntax upon delivery, prior to doing anything else with it.</p>
 
@@ -598,7 +598,7 @@ Link: &lt;http://www.w3.org/ns/ldp#Inbox&gt;; rel="type"
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>Receivers <em class="rfc2119">SHOULD</em> use <a href="#constraints">constraints</a> to filter unwarranted notifications from being created on the server and exposed by the Inbox. Consumers <em class="rfc2119">MAY</em> also want to check the notifications against any constraints as announced by an Inbox before further processing or use.</p>
 
-                                    <p>If the sender has any services that listen on localhost that don't require authentication, it's possible for a malicious script to run at the Inbox endpoint that could cause the sender to make an arbitrary <code>POST</em> request to itself. Senders <em class="rfc2119">SHOULD NOT</em> make <code>POST</em> requests to the Inbox that are localhost or a loopback IP address.</p>
+                                    <p>If the sender has any services that listen on localhost that don't require authentication, it's possible for a malicious script to run at the Inbox endpoint that could cause the sender to make an arbitrary <code>POST</code> request to itself. Senders <em class="rfc2119">SHOULD NOT</em> make <code>POST</code> requests to the Inbox that are localhost or a loopback IP address.</p>
 
                                     <p>Receivers could consider implementing access control on the Inbox URL to restrict writing to a whitelist of trusted senders.</p>
                                 </div>
