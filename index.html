@@ -577,12 +577,12 @@ Link: &lt;http://www.w3.org/ns/ldp#Inbox&gt;; rel="type"
                             <section id="sender-verification" inlist="" rel="schema:hasPart" resource="#sender-verification">
                                 <h3 property="schema:name">Sender Verification</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Receivers <em class="rfc2119">MAY</em> want to ensure or verify the sender of the notification in a number of different ways (but not limited to):</p>
+                                    <p>Receivers <em class="rfc2119">SHOULD</em> ensure or verify the sender of the notification, for example:</p>
                                     <ul>
                                         <li>by having a whitelist of senders with write access to the Inbox</li>
                                         <li>requiring authentication to enforce receiver's knowledge of every sender</li>
-                                        <li>senders publishing a copy (or hash) of the notification that the receiver can retrieve and verify</li>
-                                        <li>digitally signing the notification</li>
+                                        <li>retrieve a copy of the notification from the sender's domain to verify its origin</li>
+                                        <li>checking a digital signature which accompanies the notification</li>
                                     </ul>
                                 </div>
                             </section>
