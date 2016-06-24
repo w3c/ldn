@@ -136,7 +136,7 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
                         <div datatype="rdf:HTML" property="schema:description">
                             <p>Linked Data Notifications is a specialized use of Linked Data Platform [<cite><a class="bibref" href="#bib-LDP">LDP</a></cite>] for sending and consuming notifications. It is not dependent on a complete implementation of LDP but designed to be compatible. This specification describes the particular features necessary to make it easy to exchange notifications in a decentralised, interoperable way.</p>
 
-                            <p>This protocol assumes a modular approach to creating and storing data, in particular a decoupling between applications and data storage. Thus, where senders, receivers and consumers of notifications are independently implemented and run on different technology stacks, this protocol allows them to seamlessly work together.</p>
+                            <p>This protocol supports a modular approach to creating and storing data, in particular a decoupling between applications and data storage. Thus, where senders, receivers and consumers of notifications are independently implemented and run on different technology stacks, this protocol allows them to seamlessly work together.</p>
 
                             <section id="overview" inlist="" rel="schema:hasPart" resource="#overview">
                                 <h3 property="schema:name">Overview</h3>
@@ -189,7 +189,7 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
                     <section id="protocol" inlist="" rel="schema:hasPart" resource="#protocol">
                         <h2 property="schema:name">Protocol</h2>
                         <div datatype="rdf:HTML" property="schema:description">
-                            <p>This section describes the discovery of the URL to which notifications may be delivered or read from (the <em>Inbox</em>) and the delivery mechanism. Notification contents are described in <a href="#payload">Payload</a>.</p>
+                            <p>This section describes the discovery of the URL to which notifications are delivered or read from (the <em>Inbox</em>) and the delivery mechanism. Notification contents are described in <a href="#payload">Payload</a>.</p>
 
                             <section id="discovery" inlist="" rel="schema:hasPart" resource="#discovery">
                                 <h3 property="schema:name">Discovery</h3>
@@ -533,7 +533,7 @@ Link: &lt;http://www.w3.org/ns/ldp#Inbox&gt;; rel="type"
                                     <section id="any-data" inlist="" rel="schema:hasPart" resource="#any-data">
                                         <h4 property="schema:name">Any data</h4>
                                         <div datatype="rdf:HTML" property="schema:description">
-                                            <p>This is typically in cases where an application may want to notify with any information. A notification may contain the complete payload and not necessarily refer to the origin data (external resource).</p>
+                                            <p>This is typically in cases where an application may want to create a notification containing arbitrary information. A notification may contain the complete payload and not necessarily refer to the origin data (external resource).</p>
 
                                             <figure class="listing example" id="notification-any-data" rel="schema:hasPart" resource="#notification-any-data">
                                                 <pre about="#notification-any-data" property="schema:description" typeof="fabio:Script">
