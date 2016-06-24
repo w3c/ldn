@@ -38,19 +38,19 @@ pre code { color: #333; }
 .do.fragment a:hover { background:none; border-bottom:0; }
 figure pre { margin:1em 0; }
 
-article section:not([id=abstract]):not([id=document-status]):not([id=references]):not([id=appendix]):not([id=acknowledgements]) {
+article section:not([id=abstract]):not([id=document-status]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=document-conventions]) {
 counter-increment:section;
 counter-reset:sub-section;
 }
-article section:not([id=abstract]):not([id=document-status]):not([id=references]):not([id=appendix]):not([id=acknowledgements]) section {
+article section:not([id=abstract]):not([id=document-status]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=document-conventions]) section {
 counter-increment:sub-section;
 counter-reset:sub-sub-section;
 }
-article section:not([id=abstract]):not([id=document-status]):not([id=references]):not([id=appendix]):not([id=acknowledgements]) section section {
+article section:not([id=abstract]):not([id=document-status]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=document-conventions]) section section {
 counter-increment:sub-sub-section;
 counter-reset:sub-sub-sub-section;
 }
-article section:not([id=abstract]):not([id=document-status]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id^=table-of-]) > h2:before {
+article section:not([id=abstract]):not([id=document-status]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=document-conventions]):not([id^=table-of-]) > h2:before {
 content:counter(section) ".\00a0\00a0\00a0\00a0";
 }
 section > h3:before {
@@ -606,6 +606,54 @@ Link: &lt;http://www.w3.org/ns/ldp#Inbox&gt;; rel="type"
                             </section>
                         </div>
                     </section>
+
+                    <section id="document-conventions" inlist="" rel="schema:hasPart" resource="#document-conventions">
+                        <h2 property="schema:name">Document Conventions</h2>
+                        <div datatype="rdf:HTML" property="schema:description">
+                            <p>RDF prefix conventions are used throughout this document with the following namespaces:</p>
+
+                            <table id="prefix-and-namespaces">
+                                <caption>Prefixes and namespaces</caption>
+                                <thead>
+                                    <tr>
+                                        <th>Prefix</th>
+                                        <th>Namespace</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>ldp</code></td>
+                                        <td><a href="http://www.w3.org/ns/ldp">http://www.w3.org/ns/ldp#</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>sioc</code></td>
+                                        <td><a href="http://rdfs.org/sioc/ns">http://rdfs.org/sioc/ns#</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>foaf</code></td>
+                                        <td><a href="http://xmlns.com/foaf/0.1/">http://xmlns.com/foaf/0.1/</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>pingback</code></td>
+                                        <td><a href="http://purl.org/net/pingback/">http://purl.org/net/pingback/</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>as</code></td>
+                                        <td><a href="http://www.w3.org/ns/activitystreams">http://www.w3.org/ns/activitystreams#</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>oa</code></td>
+                                        <td><a href="http://www.w3.org/ns/oa">http://www.w3.org/ns/oa#</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>schema</code></td>
+                                        <td><a href="https://schema.org/">https://schema.org/</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
 
                     <section id="acknowledgements" inlist="" rel="schema:hasPart" resource="#acknowledgements">
                         <h2 about="#acknowledgements" property="schema:name" typeof="deo:Acknowledgements">Acknowledgements</h2>
