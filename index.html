@@ -563,7 +563,7 @@ Link: &lt;http://www.w3.org/ns/ldp#Inbox&gt;; rel="type"
                             <section id="constraints" inlist="" rel="schema:hasPart" resource="#constraints">
                                 <h3 property="schema:name">Constraints</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Inbox URLs <em class="rfc2119">SHOULD</em> announce their own shape constraints (e.g., <cite><a class="bibref" href="https://www.w3.org/TR/shacl/">SHACL</a></cite>, <cite><a href="http://www.w3.org/TR/annotation-protocol/">Web Annotation Protocol</a></cite>) via an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#constrainedBy</code> at a target URL. Senders <em class="rfc2119">SHOULD</em> comply with constraint specifications.</p>
+                                    <p>Inbox URLs can announce their own shape constraints (e.g., <cite><a class="bibref" href="https://www.w3.org/TR/shacl/">SHACL</a></cite>, <cite><a href="http://www.w3.org/TR/annotation-protocol/">Web Annotation Protocol</a></cite>) via an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#constrainedBy</code> at a target URL. Senders should comply with constraint specifications or the receiver may reject their notification.</p>
                                 </div>
                             </section>
 
