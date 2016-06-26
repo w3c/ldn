@@ -248,7 +248,7 @@ Content-Type: text/html
                                         <figcaption>Discovering an Inbox with a GET request to retrieve HTML.</figcaption>
                                     </figure>
 
-                                    <p>Senders and consumers <em class="rfc2119">MAY</em> follow domain specific relations instead of <code>ldp:inbox</code> (for example, but not limited to: <code>sioc:has_discussion</code>, <code>as:replies</code>, <code>oa:annotationService</code>) to discover an Inbox. In this case, the Inbox <em class="rfc2119">MUST</em> be an instance of <code>http://www.w3.org/ns/ldp#Inbox</code>, determined through a <code>Link</code> header with <code>rel="type"</code> or an <code>rdf:type</code> relation on the Inbox itself. Receivers <em class="rfc2119">MAY</em> choose to advertise an Inbox using <em>only</em> a domain specific relation and <code>ldp:Inbox</code> type, with the understanding that only senders and consumers which explicitly check for this relation will be able to discover it.</p>
+                                    <p>Senders and consumers <em class="rfc2119">MAY</em> follow domain specific relations instead of <code>ldp:inbox</code> (for example, but not limited to: <code>sioc:has_discussion</code>, <code>as:replies</code>) to discover an Inbox. In this case, the Inbox <em class="rfc2119">MUST</em> be an instance of <code>http://www.w3.org/ns/ldp#Inbox</code>, determined through a <code>Link</code> header with <code>rel="type"</code> or an <code>rdf:type</code> relation on the Inbox itself. Receivers <em class="rfc2119">MAY</em> choose to advertise an Inbox using <em>only</em> a domain specific relation and <code>ldp:Inbox</code> type, with the understanding that only senders and consumers which explicitly check for this relation will be able to discover it.</p>
 
                                     <figure class="listing example" id="discovery-as-example" rel="schema:hasPart" resource="#discovery-as-example">
                                         <pre>
@@ -357,41 +357,32 @@ Link: &lt;http://www.w3.org/ns/ldp#Inbox&gt;; rel="type"
                                             <p>Receivers <em class="rfc2119">MUST</em> accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>, and <em class="rfc2119">MAY</em> accept other RDF content types (eg. <code>text/turtle</code>, <code>text/html</code>). A receiver conforming to LDP <em class="rfc2119">MUST</em> also support request body in Turtle, with the <code>Content-Type: text/turtle</code>. Receivers <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept-Post</code> header on the Inbox URL. Receivers <em class="rfc2119">MAY</em> reserialize a notification into a different syntax, prior to doing anything else with it.</p>
 
                                             <p>Example Request:</p>
-                                            <figure class="listing example" id="request-example" rel="schema:hasPart" resource="#request-example">
+                                            <figure class="listing example" id="request-response-example" rel="schema:hasPart" resource="#request-response-example">
                                                 <pre about="#request-example" class="hljs http" property="schema:description" typeof="fabio:Script">
-<code><span class="hljs-request">GET <span class="hljs-string">/annotations/</span> HTTP/1.1</span></code>
-<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
-<code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json; profile="http://www.w3.org/ns/anno.jsonld"</span></code>
-                                                </pre>
-                                                <figcaption property="schema:name">Example request</figcaption>
-                                            </figure>
+<code><span class="hljs-request">HEAD <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.net</span></code>
 
-                                            <p>Example Response:</p>
-                                            <figure class="listing example" id="response-example" rel="schema:hasPart" resource="#response-example">
-                                                <pre about="#response-example" class="hljs http" property="schema:description" typeof="fabio:Script">
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
-<code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json; profile="http://www.w3.org/ns/anno.jsonld"</span></code>
-<code><span class="hljs-attribute">ETag</span>: <span class="hljs-string">"_87e52ce123123"</span></code>
-<code><span class="hljs-attribute">Link</span>: <span class="hljs-string">&lt;http://www.w3.org/ns/ldp#BasicContainer&gt;; rel="type"</span></code>
-<code><span class="hljs-attribute">Link</span>: <span class="hljs-string">&lt;http://www.w3.org/TR/annotation-protocol/&gt;; rel="http://www.w3.org/ns/ldp#constrainedBy"</span></code>
-<code><span class="hljs-attribute">Allow</span>: <span class="hljs-string">POST,GET,OPTIONS,HEAD</span></code>
-<code><span class="hljs-attribute">Vary</span>: <span class="hljs-string">Accept</span></code>
-<code><span class="hljs-attribute">Content-Length</span>: <span class="hljs-string">368</span></code>
+<code><span class="hljs-attribute">Allow</span>: <span class="hljs-string">HEAD, GET, POST</span></code>
+<code><span class="hljs-attribute">Accept-Post</span>: <span class="hljs-string">application/ld+json</span>, <span class="hljs-string">text/turtle</span></code>
 
-<code>{</code>
-<code>  "<span class="hljs-attribute">@context</span>": <span class="hljs-value">[</span></code>
-<code>    <span class="hljs-string">"http://www.w3.org/ns/anno.jsonld"</span>,</code>
-<code>    <span class="hljs-string">"http://www.w3.org/ns/ldp.jsonld"</span></code>
-<code>  <span class="hljs-value">]</span>,</code>
-<code>  "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/annotations/"</span></span>,</code>
-<code>  "<span class="hljs-attribute">type</span>": <span class="hljs-value">[<span class="hljs-string">"BasicContainer"</span>, <span class="hljs-string">"AnnotationCollection"</span>]</span>,</code>
-<code>  "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">42023</span></span>,</code>
-<code>  "<span class="hljs-attribute">label</span>": <span class="hljs-value"><span class="hljs-string">"A Container for Web Annotations"</span></span>,</code>
-<code>  "<span class="hljs-attribute">first</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/annotations/?page=0"</span></span>,</code>
-<code>  "<span class="hljs-attribute">last</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/annotations/?page=42"</span></span></code>
-<code>}</code>
+<code><span class="hljs-request">POST <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.net</span></code>
+<code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json</span></code>
+
+{
+  "@context": "http://www.w3.org/ns/activitystreams.jsonld",
+  "@type": "Announce",
+  "actor": "https://example.org/profile#alice",
+  "object": "https://example.org/foo",
+  "target": "https://example.net/article#introduction",
+  "updated": "2016-06-23T15:03:01Z",
+}
+
+<code><span class="hljs-request">HTTP/1.1 <span class="hljs-string">201</span> Created</span></code>
+<code><span class="hljs-attribute">Location</span>: <span class="hljs-string">https://example.net/inbox/abcdef</span></code>
                                                 </pre>
-                                                <figcaption property="schema:name">Example response</figcaption>
+                                                <figcaption property="schema:name">Example request and response</figcaption>
                                             </figure>
                                         </div>
                                     </section>
