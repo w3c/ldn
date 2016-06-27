@@ -461,7 +461,7 @@ Link: &lt;http://www.w3.org/ns/ldp#Inbox&gt;; rel="type"
                     <section id="payload" inlist="" rel="schema:hasPart" resource="#payload">
                         <h2 property="schema:name">Payload</h2>
                         <div datatype="rdf:HTML" property="schema:description">
-                            <p>To allow for a wide variety of use cases, the actual payload of the notification (the request body) is deliberately left to the discretion of the sender. The sender <em class="rfc2119">MUST NOT</em> assume that the receiver can fetch or infer anything additional from the payload, and thus <em class="rfc2119">MUST</em> include everything they want the receiver to know.</p>
+                            <p>The payload of the notification <em class="rfc2119">MUST</em> be a JSON-LD unless another RDF syntax has been negotiated with the receiver. To allow for a wide variety of use cases, the actual vocabulary of the payload is deliberately left to the discretion of the sender. The sender <em class="rfc2119">MUST NOT</em> assume that the receiver can fetch or infer anything additional from the payload, and thus <em class="rfc2119">MUST</em> include everything they want the receiver to know.</p>
 
                             <p id="rights-and-license">Senders <em class="rfc2119">SHOULD</em> include rights or license information in the payload as the notification may be reused or displayed by different consumers and environments.</p>
 
