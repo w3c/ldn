@@ -159,7 +159,7 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
                             <section id="summary" inlist="" rel="schema:hasPart" resource="#summary">
                                 <h3 property="schema:name">Summary</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p id="summary-discovery">Senders and consumers <strong><a href="#discovery">discover</a></strong> a resource's <em>Inbox</em> URL(s) through a relation in the HTTP <code>Link</code> header or body of the resource, which is either <code>ldp:inbox</code> or a domain specific property (eg. <code>as:replies</code>).</p>
+                                    <p id="summary-discovery">Senders and consumers <strong><a href="#discovery">discover</a></strong> a resource's <em>Inbox</em> URL(s) through a relation in the HTTP <code>Link</code> header or body of the resource, which is <code>ldp:inbox</code>.</p>
 
                                     <p id="summary-sender">The <strong><a href="#sending">Sender</a></strong>:</p>
                                     <ul>
@@ -248,44 +248,6 @@ Content-Type: text/html
                                         </pre>
                                         <figcaption>Discovering an Inbox with a GET request to retrieve HTML.</figcaption>
                                     </figure>
-
-                                    <p>Senders and consumers <em class="rfc2119">MAY</em> follow domain specific relations instead of <code>ldp:inbox</code> (for example, but not limited to: <code>sioc:has_discussion</code>, <code>as:replies</code>) to discover an Inbox. In this case, the Inbox <em class="rfc2119">MUST</em> be an instance of <code>http://www.w3.org/ns/ldp#Inbox</code>, determined through a <code>Link</code> header with <code>rel="type"</code> or an <code>rdf:type</code> relation on the Inbox itself. Receivers <em class="rfc2119">MAY</em> choose to advertise an Inbox using <em>only</em> a domain specific relation and <code>ldp:Inbox</code> type, with the understanding that only senders and consumers which explicitly check for this relation will be able to discover it.</p>
-
-                                    <figure class="listing example" id="discovery-as-example" rel="schema:hasPart" resource="#discovery-as-example">
-                                        <pre>
-GET /profile HTTP/1.1
-Host: user.example
-Accept: application/ld+json
-
-HTTP/1.1 200 OK
-Content-Type: application/ld+json
-
-{
-    "@context": "http://www.w3.org/ns/activitystreams#",
-    "@id": "https://user.example/profile/",
-    "replies": "https://user.example/inbox/"
-}
-
-GET /inbox HTTP/1.1
-Host: user.example
-Accept: application/ld+json
-
-HTTP/1.1 200 OK
-Content-Type: application/ld+json
-Link: &lt;http://www.w3.org/ns/ldp#Inbox&gt;; rel="type"
-
-{
-    "@context": {
-        "as": "http://www.w3.org/ns/activitystreams#",
-        "ldp": "http://www.w3.org/ns/ldp#"
-    },
-    "@type": ["ldp:Inbox", "as:Collection"],
-    "as:name": "My messages",
-    "as:items": [ ... ]
-}
-                                        </pre>
-                                        <figcaption>Discovering an Inbox through a domain-specific predicate, followed by a GET request on the Inbox to confirm its type.</figcaption>
-                                    </figure>
                                 </div>
                             </section>
 
@@ -296,9 +258,7 @@ Link: &lt;http://www.w3.org/ns/ldp#Inbox&gt;; rel="type"
  
                                     <p>The sender <em class="rfc2119">MAY</em> use a <code>HEAD</code> request to determine the RDF content types accepted by the server, and serialize the notification in the request body according to the value of the <code>Accept-Post</code> header [<cite><a class="bibref" href="http://tools.ietf.org/html/draft-wilde-accept-post">Accept-Post</a></cite>] returned. Otherwise, the body of the <code>POST</code> request <em class="rfc2119">MUST</em> contain the notification <a href="#payload">payload</a> in JSON-LD.</p>
 
-                                    <p>The sender <em class="rfc2119">MUST</em> discover the Inbox through one predicate only, whether <code>ldp:inbox</code> <em>or</em> a domain specific relation. If multiple Inboxes are discovered via the <em>same</em> predicate, senders <em class="rfc2119">MUST</em> de-duplicate Inbox URLs and send to <em>all</em> unique Inbox URLs.</p>
-
-                                    <p>If the sender discovered the Inbox through a domain specific relation to the target resource, the sender <em class="rfc2119">SHOULD</em> use the same vocabulary in the notification content.</p>
+                                    <p>The sender <em class="rfc2119">MUST</em> discover the Inbox through <code>ldp:inbox</code>. If multiple Inboxes are discovered, senders <em class="rfc2119">MUST</em> de-duplicate Inbox URLs and send to <em>all</em> unique Inbox URLs.</p>
 
                                     <p>The sender <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization eg. <code>Authorization: Bearer XXX</code>.</p>
 
@@ -337,9 +297,7 @@ Link: &lt;http://www.w3.org/ns/ldp#Inbox&gt;; rel="type"
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>Consumers retrieve the URIs of notifications in an Inbox through making a <code>GET</code> request on the Inbox URL.</p>
 
-                                    <p>Consumers which discovered the Inbox URL through a domain specific relation <em class="rfc2119">SHOULD</em> expect the URIs of the notifications to be discoverable through a suitable predicate from the same vocabulary. Similarly, consumers <em class="rfc2119">SHOULD</em> expect the notifications themselves to be expressed in this vocabulary too.</p>
-
-                                    <p>Otherwise, the URIs of the notifications will be discoverable through the <code>ldp:contains</code> predicate.</p>
+                                    <p>The URIs of the notifications <em class="rc2119">MUST</em> be discoverable through the <code>ldp:contains</code> predicate.</p>
 
                                     <p>The consumer <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization.</p>
 
@@ -399,7 +357,7 @@ Link: &lt;http://www.w3.org/ns/ldp#Inbox&gt;; rel="type"
 
                                             <p>Data about the Inbox itself <em class="rfc2119">MAY</em> also be returned.</p>
 
-                                            <p>If the receiver is advertising the Inbox using a domain specific vocabulary for the relation with the target, these results <em class="rfc2119">SHOULD</em> also use this vocabulary. Otherwise, each notification URI <em class="rfc2119">SHOULD</em> be related to the Inbox URL with the <code>ldp:contains</code> predicate.</p>
+                                            <p>Each notification URI <em class="rfc2119">MUST</em> be related to the Inbox URL with the <code>ldp:contains</code> predicate.</p>
 
                                             <p>Example using LDP vocabulary:</p>
 
@@ -426,23 +384,11 @@ Link: &lt;http://www.w3.org/ns/ldp#Inbox&gt;; rel="type"
                                                 <figcaption>Results of GET request on Inbox.</figcaption>
                                             </figure>
 
-                                            <p>Example using domain specific vocabulary (ActivityStreams 2.0):</p>
-
-                                            <figure class="listing example" id="results-example-inbox-discovery-as" rel="schema:hasPart" resource="#results-example-inbox-discovery-as">
-                                                <pre about="#results-example-inbox-discovery-as" class="hljs" property="schema:description" typeof="fabio:Script">
-<code>{</code>
-<code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/profile"</span></span>,</code>
-<code>  "<span class="hljs-attribute">as:replies</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/messages/"</span></span></code>
-<code>}</code>
-                                                </pre>
-                                                <figcaption>Inbox discovery.</figcaption>
-                                            </figure>
-
                                             <figure class="listing example" id="results-example-inbox-contains-as" rel="schema:hasPart" resource="#results-example-inbox-contains-as">
                                                 <pre about="#results-example-inbox-contains-as" class="hljs" property="schema:description" typeof="fabio:Script">
 <code>{</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/messages/"</span></span>,</code>
-<code>  "<span class="hljs-attribute">@type</span>": <span class="hljs-value">[<span class="hljs-string">"ldp:Inbox"</span>, <span class="hljs-string">"as:Collection"</span>]</span>,</code>
+<code>  "<span class="hljs-attribute">@type</span>": <span class="hljs-value">[<span class="hljs-string">"as:Collection"</span>]</span>,</code>
 <code>  "<span class="hljs-attribute">as:items</span>": <span class="hljs-value">[</span></code>
 <code>    <span class="hljs-value">{ "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/notification-1"</span></span> }</span>,</code>
 <code>    <span class="hljs-value">{ "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/notification-2"</span></span> }</span></code>
