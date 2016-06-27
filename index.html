@@ -296,9 +296,9 @@ Link: &lt;http://www.w3.org/ns/ldp#Inbox&gt;; rel="type"
  
                                     <p>The sender <em class="rfc2119">MAY</em> use a <code>HEAD</code> request to determine the RDF content types accepted by the server, and serialize the notification in the request body according to the value of the <code>Accept-Post</code> header [<cite><a class="bibref" href="http://tools.ietf.org/html/draft-wilde-accept-post">Accept-Post</a></cite>] returned. Otherwise, the body of the <code>POST</code> request <em class="rfc2119">MUST</em> contain the notification <a href="#payload">payload</a> in JSON-LD.</p>
 
-                                    <p>If the sender discovered the Inbox through a domain specific relation to the target resource, the sender <em class="rfc2119">SHOULD</em> use the same vocabulary in the notification content.</p>
+                                    <p>The sender <em class="rfc2119">MUST</em> discover the Inbox through one predicate only, whether <code>ldp:inbox</code> <em>or</em> a domain specific relation. If multiple Inboxes are discovered via the <em>same</em> predicate, senders <em class="rfc2119">MUST</em> de-duplicate Inbox URLs and send to <em>all</em> unique Inbox URLs.</p>
 
-                                    <p>If multiple Inboxes are discovered, senders <em class="rfc2119">SHOULD</em> make a request to all Inboxes of interest.</p>
+                                    <p>If the sender discovered the Inbox through a domain specific relation to the target resource, the sender <em class="rfc2119">SHOULD</em> use the same vocabulary in the notification content.</p>
 
                                     <p>The sender <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization eg. <code>Authorization: Bearer XXX</code>.</p>
 
@@ -342,8 +342,6 @@ Link: &lt;http://www.w3.org/ns/ldp#Inbox&gt;; rel="type"
                                     <p>Otherwise, the URIs of the notifications will be discoverable through the <code>ldp:contains</code> predicate.</p>
 
                                     <p>The consumer <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization.</p>
-
-                                    <p>If multiple Inboxes are discovered, consumers <em class="rfc2119">SHOULD</em> fetch all Inboxes of interest.</p>
 
                                     <p>Consumers <em class="rfc2119">MAY</em> perform additional fetching or inferring of information from the payload (eg. dereferencing resources referenced in the notification to fetch their contents) at their discretion.</p>
                                 </div>
