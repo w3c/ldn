@@ -69,7 +69,7 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
 
     <body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ v: http://www.w3.org/2006/vcard/ns# pimspace: http://www.w3.org/ns/pim/space# cc: http://creativecommons.org/ns# skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# schema: https://schema.org/ rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# cal: http://www.w3.org/2002/12/cal/ical# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# org: http://www.w3.org/ns/org# biblio: http://purl.org/net/biblio# bibo: http://purl.org/ontology/bibo/ book: http://purl.org/NET/book/vocab# ov: http://open.vocab.org/terms/ doap: http://usefulinc.com/ns/doap# dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ oa: http://www.w3.org/ns/oa# ldp: http://www.w3.org/ns/ldp# solid: http://www.w3.org/ns/solid/terms#" typeof="schema:CreativeWork sioc:Post prov:Entity">
         <main>
-            <article about="" typeof="schema:Article">
+            <article about="" typeof="schema:Article doap:Specification">
                 <h1 property="schema:name">Linked Data Notifications</h1>
 
                 <div id="authors">
@@ -82,7 +82,7 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
 
                 <dl id="document-identifier">
                     <dt>This version</dt>
-                    <dd><a href="https://rawgit.com/csarven/ldn/master/index.html" rel="owl:sameAs">https://rawgit.com/csarven/ldn/master/index.html</a></dd>
+                    <dd><a href="https://rawgit.com/csarven/ldn/master/index.html" rel="owl:sameAs doap:homepage">https://rawgit.com/csarven/ldn/master/index.html</a></dd>
                 </dl>
 
                 <dl id="document-inbox">
@@ -102,12 +102,8 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
 
                 <dl id="document-repository">
                     <dt>Repository</dt>
-                    <dd><a href="https://github.com/csarven/ldn">Repository</a></dd>
-                </dl>
-
-                <dl id="document-repository-issues">
-                    <dt>Repository Issues</dt>
-                    <dd><a href="https://github.com/csarven/ldn/issues">Repository issues</a></dd>
+                    <dd><a href="https://github.com/csarven/ldn" rel="doap:repository">Github</a></dd>
+                    <dd><a href="https://github.com/csarven/ldn/issues" rel="doap:bug-database">Issues</a></dd>
                 </dl>
 
                 <p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2016 <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). <abbr title="World Wide Web Consortium">W3C</abbr> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a rel="license" href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p>
@@ -116,7 +112,7 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
                     <section id="abstract">
                         <h2>Abstract</h2>
                         <div datatype="rdf:HTML" property="schema:abstract">
-                          <p>Linked Data Notifications is a protocol to facilitiate exchanging messages between applications which consume Linked Data.</p>
+                          <p>Linked Data Notifications is a protocol to facilitate exchanging messages between applications which consume Linked Data.</p>
                         </div>
                     </section>
 
