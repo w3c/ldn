@@ -38,6 +38,18 @@ pre code { color: #333; }
 .do.fragment a:hover { background:none; border-bottom:0; }
 figure pre { margin:1em 0; }
 .tabs nav ul li { margin:0; }
+div.issue, div.note, div.warning {
+clear: both;
+margin: 1em 0;
+padding: 1em 1.2em 0.5em;
+position: relative;
+}
+.issue h2, .issue h3, .issue h4, .issue h5, .issue h6 {
+color: #ae1e1e;
+margin:0;
+text-transform: uppercase;
+font-weight:normal;
+}
 
 article section:not([id=abstract]):not([id=document-status]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=document-conventions]) {
 counter-increment:section;
@@ -161,6 +173,14 @@ content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\
                                 <h3 property="schema:name">Summary</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p id="summary-discovery">Senders and consumers <strong><a href="#discovery">discover</a></strong> a resource's <em>Inbox</em> URL(s) through a relation in the HTTP <code>Link</code> header or body of the resource, which is <code>ldp:inbox</code>.</p>
+
+                                    <div class="issue" id="issue-13" rel="schema:hasPart" resource="#issue-13">
+                                        <h4 property="schema:name">Issue 13</h4>
+                                        <div datatype="rdf:HTML" property="schema:description">
+                                            <p>The namespace is subject to change / to be decided.</p>
+                                            <p>See also: <a href="https://github.com/csarven/ldn/issues/13" rel="rdfs:seeAlso">https://github.com/csarven/ldn/issues/13</a></p>
+                                        </div>
+                                    </div>
 
                                     <p id="summary-sender">The <strong><a href="#sending">Sender</a></strong>:</p>
                                     <ul>
