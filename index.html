@@ -36,7 +36,7 @@ code { color: #c83500; }
 pre code { color: #333; }
 .do.fragment a { border-bottom:0; }
 .do.fragment a:hover { background:none; border-bottom:0; }
-figure pre { margin:1em 0; }
+figure pre { margin:1em 0; display:block; }
 .tabs nav ul li { margin:0; }
 div.issue, div.note, div.warning {
 clear: both;
@@ -267,44 +267,43 @@ left:4.5em;
 
                                     <figure class="listing example" id="discovery-head-example" rel="schema:hasPart" resource="#discovery-head-example">
                                         <pre>
-HEAD /profile HTTP/1.1
-Host: user.example
-
-HTTP/1.1 200 OK
-Link: &lt;https://user.example/inbox/&gt;; rel="http://www.w3.org/ns/ldp#inbox"
+<code>HEAD /profile HTTP/1.1</code>
+<code>Host: user.example</code>
+<code></code>
+<code>HTTP/1.1 200 OK</code>
+<code>Link: &lt;https://user.example/inbox/&gt;; rel="http://www.w3.org/ns/ldp#inbox"</code>
                                         </pre>
                                         <figcaption>Discovering an Inbox with a HEAD request.</figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="discovery-json-example" rel="schema:hasPart" resource="#discovery-json-example">
                                         <pre>
-GET /profile HTTP/1.1
-Host: user.example
-Accept: application/ld+json
-
-HTTP/1.1 200 OK
-Content-Type: application/ld+json
-
-{
-    "@context": "http://www.w3.org/ns/ldp#",
-    "@id": "https://user.example/profile/",
-    "inbox": "https://user.example/inbox/"
-}
+<code>GET /profile HTTP/1.1</code>
+<code>Host: user.example</code>
+<code>Accept: application/ld+json</code>
+<code></code>
+<code>HTTP/1.1 200 OK</code>
+<code>Content-Type: application/ld+json</code>
+<code></code>
+<code>{</code>
+<code>  "@context": "http://www.w3.org/ns/ldp#",</code>
+<code>  "@id": "https://user.example/profile/",</code>
+<code>  "inbox": "https://user.example/inbox/"</code>
+<code>}</code>
                                         </pre>
                                         <figcaption>Discovering an Inbox with a GET request to retrieve JSON-LD.</figcaption>
                                     </figure>
                                     <figure class="listing example" id="discovery-html-example" rel="schema:hasPart" resource="#discovery-html-example">
                                         <pre>
-HEAD /profile HTTP/1.1
-Host: user.example
-Accept: text/
-
-HTTP/1.1 200 OK
-Content-Type: text/html
-
-...
-&lt;a href="/inbox/" rel="http://www.w3.org/ns/ldp#inbox"&gt;My inbox&lt;/a&gt;
-...
+<code>HEAD /profile HTTP/1.1</code>
+<code>Host: user.example</code>
+<code>Accept: text/</code>
+<code></code>
+<code>HTTP/1.1 200 OK</code>
+<code>Content-Type: text/html</code>
+<code></code>
+<code>&lt;a href="/inbox/" rel="http://www.w3.org/ns/ldp#inbox"&gt;My inbox&lt;/a&gt;</code>
+<code></code>
                                         </pre>
                                         <figcaption>Discovering an Inbox with a GET request to retrieve HTML.</figcaption>
                                     </figure>
@@ -328,15 +327,15 @@ Content-Type: text/html
 <code><span class="hljs-request">POST <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.net</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json</span></code>
-
-{
-  "@context": "http://www.w3.org/ns/activitystreams#",
-  "@type": "Announce",
-  "actor": "https://example.org/profile#alice",
-  "object": "https://example.org/foo",
-  "target": "https://example.net/article#introduction",
-  "updated": "2016-06-23T15:03:01Z",
-}
+<code></code>
+<code>{</code>
+<code>  "@context": "http://www.w3.org/ns/activitystreams#",</code>
+<code>  "@type": "Announce",</code>
+<code>  "actor": "https://example.org/profile#alice",</code>
+<code>  "object": "https://example.org/foo",</code>
+<code>  "target": "https://example.net/article#introduction",</code>
+<code>  "updated": "2016-06-23T15:03:01Z"</code>
+<code>}</code>
                                         </pre>
                                         <figcaption property="schema:name">Example notification send request to an Inbox.</figcaption>
                                     </figure>
@@ -382,24 +381,24 @@ Content-Type: text/html
                                                 <pre about="#request-example" class="hljs http" property="schema:description" typeof="fabio:Script">
 <code><span class="hljs-request">HEAD <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.net</span></code>
-
+<code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
 <code><span class="hljs-attribute">Allow</span>: <span class="hljs-string">HEAD, GET, POST</span></code>
 <code><span class="hljs-attribute">Accept-Post</span>: <span class="hljs-string">application/ld+json</span>, <span class="hljs-string">text/turtle</span></code>
-
+<code></code>
 <code><span class="hljs-request">POST <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.net</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json</span></code>
-
-{
-  "@context": "http://www.w3.org/ns/activitystreams#",
-  "@type": "Announce",
-  "actor": "https://example.org/profile#alice",
-  "object": "https://example.org/foo",
-  "target": "https://example.net/article#introduction",
-  "updated": "2016-06-23T15:03:01Z",
-}
-
+<code></code>
+<code>{</code>
+<code>  "@context": "http://www.w3.org/ns/activitystreams#",</code>
+<code>  "@type": "Announce",</code>
+<code>  "actor": "https://example.org/profile#alice",</code>
+<code>  "object": "https://example.org/foo",</code>
+<code>  "target": "https://example.net/article#introduction",</code>
+<code>  "updated": "2016-06-23T15:03:01Z",</code>
+<code>}</code>
+<code></code>
 <code><span class="hljs-request">HTTP/1.1 <span class="hljs-string">201</span> Created</span></code>
 <code><span class="hljs-attribute">Location</span>: <span class="hljs-string">https://example.net/inbox/abcdef</span></code>
                                                 </pre>
