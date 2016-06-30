@@ -267,23 +267,23 @@ left:4.5em;
 
                                     <figure class="listing example" id="discovery-head-example" rel="schema:hasPart" resource="#discovery-head-example">
                                         <pre>
-<code>HEAD /profile HTTP/1.1</code>
-<code>Host: user.example</code>
+<code><span class="hljs-request">HEAD <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
 <code></code>
-<code>HTTP/1.1 200 OK</code>
-<code>Link: &lt;https://user.example/inbox/&gt;; rel="http://www.w3.org/ns/ldp#inbox"</code>
+<code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
+<code><span class="hljs-attribute">Link</span>: <span class="hljs-string">&lt;https://user.example/inbox/&gt;; rel="http://www.w3.org/ns/ldp#inbox"</span></code>
                                         </pre>
                                         <figcaption>Discovering an Inbox with a HEAD request.</figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="discovery-json-example" rel="schema:hasPart" resource="#discovery-json-example">
                                         <pre>
-<code>GET /profile HTTP/1.1</code>
-<code>Host: user.example</code>
-<code>Accept: application/ld+json</code>
+<code><span class="hljs-request">HEAD <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
+<code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json</span></code>
 <code></code>
-<code>HTTP/1.1 200 OK</code>
-<code>Content-Type: application/ld+json</code>
+<code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
+<code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json</span></code>
 <code></code>
 <code>{</code>
 <code>  "@context": "http://www.w3.org/ns/ldp#",</code>
@@ -295,12 +295,12 @@ left:4.5em;
                                     </figure>
                                     <figure class="listing example" id="discovery-html-example" rel="schema:hasPart" resource="#discovery-html-example">
                                         <pre>
-<code>HEAD /profile HTTP/1.1</code>
-<code>Host: user.example</code>
-<code>Accept: text/</code>
+<code><span class="hljs-request">HEAD <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
+<code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html</span></code>
 <code></code>
-<code>HTTP/1.1 200 OK</code>
-<code>Content-Type: text/html</code>
+<code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
+<code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/html</span></code>
 <code></code>
 <code>&lt;a href="/inbox/" rel="http://www.w3.org/ns/ldp#inbox"&gt;My inbox&lt;/a&gt;</code>
 <code></code>
