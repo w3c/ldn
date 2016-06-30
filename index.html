@@ -356,7 +356,7 @@ left:4.5em;
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>Consumers retrieve the URIs of notifications in an Inbox through making a <code>GET</code> request on the Inbox URL.</p>
 
-                                    <p>The URIs of the notifications <em class="rc2119">MUST</em> be discoverable through the <code>ldp:contains</code> predicate.</p>
+                                    <p>The URIs of the notifications <em class="rc2119">MUST</em> be discoverable through the <code>ldp:contains</code> predicate of the Inbox URL.</p>
 
                                     <p>The consumer <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization.</p>
 
@@ -416,7 +416,7 @@ left:4.5em;
 
                                             <p>Data about the Inbox itself <em class="rfc2119">MAY</em> also be returned.</p>
 
-                                            <p>Each notification URI <em class="rfc2119">MUST</em> be related to the Inbox URL with the <code>ldp:contains</code> predicate.</p>
+                                            <p>Each notification URI <em class="rfc2119">MUST</em> be related to the Inbox URL with the <code>ldp:contains</code> predicate. Each notification <em class="rfc2119">MUST</em> have state that is fully represented in RDF, corresponding to an RDF graph. See also the term <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source"><abbr title="Resource Description Framework">RDF</abbr> Source</a> from [<cite><a class="bibref" href="#bib-rdf11-concepts">rdf11-concepts</a></cite>].</p>
 
                                             <p>Example using LDP vocabulary:</p>
 
