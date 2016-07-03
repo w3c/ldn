@@ -317,11 +317,11 @@ left:4.5em;
                             <section id="sending" inlist="" rel="schema:hasPart" resource="#sending">
                                 <h3 property="schema:name">Sending</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
+                                    <p>The sender <em class="rfc2119">MUST</em> discover the Inbox through the <code>ldp:inbox</code> relation either through a <code>HEAD</code> request or in response body (<a href="#discovery">see discovery</a>). If multiple Inboxes are discovered, senders <em class="rfc2119">MUST</em> de-duplicate Inbox URLs and send to <em>all</em> unique Inbox URLs.</p>
+
                                     <p>Senders <em class="rfc2119">MUST</em> deliver notifications through a <code>POST</code> request to the Inbox URL. Senders can expect a <code>201 Created</code> (with a <code>Location</code> Link header) in response to a successful request.</p>
  
                                     <p>The sender <em class="rfc2119">MAY</em> use an <code>OPTIONS</code> request to determine the RDF content types accepted by the server, and serialize the notification in the request body according to the value of the <code>Accept-Post</code> header [<cite><a class="bibref" href="http://tools.ietf.org/html/draft-wilde-accept-post">Accept-Post</a></cite>] returned. Otherwise, the body of the <code>POST</code> request <em class="rfc2119">MUST</em> contain the notification <a href="#payload">payload</a> in JSON-LD.</p>
-
-                                    <p>The sender <em class="rfc2119">MUST</em> discover the Inbox through <code>ldp:inbox</code>. If multiple Inboxes are discovered, senders <em class="rfc2119">MUST</em> de-duplicate Inbox URLs and send to <em>all</em> unique Inbox URLs.</p>
 
                                     <p>The sender <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization eg. <code>Authorization: Bearer XXX</code>.</p>
 
