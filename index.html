@@ -263,7 +263,11 @@ left:4.5em;
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>An <em>Inbox</em>, the endpoint which notifications are sent to or consumed from, can be discovered from any resource, for example a blog post, a dataset, a user profile. Multiple resources <em class="rfc2119">MAY</em> use the same Inbox; one resource <em class="rfc2119">MAY</em> have multiple Inbox URLs. The starting point for discovery is the resource which the notification is to or about: the <em>target</em>. Choosing the most appropriate target resource is at the discretion of the sender or consumer.</p>
 
-                                    <p>Senders and consumers <em class="rfc2119">MUST</em> fetch the target resource URL (and follow redirects), or make a <code>HEAD</code> request, to check for an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code>. If no such Link header is found, senders and consumers can discover the Inbox from its body. Senders and consumers <em class="rfc2119">MUST</em> use the object URI(s) of the predicate <code>http://www.w3.org/ns/ldp#inbox</code> in RDF Sources [<cite><a class="bibref" href="#bib-LDP-RS">LDP-RS</a></cite>].</p>
+                                    <p>To discover the Inbox URL, senders and consumers <em class="rfc2119">MUST</em> either:</p>
+                                    <ul>
+                                        <li>make a <code>HEAD</code> request on the target URL, to check for an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code></li>
+                                        <li>fetch the target URL (and follow redirects) and use the object URI(s) of the predicate <code>http://www.w3.org/ns/ldp#inbox</code> in RDF Sources [<cite><a class="bibref" href="#bib-LDP-RS">LDP-RS</a></cite>]</li>
+                                    </ul>
 
                                     <figure class="listing example" id="discovery-head-example" rel="schema:hasPart" resource="#discovery-head-example">
                                         <pre>
