@@ -211,15 +211,7 @@ left:4.5em;
                             <section id="summary" inlist="" rel="schema:hasPart" resource="#summary">
                                 <h3 property="schema:name">Summary</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p id="summary-discovery">Senders and consumers <strong><a href="#discovery">discover</a></strong> a resource's <em>Inbox</em> URL(s) through a relation in the HTTP <code>Link</code> header or body of the resource, which is <code>ldp:inbox</code>.</p>
-
-                                    <div class="issue" id="issue-13" rel="schema:hasPart" resource="#issue-13">
-                                        <h4 property="schema:name">Issue 13</h4>
-                                        <div datatype="rdf:HTML" property="schema:description">
-                                            <p>The namespace is subject to change / to be decided.</p>
-                                            <p>See also: <a href="https://github.com/csarven/ldn/issues/13" rel="rdfs:seeAlso">https://github.com/csarven/ldn/issues/13</a></p>
-                                        </div>
-                                    </div>
+                                    <p id="summary-discovery">Senders and consumers <strong><a href="#discovery">discover</a></strong> a resource's <em>Inbox</em> URL(s) through a relation in the HTTP <code>Link</code> header or body of the resource.</p>
 
                                     <p id="summary-sender">The <strong><a href="#sending">Sender</a></strong>:</p>
                                     <ul>
@@ -263,11 +255,21 @@ left:4.5em;
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>An <em>Inbox</em>, the endpoint which notifications are sent to or consumed from, can be discovered from any resource, for example a blog post, a dataset, a user profile. Multiple resources <em class="rfc2119">MAY</em> use the same Inbox; one resource <em class="rfc2119">MAY</em> have multiple Inbox URLs. The starting point for discovery is the resource which the notification is to or about: the <em>target</em>. Choosing the most appropriate target resource is at the discretion of the sender or consumer.</p>
 
-                                    <p>To discover the Inbox URL, senders and consumers <em class="rfc2119">MUST</em> either:</p>
+                                    <p>To discover the Inbox URL, senders and consumers <em class="rfc2119">MUST</em>:</p>
                                     <ul>
                                         <li>make a <code>HEAD</code> request on the target URL, to check for an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code></li>
                                         <li>fetch the target URL (and follow redirects) and use the object URI(s) of the predicate <code>http://www.w3.org/ns/ldp#inbox</code> in RDF Sources [<cite><a class="bibref" href="#bib-LDP-RS">LDP-RS</a></cite>]</li>
                                     </ul>
+
+                                    <p>These may be carried out in either order, but if the first fails to result in an Inbox the second <em class="rfc2119">MUST</em> be tried.</p>
+
+                                    <div class="issue" id="issue-13" rel="schema:hasPart" resource="#issue-13">
+                                        <h4 property="schema:name">Issue 13</h4>
+                                        <div datatype="rdf:HTML" property="schema:description">
+                                            <p>The namespace of the <code>inbox</code> property is to be finalised.</p>
+                                            <p>See also: <a href="https://github.com/csarven/ldn/issues/13" rel="rdfs:seeAlso">https://github.com/csarven/ldn/issues/13</a></p>
+                                        </div>
+                                    </div>
 
                                     <figure class="listing example" id="discovery-head-example" rel="schema:hasPart" resource="#discovery-head-example">
                                         <pre>
@@ -282,7 +284,7 @@ left:4.5em;
 
                                     <figure class="listing example" id="discovery-json-example" rel="schema:hasPart" resource="#discovery-json-example">
                                         <pre>
-<code><span class="hljs-request">HEAD <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
+<code><span class="hljs-request">GET <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json</span></code>
 <code></code>
@@ -299,7 +301,7 @@ left:4.5em;
                                     </figure>
                                     <figure class="listing example" id="discovery-html-example" rel="schema:hasPart" resource="#discovery-html-example">
                                         <pre>
-<code><span class="hljs-request">HEAD <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
+<code><span class="hljs-request">GET <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html</span></code>
 <code></code>
