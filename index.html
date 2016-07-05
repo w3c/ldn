@@ -319,7 +319,7 @@ left:4.5em;
                             <section id="sending" inlist="" rel="schema:hasPart" resource="#sending">
                                 <h3 property="schema:name">Sending</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>The sender <em class="rfc2119">MUST</em> discover the Inbox through the <code>ldp:inbox</code> relation either through a <code>HEAD</code> request or in response body (<a href="#discovery">see discovery</a>). If multiple Inboxes are discovered, senders <em class="rfc2119">MUST</em> de-duplicate Inbox URLs and send to <em>all</em> unique Inbox URLs.</p>
+                                    <p>The sender <em class="rfc2119">MUST</em> discover the Inbox through the <code>ldp:inbox</code> relation either through a <code>HEAD</code> request or in response body (<a href="#discovery">see discovery</a>). If multiple Inboxes are discovered, senders <em class="rfc2119">MUST</em> de-duplicate Inbox URLs and send to <em>all unique</em> Inbox URLs.</p>
 
                                     <p>Senders <em class="rfc2119">MUST</em> deliver notifications through a <code>POST</code> request to the Inbox URL. Senders can expect a <code>201 Created</code> (with a <code>Location</code> Link header) in response to a successful request.</p>
  
@@ -331,15 +331,15 @@ left:4.5em;
                                     <figure class="listing example" id="sending-notification" rel="schema:hasPart" resource="#sending-notification">
                                         <pre about="sending-notification" property="schema:description" typeof="fabio:Script">
 <code><span class="hljs-request">POST <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
-<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.net</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json</span></code>
 <code></code>
 <code>{</code>
 <code>  "@context": "http://www.w3.org/ns/activitystreams#",</code>
 <code>  "@type": "Announce",</code>
-<code>  "actor": "https://example.org/profile#alice",</code>
-<code>  "object": "https://example.org/foo",</code>
-<code>  "target": "https://example.net/article#introduction",</code>
+<code>  "actor": { "@id": "https://example.org/profile#alice" },</code>
+<code>  "object": { "@id": "https://example.org/annotation-1" },</code>
+<code>  "target": { "@id": "https://user.example/article#introduction" },</code>
 <code>  "updated": "2016-06-23T15:03:01Z"</code>
 <code>}</code>
                                         </pre>
@@ -350,7 +350,7 @@ left:4.5em;
                                     <figure class="listing example" id="sending-notification-response" rel="schema:hasPart" resource="#sending-notification-response">
                                         <pre about="sending-notification-response" property="schema:description" typeof="fabio:Script">
 <code><span class="hljs-request">HTTP/1.1 <span class="hljs-string">201</span> Created</span></code>
-<code><span class="hljs-attribute">Location</span>: <span class="hljs-string">https://example.net/inbox/abcdef</span></code>
+<code><span class="hljs-attribute">Location</span>: <span class="hljs-string">https://user.example/notification-1</span></code>
                                         </pre>
                                         <figcaption property="schema:name">Example response to a request</figcaption>
                                     </figure>
@@ -360,7 +360,7 @@ left:4.5em;
                             <section id="consuming" inlist="" rel="schema:hasPart" resource="#consuming">
                                 <h3 property="schema:name">Consuming</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Consumers retrieve the URIs of notifications in an Inbox through making a <code>GET</code> request on the Inbox URL (<a href="#discovery">see discovery</a>).</p>
+                                    <p>Consumers retrieve the URIs of notifications in an Inbox through making a <code>GET</code> request on the Inbox URL (to find this URL, see <a href="#discovery">discovery</a>).</p>
 
                                     <p>The URIs of the notifications <em class="rfc2119">MUST</em> be discoverable through the <code>ldp:contains</code> predicate of the Inbox URL.</p>
 
@@ -380,33 +380,35 @@ left:4.5em;
                                         <div datatype="rdf:HTML" property="schema:description">
                                             <p>Upon receipt of a <code>POST</code> request to the Inbox, the receiver <em class="rfc2119">MUST</em> create a new resource containing the RDF data from the body of the <code>POST</code> request and <em class="rfc2119">MUST</em> return <code>HTTP 201 Created</code> with a <code>Location</code> header pointing to the created resource.</p>
 
-                                            <p>Receivers <em class="rfc2119">MUST</em> accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>, and <em class="rfc2119">MAY</em> accept other RDF content types (eg. <code>text/turtle</code>, <code>text/html</code>). Receivers <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept-Post</code> header on the Inbox URL. Receivers <em class="rfc2119">MAY</em> reserialize a notification into a different syntax, prior to doing anything else with it.</p>
+                                            <p>Receivers <em class="rfc2119">MUST</em> accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>, and <em class="rfc2119">MAY</em> accept other RDF content types (eg. <code>text/turtle</code>, <code>text/html</code>). Receivers <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept-Post</code> header on the Inbox URL. </p>
+
+                                            <p>Receivers <em class="rfc2119">MAY</em> reserialize a notification into a different syntax prior to storage.</p>
 
                                             <p>Example Request:</p>
                                             <figure class="listing example" id="request-response-example" rel="schema:hasPart" resource="#request-response-example">
                                                 <pre about="#request-example" class="hljs http" property="schema:description" typeof="fabio:Script">
 <code><span class="hljs-request">HEAD <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
-<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.net</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
 <code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
 <code><span class="hljs-attribute">Allow</span>: <span class="hljs-string">HEAD, GET, POST</span></code>
 <code><span class="hljs-attribute">Accept-Post</span>: <span class="hljs-string">application/ld+json</span>, <span class="hljs-string">text/turtle</span></code>
 <code></code>
 <code><span class="hljs-request">POST <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
-<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.net</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json</span></code>
 <code></code>
 <code>{</code>
 <code>  "@context": "http://www.w3.org/ns/activitystreams#",</code>
 <code>  "@type": "Announce",</code>
-<code>  "actor": "https://example.org/profile#alice",</code>
-<code>  "object": "https://example.org/foo",</code>
-<code>  "target": "https://example.net/article#introduction",</code>
+<code>  "actor": { "@id": "https://example.org/profile#alice" },</code>
+<code>  "object": { "@id": "https://example.org/annotation-1" },</code>
+<code>  "target": { "@id": "https://user.example/article#introduction" },</code>
 <code>  "updated": "2016-06-23T15:03:01Z",</code>
 <code>}</code>
 <code></code>
 <code><span class="hljs-request">HTTP/1.1 <span class="hljs-string">201</span> Created</span></code>
-<code><span class="hljs-attribute">Location</span>: <span class="hljs-string">https://example.net/inbox/abcdef</span></code>
+<code><span class="hljs-attribute">Location</span>: <span class="hljs-string">https://user.example/notification-1</span></code>
                                                 </pre>
                                                 <figcaption property="schema:name">Example request and response</figcaption>
                                             </figure>
@@ -422,27 +424,15 @@ left:4.5em;
 
                                             <p>Data about the Inbox itself <em class="rfc2119">MAY</em> also be returned.</p>
 
-                                            <p>Each notification URI <em class="rfc2119">MUST</em> be related to the Inbox URL with the <code>ldp:contains</code> predicate. Each notification <em class="rfc2119">MUST</em> be an <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source"><abbr title="Resource Description Framework">RDF</abbr> Source</a>.</p>
-
-                                            <p>Example using LDP vocabulary:</p>
-
-                                            <figure class="listing example" id="results-example-inbox-discovery-ldp" rel="schema:hasPart" resource="#results-example-inbox-discovery-ldp">
-                                                <pre about="#results-example-inbox-discovery-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
-<code>{</code>
-<code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/profile"</span></span>,</code>
-<code>  "<span class="hljs-attribute">ldp:inbox</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/messages/"</span></span></code>
-<code>}</code>
-                                                </pre>
-                                                <figcaption>Inbox discovery.</figcaption>
-                                            </figure>
+                                            <p>Each notification URI <em class="rfc2119">MUST</em> be related to the Inbox URL with the <code>ldp:contains</code> predicate. Each notification <em class="rfc2119">MUST</em> be an <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source"><abbr title="Resource Description Framework">RDF</abbr> Source</a>. If non-RDF resources are returned, the consumer <em class="rfc2119">MAY</em> ignore them.</p>
 
                                             <figure class="listing example" id="results-example-inbox-contains-ldp" rel="schema:hasPart" resource="#results-example-inbox-contains-ldp">
                                                 <pre about="#results-example-inbox-contains-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
 <code>{</code>
-<code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/messages/"</span></span>,</code>
+<code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/inbox/"</span></span>,</code>
 <code>  "<span class="hljs-attribute">ldp:contains</span>": <span class="hljs-value">[</span></code>
-<code>    { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/notification-1"</span></span> },</code>
-<code>    { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/notification-2"</span></span> }</code>
+<code>    { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/notification-1"</span></span> },</code>
+<code>    { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/notification-2"</span></span> }</code>
 <code>  <span class="hljs-value">]</span></code>
 <code>}</code>
                                                 </pre>
@@ -460,12 +450,13 @@ left:4.5em;
                         <div datatype="rdf:HTML" property="schema:description">
                             <p>The payload of the notification <em class="rfc2119">MUST</em> be a JSON-LD unless another RDF syntax has been negotiated with the receiver. To allow for a wide variety of use cases, the actual vocabulary of the payload is deliberately left to the discretion of the sender. The sender <em class="rfc2119">MUST NOT</em> assume that the receiver can fetch or infer anything additional from the payload, and thus <em class="rfc2119">MUST</em> include everything they want the receiver to know.</p>
 
-                            <p id="rights-and-license">Senders <em class="rfc2119">SHOULD</em> include rights or license information in the payload as the notification may be reused or displayed by different consumers and environments.</p>
+                            <!-- Commenting out for now as I think this should probably go somewhere else, eg. in suggestions for implementors, not normative text. - rhiaro
+                            <p id="rights-and-license">Senders <em class="rfc2119">SHOULD</em> include rights or license information in the payload as the notification may be reused or displayed by different consumers and environments.</p>-->
 
                             <section id="payload-examples" inlist="" rel="schema:hasPart" resource="#payload-examples">
                                 <h3 property="schema:name">Payload Examples</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Here are some examples of notification content:</p>
+                                    <p><em>This section is non-normative.</em> Here are some examples of notification content:</p>
 
                                     <section id="single-statement" inlist="" rel="schema:hasPart" resource="#single-statement">
                                         <h4 property="schema:name">Single Statement</h4>
@@ -485,7 +476,7 @@ left:4.5em;
                                                     <pre about="#notification-single-statement-turtle" property="schema:description" typeof="fabio:Script">
 <code>{</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.org/profile#alice"</span></span>,</code>
-<code>  "<span class="hljs-attribute">http://ontologi.es/like#liked</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/article"</span></span></code>
+<code>  "<span class="hljs-attribute">http://ontologi.es/like#liked</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/article"</span></span></code>
 <code>}</code>
                                                     </pre>
                                                     <figcaption property="schema:name">Example notification type: single statement in JSON-LD</figcaption>
@@ -494,7 +485,7 @@ left:4.5em;
                                                 <figure class="listing example" id="notification-single-statement-turtle" rel="schema:hasPart" resource="#notification-single-statement-turtle">
                                                     <pre about="#notification-single-statement-turtle" property="schema:description" typeof="fabio:Script">
 <code>&lt;https://example.org/profile#alice&gt;</code>
-<code>  &lt;http://ontologi.es/like#liked&gt; &lt;https://example.net/article&gt; .</code>
+<code>  &lt;http://ontologi.es/like#liked&gt; &lt;https://user.example/article&gt; .</code>
                                                     </pre>
                                                     <figcaption property="schema:name">Example notification type: single statement in Turtle.</figcaption>
                                                 </figure>
@@ -504,7 +495,7 @@ left:4.5em;
 <code>&lt;p about="https://example.org/profile#alice"&gt;</code>
 <code>  Alice</code>
 <code>  &lt;a rel="http://ontologi.es/like#liked"</code>
-<code>     href="https://example.net/article">liked article&lt;/a&gt;.</code>
+<code>     href="https://user.example/article">liked article&lt;/a&gt;.</code>
 <code>&lt;/p&gt;</code>
                                                     </pre>
                                                     <figcaption property="schema:name">Example notification type: single statement in RDFa.</figcaption>
@@ -522,17 +513,27 @@ left:4.5em;
                                         <div datatype="rdf:HTML" property="schema:description">
                                             <p>A particular grouping of triples which describe and qualify the relations, i.e., the vocabulary in use typically gives meaning to the statements when consumed as a whole. The examples below tend to refer to external resources where the body of the content can be discovered.</p>
 
-                                            <p>ActivityStreams:</p>
+                                            <p>ActivityStreams 2.0:</p>
                                             <figure class="listing example" id="notification-qualified-relation" rel="schema:hasPart" resource="#notification-qualified-relation">
                                                 <pre about="#notification-qualified-relation" property="schema:description" typeof="fabio:Script">
+<code>{</code>
+<code>  "@context": "http://www.w3.org/ns/activitystreams#",</code>
+<code>  "@type": "Announce",</code>
+<code>  "actor": { "@id": "https://example.org/profile#alice" },</code>
+<code>  "object": { "@id": "https://example.org/annotation-1" },</code>
+<code>  "target": { "@id": "https://user.example/article#introduction" },</code>
+<code>  "updated": "2016-06-23T15:03:01Z",</code>
+<code>}</code>
+<!--
 <code>&lt;&gt; a as:Announce ;</code>
-<code>  as:object &lt;https://example.org/foo&gt; ;</code>
-<code>  as:target &lt;https://example.net/article#introduction&gt; ;</code>
+<code>  as:object &lt;https://example.org/annotation-1&gt; ;</code>
+<code>  as:target &lt;https://user.example/article#introduction&gt; ;</code>
 <code>  as:updated "2016-02-02T18:58:50.719Z"^^xsd:dateTime ;</code>
 <code>  as:actor &lt;https://example.com/profile#alice&gt; ;</code>
 <code>  schema:license &lt;https://creativecommons.org/licenses/by/4.0/&gt; .</code>
-<code>&lt;https://example.org/foo&gt; a as:Note ;</code>
-<code>  as:inReplyTo &lt;https://example.net/article#introduction&gt; .</code>
+<code>&lt;https://example.org/annotation-1&gt; a as:Note ;</code>
+<code>  as:inReplyTo &lt;https://user.example/article#introduction&gt; .</code>
+-->
                                                 </pre>
                                                 <figcaption property="schema:name">Example notification type: qualified relation.</figcaption>
                                             </figure>
@@ -540,9 +541,17 @@ left:4.5em;
                                             <p>Semantic Pingback:</p>
                                             <figure class="listing example" id="notification-semantic-pingback" rel="schema:hasPart" resource="#notification-semantic-pingback">
                                                 <pre about="#notification-semantic-pingback" property="schema:description" typeof="fabio:Script">
+<code>{</code>
+<code>  "@context": "http://purl.org/net/pingback/",</code>
+<code>  "@type": "Request",</code>
+<code>  "source": { "@id": "https://example.org/annotation-1" },</code>
+<code>  "target": { "@id": "https://user.example/article" },</code>
+<code>}</code>
+<!--
 <code>&lt;&gt; a pingback:Request ;</code>
-<code>  pingback:source &lt;https://example.org/foo&gt; ;</code>
-<code>  pingback:target &lt;https://example.net/article&gt; .</code>
+<code>  pingback:source &lt;https://example.org/annotation-1&gt; ;</code>
+<code>  pingback:target &lt;https://user.example/article&gt; .</code>
+-->
                                                 </pre>
                                                 <figcaption property="schema:name">Example notification type: Semantic Pingback.</figcaption>
                                             </figure>
@@ -550,9 +559,16 @@ left:4.5em;
                                             <p>Webmention:</p>
                                             <figure class="listing example" id="notification-webmention" rel="schema:hasPart" resource="#notification-webmention">
                                                 <pre about="#notification-webmention" property="schema:description" typeof="fabio:Script">
+<code>{</code>
+<code>  "@context": "http://www.w3.org/ns/webmention#",</code>
+<code>  "source": { "@id": "https://example.org/annotation-1" },</code>
+<code>  "target": { "@id": "https://user.example/article" },</code>
+<code>}</code>
+<!--
 <code>&lt;&gt;</code>
-<code>  wm:source &lt;https://example.org/foo&gt; ;</code>
-<code>  wm:target &lt;https://example.net/article&gt; .</code>
+<code>  wm:source &lt;https://example.org/annotation-1&gt; ;</code>
+<code>  wm:target &lt;https://user.example/article&gt; .</code>
+-->
                                                 </pre>
                                                 <figcaption property="schema:name">Example notification type: Webmention.</figcaption>
                                             </figure>
@@ -567,8 +583,28 @@ left:4.5em;
 
                                             <figure class="listing example" id="notification-any-data" rel="schema:hasPart" resource="#notification-any-data">
                                                 <pre about="#notification-any-data" property="schema:description" typeof="fabio:Script">
+<code>{</code>
+<code>  "@context": [</code>
+<code>    { "sioc": "http://rdfs.org/sioc/ns#" },</code>
+<code>    { "foaf": "http://xmlns.com/foaf/0.1/" }</code>
+<code>  ],</code>
+<code>  "@type": "sioc:Comment",</code>
+<code>  "sioc:reply_of": { "@id": "https://user.example/article" },</code>
+<code>  "sioc:created_at": "2015-12-23T16:44:21Z",</code>
+<code>  "sioc:content"" : "This is a great article!",</code>
+<code>  "sioc:has_creator": { "@id": "https://example.org/profile/" }</code>
+<code>}</code>
+<code></code>
+<code>{</code>
+<code>  "@id": "https://example.org/profile/",</code>
+<code>  "@type": "sioc:UserAccount",</code>
+<code>  "sioc:account_of": { "@id": "https://example.org/profile#alice" },</code>
+<code>  "sioc:avatar": { "@id": "https://example.org/profile/avatar.png" },</code>
+<code>  "foaf:name": "Alice"</code>
+<code>}</code>
+<!--
 <code>&lt;&gt; a sioc:Comment ;</code>
-<code>  sioc:reply_of &lt;https://example.net/article&gt; ;</code>
+<code>  sioc:reply_of &lt;https://user.example/article&gt; ;</code>
 <code>  sioc:created_at "2015-12-23T16:44:21Z"^^xsd:#dateTime ;</code>
 <code>  sioc:content "Lorem ipsum dolor sit amet.." ;</code>
 <code>  sioac:has_creator &lt;#author&gt; .</code>
@@ -577,6 +613,7 @@ left:4.5em;
 <code>  sioc:account_of &lt;../profile#alice&gt; ;</code>
 <code>  sioc:avatar &lt;../avatar.jpg&gt; ;</code>
 <code>  foaf:name "Alice" .</code>
+-->
                                                 </pre>
                                                 <figcaption property="schema:name">Example notification type: any data.</figcaption>
                                             </figure>
@@ -646,8 +683,6 @@ left:4.5em;
                                 <li><a href="https://github.com/linkeddata/errol">errol</a> (sender)</li>
                                 <li><a href="https://dokie.li/">dokieli</a> (sender, consumer)</li>
                                 <li><a href="https://github.com/solid/solid-inbox">solid-inbox</a> (consumer)</li>
-                                <li>ActivityPub (receiver) ?</li>
-                                <li>Structured Feedback (receiver, sender, consumer)?</li>
                             </ul>
                         </div>
                     </section>
