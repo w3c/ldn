@@ -592,7 +592,7 @@ left:4.5em;
 <code>  "sioc:reply_of": { "@id": "https://user.example/article" },</code>
 <code>  "sioc:created_at": "2015-12-23T16:44:21Z",</code>
 <code>  "sioc:content" : "This is a great article!",</code>
-<code>  "sioc:has_creator": {
+<code>  "sioc:has_creator": {</code>
 <code>    "@id": "https://example.org/profile/",</code>
 <code>    "@type": "sioc:UserAccount",</code>
 <code>    "sioc:account_of": { "@id": "https://example.org/profile#alice" },</code>
@@ -600,18 +600,6 @@ left:4.5em;
 <code>    "foaf:name": "Alice"</code>
 <code>  }</code>
 <code>}</code>
-<!--
-<code>&lt;&gt; a sioc:Comment ;</code>
-<code>  sioc:reply_of &lt;https://user.example/article&gt; ;</code>
-<code>  sioc:created_at "2015-12-23T16:44:21Z"^^xsd:#dateTime ;</code>
-<code>  sioc:content "Lorem ipsum dolor sit amet.." ;</code>
-<code>  sioac:has_creator &lt;#author&gt; .</code>
-
-<code>&lt;#author&gt; a sioc:UserAccount ;</code>
-<code>  sioc:account_of &lt;../profile#alice&gt; ;</code>
-<code>  sioc:avatar &lt;../avatar.jpg&gt; ;</code>
-<code>  foaf:name "Alice" .</code>
--->
                                                 </pre>
                                                 <figcaption property="schema:name">Example notification type: any data.</figcaption>
                                             </figure>
