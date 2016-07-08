@@ -384,7 +384,9 @@ left:4.5em;
                                         <div datatype="rdf:HTML" property="schema:description">
                                             <p>Upon receipt of a <code>POST</code> request to the Inbox, the receiver <em class="rfc2119">MUST</em> create a new resource containing the RDF data from the body of the <code>POST</code> request and <em class="rfc2119">MUST</em> return <code>HTTP 201 Created</code> with a <code>Location</code> header pointing to the created resource.</p>
 
-                                            <p>Receivers <em class="rfc2119">MUST</em> accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>, and <em class="rfc2119">MAY</em> accept other RDF content types (eg. <code>text/turtle</code>, <code>text/html</code>). Receivers <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept-Post</code> header on the Inbox URL. </p>
+                                            <p>Receivers <em class="rfc2119">MUST</em> accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>. The <code>Content-Type</code> header <em class="rfc2119">MAY</em> include a profile URI [<cite><a class="bibref" href="#bib-RFC6906">RFC6906</a></cite>].</p>
+
+                                            <p>Receivers <em class="rfc2119">MAY</em> accept other RDF content types (eg. <code>text/turtle</code>, <code>text/html</code>), and <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept-Post</code> header on the Inbox URL.</p>
 
                                             <p>Receivers <em class="rfc2119">MAY</em> reserialize a notification into a different syntax prior to storage.</p>
 
