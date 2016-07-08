@@ -251,7 +251,7 @@ left:4.5em;
                             <section id="discovery" inlist="" rel="schema:hasPart" resource="#discovery">
                                 <h3 property="schema:name">Discovery</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>An <em>Inbox</em>, the endpoint which notifications are sent to or consumed from, can be discovered from any resource, for example a blog post, a dataset, a user profile. Choosing the most appropriate target resource from which to begin discovery is at the discretion of the sender or consumer.</p>
+                                    <p>An <em>Inbox</em>, the endpoint which notifications are sent to or consumed from, can be discovered from any resource, for example a blog post, a dataset, a user profile. The starting point for discovery is the resource which the notification is to or about: the <em>target</em>. Choosing the most appropriate target resource from which to begin discovery is at the discretion of the sender or consumer.</p>
 
                                     <p>To discover the Inbox URL, senders and consumers <em class="rfc2119">MUST</em>:</p>
                                     <ul>
@@ -261,7 +261,7 @@ left:4.5em;
 
                                     <p>These may be carried out in either order, but if the first fails to result in an Inbox the second <em class="rfc2119">MUST</em> be tried.</p>
 
-                                    <p>A resource <em class="rfc2119">MUST</em> advertise only one Inbox. One Inbox <em class="rfc2119">MAY</em> be used by multiple resources, for example using the same Inbox for replies to all of my blog posts and shares of all of my photos. The starting point for discovery is the resource which the notification is to or about: the <em>target</em>.</p>
+                                    <p>A resource <em class="rfc2119">MUST</em> advertise only one Inbox. One Inbox <em class="rfc2119">MAY</em> be used by multiple resources, for example using the same Inbox for replies to all of my blog posts and shares of all of my photos.</p>
 
                                     <div class="issue" id="issue-13" rel="schema:hasPart" resource="#issue-13">
                                         <h4 property="schema:name">Issue 13</h4>
