@@ -251,7 +251,7 @@ left:4.5em;
                             <section id="discovery" inlist="" rel="schema:hasPart" resource="#discovery">
                                 <h3 property="schema:name">Discovery</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>An <em>Inbox</em>, the endpoint which notifications are sent to or consumed from, can be discovered from any resource, for example a blog post, a dataset, a user profile. Multiple resources <em class="rfc2119">MAY</em> use the same Inbox, for example using the same Inbox for replies to all of my blog posts and shares of all of my photos. One resource <em class="rfc2119">MAY</em> have multiple Inbox URLs, for example an article may list an Inbox for each co-author. The starting point for discovery is the resource which the notification is to or about: the <em>target</em>. Choosing the most appropriate target resource from which to begin discovery is at the discretion of the sender or consumer.</p>
+                                    <p>An <em>Inbox</em>, the endpoint which notifications are sent to or consumed from, can be discovered from any resource, for example a blog post, a dataset, a user profile. A resource <em class="rfc2119">MUST</em> advertise only one Inbox. One Inbox <em class="rfc2119">MAY</em> be used by multiple resources, for example using the same Inbox for replies to all of my blog posts and shares of all of my photos. The starting point for discovery is the resource which the notification is to or about: the <em>target</em>. Choosing the most appropriate target resource from which to begin discovery is at the discretion of the sender or consumer.</p>
 
                                     <p>To discover the Inbox URL, senders and consumers <em class="rfc2119">MUST</em>:</p>
                                     <ul>
@@ -317,16 +317,7 @@ left:4.5em;
                             <section id="sending" inlist="" rel="schema:hasPart" resource="#sending">
                                 <h3 property="schema:name">Sending</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>The sender <em class="rfc2119">MUST</em> discover the Inbox through the <code>ldp:inbox</code> relation either through a <code>HEAD</code> request or in response body (<a href="#discovery">see discovery</a>). If multiple Inboxes are discovered, senders <em class="rfc2119">MUST</em> de-duplicate Inbox URLs and send to <em>all unique</em> Inbox URLs.</p>
-
-                                    <div class="issue" id="issue-6" rel="schema:hasPart" resource="#issue-6">
-                                        <h4 property="schema:name">Issue 6</h4>
-                                        <div datatype="rdf:HTML" property="schema:description">
-                                            <p>Define 'de-duplicate'.</p>
-                                            <p>Or should we require resources only have one inbox instead? (So the multiple co-author scenario would only be able to be met by an Inbox forwarding service).</p>
-                                            <p>See also: <a href="https://github.com/csarven/ldn/issues/6" rel="rdfs:seeAlso">https://github.com/csarven/ldn/issues/6</a></p>
-                                        </div>
-                                    </div>
+                                    <p>The sender <em class="rfc2119">MUST</em> discover the Inbox through the <code>ldp:inbox</code> relation either through a <code>HEAD</code> request or in response body (<a href="#discovery">see discovery</a>).</p>
 
                                     <p>Senders <em class="rfc2119">MUST</em> deliver notifications through a <code>POST</code> request to the Inbox URL. Senders can expect a <code>201 Created</code> (with a <code>Location</code> Link header) in response to a successful request.</p>
  
@@ -371,19 +362,11 @@ left:4.5em;
 
                                     <p>The URIs of the notifications <em class="rfc2119">MUST</em> be discoverable through the <code>ldp:contains</code> predicate of the Inbox URL.</p>
 
-                                    <p>Fetching the notifications - if any, how many, or any criteria (e.g., content-length, timestamp) - is at the discretion of the consumer.</p>
+                                    <p>Fetching the notifications - if any, how many, or according to a particular criteria (e.g., content-length, timestamp) - is at the discretion of the consumer.</p>
 
                                     <p>The consumer <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization.</p>
 
                                     <p>Consumers <em class="rfc2119">MAY</em> perform additional fetching or inferring of information from the payload (eg. dereferencing resources referenced in the notification to fetch their contents) at their discretion.</p>
-
-                                    <div class="issue" id="issue-20" rel="schema:hasPart" resource="#issue-20">
-                                        <h4 property="schema:name">Issue 20</h4>
-                                        <div datatype="rdf:HTML" property="schema:description">
-                                            <p>What should consumers if they discover multiple inboxes? (Unless we change to this not being possible)</p>
-                                            <p>See also: <a href="https://github.com/csarven/ldn/issues/20" rel="rdfs:seeAlso">https://github.com/csarven/ldn/issues/20</a></p>
-                                        </div>
-                                    </div>
 
                                     </p>
                                 </div>
