@@ -364,7 +364,7 @@ left:4.5em;
 
                                     <p>The URIs of the notifications <em class="rfc2119">MUST</em> be discoverable through the <code>ldp:contains</code> predicate of the Inbox URL.</p>
 
-                                    <p>Fetching the notifications - if any, how many, or according to a particular criteria (e.g., content-length, timestamp) - is at the discretion of the consumer.</p>
+                                    <p>When retreiving individual notfications, the consumer <em class="rfc2119">MAY</em> send an <code>Accept</code> header to indicate preferred content types. If no <code>Accept</code> header is sent, or the receiver cannot comply with the content type requested, the consumer <em class="rdfc2119">MUST</em> accept JSON-LD. Fetching the notifications - if any, how many, or according to a particular criteria (e.g., content-length, timestamp) - is at the discretion of the consumer.</p>
 
                                     <p>The consumer <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization.</p>
 
@@ -430,7 +430,7 @@ left:4.5em;
 
                                             <p>Data about the Inbox itself <em class="rfc2119">MAY</em> also be returned.</p>
 
-                                            <p>Each notification URI <em class="rfc2119">MUST</em> be related to the Inbox URL with the <code>ldp:contains</code> predicate. Each notification <em class="rfc2119">MUST</em> be an <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source"><abbr title="Resource Description Framework">RDF</abbr> Source</a>. If non-RDF resources are returned, the consumer <em class="rfc2119">MAY</em> ignore them.</p>
+                                            <p>Each notification URI <em class="rfc2119">MUST</em> be related to the Inbox URL with the <code>ldp:contains</code> predicate. Each notification <em class="rfc2119">MUST</em> be an <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source"><abbr title="Resource Description Framework">RDF</abbr> Source</a>. If non-RDF resources are returned, the consumer <em class="rfc2119">MAY</em> ignore them. Receivers <em class="rfc2119">MAY</em> respect an <code>Accept</code> header sent by the consumer, but otherwise <em class="rfc2119">MUST</em> return notifications as JSON-LD (<code>Content-Type: application/ld+json</code>).</p>
 
                                             <figure class="listing example" id="results-example-inbox-contains-ldp" rel="schema:hasPart" resource="#results-example-inbox-contains-ldp">
                                                 <pre about="#results-example-inbox-contains-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
