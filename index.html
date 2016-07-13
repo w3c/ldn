@@ -364,13 +364,11 @@ left:4.5em;
 
                                     <p>The URIs of the notifications <em class="rfc2119">MUST</em> be discoverable through the <code>ldp:contains</code> predicate of the Inbox URL.</p>
 
-                                    <p>When retreiving individual notfications, the consumer <em class="rfc2119">MAY</em> send an <code>Accept</code> header to indicate preferred content types. If no <code>Accept</code> header is sent, or the receiver cannot comply with the content type requested, the consumer <em class="rdfc2119">MUST</em> accept JSON-LD. Fetching the notifications - if any, how many, or according to a particular criteria (e.g., content-length, timestamp) - is at the discretion of the consumer.</p>
+                                    <p>When retrieving individual notifications, the consumer <em class="rfc2119">MAY</em> send an <code>Accept</code> header to indicate preferred content types. If no <code>Accept</code> header is sent, or the receiver cannot comply with the content type requested, the consumer <em class="rdfc2119">MUST</em> accept JSON-LD. Fetching the notifications - if any, how many, or according to a particular criteria (e.g., content-length, timestamp) - is at the discretion of the consumer.</p>
 
                                     <p>The consumer <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization.</p>
 
                                     <p>Consumers <em class="rfc2119">MAY</em> perform additional fetching or inferring of information from the payload (eg. dereferencing resources referenced in the notification to fetch their contents) at their discretion.</p>
-
-                                    </p>
                                 </div>
                             </section>
 
@@ -382,7 +380,7 @@ left:4.5em;
                                     <section id="receiving-notifications" inlist="" rel="schema:hasPart" resource="#receiving-notifications">
                                         <h4 property="schema:name">Receiving notifications</h4>
                                         <div datatype="rdf:HTML" property="schema:description">
-                                            <p>Upon receipt of a <code>POST</code> request, if the notification resource was processed successfully, receivers MUST respond with status code <code>201</code> (Created) and the <code>Location</code> header set to the URL from which the notification data can be retrieved (see <a href="#consuming">Consuming</a>). If the request was queued to be processed asynchronously, the receiver MUST respond with a status code of <code>202</code> (Accepted) and include information about the status of the request in the body of the response.</p>
+                                            <p>Upon receipt of a <code>POST</code> request, if the notification resource was processed successfully, receivers <em class="rfc2119">MUST</em> respond with status code <code>201 Created</code> and the <code>Location</code> header set to the URL from which the notification data can be retrieved (see <a href="#consuming">Consuming</a>). If the request was queued to be processed asynchronously, the receiver <em class="rfc2119">MUST</em> respond with a status code of <code>202 Accepted</code> and include information about the status of the request in the body of the response.</p>
                                             
                                             <p>Receivers which enforce constraints on the notifications (see <a href="#security-privacy-and-content-considerations">Security, Privacy and Content Considerations</a>) <em class="rfc2119">SHOULD</em> fail to process the notification if the constraints are not met and return the appropriate <code>4xx</code> error code.</p>
 
