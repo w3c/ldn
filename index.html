@@ -388,8 +388,6 @@ left:4.5em;
 
                                             <p>Receivers <em class="rfc2119">MAY</em> accept other RDF content types (eg. <code>text/turtle</code>, <code>text/html</code>), and <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept-Post</code> header on the Inbox URL.</p>
 
-                                            <p>Receivers <em class="rfc2119">SHOULD</em> treat the <code>application/activity+json</code> media type as equivalent to <code>application/ld+json; profile="http://www.w3.org/ns/activitystreams"</code>.</p>
-
                                             <p>Example Request:</p>
                                             <figure class="listing example" id="request-response-example" rel="schema:hasPart" resource="#request-response-example">
                                                 <pre about="#request-example" class="hljs http" property="schema:description" typeof="fabio:Script">
@@ -418,6 +416,16 @@ left:4.5em;
                                                 </pre>
                                                 <figcaption property="schema:name">Example request and response</figcaption>
                                             </figure>
+                                            <section id="sending-activitystreams2-support" inlist="" rel="schema:hasPart" resource="#sending-activitystreams2-support">
+                                                <h5 property="schema:name">ActivityStreams 2.0 Support</h5>
+                                                <div property="schema:description">
+                                                    <p>Receivers <em class="rfc2119">SHOULD</em> treat the <code>application/activity+json</code> media type as equivalent to <code>application/ld+json; profile="http://www.w3.org/ns/activitystreams"</code>.</p>
+                                                    <div class="issue">
+                                                        <h4>At Risk</h4>
+                                                        <p>This requirement may be moved to <a href="https://w3.org/tr/social-web-protocols">Social Web Protocols</a>.</p><p>See also <a href="https://github.com/csarven/ldn/issues/10">LDN issue #10</a> and <a href="https://github.com/w3c-social/social-web-protocols/issues/36">SWP issue #36</a>.</p>
+                                                    </div>
+                                                </div>
+                                            </section>
                                         </div>
                                     </section>
 
@@ -444,6 +452,16 @@ left:4.5em;
                                                 </pre>
                                                 <figcaption>Results of GET request on Inbox.</figcaption>
                                             </figure>
+                                            <section id="consuming-activitystreams2-support" inlist="" rel="schema:hasPart" resource="#consuming-activitystreams2-support">
+                                                <h5 property="schema:name">ActivityStreams 2.0 Support</h5>
+                                                <div property="schema:description">
+                                                    <p>Receivers <em class="rfc2119">SHOULD</em> treat the requests from consumers for <code>application/activity+json</code> as equivalent to <code>application/ld+json; profile="http://www.w3.org/ns/activitystreams"</code>, but if doing so additionally <em class="rfc2119">MUST</em> return JSON-LD in compacted form.</p>
+                                                    <div class="issue">
+                                                        <h4>At Risk</h4>
+                                                        <p>This requirement may be moved to <a href="https://w3.org/tr/social-web-protocols">Social Web Protocols</a>.</p><p>See also <a href="https://github.com/csarven/ldn/issues/10">LDN issue #10</a> and <a href="https://github.com/w3c-social/social-web-protocols/issues/36">SWP issue #36</a>.</p>
+                                                    </div>
+                                                </div>
+                                            </section>
                                         </div>
                                     </section>
                                 </div>
