@@ -500,7 +500,9 @@ left:4.5em;
                                                     <pre about="#notification-single-statement-turtle" property="schema:description" typeof="fabio:Script">
 <code>{</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.org/profile#alice"</span></span>,</code>
-<code>  "<span class="hljs-attribute">http://ontologi.es/like#liked</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/article"</span></span></code>
+<code>  "<span class="hljs-attribute">http://ontologi.es/like#liked</span>": {</code>
+<code>    "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/article"</span></span></code>
+<code>  }</code>
 <code>}</code>
                                                     </pre>
                                                     <figcaption property="schema:name">Example notification type: single statement in JSON-LD</figcaption>
