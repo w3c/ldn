@@ -4,10 +4,11 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-#XXX:
+#XXX: WARNING WARNING WARNING
 #   This is brainstorming to see what's related, an extension or mapped to
 #   Some considerations are below. See https://github.com/csarven/ldn/issues/
-#   *DO NOT USE* in implementations until this notice is removed and defined in spec
+#   *DO NOT USE* in implementations until this notice is removed and defined in the spec
+#   LDN is defaulting to LDP at this point with the pending issue on where the `inbox` property belongs to. Current implementations are using solid-terms:inbox and with experiments on ldp:inbox.
 
 <>
     a <http://www.w3.org/2002/07/owl#Ontology> ;
