@@ -1,0 +1,63 @@
+@base <http://www.w3.org/ns/ldn> .
+@prefix ldn: <http://www.w3.org/ns/ldn#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+#XXX:
+#   This is brainstorming to see what's related, an extension or mapped to
+#   Some considerations are below. See https://github.com/csarven/ldn/issues/
+#   *DO NOT USE* in implementations until this notice is removed and defined in spec
+
+<>
+    a <http://www.w3.org/2002/07/owl#Ontology> ;
+    rdfs:label "Linked Data Notifications (LDN) vocabulary"@en ;
+    rdfs:comment "This is the vocabulary description for terms used by the Linked Data Notification protocol."@en .
+
+ldn:inbox
+    a rdf:Property ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "inbox"@en ;
+    rdfs:comment "Inbox resource for notifications."@en .
+
+
+#XXX: This is sort of equivalent to ldp:Container
+#ldn:Inbox
+#    a rdfs:Class ;
+#    rdfs:isDefinedBy <> ;
+#    rdfs:label "Inbox"@en ;
+#    rdfs:comment "A resource with notifications."@en .
+
+#XXX: This is sort of equivalent to ldp:RDFSource
+#ldn:Notification
+#    a rdfs:Class ;
+#    rdfs:isDefinedBy <> ;
+#    rdfs:label "Notification"@en ;
+#    rdfs:comment "A notification resource."@en .
+
+#XXX: This is sort of equivalent to ldp:contains
+#ldn:notification
+#    a rdf:Property ;
+#    rdfs:isDefinedBy <> ;
+#    rdfs:label "notification"@en ;
+#    rdfs:comment "Notification resource for an Inbox."@en .
+
+#ldn:read
+#    a rdf:Property ;
+#    rdfs:isDefinedBy <> ;
+#    rdfs:label "read"@en ;
+#    rdfs:comment "Indicates if a resource has been read or not. This property should have a boolean datatype."@en ;
+#    rdfs:range xsd:boolean .
+
+#XXX: Some of this could be overlapped with PROV-O and/or something else.
+#ldn:state
+#    a rdf:Property ;
+#    rdfs:isDefinedBy <> ;
+#    rdfs:label "notification state"@en ;
+#    rdfs:comment "State of the notification to indicate auxiliary information e.g., read, read by Tim, read on"@en .
+
+#ldn:State
+#    a rdfs:Class ;
+#    rdfs:isDefinedBy <> ;
+#    rdfs:label "Notification State"@en ;
+#    rdfs:comment "State of the notification e.g., x ldn:state [ a ldn:State ; ldn:read true ; ldn:readBy timbl ; ldn:readOn ...  ]"@en .
