@@ -568,13 +568,12 @@ left:4.5em;
                                             <figure class="listing example" id="notification-semantic-pingback" rel="schema:hasPart" resource="#notification-semantic-pingback">
                                                 <pre about="#notification-semantic-pingback" property="schema:description" typeof="fabio:Script">
 <code>{</code>
-<code>  "@context": "http://purl.org/net/pingback/",</code>
-<code>  "@type": "Request",</code>
-<code>  "source": { "@id": "https://example.org/annotation-1" },</code>
-<code>  "target": { "@id": "https://user.example/article" }</code>
+<code>  "@type": "http://purl.org/net/pingback/Item",</code>
+<code>  "http://purl.org/net/pingback/source": { "@id": "https://example.org/annotation-1" },</code>
+<code>  "http://purl.org/net/pingback/target": { "@id": "https://user.example/article" }</code>
 <code>}</code>
 <!--
-<code>&lt;&gt; a pingback:Request ;</code>
+<code>&lt;&gt; a pingback:Item ;</code>
 <code>  pingback:source &lt;https://example.org/annotation-1&gt; ;</code>
 <code>  pingback:target &lt;https://user.example/article&gt; .</code>
 -->
