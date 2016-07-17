@@ -322,7 +322,7 @@ left:4.5em;
                                     <p>The sender <em class="rfc2119">MUST</em> discover the Inbox through the <code>ldp:inbox</code> relation either through a <code>HEAD</code> request or in response body (<a href="#discovery">see discovery</a>).</p>
 
                                     <p>Senders <em class="rfc2119">MUST</em> deliver notifications through a <code>POST</code> request to the Inbox URL. Senders can expect a <code>201 Created</code> (with a <code>Location</code> Link header) in response to a successful request.</p>
- 
+
                                     <p>The sender <em class="rfc2119">MAY</em> use an <code>OPTIONS</code> request to determine the RDF content types accepted by the server, and serialize the notification in the request body according to the value of the <code>Accept-Post</code> header [<cite><a class="bibref" href="http://tools.ietf.org/html/draft-wilde-accept-post">Accept-Post</a></cite>] returned. Otherwise, the body of the <code>POST</code> request <em class="rfc2119">MUST</em> contain the notification <a href="#payload">payload</a> in JSON-LD.</p>
 
                                     <p>The sender <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization eg. <code>Authorization: Bearer XXX</code>.</p>
@@ -381,7 +381,7 @@ left:4.5em;
                                         <h4 property="schema:name">Receiving notifications</h4>
                                         <div datatype="rdf:HTML" property="schema:description">
                                             <p>Upon receipt of a <code>POST</code> request, if the notification resource was processed successfully, receivers <em class="rfc2119">MUST</em> respond with status code <code>201 Created</code> and the <code>Location</code> header set to the URL from which the notification data can be retrieved (see <a href="#consuming">Consuming</a>). If the request was queued to be processed asynchronously, the receiver <em class="rfc2119">MUST</em> respond with a status code of <code>202 Accepted</code> and include information about the status of the request in the body of the response.</p>
-                                            
+
                                             <p>Receivers which enforce constraints on the notifications (see <a href="#security-privacy-and-content-considerations">Security, Privacy and Content Considerations</a>) <em class="rfc2119">SHOULD</em> fail to process the notification if the constraints are not met and return the appropriate <code>4xx</code> error code.</p>
 
                                             <p>Receivers <em class="rfc2119">MUST</em> accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>. The <code>Content-Type</code> header <em class="rfc2119">MAY</em> include a profile URI [<cite><a class="bibref" href="#bib-RFC6906">RFC6906</a></cite>].</p>
@@ -696,6 +696,7 @@ left:4.5em;
                                 <li><a href="https://dokie.li/">dokieli</a> (sender, consumer)</li>
                                 <li><a href="https://github.com/solid/solid-inbox">solid-inbox</a> (consumer)</li>
                                 <li><a href="https://github.com/solid/solid-client">solid-client</a> (sender)</li>
+                                <li><a href="https://github.com/melvincarvalho/vocab/#linked-data-notifications">solid words</a> (sender)</li>
                             </ul>
                         </div>
                     </section>
