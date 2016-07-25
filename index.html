@@ -36,7 +36,8 @@ code { color: #c83500; }
 pre code { color: #333; }
 .do.fragment a { border-bottom:0; }
 .do.fragment a:hover { background:none; border-bottom:0; }
-figure pre { margin:1em 0; display:block; }
+section figure pre { margin:1em 0; display:block; }
+cite .bibref { font-style: normal; }
 .tabs nav ul li { margin:0; }
 div.issue, div.note, div.warning {
 clear: both;
@@ -185,7 +186,7 @@ left:4.5em;
                     <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
                         <h2 about="#introduction" property="schema:name" typeof="deo:Introduction">Introduction</h2>
                         <div datatype="rdf:HTML" property="schema:description">
-                            <p>Linked Data Notifications is a specialized use of Linked Data Platform [<cite><a class="bibref" href="#bib-LDP">LDP</a></cite>] for sending and consuming notifications. It is not dependent on a complete implementation of LDP, but an easy-to-implement subset. This specification describes the particular features necessary to make it easy to exchange notifications in a decentralised, interoperable way.</p>
+                            <p>Linked Data Notifications is a specialized use of Linked Data Platform [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>] for sending and consuming notifications. It is not dependent on a complete implementation of LDP, but an easy-to-implement subset. This specification describes the particular features necessary to make it easy to exchange notifications in a decentralised, interoperable way.</p>
 
                             <p>This protocol supports a modular approach to creating and storing data, in particular a decoupling between applications and data storage. Thus, where senders, receivers and consumers of notifications are independently implemented and run on different technology stacks, this protocol allows them to seamlessly work together.</p>
 
@@ -198,7 +199,7 @@ left:4.5em;
                             <section id="social-web-working-group" inlist="" rel="schema:hasPart" resource="#social-web-working-group">
                                 <h3 property="schema:name">Social Web Working Group</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>LDN is one of several related specifications being produced by the Social Web Working Group. Implementers interested in alternative approaches and complimentary protocols should start by reading the overview document <a href="#bib-SWP" class="bibref">Social Web Protocols</a>.</p>
+                                    <p>LDN is one of several related specifications being produced by the Social Web Working Group. Implementers interested in alternative approaches and complimentary protocols should start by reading the overview document <a href="#bib-social-web-protocols" class="bibref">Social Web Protocols</a>.</p>
                                 </div>
                             </section>
 
@@ -245,7 +246,7 @@ left:4.5em;
                         <div datatype="rdf:HTML" property="schema:description">
                             <p>Implementations may consist of one or more of <em>senders</em>, <em>receivers</em> or <em>consumers</em>. The specification indicates the role(s) for which the feature is normatively required. As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative.</p>
 
-                            <p>The key words "<em class="rfc2119">MUST</em>", "<em class="rfc2119">MUST NOT</em>", "<em class="rfc2119">REQUIRED</em>", "<em class="rfc2119">SHALL</em>", "<em class="rfc2119">SHALL NOT</em>", "<em class="rfc2119">SHOULD</em>", "<em class="rfc2119">SHOULD NOT</em>", "<em class="rfc2119">RECOMMENDED</em>", "<em class="rfc2119">MAY</em>", and "<em class="rfc2119">OPTIONAL</em>" in this document are to be interpreted as described in [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].</p>
+                            <p>The key words "<em class="rfc2119">MUST</em>", "<em class="rfc2119">MUST NOT</em>", "<em class="rfc2119">REQUIRED</em>", "<em class="rfc2119">SHALL</em>", "<em class="rfc2119">SHALL NOT</em>", "<em class="rfc2119">SHOULD</em>", "<em class="rfc2119">SHOULD NOT</em>", "<em class="rfc2119">RECOMMENDED</em>", "<em class="rfc2119">MAY</em>", and "<em class="rfc2119">OPTIONAL</em>" in this document are to be interpreted as described in [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>].</p>
                         </div>
                     </section>
 
@@ -263,7 +264,7 @@ left:4.5em;
                                     <p>To discover the Inbox URL, senders and consumers <em class="rfc2119">MUST</em>:</p>
                                     <ul>
                                         <li>make a <code>HEAD</code> request on the target URL, to check for an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code></li>
-                                        <li>fetch the target URL (and follow redirects) and use the object URI(s) of the predicate <code>http://www.w3.org/ns/ldp#inbox</code> in RDF Sources [<cite><a class="bibref" href="#bib-LDP-RS">LDP-RS</a></cite>]</li>
+                                        <li>fetch the target URL (and follow redirects) and use the object URI(s) of the predicate <code>http://www.w3.org/ns/ldp#inbox</code> in RDF Sources [<cite><a class="bibref" href="#bib-ldp">LDP-RS</a></cite>]</li>
                                     </ul>
 
                                     <p>These may be carried out in either order, but if the first fails to result in an Inbox the second <em class="rfc2119">MUST</em> be tried.</p>
@@ -391,7 +392,7 @@ left:4.5em;
 
                                             <p>Receivers which enforce constraints on the notifications (see <a href="#security-privacy-and-content-considerations">Security, Privacy and Content Considerations</a>) <em class="rfc2119">SHOULD</em> fail to process the notification if the constraints are not met and return the appropriate <code>4xx</code> error code.</p>
 
-                                            <p>Receivers <em class="rfc2119">MUST</em> accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>. The <code>Content-Type</code> header <em class="rfc2119">MAY</em> include a profile URI [<cite><a class="bibref" href="#bib-RFC6906">RFC6906</a></cite>].</p>
+                                            <p>Receivers <em class="rfc2119">MUST</em> accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>. The <code>Content-Type</code> header <em class="rfc2119">MAY</em> include a profile URI [<cite><a class="bibref" href="#bib-rfc6906">RFC6906</a></cite>].</p>
 
                                             <p>Receivers <em class="rfc2119">MAY</em> accept other RDF content types (eg. <code>text/turtle</code>, <code>text/html</code>), and <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept-Post</code> header on the Inbox URL.</p>
 
@@ -603,7 +604,7 @@ left:4.5em;
                             <section id="constraints" inlist="" rel="schema:hasPart" resource="#constraints">
                                 <h3 property="schema:name">Constraints</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Inbox URLs can announce their own shape constraints (e.g., <cite><a class="bibref" href="https://www.w3.org/TR/shacl/">SHACL</a></cite>, <cite><a href="http://www.w3.org/TR/annotation-protocol/">Web Annotation Protocol</a></cite>) via an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#constrainedBy</code> at a target URL. Senders should comply with constraint specifications or the receiver may reject their notification.</p>
+                                    <p>Inbox URLs can announce their own shape constraints (e.g., <cite><a class="bibref" href="#bib-shacl">SHACL</a></cite>, <cite><a class="bibref" href="bib-annotation-protocol">Web Annotation Protocol</a></cite>) via an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#constrainedBy</code> at a target URL. Senders should comply with constraint specifications or the receiver may reject their notification.</p>
                                 </div>
                             </section>
 
@@ -687,10 +688,6 @@ left:4.5em;
                                     <tr>
                                         <td><code>foaf</code></td>
                                         <td><a href="http://xmlns.com/foaf/0.1/">http://xmlns.com/foaf/0.1/</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>pingback</code></td>
-                                        <td><a href="http://purl.org/net/pingback/">http://purl.org/net/pingback/</a></td>
                                     </tr>
                                     <tr>
                                         <td><code>as</code></td>
