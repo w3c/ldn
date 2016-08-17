@@ -303,7 +303,7 @@ left:4.5em;
 <code></code>
 <code>{</code>
 <code>  "@context": "https://www.w3.org/ns/ldp",</code>
-<code>  "@id": "https://user.example/profile/",</code>
+<code>  "@id": "https://user.example/profile",</code>
 <code>  "inbox": "https://user.example/inbox/"</code>
 <code>}</code>
                                         </pre>
@@ -335,7 +335,7 @@ left:4.5em;
 
                                     <p>The sender <em class="rfc2119">MAY</em> use an <code>OPTIONS</code> request to determine the RDF content types accepted by the server, and serialize the notification in the request body according to the value of the <code>Accept-Post</code> header [<cite><a class="bibref" href="http://tools.ietf.org/html/draft-wilde-accept-post">Accept-Post</a></cite>] returned. Otherwise, the body of the <code>POST</code> request <em class="rfc2119">MUST</em> contain the notification <a href="#payload">payload</a> in JSON-LD.</p>
 
-                                    <p>The sender <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization eg. <code>Authorization: Bearer XXX</code>.</p>
+                                    <p>The sender <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization e.g., <code>Authorization: Bearer XXX</code>.</p>
 
                                     <p>Request:</p>
                                     <figure class="listing example" id="sending-notification" rel="schema:hasPart" resource="#sending-notification">
@@ -361,7 +361,7 @@ left:4.5em;
                                     <figure class="listing example" id="sending-notification-response" rel="schema:hasPart" resource="#sending-notification-response">
                                         <pre about="sending-notification-response" property="schema:description" typeof="fabio:Script">
 <code><span class="hljs-request">HTTP/1.1 <span class="hljs-string">201</span> Created</span></code>
-<code><span class="hljs-attribute">Location</span>: <span class="hljs-string">https://user.example/notification-1</span></code>
+<code><span class="hljs-attribute">Location</span>: <span class="hljs-string">https://user.example/inbox/notification-1</span></code>
                                         </pre>
                                         <figcaption property="schema:name">Example response to a request</figcaption>
                                     </figure>
@@ -375,11 +375,11 @@ left:4.5em;
 
                                     <p>The URIs of the notifications <em class="rfc2119">MUST</em> be discoverable through the <code>ldp:contains</code> predicate of the Inbox URL.</p>
 
-                                    <p>When retrieving individual notifications, the consumer <em class="rfc2119">MAY</em> send an <code>Accept</code> header to indicate preferred content types. If no <code>Accept</code> header is sent, or the receiver cannot comply with the content type requested, the consumer <em class="rfc2119">MUST</em> accept JSON-LD. Fetching the notifications - if any, how many, or according to a particular criteria (e.g., content-length, timestamp) - is at the discretion of the consumer.</p>
+                                    <p>When retrieving individual notifications, the consumer <em class="rfc2119">MAY</em> send an <code>Accept</code> header to indicate preferred content types. If no <code>Accept</code> header is sent, or the receiver cannot comply with the content type requested, the consumer <em class="rfc2119">MUST</em> accept JSON-LD. Fetching the notifications — if any, how many, or according to a particular criteria (e.g., content-length, timestamp) — is at the discretion of the consumer.</p>
 
                                     <p>The consumer <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization.</p>
 
-                                    <p>Consumers <em class="rfc2119">MAY</em> perform additional fetching or inferring of information from the payload (eg. dereferencing resources referenced in the notification to fetch their contents) at their discretion.</p>
+                                    <p>Consumers <em class="rfc2119">MAY</em> perform additional fetching or inferring of information from the payload (e.g., dereferencing resources referenced in the notification to fetch their contents) at their discretion.</p>
                                 </div>
                             </section>
 
@@ -395,9 +395,9 @@ left:4.5em;
 
                                             <p>Receivers which enforce constraints on the notifications (see <a href="#security-privacy-and-content-considerations">Security, Privacy and Content Considerations</a>) <em class="rfc2119">SHOULD</em> fail to process the notification if the constraints are not met and return the appropriate <code>4xx</code> error code.</p>
 
-                                            <p>Receivers <em class="rfc2119">MUST</em> accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>. The <code>Content-Type</code> header <em class="rfc2119">MAY</em> include a profile URI [<cite><a class="bibref" href="#bib-rfc6906">RFC6906</a></cite>].</p>
+                                            <p>Receivers <em class="rfc2119">MUST</em> accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>. The <code>Content-Type</code> header <em class="rfc2119">MAY</em> include a <code>profile</code> URI [<cite><a class="bibref" href="#bib-rfc6906">RFC6906</a></cite>].</p>
 
-                                            <p>Receivers <em class="rfc2119">MAY</em> accept other RDF content types (eg. <code>text/turtle</code>, <code>text/html</code>), and <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept-Post</code> header on the Inbox URL.</p>
+                                            <p>Receivers <em class="rfc2119">MAY</em> accept other RDF content types (e.g., <code>text/turtle</code>, <code>text/html</code>), and <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept-Post</code> header on the Inbox URL.</p>
 
                                             <p>Example Request:</p>
                                             <figure class="listing example" id="request-response-example" rel="schema:hasPart" resource="#request-response-example">
@@ -424,7 +424,7 @@ left:4.5em;
 <code>}</code>
 <code></code>
 <code><span class="hljs-request">HTTP/1.1 <span class="hljs-string">201</span> Created</span></code>
-<code><span class="hljs-attribute">Location</span>: <span class="hljs-string">https://user.example/notification-1</span></code>
+<code><span class="hljs-attribute">Location</span>: <span class="hljs-string">https://user.example/inbox/notification-2</span></code>
                                                 </pre>
                                                 <figcaption property="schema:name">Example request and response</figcaption>
                                             </figure>
@@ -457,8 +457,8 @@ left:4.5em;
 <code>{</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/inbox/"</span></span>,</code>
 <code>  "<span class="hljs-attribute">ldp:contains</span>": <span class="hljs-value">[</span></code>
-<code>    { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/notification-1"</span></span> },</code>
-<code>    { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/notification-2"</span></span> }</code>
+<code>    { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/inbox/notification-1"</span></span> },</code>
+<code>    { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/inbox/notification-2"</span></span> }</code>
 <code>  <span class="hljs-value">]</span></code>
 <code>}</code>
                                                 </pre>
@@ -486,7 +486,7 @@ left:4.5em;
                         <div datatype="rdf:HTML" property="schema:description">
                             <p>The payload of the notification <em class="rfc2119">MUST</em> be a JSON-LD unless another RDF syntax has been negotiated with the receiver. To allow for a wide variety of use cases, the actual vocabulary of the payload is deliberately left to the discretion of the sender. The sender <em class="rfc2119">MUST NOT</em> assume that the receiver can fetch or infer anything additional from the payload, and thus <em class="rfc2119">MUST</em> include everything they want the receiver to know.</p>
 
-                            <!-- Commenting out for now as I think this should probably go somewhere else, eg. in suggestions for implementors, not normative text. - rhiaro
+                            <!-- Commenting out for now as I think this should probably go somewhere else, e.g., in suggestions for implementors, not normative text. — rhiaro
                             <p id="rights-and-license">Senders <em class="rfc2119">SHOULD</em> include rights or license information in the payload as the notification may be reused or displayed by different consumers and environments.</p>-->
 
                             <section id="payload-examples" inlist="" rel="schema:hasPart" resource="#payload-examples">
