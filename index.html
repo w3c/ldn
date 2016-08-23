@@ -3,14 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Linked Data Notifications</title>
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <link href="https://dokie.li/media/css/basic.css" media="all" rel="stylesheet alternate" title="Basic" />
-        <link href="https://dokie.li/media/css/lncs.css" media="all" rel="stylesheet alternate" title="LNCS" />
-        <link href="https://dokie.li/media/css/acm.css" media="all" rel="stylesheet alternate" title="ACM" />
-        <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" media="all" rel="stylesheet" title="W3C-ED" />
-        <link href="https://dokie.li/media/css/do.css" media="all" rel="stylesheet" />
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" media="all" rel="stylesheet" />
-        <link href="https://dokie.li/media/css/editor.css" media="all" rel="stylesheet" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <style>
 .hljs-request,
 .hljs-status {
@@ -31,10 +24,14 @@ body {
 counter-reset:section;
 counter-reset:sub-section;
 }
+.rfc2119 {
+font-style: normal;
+font-variant: small-caps;
+text-transform: lowercase;
+}
 em.rfc2119 { color: #900; }
 code { color: #c83500; }
 pre code { color: #333; }
-dfn { font-style:inherit; }
 .do.fragment a { border-bottom:0; }
 .do.fragment a:hover { background:none; border-bottom:0; }
 section figure pre { margin:1em 0; display:block; }
@@ -52,18 +49,14 @@ margin:0;
 text-transform: uppercase;
 font-weight:normal;
 }
-header address a[href] {
+.head .logo a[href] {
 float: right;
 margin: 1rem 0 0.2rem 0.4rem;
 background: transparent none repeat scroll 0 0;
 border: medium none;
 text-decoration: none;
 }
-header address img[src*="logos/W3C"] {
--moz-border-bottom-colors: none;
--moz-border-left-colors: none;
--moz-border-right-colors: none;
--moz-border-top-colors: none;
+.head .logo img[src*="logos/W3C"] {
 background: #1a5e9a none repeat scroll 0 0;
 border-color: #1a5e9a;
 border-image: none;
@@ -74,227 +67,284 @@ color: white;
 display: block;
 font-weight: bold;
 }
-main article > h1 {
+h1 {
 font-size: 220%;
 font-weight:bold;
 }
-
-article section:not([id=abstract]):not([id=document-status]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=document-conventions]) {
-counter-increment:section;
-counter-reset:sub-section;
-}
-article section:not([id=abstract]):not([id=document-status]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=document-conventions]) section {
-counter-increment:sub-section;
-counter-reset:sub-sub-section;
-}
-article section:not([id=abstract]):not([id=document-status]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=document-conventions]) section section {
-counter-increment:sub-sub-section;
-counter-reset:sub-sub-sub-section;
-}
-article section:not([id=abstract]):not([id=document-status]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=document-conventions]):not([id^=table-of-]) > h2:before {
-content:counter(section) ".\00a0\00a0\00a0\00a0";
-}
-section > h3:before {
-content:counter(section) "." counter(sub-section) "\00a0\00a0\00a0";
-}
-section > h4:before {
-content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0\00a0\00a0";
-}
-
-aside.note.do blockquote dl.published,
-aside.note.do blockquote dl.license,
-aside.note.do blockquote dl.rights {
-top:-2em;
-left:4.5em;
-}
 </style>
-        <script src="https://dokie.li/scripts/simplerdf.js"></script>
-        <script src="https://dokie.li/scripts/medium-editor.min.js"></script>
-        <script src="https://dokie.li/scripts/medium-editor-tables.min.js"></script>
-        <script src="https://dokie.li/scripts/do.js"></script>
+        <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-WD" media="all" rel="stylesheet" title="W3C-WD" />
     </head>
 
-    <body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ dctypes: http://purl.org/dc/dcmitype/ foaf: http://xmlns.com/foaf/0.1/ v: http://www.w3.org/2006/vcard/ns# pimspace: http://www.w3.org/ns/pim/space# cc: http://creativecommons.org/ns# skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# qb: http://purl.org/linked-data/cube# schema: https://schema.org/ rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# cal: http://www.w3.org/2002/12/cal/ical# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# org: http://www.w3.org/ns/org# biblio: http://purl.org/net/biblio# bibo: http://purl.org/ontology/bibo/ book: http://purl.org/NET/book/vocab# ov: http://open.vocab.org/terms/ doap: http://usefulinc.com/ns/doap# dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ oa: http://www.w3.org/ns/oa# as: http://www.w3.org/ns/activitystreams# ldp: http://www.w3.org/ns/ldp# solid: http://www.w3.org/ns/solid/terms#" typeof="schema:CreativeWork sioc:Post prov:Entity">
-        <header>
-            <address>
-                <a class="logo" href="http://www.w3.org/"><img height="48" width="72" alt="W3C" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C"/></a>
-            </address>
-        </header>
+    <body about="" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ v: http://www.w3.org/2006/vcard/ns# pimspace: http://www.w3.org/ns/pim/space# cc: http://creativecommons.org/ns# skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# schema: https://schema.org/ rsa: http://www.w3.org/ns/auth/rsa# cert: http://www.w3.org/ns/auth/cert# cal: http://www.w3.org/2002/12/cal/ical# wgs: http://www.w3.org/2003/01/geo/wgs84_pos# org: http://www.w3.org/ns/org# biblio: http://purl.org/net/biblio# bibo: http://purl.org/ontology/bibo/ book: http://purl.org/NET/book/vocab# ov: http://open.vocab.org/terms/ doap: http://usefulinc.com/ns/doap# dbr: http://dbpedia.org/resource/ dbp: http://dbpedia.org/property/ sio: http://semanticscience.org/resource/ opmw: http://www.opmw.org/ontology/ deo: http://purl.org/spar/deo/ doco: http://purl.org/spar/doco/ cito: http://purl.org/spar/cito/ fabio: http://purl.org/spar/fabio/ oa: http://www.w3.org/ns/oa# ldp: http://www.w3.org/ns/ldp# solid: http://www.w3.org/ns/solid/terms#" typeof="schema:CreativeWork sioc:Post prov:Entity schema:Article doap:Specification">
+        <div class="head">
+            <p><a class="logo" href="http://www.w3.org/"><img height="48" width="72" alt="W3C" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C"/></a></p>
+            <h1 property="schema:name">Linked Data Notifications</h1>
+            <h2><abbr title="World Wide Web Consortium">W3C</abbr> Working Draft <time datatype="xsd:dateTime" datetime="2016-08-23" property="schema:datePublished dcterms:issued">23 August 2016</time></h2>
 
-        <main>
-            <article about="" typeof="schema:Article doap:Specification">
-                <h1 property="schema:name">Linked Data Notifications</h1>
+            <dl>
+                <dt>This version:</dt>
+                <dd><a href="https://www.w3.org/TR/2016/WD-ldn-20160823/" rel="owl:sameAs doap:homepage">https://www.w3.org/TR/2016/WD-ldn-20160823/</a></dd>
+                <dt>Latest published version:</dt>
+                <dd><a href="https://www.w3.org/TR/ldn/" rel="rdfs:seeAlso">https://www.w3.org/TR/ldn/</a></dd>
+                <dt>Previous version:</dt>
+                <dd><a href="https://www.w3.org/TR/2016/WD-ldn-20160726/" rel="rdfs:seeAlso">https://www.w3.org/TR/2016/WD-ldn-20160726/</a></dd>
+                <dt>Latest editor's draft:</dt>
+                <dd><a href="https://linkedresearch.org/ldn/" rel="rdfs:seeAlso">https://linkedresearch.org/ldn/</a></dd>
+                <dt>Editors</dt>
+                <dd id="Sarven-Capadisli" inlist="" rel="bibo:authorList" resource="http://csarven.ca/#i"><span about="" rel="schema:creator schema:author"><a about="http://csarven.ca/#i" href="http://csarven.ca/" property="schema:name" rel="schema:url" typeof="schema:Person"><span property="schema:givenName">Sarven</span> <span property="schema:familyName">Capadisli</span></a></span>, <a about="http://csarven.ca/#i" href="http://uni-bonn.de/" rel="schema:memberOf" resource="http://dbpedia.org/resource/University_of_Bonn">University of Bonn</a>, <a about="http://csarven.ca/#i" href="mailto:info@csarven.ca" rel="schema:email">info@csarven.ca</a></dd>
+                <dd id="Amy-Guy" inlist="" rel="bibo:authorList" resource="http://rhiaro.co.uk/#me"><span about="" rel=" schema:author"><a about="http://rhiaro.co.uk/#me" href="http://rhiaro.co.uk/" property="schema:name" rel="schema:url" typeof="schema:Person"><span property="schema:givenName">Amy</span> <span property="schema:familyName">Guy</span></a></span>, <a about="http://rhiaro.co.uk/#me" href="http://inf.ed.ac.uk/" rel="schema:memberOf" resource="http://dbpedia.org/resource/University_of_Edinburgh">University of Edinburgh</a>, <a about="http://rhiaro.co.uk/#me" href="mailto:amy@rhiaro.co.uk" rel="schema:email">amy@rhiaro.co.uk</a></dd>
 
-                <dl id="document-identifier">
-                    <dt>This version</dt>
-                    <dd><a href="https://linkedresearch.org/ldn/" rel="owl:sameAs doap:homepage">https://linkedresearch.org/ldn/</a></dd>
-                    <dt>Latest published version:</dt>
-                    <dd><a href="http://www.w3.org/TR/ldn/" rel="rdfs:seeAlso">http://www.w3.org/TR/ldn/</a></dd>
-                </dl>
+                <dt>Repository</dt>
+                <dd><a href="https://github.com/csarven/ldn" rel="doap:repository">Github</a></dd>
+                <dd><a href="https://github.com/csarven/ldn/issues" rel="doap:bug-database">Issues</a></dd>
+            </dl>
 
-                <div id="authors">
-                    <dl id="author-name">
-                        <dt>Editors</dt>
-                        <dd id="Sarven-Capadisli" inlist="" rel="bibo:authorList" resource="http://csarven.ca/#i"><span about="" rel="schema:creator schema:publisher schema:author"><a about="http://csarven.ca/#i" href="http://csarven.ca/" property="schema:name" rel="schema:url" typeof="schema:Person"><span property="schema:givenName">Sarven</span> <span property="schema:familyName">Capadisli</span></a></span>, <a about="http://csarven.ca/#i" href="http://uni-bonn.de/" rel="schema:memberOf" resource="http://dbpedia.org/resource/University_of_Bonn">University of Bonn</a>, <a about="http://csarven.ca/#i" href="mailto:info@csarven.ca" rel="schema:email">info@csarven.ca</a></dd>
-                        <dd id="Amy-Guy" inlist="" rel="bibo:authorList" resource="http://rhiaro.co.uk/#me"><span about="" rel=" schema:author"><a about="http://rhiaro.co.uk/#me" href="http://rhiaro.co.uk/" property="schema:name" rel="schema:url" typeof="schema:Person"><span property="schema:givenName">Amy</span> <span property="schema:familyName">Guy</span></a></span>, <a about="http://rhiaro.co.uk/#me" href="http://inf.ed.ac.uk/" rel="schema:memberOf" resource="http://dbpedia.org/resource/University_of_Edinburgh">University of Edinburgh</a>, <a about="http://rhiaro.co.uk/#me" href="mailto:amy@rhiaro.co.uk" rel="schema:email">amy@rhiaro.co.uk</a></dd>
-                    </dl>
-                </div>
+            <p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2016 <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). <abbr title="World Wide Web Consortium">W3C</abbr> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a rel="license" href="http://www.w3.org/Consortium/Legal/2015/copyright-software-and-document">permissive document license</a> rules apply.</p>
 
-                <dl id="document-inbox">
-                    <dt>Notifications Inbox</dt>
-                    <dd><a href="https://linkedresearch.org/inbox/temp/ldn/" rel="ldp:inbox">inbox/</a></dd>
-                </dl>
+            <hr title="Separator for header" />
+        </div>
 
-                <dl id="document-published">
-                    <dt>Published</dt>
-                    <dd><time datatype="xsd:dateTime" datetime="2016-06-14T00:00:00Z" property="schema:datePublished">2016-06-14</time></dd>
-                </dl>
+        <section id="abstract">
+            <h2>Abstract</h2>
+            <div datatype="rdf:HTML" property="schema:abstract">
+              <p>Linked Data Notifications is a protocol to facilitate exchanging messages between applications which serve as senders, receivers and/or consumers of RDF data.</p>
+            </div>
+        </section>
 
-                <dl id="document-modified">
-                    <dt>Modified</dt>
-                    <dd><time datatype="xsd:dateTime" datetime="2016-08-17T00:00:00Z" property="schema:dateModified">2016-08-17</time></dd>
-                </dl>
+        <section id="sotd" inlist="" rel="schema:hasPart" resource="#sotd">
+            <h2 property="schema:name">Status of This Document</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+                <p><em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at http://www.w3.org/TR/.</em></p>
 
-                <dl id="document-repository">
-                    <dt>Repository</dt>
-                    <dd><a href="https://github.com/csarven/ldn" rel="doap:repository">Github</a></dd>
-                    <dd><a href="https://github.com/csarven/ldn/issues" rel="doap:bug-database">Issues</a></dd>
-                </dl>
+                <p>This document was published by the <a href="http://www.w3.org/Social/WG">Social Web Working Group</a> as a Working Draft. This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. If you wish to make comments regarding this document, please send them to <a href="mailto:public-socialweb@w3.org">public-socialweb@w3.org</a> (<a href="mailto:public-socialweb-request@w3.org?subject=subscribe">subscribe</a>, <a href="http://lists.w3.org/Archives/Public/public-socialweb/">archives</a>). All comments are welcome.</p>
 
-                <p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2016 <a href="http://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="http://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="http://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>). <abbr title="World Wide Web Consortium">W3C</abbr> <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a rel="license" href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p>
+                <p>Publication as a Working Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.</p>
 
-                <div id="content">
-                    <section id="abstract">
-                        <h2>Abstract</h2>
-                        <div datatype="rdf:HTML" property="schema:abstract">
-                          <p>Linked Data Notifications is a protocol to facilitate exchanging messages between applications which serve as senders, receivers and/or consumers of RDF data.</p>
+                <p>This document was produced by a group operating under the <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 W3C Patent Policy</a>. W3C maintains a <a rel="disclosure" href="http://www.w3.org/2004/01/pp-impl/72531/status">public list of any patent disclosures</a> made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section 6 of the W3C Patent Policy</a>.</p>
+
+                <p>This document is governed by the <a id="w3c_process_revision" href="http://www.w3.org/2015/Process-20150901/">1 September 2015 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.</p>
+            </div>
+        </section>
+
+        <nav id="toc">
+            <h2 id="table-of-contents">Table of Contents</h2>
+            <div>
+                <ol class="toc">
+                    <li class="tocline">
+                        <a class="tocxref" href="#abstract">Abstract</a>
+                    </li>
+                    <li class="tocline">
+                        <a class="tocxref" href="#sotd">Status of This Document</a>
+                    </li>
+                    <li class="tocline"><span class="secno"> </span>
+                        <a class="tocxref" href="#introduction"><span class="secno">1. </span>Introduction</a>
+                        <ol>
+                            <li class="tocline">
+                                <a class="tocxref" href="#social-web-working-group"><span class="secno">1.1 </span>Social Web Working Group</a>
+                            </li>
+                            <li class="tocline">
+                                <a class="tocxref" href="#overview"><span class="secno">1.2 </span>Overview</a>
+                            </li>
+                            <li class="tocline">
+                                <a class="tocxref" href="#summary"><span class="secno">1.3 </span>Summary</a>
+                            </li>
+                        </ol>
+                    </li>
+                    <li class="tocline">
+                        <a class="tocxref" href="#conformance"><span class="secno">2. </span>Conformance</a>
+                    </li>
+                    <li class="tocline">
+                        <a class="tocxref" href="#protocol"><span class="secno">3. </span>Protocol</a>
+                        <ol>
+                            <li class="tocline">
+                                <a class="tocxref" href="#discovery"><span class="secno">3.1 </span>Discovery</a>
+                            </li>
+                            <li class="tocline">
+                                <a class="tocxref" href="#sending"><span class="secno">3.2 </span>Sending</a>
+                            </li>
+                            <li class="tocline">
+                                <a class="tocxref" href="#consuming"><span class="secno">3.3 </span>Consuming</a>
+                            </li>
+                            <li class="tocline">
+                                <a class="tocxref" href="#receiving"><span class="secno">3.4 </span>Receiving</a>
+                                <ol>
+                                    <li class="tocline">
+                                        <a class="tocxref" href="#receiving-notifications"><span class="secno">3.4.1 </span>Receiving notifications</a>
+                                    </li>
+                                    <li class="tocline">
+                                        <a class="tocxref" href="#receiving-inbox-contents"><span class="secno">3.4.2 </span>Making Inbox contents available to consumers</a>
+                                    </li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </li>
+                    <li class="tocline">
+                        <a class="tocxref" href="#payload"><span class="secno">4. </span>Payload</a>
+                        <ol>
+                            <li class="tocline">
+                                <a class="tocxref" href="#payload-examples"><span class="secno">4.1 </span>Payload Examples</a>
+                                <ol>
+                                    <li class="tocline">
+                                        <a class="tocxref" href="#single-statement"><span class="secno">4.1.1 </span>Single Statement</a>
+                                    </li>
+                                    <li class="tocline">
+                                        <a class="tocxref" href="#qualified-relations"><span class="secno">4.1.2 </span>Qualified relations</a>
+                                    </li>
+                                    <li class="tocline">
+                                        <a class="tocxref" href="#any-data"><span class="secno">4.1.3 </span>Any data</a>
+                                    </li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </li>
+                    <li class="tocline">
+                        <a class="tocxref" href="#security-privacy-and-content-considerations"><span class="secno">5. </span>Security, Privacy and Content Considerations</a>
+                        <ol>
+                            <li class="tocline">
+                                <a class="tocxref" href="#constraints"><span class="secno">5.1 </span>Constraints</a>
+                            </li>
+                            <li class="tocline">
+                                <a class="tocxref" href="#payload-verification"><span class="secno">5.2 </span>Payload Verification</a>
+                            </li>
+                            <li class="tocline">
+                                <a class="tocxref" href="#sender-verification"><span class="secno">5.3 </span>Sender Verification</a>
+                            </li>
+                            <li class="tocline">
+                                <a class="tocxref" href="#preventing-abuse"><span class="secno">5.4 </span>Preventing Abuse</a>
+                            </li>
+                            <li class="tocline">
+                                <a class="tocxref" href="#privacy"><span class="secno">5.5 </span>Privacy</a>
+                            </li>
+                        </ol>
+                    </li>
+                    <li class="tocline">
+                        <a class="tocxref" href="#implementations"><span class="secno">6. </span>Implementations</a>
+                    </li>
+                    <li class="tocline">
+                        <a class="tocxref" href="#document-conventions"><span class="secno">A. </span>Document Conventions</a>
+                    </li>
+                    <li class="tocline">
+                        <a class="tocxref" href="#acknowledgements"><span class="secno">B. </span>Acknowledgements</a>
+                    </li>
+                    <li class="tocline">
+                        <a class="tocxref" href="#change-log"><span class="secno">C. </span>Change Log</a>
+                    </li>
+                    <li class="tocline">
+                        <a class="tocxref" href="#references"><span class="secno">D. </span>References</a>
+                    </li>
+                </ol>
+            </div>
+        </nav>
+
+        <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
+            <h2 about="#introduction" property="schema:name" typeof="deo:Introduction"><span class="secno">1. </span>Introduction</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+                <p><dfn id="ldn">Linked Data Notifications (<abbr title="Linked Data Notifications">LDN</abbr>)</dfn> is a specialized use of Linked Data Platform [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>] for sending and consuming notifications. It is not dependent on a complete implementation of LDP, but an easy-to-implement subset. This specification describes the particular features necessary to make it easy to exchange notifications in a decentralised, interoperable way.</p>
+
+                <p>This protocol supports a modular approach to creating and storing data, in particular a decoupling between applications and data storage. Thus, where senders, receivers and consumers of notifications are independently implemented and run on different technology stacks, this protocol allows them to seamlessly work together.</p>
+
+                <ul>
+                    <li>This specification enables the notion of a notification as an individual entity with its own URI which can be retrieved and reused.</li>
+                    <li>This specification deliberately does not define the vocabulary of the notification contents in order to allow for use in a range of different application domains.</li>
+                    <li>Authentication and verification of notifications is encouraged, but the mechanism to do so is at the discretion of receivers and consumers, as needs differ according to types of notification and different application domains.</li>
+                </ul>
+
+                <section id="social-web-working-group" inlist="" rel="schema:hasPart" resource="#social-web-working-group">
+                    <h3 property="schema:name"><span class="secno">1.1 </span>Social Web Working Group</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                        <p><a href="#ldn"><abbr title="Linked Data Notifications">LDN</abbr></a> is one of several related specifications being produced by the Social Web Working Group. Implementers interested in alternative approaches and complimentary protocols should start by reading the overview document <a href="#bib-social-web-protocols" class="bibref">Social Web Protocols</a>.</p>
+                    </div>
+                </section>
+
+                <section id="overview" inlist="" rel="schema:hasPart" resource="#overview">
+                    <h3 property="schema:name"><span class="secno">1.2 </span>Overview</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                        <p>A sender is triggered, either by a human or an automatic process, to deliver a notification to a server. The notification is data intended for the attention of the receiver, for example: a personal message from a friend; a pingback link; a comment on a blog post; an invitation to collaborate; a calendar reminder.</p>
+
+                        <p>The sender discovers where to deliver the notification based on the addressee or subject of the notification (the receiver) who advertises the appropriate location to send it to (the Inbox). The receiver also exposes the notification data (according to appropriate access control) for use by consumers.</p>
+
+                        <p>Consumers discover the location of the Inbox in the same way as the sender, and may perform further processing on the notifications, combine it with some other data, or simply present it in a suitable human-readable way.</p>
+                    </div>
+                </section>
+
+                <section id="summary" inlist="" rel="schema:hasPart" resource="#summary">
+                    <h3 property="schema:name"><span class="secno">1.3 </span>Summary</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                        <p id="summary-discovery">Senders and consumers <strong><a href="#discovery">discover</a></strong> a resource's <em>Inbox</em> URL(s) through a relation in the HTTP <code>Link</code> header or body of the resource.</p>
+
+                        <p id="summary-sender">The <strong><a href="#sending">Sender</a></strong>:</p>
+                        <ul>
+                            <li>Creates the body of the notification according to the needs of application.</li>
+                            <li>Sends the notification to the Inbox URL by making a <code>POST</code> request, containing the body in JSON-LD or in another serialization acceptable by the server.</li>
+                        </ul>
+
+                        <p id="summary-consumer">The <strong><a href="#consuming">Consumer</a></strong>:</p>
+                        <ul>
+                            <li>Retrieves the contents of the Inbox URL with a <code>GET</code> request, and uses according to the needs of application.</li>
+                        </ul>
+
+                        <p id="summary-receiver">The <strong><a href="#receiving">Receiver</a></strong>:</p>
+                        <ul>
+                            <li>Responds to <code>GET</code> requests made to the Inbox URL with a JSON-LD representation (or if possible, requested serialization) of the URLs of the notifications that have previously been sent to the Inbox.</li>
+                            <li>Accepts <code>POST</code> requests at the Inbox URL to create notifications.</li>
+                            <li>Optionally enforces constraints on notifications sent to the Inbox.</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <section id="conformance" inlist="" rel="schema:hasPart" resource="#conformance">
+            <h2 property="schema:name"><span class="secno">2. </span>Conformance</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+                <p>Implementations may consist of one or more of <em>senders</em>, <em>receivers</em> or <em>consumers</em>. The specification indicates the role(s) for which the feature is normatively required. As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative.</p>
+
+                <p>The key words "<em class="rfc2119">MUST</em>", "<em class="rfc2119">MUST NOT</em>", "<em class="rfc2119">REQUIRED</em>", "<em class="rfc2119">SHALL</em>", "<em class="rfc2119">SHALL NOT</em>", "<em class="rfc2119">SHOULD</em>", "<em class="rfc2119">SHOULD NOT</em>", "<em class="rfc2119">RECOMMENDED</em>", "<em class="rfc2119">MAY</em>", and "<em class="rfc2119">OPTIONAL</em>" in this document are to be interpreted as described in [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>].</p>
+            </div>
+        </section>
+
+
+        <section id="protocol" inlist="" rel="schema:hasPart" resource="#protocol">
+            <h2 property="schema:name"><span class="secno">3. </span>Protocol</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+                <p>This section describes the discovery of the URL to which notifications are delivered or read from (the <em>Inbox</em>) and the delivery mechanism. Notification contents are described in <a href="#payload">Payload</a>.</p>
+
+                <section id="discovery" inlist="" rel="schema:hasPart" resource="#discovery">
+                    <h3 property="schema:name"><span class="secno">3.1 </span>Discovery</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                        <p>An <em>Inbox</em>, the endpoint which notifications are sent to or consumed from, can be discovered from any resource, for example a blog post, a dataset, a user profile. The starting point for discovery is the resource which the notification is to or about: the <em>target</em>. Choosing the most appropriate target resource from which to begin discovery is at the discretion of the sender or consumer.</p>
+
+                        <p>To discover the Inbox URL, senders and consumers <em class="rfc2119">MUST</em>:</p>
+                        <ul>
+                            <li>make a <code>HEAD</code> request on the target URL, to check for an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code></li>
+                            <li>fetch the target URL (and follow redirects) and use the object URI(s) of the predicate <code>http://www.w3.org/ns/ldp#inbox</code> in RDF Sources [<cite><a class="bibref" href="#bib-ldp">LDP-RS</a></cite>]</li>
+                        </ul>
+
+                        <p>These may be carried out in either order, but if the first fails to result in an Inbox the second <em class="rfc2119">MUST</em> be tried.</p>
+
+                        <p>A resource <em class="rfc2119">MUST</em> advertise only one Inbox. One Inbox <em class="rfc2119">MAY</em> be used by multiple resources, for example using the same Inbox for replies to all of my blog posts and shares of all of my photos.</p>
+
+                        <div class="issue" id="issue-13" rel="schema:hasPart" resource="#issue-13">
+                            <h4 property="schema:name">Issue 13</h4>
+                            <div datatype="rdf:HTML" property="schema:description">
+                                <p>The namespace of the <code>inbox</code> property is to be finalised.</p>
+                                <p>See also: <a href="https://github.com/csarven/ldn/issues/13" rel="rdfs:seeAlso">https://github.com/csarven/ldn/issues/13</a></p>
+                            </div>
                         </div>
-                    </section>
 
-                    <section id="document-status" inlist="" rel="schema:hasPart" resource="#document-status">
-                        <h2 property="schema:name">Status of This Document</h2>
-                        <div datatype="rdf:HTML" property="schema:description">
-                            <p><em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at http://www.w3.org/TR/.</em></p>
-
-                            <p>This document was published by the <a href="http://www.w3.org/Social/WG">Social Web Working Group</a> as a Editor's Draft. If you wish to make comments regarding this document, please send them to <a href="mailto:public-socialweb@w3.org">public-socialweb@w3.org</a> (<a href="mailto:public-socialweb-request@w3.org?subject=subscribe">subscribe</a>, <a href="http://lists.w3.org/Archives/Public/public-socialweb/">archives</a>). All comments are welcome.</p>
-
-                            <p>Publication as a Editor's Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.</p>
-
-                            <p>This document was produced by a group operating under the <a id="sotd_patent" property="w3p:patentRules" href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="http://www.w3.org/2004/01/pp-impl/73180/status" rel="disclosure">public list of any patent disclosures</a> made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.</p>
-
-                            <p>This document is governed by the <a id="w3c_process_revision" href="http://www.w3.org/2015/Process-20150901/">1 September 2015 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.</p>
-                        </div>
-                    </section>
-
-                    <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
-                        <h2 about="#introduction" property="schema:name" typeof="deo:Introduction">Introduction</h2>
-                        <div datatype="rdf:HTML" property="schema:description">
-                            <p><dfn id="ldn">Linked Data Notifications (<abbr title="Linked Data Notifications">LDN</abbr>)</dfn> is a specialized use of Linked Data Platform [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>] for sending and consuming notifications. It is not dependent on a complete implementation of LDP, but an easy-to-implement subset. This specification describes the particular features necessary to make it easy to exchange notifications in a decentralised, interoperable way.</p>
-
-                            <p>This protocol supports a modular approach to creating and storing data, in particular a decoupling between applications and data storage. Thus, where senders, receivers and consumers of notifications are independently implemented and run on different technology stacks, this protocol allows them to seamlessly work together.</p>
-
-                            <ul>
-                                <li>This specification enables the notion of a notification as an individual entity with its own URI which can be retrieved and reused.</li>
-                                <li>This specification deliberately does not define the vocabulary of the notification contents in order to allow for use in a range of different application domains.</li>
-                                <li>Authentication and verification of notifications is encouraged, but the mechanism to do so is at the discretion of receivers and consumers, as needs differ according to types of notification and different application domains.</li>
-                            </ul>
-
-                            <section id="social-web-working-group" inlist="" rel="schema:hasPart" resource="#social-web-working-group">
-                                <h3 property="schema:name">Social Web Working Group</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p><a href="#ldn"><abbr title="Linked Data Notifications">LDN</abbr></a> is one of several related specifications being produced by the Social Web Working Group. Implementers interested in alternative approaches and complimentary protocols should start by reading the overview document <a href="#bib-social-web-protocols" class="bibref">Social Web Protocols</a>.</p>
-                                </div>
-                            </section>
-
-                            <section id="overview" inlist="" rel="schema:hasPart" resource="#overview">
-                                <h3 property="schema:name">Overview</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p>A sender is triggered, either by a human or an automatic process, to deliver a notification to a server. The notification is data intended for the attention of the receiver, for example: a personal message from a friend; a pingback link; a comment on a blog post; an invitation to collaborate; a calendar reminder.</p>
-
-                                    <p>The sender discovers where to deliver the notification based on the addressee or subject of the notification (the receiver) who advertises the appropriate location to send it to (the Inbox). The receiver also exposes the notification data (according to appropriate access control) for use by consumers.</p>
-
-                                    <p>Consumers discover the location of the Inbox in the same way as the sender, and may perform further processing on the notifications, combine it with some other data, or simply present it in a suitable human-readable way.</p>
-                                </div>
-                            </section>
-
-                            <section id="summary" inlist="" rel="schema:hasPart" resource="#summary">
-                                <h3 property="schema:name">Summary</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p id="summary-discovery">Senders and consumers <strong><a href="#discovery">discover</a></strong> a resource's <em>Inbox</em> URL(s) through a relation in the HTTP <code>Link</code> header or body of the resource.</p>
-
-                                    <p id="summary-sender">The <strong><a href="#sending">Sender</a></strong>:</p>
-                                    <ul>
-                                        <li>Creates the body of the notification according to the needs of application.</li>
-                                        <li>Sends the notification to the Inbox URL by making a <code>POST</code> request, containing the body in JSON-LD or in another serialization acceptable by the server.</li>
-                                    </ul>
-
-                                    <p id="summary-consumer">The <strong><a href="#consuming">Consumer</a></strong>:</p>
-                                    <ul>
-                                        <li>Retrieves the contents of the Inbox URL with a <code>GET</code> request, and uses according to the needs of application.</li>
-                                    </ul>
-
-                                    <p id="summary-receiver">The <strong><a href="#receiving">Receiver</a></strong>:</p>
-                                    <ul>
-                                        <li>Responds to <code>GET</code> requests made to the Inbox URL with a JSON-LD representation (or if possible, requested serialization) of the URLs of the notifications that have previously been sent to the Inbox.</li>
-                                        <li>Accepts <code>POST</code> requests at the Inbox URL to create notifications.</li>
-                                        <li>Optionally enforces constraints on notifications sent to the Inbox.</li>
-                                    </ul>
-                                </div>
-                            </section>
-                        </div>
-                    </section>
-
-                    <section id="conformance" inlist="" rel="schema:hasPart" resource="#conformance">
-                        <h2 property="schema:name">Conformance</h2>
-                        <div datatype="rdf:HTML" property="schema:description">
-                            <p>Implementations may consist of one or more of <em>senders</em>, <em>receivers</em> or <em>consumers</em>. The specification indicates the role(s) for which the feature is normatively required. As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative.</p>
-
-                            <p>The key words "<em class="rfc2119">MUST</em>", "<em class="rfc2119">MUST NOT</em>", "<em class="rfc2119">REQUIRED</em>", "<em class="rfc2119">SHALL</em>", "<em class="rfc2119">SHALL NOT</em>", "<em class="rfc2119">SHOULD</em>", "<em class="rfc2119">SHOULD NOT</em>", "<em class="rfc2119">RECOMMENDED</em>", "<em class="rfc2119">MAY</em>", and "<em class="rfc2119">OPTIONAL</em>" in this document are to be interpreted as described in [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>].</p>
-                        </div>
-                    </section>
-
-
-                    <section id="protocol" inlist="" rel="schema:hasPart" resource="#protocol">
-                        <h2 property="schema:name">Protocol</h2>
-                        <div datatype="rdf:HTML" property="schema:description">
-                            <p>This section describes the discovery of the URL to which notifications are delivered or read from (the <em>Inbox</em>) and the delivery mechanism. Notification contents are described in <a href="#payload">Payload</a>.</p>
-
-                            <section id="discovery" inlist="" rel="schema:hasPart" resource="#discovery">
-                                <h3 property="schema:name">Discovery</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p>An <em>Inbox</em>, the endpoint which notifications are sent to or consumed from, can be discovered from any resource, for example a blog post, a dataset, a user profile. The starting point for discovery is the resource which the notification is to or about: the <em>target</em>. Choosing the most appropriate target resource from which to begin discovery is at the discretion of the sender or consumer.</p>
-
-                                    <p>To discover the Inbox URL, senders and consumers <em class="rfc2119">MUST</em>:</p>
-                                    <ul>
-                                        <li>make a <code>HEAD</code> request on the target URL, to check for an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code></li>
-                                        <li>fetch the target URL (and follow redirects) and use the object URI(s) of the predicate <code>http://www.w3.org/ns/ldp#inbox</code> in RDF Sources [<cite><a class="bibref" href="#bib-ldp">LDP-RS</a></cite>]</li>
-                                    </ul>
-
-                                    <p>These may be carried out in either order, but if the first fails to result in an Inbox the second <em class="rfc2119">MUST</em> be tried.</p>
-
-                                    <p>A resource <em class="rfc2119">MUST</em> advertise only one Inbox. One Inbox <em class="rfc2119">MAY</em> be used by multiple resources, for example using the same Inbox for replies to all of my blog posts and shares of all of my photos.</p>
-
-                                    <div class="issue" id="issue-13" rel="schema:hasPart" resource="#issue-13">
-                                        <h4 property="schema:name">Issue 13</h4>
-                                        <div datatype="rdf:HTML" property="schema:description">
-                                            <p>The namespace of the <code>inbox</code> property is to be finalised.</p>
-                                            <p>See also: <a href="https://github.com/csarven/ldn/issues/13" rel="rdfs:seeAlso">https://github.com/csarven/ldn/issues/13</a></p>
-                                        </div>
-                                    </div>
-
-                                    <figure class="listing example" id="discovery-head-example" rel="schema:hasPart" resource="#discovery-head-example">
-                                        <pre>
+                        <figure class="listing example" id="discovery-head-example" rel="schema:hasPart" resource="#discovery-head-example">
+                            <pre>
 <code><span class="hljs-request">HEAD <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
 <code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
 <code><span class="hljs-attribute">Link</span>: <span class="hljs-string">&lt;https://user.example/inbox/&gt;; rel="http://www.w3.org/ns/ldp#inbox"</span></code>
-                                        </pre>
-                                        <figcaption>Discovering an Inbox with a HEAD request.</figcaption>
-                                    </figure>
+                            </pre>
+                            <figcaption>Discovering an Inbox with a HEAD request.</figcaption>
+                        </figure>
 
-                                    <figure class="listing example" id="discovery-json-example" rel="schema:hasPart" resource="#discovery-json-example">
-                                        <pre>
+                        <figure class="listing example" id="discovery-json-example" rel="schema:hasPart" resource="#discovery-json-example">
+                            <pre>
 <code><span class="hljs-request">GET <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json</span></code>
@@ -307,11 +357,11 @@ left:4.5em;
 <code>  "@id": "https://user.example/profile",</code>
 <code>  "inbox": "https://user.example/inbox/"</code>
 <code>}</code>
-                                        </pre>
-                                        <figcaption>Discovering an Inbox with a GET request to retrieve JSON-LD.</figcaption>
-                                    </figure>
-                                    <figure class="listing example" id="discovery-html-example" rel="schema:hasPart" resource="#discovery-html-example">
-                                        <pre>
+                            </pre>
+                            <figcaption>Discovering an Inbox with a GET request to retrieve JSON-LD.</figcaption>
+                        </figure>
+                        <figure class="listing example" id="discovery-html-example" rel="schema:hasPart" resource="#discovery-html-example">
+                            <pre>
 <code><span class="hljs-request">GET <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html</span></code>
@@ -321,26 +371,26 @@ left:4.5em;
 <code></code>
 <code>&lt;a href="/inbox/" rel="http://www.w3.org/ns/ldp#inbox"&gt;My inbox&lt;/a&gt;</code>
 <code></code>
-                                        </pre>
-                                        <figcaption>Discovering an Inbox with a GET request to retrieve HTML.</figcaption>
-                                    </figure>
-                                </div>
-                            </section>
+                            </pre>
+                            <figcaption>Discovering an Inbox with a GET request to retrieve HTML.</figcaption>
+                        </figure>
+                    </div>
+                </section>
 
-                            <section id="sending" inlist="" rel="schema:hasPart" resource="#sending">
-                                <h3 property="schema:name">Sending</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p>The sender <em class="rfc2119">MUST</em> discover the Inbox through the <code>ldp:inbox</code> relation either through a <code>HEAD</code> request or in response body (<a href="#discovery">see discovery</a>).</p>
+                <section id="sending" inlist="" rel="schema:hasPart" resource="#sending">
+                    <h3 property="schema:name"><span class="secno">3.2 </span>Sending</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                        <p>The sender <em class="rfc2119">MUST</em> discover the Inbox through the <code>ldp:inbox</code> relation either through a <code>HEAD</code> request or in response body (<a href="#discovery">see discovery</a>).</p>
 
-                                    <p>Senders <em class="rfc2119">MUST</em> deliver notifications through a <code>POST</code> request to the Inbox URL. Senders can expect a <code>201 Created</code> (with a <code>Location</code> Link header) in response to a successful request.</p>
+                        <p>Senders <em class="rfc2119">MUST</em> deliver notifications through a <code>POST</code> request to the Inbox URL. Senders can expect a <code>201 Created</code> (with a <code>Location</code> Link header) in response to a successful request.</p>
 
-                                    <p>The sender <em class="rfc2119">MAY</em> use an <code>OPTIONS</code> request to determine the RDF content types accepted by the server, and serialize the notification in the request body according to the value of the <code>Accept-Post</code> header [<cite><a class="bibref" href="http://tools.ietf.org/html/draft-wilde-accept-post">Accept-Post</a></cite>] returned. Otherwise, the body of the <code>POST</code> request <em class="rfc2119">MUST</em> contain the notification <a href="#payload">payload</a> in JSON-LD.</p>
+                        <p>The sender <em class="rfc2119">MAY</em> use an <code>OPTIONS</code> request to determine the RDF content types accepted by the server, and serialize the notification in the request body according to the value of the <code>Accept-Post</code> header [<cite><a class="bibref" href="http://tools.ietf.org/html/draft-wilde-accept-post">Accept-Post</a></cite>] returned. Otherwise, the body of the <code>POST</code> request <em class="rfc2119">MUST</em> contain the notification <a href="#payload">payload</a> in JSON-LD.</p>
 
-                                    <p>The sender <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization e.g., <code>Authorization: Bearer XXX</code>.</p>
+                        <p>The sender <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization e.g., <code>Authorization: Bearer XXX</code>.</p>
 
-                                    <p>Request:</p>
-                                    <figure class="listing example" id="sending-notification" rel="schema:hasPart" resource="#sending-notification">
-                                        <pre about="sending-notification" property="schema:description" typeof="fabio:Script">
+                        <p>Request:</p>
+                        <figure class="listing example" id="sending-notification" rel="schema:hasPart" resource="#sending-notification">
+                            <pre about="sending-notification" property="schema:description" typeof="fabio:Script">
 <code><span class="hljs-request">POST <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json</span></code>
@@ -354,55 +404,55 @@ left:4.5em;
 <code>  "target": { "@id": "https://user.example/article#introduction" },</code>
 <code>  "updated": "2016-06-23T15:03:01Z"</code>
 <code>}</code>
-                                        </pre>
-                                        <figcaption property="schema:name">Example notification send request to an Inbox.</figcaption>
-                                    </figure>
+                            </pre>
+                            <figcaption property="schema:name">Example notification send request to an Inbox.</figcaption>
+                        </figure>
 
-                                    <p>Response:</p>
-                                    <figure class="listing example" id="sending-notification-response" rel="schema:hasPart" resource="#sending-notification-response">
-                                        <pre about="sending-notification-response" property="schema:description" typeof="fabio:Script">
+                        <p>Response:</p>
+                        <figure class="listing example" id="sending-notification-response" rel="schema:hasPart" resource="#sending-notification-response">
+                            <pre about="sending-notification-response" property="schema:description" typeof="fabio:Script">
 <code><span class="hljs-request">HTTP/1.1 <span class="hljs-string">201</span> Created</span></code>
 <code><span class="hljs-attribute">Location</span>: <span class="hljs-string">https://user.example/inbox/notification-1</span></code>
-                                        </pre>
-                                        <figcaption property="schema:name">Example response to a request</figcaption>
-                                    </figure>
-                                </div>
-                            </section>
+                            </pre>
+                            <figcaption property="schema:name">Example response to a request</figcaption>
+                        </figure>
+                    </div>
+                </section>
 
-                            <section id="consuming" inlist="" rel="schema:hasPart" resource="#consuming">
-                                <h3 property="schema:name">Consuming</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Consumers retrieve the URIs of notifications in an Inbox through making a <code>GET</code> request on the Inbox URL (to find this URL, see <a href="#discovery">discovery</a>).</p>
+                <section id="consuming" inlist="" rel="schema:hasPart" resource="#consuming">
+                    <h3 property="schema:name"><span class="secno">3.3 </span>Consuming</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                        <p>Consumers retrieve the URIs of notifications in an Inbox through making a <code>GET</code> request on the Inbox URL (to find this URL, see <a href="#discovery">discovery</a>).</p>
 
-                                    <p>The URIs of the notifications <em class="rfc2119">MUST</em> be discoverable through the <code>ldp:contains</code> predicate of the Inbox URL.</p>
+                        <p>The URIs of the notifications <em class="rfc2119">MUST</em> be discoverable through the <code>ldp:contains</code> predicate of the Inbox URL.</p>
 
-                                    <p>When retrieving individual notifications, the consumer <em class="rfc2119">MAY</em> send an <code>Accept</code> header to indicate preferred content types. If no <code>Accept</code> header is sent, or the receiver cannot comply with the content type requested, the consumer <em class="rfc2119">MUST</em> accept JSON-LD. Fetching the notifications — if any, how many, or according to a particular criteria (e.g., content-length, timestamp) — is at the discretion of the consumer.</p>
+                        <p>When retrieving individual notifications, the consumer <em class="rfc2119">MAY</em> send an <code>Accept</code> header to indicate preferred content types. If no <code>Accept</code> header is sent, or the receiver cannot comply with the content type requested, the consumer <em class="rfc2119">MUST</em> accept JSON-LD. Fetching the notifications — if any, how many, or according to a particular criteria (e.g., content-length, timestamp) — is at the discretion of the consumer.</p>
 
-                                    <p>The consumer <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization.</p>
+                        <p>The consumer <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization.</p>
 
-                                    <p>Consumers <em class="rfc2119">MAY</em> perform additional fetching or inferring of information from the payload (e.g., dereferencing resources referenced in the notification to fetch their contents) at their discretion.</p>
-                                </div>
-                            </section>
+                        <p>Consumers <em class="rfc2119">MAY</em> perform additional fetching or inferring of information from the payload (e.g., dereferencing resources referenced in the notification to fetch their contents) at their discretion.</p>
+                    </div>
+                </section>
 
-                            <section id="receiving" inlist="" rel="schema:hasPart" resource="#receiving">
-                                <h3 property="schema:name">Receiving</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Receivers <em class="rfc2119">MUST</em> support <code>GET</code> and <code>POST</code> requests on the Inbox URL. In LDP terms, an Inbox is a <em>Container</em>.</p>
+                <section id="receiving" inlist="" rel="schema:hasPart" resource="#receiving">
+                    <h3 property="schema:name"><span class="secno">3.4 </span>Receiving</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                        <p>Receivers <em class="rfc2119">MUST</em> support <code>GET</code> and <code>POST</code> requests on the Inbox URL. In LDP terms, an Inbox is a <em>Container</em>.</p>
 
-                                    <section id="receiving-notifications" inlist="" rel="schema:hasPart" resource="#receiving-notifications">
-                                        <h4 property="schema:name">Receiving notifications</h4>
-                                        <div datatype="rdf:HTML" property="schema:description">
-                                            <p>Upon receipt of a <code>POST</code> request, if the notification resource was processed successfully, receivers <em class="rfc2119">MUST</em> respond with status code <code>201 Created</code> and the <code>Location</code> header set to the URL from which the notification data can be retrieved (see <a href="#consuming">Consuming</a>). If the request was queued to be processed asynchronously, the receiver <em class="rfc2119">MUST</em> respond with a status code of <code>202 Accepted</code> and include information about the status of the request in the body of the response.</p>
+                        <section id="receiving-notifications" inlist="" rel="schema:hasPart" resource="#receiving-notifications">
+                            <h4 property="schema:name"><span class="secno">3.4.1 </span>Receiving notifications</h4>
+                            <div datatype="rdf:HTML" property="schema:description">
+                                <p>Upon receipt of a <code>POST</code> request, if the notification resource was processed successfully, receivers <em class="rfc2119">MUST</em> respond with status code <code>201 Created</code> and the <code>Location</code> header set to the URL from which the notification data can be retrieved (see <a href="#consuming">Consuming</a>). If the request was queued to be processed asynchronously, the receiver <em class="rfc2119">MUST</em> respond with a status code of <code>202 Accepted</code> and include information about the status of the request in the body of the response.</p>
 
-                                            <p>Receivers which enforce constraints on the notifications (see <a href="#security-privacy-and-content-considerations">Security, Privacy and Content Considerations</a>) <em class="rfc2119">SHOULD</em> fail to process the notification if the constraints are not met and return the appropriate <code>4xx</code> error code.</p>
+                                <p>Receivers which enforce constraints on the notifications (see <a href="#security-privacy-and-content-considerations">Security, Privacy and Content Considerations</a>) <em class="rfc2119">SHOULD</em> fail to process the notification if the constraints are not met and return the appropriate <code>4xx</code> error code.</p>
 
-                                            <p>Receivers <em class="rfc2119">MUST</em> accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>. The <code>Content-Type</code> header <em class="rfc2119">MAY</em> include a <code>profile</code> URI [<cite><a class="bibref" href="#bib-rfc6906">RFC6906</a></cite>].</p>
+                                <p>Receivers <em class="rfc2119">MUST</em> accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>. The <code>Content-Type</code> header <em class="rfc2119">MAY</em> include a <code>profile</code> URI [<cite><a class="bibref" href="#bib-rfc6906">RFC6906</a></cite>].</p>
 
-                                            <p>Receivers <em class="rfc2119">MAY</em> accept other RDF content types (e.g., <code>text/turtle</code>, <code>text/html</code>), and <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept-Post</code> header on the Inbox URL.</p>
+                                <p>Receivers <em class="rfc2119">MAY</em> accept other RDF content types (e.g., <code>text/turtle</code>, <code>text/html</code>), and <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept-Post</code> header on the Inbox URL.</p>
 
-                                            <p>Example Request:</p>
-                                            <figure class="listing example" id="request-response-example" rel="schema:hasPart" resource="#request-response-example">
-                                                <pre about="#request-example" class="hljs http" property="schema:description" typeof="fabio:Script">
+                                <p>Example Request:</p>
+                                <figure class="listing example" id="request-response-example" rel="schema:hasPart" resource="#request-response-example">
+                                    <pre about="#request-example" class="hljs http" property="schema:description" typeof="fabio:Script">
 <code><span class="hljs-request">HEAD <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
 <code></code>
@@ -426,35 +476,35 @@ left:4.5em;
 <code></code>
 <code><span class="hljs-request">HTTP/1.1 <span class="hljs-string">201</span> Created</span></code>
 <code><span class="hljs-attribute">Location</span>: <span class="hljs-string">https://user.example/inbox/notification-2</span></code>
-                                                </pre>
-                                                <figcaption property="schema:name">Example request and response</figcaption>
-                                            </figure>
-                                            <section id="sending-activitystreams2-support" inlist="" rel="schema:hasPart" resource="#sending-activitystreams2-support">
-                                                <h5 property="schema:name">ActivityStreams 2.0 Support</h5>
-                                                <div property="schema:description">
-                                                    <p>Receivers <em class="rfc2119">SHOULD</em> treat the <code>application/activity+json</code> media type as equivalent to <code>application/ld+json; profile="http://www.w3.org/ns/activitystreams"</code>.</p>
-                                                    <div class="issue">
-                                                        <h4>At Risk</h4>
-                                                        <p>This requirement may be moved to <a href="https://w3.org/tr/social-web-protocols">Social Web Protocols</a>.</p><p>See also <a href="https://github.com/csarven/ldn/issues/10">LDN issue #10</a> and <a href="https://github.com/w3c-social/social-web-protocols/issues/36">SWP issue #36</a>.</p>
-                                                    </div>
-                                                </div>
-                                            </section>
+                                    </pre>
+                                    <figcaption property="schema:name">Example request and response</figcaption>
+                                </figure>
+                                <section id="sending-activitystreams2-support" inlist="" rel="schema:hasPart" resource="#sending-activitystreams2-support">
+                                    <h5 property="schema:name">ActivityStreams 2.0 Support</h5>
+                                    <div property="schema:description">
+                                        <p>Receivers <em class="rfc2119">SHOULD</em> treat the <code>application/activity+json</code> media type as equivalent to <code>application/ld+json; profile="http://www.w3.org/ns/activitystreams"</code>.</p>
+                                        <div id="sending-activitystreams2-support-at-risk" class="issue">
+                                            <h4>At Risk</h4>
+                                            <p>This requirement may be moved to <a href="https://w3.org/tr/social-web-protocols">Social Web Protocols</a>.</p><p>See also <a href="https://github.com/csarven/ldn/issues/10">LDN issue #10</a> and <a href="https://github.com/w3c-social/social-web-protocols/issues/36">SWP issue #36</a>.</p>
                                         </div>
-                                    </section>
+                                    </div>
+                                </section>
+                            </div>
+                        </section>
 
-                                    <section id="receiving-inbox-contents" inlist="" rel="schema:hasPart" resource="#receiving-inbox-contents">
-                                        <h4 property="schema:name">Making Inbox contents available to consumers</h4>
-                                        <div datatype="rdf:HTML" property="schema:description">
-                                            <p>A successful <code>GET</code> request on the Inbox <em class="rfc2119">MUST</em> return a <code>HTTP 200 OK</code> with the URIs of notifications, which <em class="rfc2119">MAY</em> be subject to paging or access control restrictions at the receivers discretion (returning <code>4xx</code> error codes as applicable). The receivers <em class="rfc2119">MAY</em> only return URIs of notifications in the Inbox that the consumer is able to access.</p>
+                        <section id="receiving-inbox-contents" inlist="" rel="schema:hasPart" resource="#receiving-inbox-contents">
+                            <h4 property="schema:name"><span class="secno">3.4.2 </span>Making Inbox contents available to consumers</h4>
+                            <div datatype="rdf:HTML" property="schema:description">
+                                <p>A successful <code>GET</code> request on the Inbox <em class="rfc2119">MUST</em> return a <code>HTTP 200 OK</code> with the URIs of notifications, which <em class="rfc2119">MAY</em> be subject to paging or access control restrictions at the receivers discretion (returning <code>4xx</code> error codes as applicable). The receivers <em class="rfc2119">MAY</em> only return URIs of notifications in the Inbox that the consumer is able to access.</p>
 
-                                            <p>If the <code>GET</code> request has no <code>Accept</code> header, the results <em class="rfc2119">MUST</em> be returned as JSON-LD; otherwise the receiver <em class="rfc2119">SHOULD</em> return the results in the serialization requested, or a <code>415 Unsupported Media Type</code> error if the requested serialization is not available.</p>
+                                <p>If the <code>GET</code> request has no <code>Accept</code> header, the results <em class="rfc2119">MUST</em> be returned as JSON-LD; otherwise the receiver <em class="rfc2119">SHOULD</em> return the results in the serialization requested, or a <code>415 Unsupported Media Type</code> error if the requested serialization is not available.</p>
 
-                                            <p>Data about the Inbox itself <em class="rfc2119">MAY</em> also be returned.</p>
+                                <p>Data about the Inbox itself <em class="rfc2119">MAY</em> also be returned.</p>
 
-                                            <p>Each notification URI <em class="rfc2119">MUST</em> be related to the Inbox URL with the <code>ldp:contains</code> predicate. Each notification <em class="rfc2119">MUST</em> be an <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source"><abbr title="Resource Description Framework">RDF</abbr> Source</a>. If non-RDF resources are returned, the consumer <em class="rfc2119">MAY</em> ignore them. Receivers <em class="rfc2119">MAY</em> respect an <code>Accept</code> header sent by the consumer, but otherwise <em class="rfc2119">MUST</em> return notifications as JSON-LD (<code>Content-Type: application/ld+json</code>).</p>
+                                <p>Each notification URI <em class="rfc2119">MUST</em> be related to the Inbox URL with the <code>ldp:contains</code> predicate. Each notification <em class="rfc2119">MUST</em> be an <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source"><abbr title="Resource Description Framework">RDF</abbr> Source</a>. If non-RDF resources are returned, the consumer <em class="rfc2119">MAY</em> ignore them. Receivers <em class="rfc2119">MAY</em> respect an <code>Accept</code> header sent by the consumer, but otherwise <em class="rfc2119">MUST</em> return notifications as JSON-LD (<code>Content-Type: application/ld+json</code>).</p>
 
-                                            <figure class="listing example" id="results-example-inbox-contains-ldp" rel="schema:hasPart" resource="#results-example-inbox-contains-ldp">
-                                                <pre about="#results-example-inbox-contains-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
+                                <figure class="listing example" id="results-example-inbox-contains-ldp" rel="schema:hasPart" resource="#results-example-inbox-contains-ldp">
+                                    <pre about="#results-example-inbox-contains-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
 <code>{</code>
 <code>  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"https://www.w3.org/ns/ldp"</span></span>,</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/inbox/"</span></span>,</code>
@@ -463,68 +513,68 @@ left:4.5em;
 <code>    { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/inbox/notification-2"</span></span> }</code>
 <code>  <span class="hljs-value">]</span></code>
 <code>}</code>
-                                                </pre>
-                                                <figcaption>Results of GET request on Inbox.</figcaption>
-                                            </figure>
-                                            <section id="consuming-activitystreams2-support" inlist="" rel="schema:hasPart" resource="#consuming-activitystreams2-support">
-                                                <h5 property="schema:name">ActivityStreams 2.0 Support</h5>
-                                                <div property="schema:description">
-                                                    <p>Receivers <em class="rfc2119">SHOULD</em> treat the requests from consumers for <code>application/activity+json</code> as equivalent to <code>application/ld+json; profile="http://www.w3.org/ns/activitystreams"</code>, but if doing so additionally <em class="rfc2119">MUST</em> return JSON-LD in compacted form.</p>
-                                                    <div class="issue">
-                                                        <h4>At Risk</h4>
-                                                        <p>This requirement may be moved to <a href="https://w3.org/tr/social-web-protocols">Social Web Protocols</a>.</p><p>See also <a href="https://github.com/csarven/ldn/issues/10">LDN issue #10</a> and <a href="https://github.com/w3c-social/social-web-protocols/issues/36">SWP issue #36</a>.</p>
-                                                    </div>
-                                                </div>
-                                            </section>
+                                    </pre>
+                                    <figcaption>Results of GET request on Inbox.</figcaption>
+                                </figure>
+                                <section id="consuming-activitystreams2-support" inlist="" rel="schema:hasPart" resource="#consuming-activitystreams2-support">
+                                    <h5 property="schema:name">ActivityStreams 2.0 Support</h5>
+                                    <div property="schema:description">
+                                        <p>Receivers <em class="rfc2119">SHOULD</em> treat the requests from consumers for <code>application/activity+json</code> as equivalent to <code>application/ld+json; profile="http://www.w3.org/ns/activitystreams"</code>, but if doing so additionally <em class="rfc2119">MUST</em> return JSON-LD in compacted form.</p>
+                                        <div id="consuming-activitystreams2-support-at-risk" class="issue">
+                                            <h4>At Risk</h4>
+                                            <p>This requirement may be moved to <a href="https://w3.org/tr/social-web-protocols">Social Web Protocols</a>.</p><p>See also <a href="https://github.com/csarven/ldn/issues/10">LDN issue #10</a> and <a href="https://github.com/w3c-social/social-web-protocols/issues/36">SWP issue #36</a>.</p>
                                         </div>
-                                    </section>
-                                </div>
-                            </section>
-                        </div>
-                    </section>
+                                    </div>
+                                </section>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </section>
 
-                    <section id="payload" inlist="" rel="schema:hasPart" resource="#payload">
-                        <h2 property="schema:name">Payload</h2>
-                        <div datatype="rdf:HTML" property="schema:description">
-                            <p>The payload of the notification <em class="rfc2119">MUST</em> be a JSON-LD unless another RDF syntax has been negotiated with the receiver. To allow for a wide variety of use cases, the actual vocabulary of the payload is deliberately left to the discretion of the sender. The sender must not assume that the receiver can fetch or infer anything additional from the payload, and thus must include everything they want the receiver to know.</p>
+        <section id="payload" inlist="" rel="schema:hasPart" resource="#payload">
+            <h2 property="schema:name"><span class="secno">4. </span>Payload</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+                <p>The payload of the notification <em class="rfc2119">MUST</em> be a JSON-LD unless another RDF syntax has been negotiated with the receiver. To allow for a wide variety of use cases, the actual vocabulary of the payload is deliberately left to the discretion of the sender. The sender must not assume that the receiver can fetch or infer anything additional from the payload, and thus must include everything they want the receiver to know.</p>
 
-                            <!-- Commenting out for now as I think this should probably go somewhere else, e.g., in suggestions for implementors, not normative text. — rhiaro
-                            <p id="rights-and-license">Senders <em class="rfc2119">SHOULD</em> include rights or license information in the payload as the notification may be reused or displayed by different consumers and environments.</p>-->
+                <!-- Commenting out for now as I think this should probably go somewhere else, e.g., in suggestions for implementors, not normative text. — rhiaro
+                <p id="rights-and-license">Senders <em class="rfc2119">SHOULD</em> include rights or license information in the payload as the notification may be reused or displayed by different consumers and environments.</p>-->
 
-                            <section id="payload-examples" inlist="" rel="schema:hasPart" resource="#payload-examples">
-                                <h3 property="schema:name">Payload Examples</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p><em>This section is non-normative.</em> Here are some examples of notification content:</p>
+                <section id="payload-examples" inlist="" rel="schema:hasPart" resource="#payload-examples">
+                    <h3 property="schema:name"><span class="secno">4.1 </span>Payload Examples</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                        <p><em>This section is non-normative.</em> Here are some examples of notification content:</p>
 
-                                    <section id="single-statement" inlist="" rel="schema:hasPart" resource="#single-statement">
-                                        <h4 property="schema:name">Single Statement</h4>
-                                        <div datatype="rdf:HTML" property="schema:description">
-                                            <p>A single triple statement is the simplest notification in terms of its data payload. It contains the most essential data which makes up a notification e.g, A note is a reply to an article:</p>
+                        <section id="single-statement" inlist="" rel="schema:hasPart" resource="#single-statement">
+                            <h4 property="schema:name"><span class="secno">4.1.1 </span>Single Statement</h4>
+                            <div datatype="rdf:HTML" property="schema:description">
+                                <p>A single triple statement is the simplest notification in terms of its data payload. It contains the most essential data which makes up a notification e.g, A note is a reply to an article:</p>
 
-                                            <figure class="listing example selected" id="notification-single-statement-json-ld" rel="schema:hasPart" resource="#notification-single-statement-json-ld">
-                                                <pre about="#notification-single-statement-turtle" property="schema:description" typeof="fabio:Script">
+                                <figure class="listing example selected" id="notification-single-statement-json-ld" rel="schema:hasPart" resource="#notification-single-statement-json-ld">
+                                    <pre about="#notification-single-statement-turtle" property="schema:description" typeof="fabio:Script">
 <code>{</code>
 <code>  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"https://www.w3.org/ns/activitystreams"</span></span>,</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.org/note"</span></span>,</code>
 <code>  "<span class="hljs-attribute">inReplyTo</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/article"</span></span></code>
 <code>}</code>
-                                                </pre>
-                                                <figcaption property="schema:name">Example notification type: single statement in JSON-LD</figcaption>
-                                            </figure>
+                                    </pre>
+                                    <figcaption property="schema:name">Example notification type: single statement in JSON-LD</figcaption>
+                                </figure>
 
-                                            <p>This approach is useful if there is a need to further extend the statement's description or refer to it as a whole.</p>
-                                        </div>
-                                    </section>
+                                <p>This approach is useful if there is a need to further extend the statement's description or refer to it as a whole.</p>
+                            </div>
+                        </section>
 
 
-                                    <section id="qualified-relations" inlist="" rel="schema:hasPart" resource="#qualified-relations">
-                                        <h4 property="schema:name">Qualified relations</h4>
-                                        <div datatype="rdf:HTML" property="schema:description">
-                                            <p>A particular grouping of triples which describe and qualify the relations, i.e., the vocabulary in use typically gives meaning to the statements when consumed as a whole. The examples below tend to refer to external resources where the body of the content can be discovered.</p>
+                        <section id="qualified-relations" inlist="" rel="schema:hasPart" resource="#qualified-relations">
+                            <h4 property="schema:name"><span class="secno">4.1.2. </span>Qualified relations</h4>
+                            <div datatype="rdf:HTML" property="schema:description">
+                                <p>A particular grouping of triples which describe and qualify the relations, i.e., the vocabulary in use typically gives meaning to the statements when consumed as a whole. The examples below tend to refer to external resources where the body of the content can be discovered.</p>
 
-                                            <p>ActivityStreams 2.0:</p>
-                                            <figure class="listing example" id="notification-qualified-relation" rel="schema:hasPart" resource="#notification-qualified-relation">
-                                                <pre about="#notification-qualified-relation" property="schema:description" typeof="fabio:Script">
+                                <p>ActivityStreams 2.0:</p>
+                                <figure class="listing example" id="notification-qualified-relation" rel="schema:hasPart" resource="#notification-qualified-relation">
+                                    <pre about="#notification-qualified-relation" property="schema:description" typeof="fabio:Script">
 <code>{</code>
 <code>  "@context": "https://www.w3.org/ns/activitystreams",</code>
 <code>  "@id": "",</code>
@@ -544,13 +594,13 @@ left:4.5em;
 <code>&lt;https://example.org/annotation-1&gt; a as:Note ;</code>
 <code>  as:inReplyTo &lt;https://user.example/article#introduction&gt; .</code>
 -->
-                                                </pre>
-                                                <figcaption property="schema:name">Example notification type: qualified relation.</figcaption>
-                                            </figure>
+                                    </pre>
+                                    <figcaption property="schema:name">Example notification type: qualified relation.</figcaption>
+                                </figure>
 
-                                            <p>Semantic Pingback:</p>
-                                            <figure class="listing example" id="notification-semantic-pingback" rel="schema:hasPart" resource="#notification-semantic-pingback">
-                                                <pre about="#notification-semantic-pingback" property="schema:description" typeof="fabio:Script">
+                                <p>Semantic Pingback:</p>
+                                <figure class="listing example" id="notification-semantic-pingback" rel="schema:hasPart" resource="#notification-semantic-pingback">
+                                    <pre about="#notification-semantic-pingback" property="schema:description" typeof="fabio:Script">
 <code>{</code>
 <code>  "@id": "",</code>
 <code>  "@type": "http://purl.org/net/pingback/Item",</code>
@@ -564,20 +614,20 @@ left:4.5em;
 <code>  pingback:source &lt;https://example.org/annotation-1&gt; ;</code>
 <code>  pingback:target &lt;https://user.example/article#introduction&gt; .</code>
 -->
-                                                </pre>
-                                                <figcaption property="schema:name">Example notification type: Semantic Pingback.</figcaption>
-                                            </figure>
-                                        </div>
-                                    </section>
+                                    </pre>
+                                    <figcaption property="schema:name">Example notification type: Semantic Pingback.</figcaption>
+                                </figure>
+                            </div>
+                        </section>
 
 
-                                    <section id="any-data" inlist="" rel="schema:hasPart" resource="#any-data">
-                                        <h4 property="schema:name">Any data</h4>
-                                        <div datatype="rdf:HTML" property="schema:description">
-                                            <p>This is typically in cases where an application may want to create a notification containing arbitrary information. A notification may contain the complete payload and not necessarily refer to the origin data (external resource).</p>
+                        <section id="any-data" inlist="" rel="schema:hasPart" resource="#any-data">
+                            <h4 property="schema:name"><span class="secno">4.1.3 </span>Any data</h4>
+                            <div datatype="rdf:HTML" property="schema:description">
+                                <p>This is typically in cases where an application may want to create a notification containing arbitrary information. A notification may contain the complete payload and not necessarily refer to the origin data (external resource).</p>
 
-                                            <figure class="listing example" id="notification-any-data" rel="schema:hasPart" resource="#notification-any-data">
-                                                <pre about="#notification-any-data" property="schema:description" typeof="fabio:Script">
+                                <figure class="listing example" id="notification-any-data" rel="schema:hasPart" resource="#notification-any-data">
+                                    <pre about="#notification-any-data" property="schema:description" typeof="fabio:Script">
 <code>{</code>
 <code>  "@context": [</code>
 <code>    { "sioc": "http://rdfs.org/sioc/ns#" },</code>
@@ -596,139 +646,183 @@ left:4.5em;
 <code>    "foaf:name": "Alice"</code>
 <code>  }</code>
 <code>}</code>
-                                                </pre>
-                                                <figcaption property="schema:name">Example notification type: any data.</figcaption>
-                                            </figure>
-                                        </div>
-                                    </section>
-                                </div>
-                            </section>
-                        </div>
-                    </section>
+                                    </pre>
+                                    <figcaption property="schema:name">Example notification type: any data.</figcaption>
+                                </figure>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+            </div>
+        </section>
 
-                    <section id="security-privacy-and-content-considerations" inlist="" rel="schema:hasPart" resource="#security-privacy-and-content-considerations">
-                        <h2 property="schema:name">Security, Privacy and Content Considerations</h2>
-                        <div datatype="rdf:HTML" property="schema:description">
-                            <section id="constraints" inlist="" rel="schema:hasPart" resource="#constraints">
-                                <h3 property="schema:name">Constraints</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Inbox URLs can announce their own shape constraints (e.g., <cite><a class="bibref" href="#bib-shacl">SHACL</a></cite>, <cite><a class="bibref" href="bib-annotation-protocol">Web Annotation Protocol</a></cite>) via an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#constrainedBy</code> at a target URL. Senders should comply with constraint specifications or the receiver may reject their notification.</p>
-                                </div>
-                            </section>
+        <section id="security-privacy-and-content-considerations" inlist="" rel="schema:hasPart" resource="#security-privacy-and-content-considerations">
+            <h2 property="schema:name"><span class="secno">5. </span>Security, Privacy and Content Considerations</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+                <section id="constraints" inlist="" rel="schema:hasPart" resource="#constraints">
+                    <h3 property="schema:name"><span class="secno">5.1 </span>Constraints</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                        <p>Inbox URLs can announce their own shape constraints (e.g., <cite><a class="bibref" href="#bib-shacl">SHACL</a></cite>, <cite><a class="bibref" href="bib-annotation-protocol">Web Annotation Protocol</a></cite>) via an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#constrainedBy</code> at a target URL. Senders should comply with constraint specifications or the receiver may reject their notification.</p>
+                    </div>
+                </section>
 
-                            <section id="payload-verification" inlist="" rel="schema:hasPart" resource="#payload-verification">
-                                <h3 property="schema:name">Payload Verification</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Given the nature of the notification payload, consumers may want to take precautions when ascertaining the veracity of the contents. The <q>open-world assumption</q> applies here.</p>
-                                </div>
-                            </section>
+                <section id="payload-verification" inlist="" rel="schema:hasPart" resource="#payload-verification">
+                    <h3 property="schema:name"><span class="secno">5.2 </span>Payload Verification</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                        <p>Given the nature of the notification payload, consumers may want to take precautions when ascertaining the veracity of the contents. The <q>open-world assumption</q> applies here.</p>
+                    </div>
+                </section>
 
-                            <section id="sender-verification" inlist="" rel="schema:hasPart" resource="#sender-verification">
-                                <h3 property="schema:name">Sender Verification</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Receivers <em class="rfc2119">SHOULD</em> ensure or verify the sender of the notification, for example:</p>
-                                    <ul>
-                                        <li>by having a whitelist of senders with write access to the Inbox</li>
-                                        <li>requiring authentication to enforce receiver's knowledge of every sender</li>
-                                        <li>retrieve a copy of the notification from the sender's domain to verify its origin</li>
-                                        <li>checking a digital signature which accompanies the notification</li>
-                                    </ul>
-                                </div>
-                            </section>
+                <section id="sender-verification" inlist="" rel="schema:hasPart" resource="#sender-verification">
+                    <h3 property="schema:name"><span class="secno">5.3 </span>Sender Verification</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                        <p>Receivers <em class="rfc2119">SHOULD</em> ensure or verify the sender of the notification, for example:</p>
+                        <ul>
+                            <li>by having a whitelist of senders with write access to the Inbox</li>
+                            <li>requiring authentication to enforce receiver's knowledge of every sender</li>
+                            <li>retrieve a copy of the notification from the sender's domain to verify its origin</li>
+                            <li>checking a digital signature which accompanies the notification</li>
+                        </ul>
+                    </div>
+                </section>
 
-                            <section id="preventing-abuse" inlist="" rel="schema:hasPart" resource="#preventing-abuse">
-                                <h3 property="schema:name">Preventing Abuse</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Receivers <em class="rfc2119">SHOULD</em> use <a href="#constraints">constraints</a> to filter unwarranted notifications from being created on the server and exposed by the Inbox. Consumers <em class="rfc2119">MAY</em> also want to check the notifications against any constraints as announced by an Inbox before further processing or use.</p>
+                <section id="preventing-abuse" inlist="" rel="schema:hasPart" resource="#preventing-abuse">
+                    <h3 property="schema:name"><span class="secno">5.4 </span>Preventing Abuse</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                        <p>Receivers <em class="rfc2119">SHOULD</em> use <a href="#constraints">constraints</a> to filter unwarranted notifications from being created on the server and exposed by the Inbox. Consumers <em class="rfc2119">MAY</em> also want to check the notifications against any constraints as announced by an Inbox before further processing or use.</p>
 
-                                    <p>If the sender has any services that listen on localhost that don't require authentication, it's possible for a malicious script to run at the Inbox endpoint that could cause the sender to make an arbitrary <code>POST</code> request to itself. Senders <em class="rfc2119">SHOULD NOT</em> make <code>POST</code> requests to the Inbox that are localhost or a loopback IP address.</p>
+                        <p>If the sender has any services that listen on localhost that don't require authentication, it's possible for a malicious script to run at the Inbox endpoint that could cause the sender to make an arbitrary <code>POST</code> request to itself. Senders <em class="rfc2119">SHOULD NOT</em> make <code>POST</code> requests to the Inbox that are localhost or a loopback IP address.</p>
 
-                                    <p>Receivers could consider implementing access control on the Inbox URL to restrict writing to a whitelist of trusted senders.</p>
-                                </div>
-                            </section>
+                        <p>Receivers could consider implementing access control on the Inbox URL to restrict writing to a whitelist of trusted senders.</p>
+                    </div>
+                </section>
 
-                            <section id="privacy" inlist="" rel="schema:hasPart" resource="#privacy">
-                                <h3 property="schema:name">Privacy</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p>In the case of sending sensitive information, the sender should be aware that the receiver may implement access control on the Inbox that allows for public reading of the contents.</p>
-                                </div>
-                            </section>
-                        </div>
-                    </section>
+                <section id="privacy" inlist="" rel="schema:hasPart" resource="#privacy">
+                    <h3 property="schema:name"><span class="secno">5.5 </span>Privacy</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                        <p>In the case of sending sensitive information, the sender should be aware that the receiver may implement access control on the Inbox that allows for public reading of the contents.</p>
+                    </div>
+                </section>
+            </div>
+        </section>
 
-                    <section id="implementations" inlist="" rel="schema:hasPart" resource="#implementations">
-                        <h2 property="schema:name">Implementations</h2>
-                        <div datatype="rdf:HTML" property="schema:description">
-                            <ul>
-                                <li>Any <a href="https://www.w3.org/wiki/LDP_Implementations">LDP implementation</a> (receiver) e.g., <a href="https://github.com/solid/node-solid-server">node solid server</a></li>
-                                <li><a href="https://github.com/rhiaro/sloph">sloph</a> (receiver)</li>
-                                <li><a href="https://github.com/linkeddata/errol">errol</a> (sender)</li>
-                                <li><a href="https://dokie.li/">dokieli</a> (sender, consumer)</li>
-                                <li><a href="https://github.com/solid/solid-inbox">solid-inbox</a> (consumer)</li>
-                                <li><a href="https://github.com/solid/solid-client">solid-client</a> (sender)</li>
-                                <li><a href="https://github.com/melvincarvalho/vocab">solid words</a> (sender)</li>
-                            </ul>
-                        </div>
-                    </section>
+        <section id="implementations" inlist="" rel="schema:hasPart" resource="#implementations">
+            <h2 property="schema:name"><span class="secno">6. </span>Implementations</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+                <ul>
+                    <li>Any <a href="https://www.w3.org/wiki/LDP_Implementations">LDP implementation</a> (receiver) e.g., <a href="https://github.com/solid/node-solid-server">node solid server</a></li>
+                    <li><a href="https://github.com/rhiaro/sloph">sloph</a> (receiver)</li>
+                    <li><a href="https://github.com/linkeddata/errol">errol</a> (sender)</li>
+                    <li><a href="https://dokie.li/">dokieli</a> (sender, consumer)</li>
+                    <li><a href="https://github.com/solid/solid-inbox">solid-inbox</a> (consumer)</li>
+                    <li><a href="https://github.com/solid/solid-client">solid-client</a> (sender)</li>
+                    <li><a href="https://github.com/melvincarvalho/vocab">solid words</a> (sender)</li>
+                </ul>
+            </div>
+        </section>
 
-                    <section id="document-conventions" inlist="" rel="schema:hasPart" resource="#document-conventions">
-                        <h2 property="schema:name">Document Conventions</h2>
-                        <div datatype="rdf:HTML" property="schema:description">
-                            <p>RDF prefix conventions are used throughout this document with the following namespaces:</p>
+        <section id="document-conventions" inlist="" rel="schema:hasPart" resource="#document-conventions">
+            <h2 property="schema:name"><span class="secno">A. </span>Document Conventions</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+                <p>RDF prefix conventions are used throughout this document with the following namespaces:</p>
 
-                            <table id="prefix-and-namespaces">
-                                <caption>Prefixes and namespaces</caption>
-                                <thead>
-                                    <tr>
-                                        <th>Prefix</th>
-                                        <th>Namespace</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><code>ldp</code></td>
-                                        <td><a href="http://www.w3.org/ns/ldp">http://www.w3.org/ns/ldp#</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>sioc</code></td>
-                                        <td><a href="http://rdfs.org/sioc/ns">http://rdfs.org/sioc/ns#</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>foaf</code></td>
-                                        <td><a href="http://xmlns.com/foaf/0.1/">http://xmlns.com/foaf/0.1/</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>as</code></td>
-                                        <td><a href="http://www.w3.org/ns/activitystreams">http://www.w3.org/ns/activitystreams#</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>oa</code></td>
-                                        <td><a href="http://www.w3.org/ns/oa">http://www.w3.org/ns/oa#</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>schema</code></td>
-                                        <td><a href="https://schema.org/">https://schema.org/</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </section>
+                <table id="prefix-and-namespaces">
+                    <caption>Prefixes and namespaces</caption>
+                    <thead>
+                        <tr>
+                            <th>Prefix</th>
+                            <th>Namespace</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>ldp</code></td>
+                            <td><a href="http://www.w3.org/ns/ldp">http://www.w3.org/ns/ldp#</a></td>
+                        </tr>
+                        <tr>
+                            <td><code>sioc</code></td>
+                            <td><a href="http://rdfs.org/sioc/ns">http://rdfs.org/sioc/ns#</a></td>
+                        </tr>
+                        <tr>
+                            <td><code>foaf</code></td>
+                            <td><a href="http://xmlns.com/foaf/0.1/">http://xmlns.com/foaf/0.1/</a></td>
+                        </tr>
+                        <tr>
+                            <td><code>as</code></td>
+                            <td><a href="http://www.w3.org/ns/activitystreams">http://www.w3.org/ns/activitystreams#</a></td>
+                        </tr>
+                        <tr>
+                            <td><code>oa</code></td>
+                            <td><a href="http://www.w3.org/ns/oa">http://www.w3.org/ns/oa#</a></td>
+                        </tr>
+                        <tr>
+                            <td><code>schema</code></td>
+                            <td><a href="https://schema.org/">https://schema.org/</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
+        <section id="acknowledgements" inlist="" rel="schema:hasPart" resource="#acknowledgements">
+            <h2 about="#acknowledgements" property="schema:name" typeof="deo:Acknowledgements"><span class="secno">B. </span>Acknowledgements</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+                <p>..</p>
+            </div>
+        </section>
 
-                    <section id="acknowledgements" inlist="" rel="schema:hasPart" resource="#acknowledgements">
-                        <h2 about="#acknowledgements" property="schema:name" typeof="deo:Acknowledgements">Acknowledgements</h2>
-                        <div datatype="rdf:HTML" property="schema:description">
-                            <p>..</p>
-                        </div>
-                    </section>
+        <section id="change-log" inlist="" rel="schema:hasPart" resource="#change-log">
+            <h2 property="schema:name"><span class="secno">C. </span>Change Log</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+                <p><em>This section is non-normative.</em></p>
+                <section id="Changes-from-27-July-2016-WD-to-this-version" inlist="" rel="schema:hasPart" resource="#Changes-from-27-July-2016-WD-to-this-version">
+                    <h3 property="schema:name"><span>C.1 </span>Changes from 27 July 2016 WD to this version</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                        <ul>
+                            <li>Editorial</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </section>
 
-                    <section id="references">
-                        <h2 about="#references" property="schema:name" typeof="deo:Reference">References</h2>
-                        <div>
-                        </div>
-                    </section>
-                </div>
-            </article>
-        </main>
+        <section class="appendix" id="references" typeof="bibo:Chapter" resource="#references" property="bibo:hasPart">
+          <h2 id="h-references" resource="#h-references">
+            <span resource="xhv:heading" property="xhv:role"><span class="secno">D. </span>References</span>
+          </h2>
+          <section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" property="bibo:hasPart">
+            <h3 id="h-normative-references" resource="#h-normative-references">
+              <span resource="xhv:heading" property="xhv:role"><span class="secno">D.1 </span>Normative references</span>
+            </h3>
+            <dl class="bibliography" resource="">
+              <dt id="bib-ldp">[ldp]</dt>
+              <dd>Steve Speicher; John Arwe; Ashok Malhotra. W3C. <a href="https://www.w3.org/TR/ldp/" property="dc:requires"><cite>Linked Data Platform 1.0</cite></a>. 26 February 2015. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ldp/" property="dc:requires">https://www.w3.org/TR/ldp/</a></dd>
+              <dt id="bib-rfc2119">[rfc2119]</dt>
+              <dd>S. Bradner. IETF. <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires">https://tools.ietf.org/html/rfc2119</a></dd>
+              <dt id="bib-rfc6906">[rfc6906]</dt>
+              <dd>E. Wilde. IETF. <a href="https://tools.ietf.org/html/rfc6906" property="dc:requires"><cite>The 'profile' Link Relation Type</cite></a>. March 2013. Informational. URL: <a href="https://tools.ietf.org/html/rfc6906" property="dc:requires">https://tools.ietf.org/html/rfc6906</a></dd>
+            </dl>
+          </section>
+          <section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" property="bibo:hasPart">
+            <h3 id="h-informative-references" resource="#h-informative-references">
+              <span resource="xhv:heading" property="xhv:role"><span class="secno">D.2 </span>Informative references</span>
+            </h3>
+            <dl class="bibliography" resource="">
+              <dt id="bib-accept-post">[accept-post]</dt>
+              <dd>J. Arwe; S. Speicher; E. Wilde. IETF. <a href="http://tools.ietf.org/html/draft-wilde-accept-post" property="dc:references"><cite>The Accept-Post HTTP Header</cite></a>. Internet Draft. URL: <a href="http://tools.ietf.org/html/draft-wilde-accept-post" property="dc:references">http://tools.ietf.org/html/draft-wilde-accept-post</a></dd>
+              <dt id="bib-activitystreams-core">[activitystreams-core]</dt>
+              <dd>James Snell; Evan Prodromou. W3C. <a href="https://www.w3.org/TR/activitystreams-core/" property="dc:references"><cite>Activity Streams 2.0</cite></a>. 12 July 2016. W3C Working Draft. URL: <a href="https://www.w3.org/TR/activitystreams-core/" property="dc:references">https://www.w3.org/TR/activitystreams-core/</a></dd>
+              <dt id="bib-annotation-protocol">[annotation-protocol]</dt>
+              <dd>Robert Sanderson. W3C. <a href="https://www.w3.org/TR/annotation-protocol/" property="dc:references"><cite>Web Annotation Protocol</cite></a>. 12 July 2016. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/annotation-protocol/" property="dc:references">https://www.w3.org/TR/annotation-protocol/</a></dd>
+              <dt id="bib-shacl">[shacl]</dt>
+              <dd>Holger Knublauch; Dimitris Kontokostas. W3C. <a href="https://www.w3.org/TR/shacl/" property="dc:references"><cite>Shapes Constraint Language (SHACL)</cite></a>. 30 May 2016. W3C Working Draft. URL: <a href="https://www.w3.org/TR/shacl/" property="dc:references">https://www.w3.org/TR/shacl/</a></dd>
+              <dt id="bib-social-web-protocols">[social-web-protocols]</dt>
+              <dd>Amy Guy. W3C. <a href="https://www.w3.org/TR/social-web-protocols/" property="dc:references"><cite>Social Web Protocols</cite></a>. 3 June 2016. W3C Working Draft. URL: <a href="https://www.w3.org/TR/social-web-protocols/" property="dc:references">https://www.w3.org/TR/social-web-protocols/</a></dd>
+            </dl>
+          </section>
+        </section>
+
+        <p role="navigation" id="back-to-top"><a href="#toc"><abbr title="Back to top">↑</abbr></a></p>
+        <script src="//www.w3.org/scripts/TR/2016/fixup.js"></script>
     </body>
 </html>
