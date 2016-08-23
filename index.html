@@ -79,22 +79,22 @@ font-size: 220%;
 font-weight:bold;
 }
 
-article section:not([id=abstract]):not([id=document-status]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=document-conventions]) {
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=document-conventions]):not([id=change-log]) {
 counter-increment:section;
 counter-reset:sub-section;
 }
-article section:not([id=abstract]):not([id=document-status]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=document-conventions]) section {
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=document-conventions]):not([id=change-log]) section:not([id$="references"]) {
 counter-increment:sub-section;
 counter-reset:sub-sub-section;
 }
-article section:not([id=abstract]):not([id=document-status]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=document-conventions]) section section {
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=document-conventions]):not([id=change-log]) section section {
 counter-increment:sub-sub-section;
 counter-reset:sub-sub-sub-section;
 }
-article section:not([id=abstract]):not([id=document-status]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=document-conventions]):not([id^=table-of-]) > h2:before {
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=document-conventions]):not([id=change-log]):not([id^=table-of-]) > h2:before {
 content:counter(section) ".\00a0\00a0\00a0\00a0";
 }
-section > h3:before {
+section:not([id$="references"]):not([id^=change-log]) > h3:before {
 content:counter(section) "." counter(sub-section) "\00a0\00a0\00a0";
 }
 section > h4:before {
@@ -126,17 +126,19 @@ left:4.5em;
                 <h1 property="schema:name">Linked Data Notifications</h1>
 
                 <dl id="document-identifier">
-                    <dt>This version</dt>
+                    <dt>This version:</dt>
                     <dd><a href="https://linkedresearch.org/ldn/" rel="owl:sameAs doap:homepage">https://linkedresearch.org/ldn/</a></dd>
                     <dt>Latest published version:</dt>
-                    <dd><a href="http://www.w3.org/TR/ldn/" rel="rdfs:seeAlso">http://www.w3.org/TR/ldn/</a></dd>
+                    <dd><a href="https://www.w3.org/TR/ldn/" rel="rdfs:seeAlso">https://www.w3.org/TR/ldn/</a></dd>
+                    <dt>Previous version:</dt>
+                    <dd><a href="https://www.w3.org/TR/2016/WD-ldn-20160823/" rel="owl:sameAs doap:homepage">https://www.w3.org/TR/2016/WD-ldn-20160823/</a></dd>
                 </dl>
 
                 <div id="authors">
                     <dl id="author-name">
                         <dt>Editors</dt>
-                        <dd id="Sarven-Capadisli" inlist="" rel="bibo:authorList" resource="http://csarven.ca/#i"><span about="" rel="schema:creator schema:publisher schema:author"><a about="http://csarven.ca/#i" href="http://csarven.ca/" property="schema:name" rel="schema:url" typeof="schema:Person"><span property="schema:givenName">Sarven</span> <span property="schema:familyName">Capadisli</span></a></span>, <a about="http://csarven.ca/#i" href="http://uni-bonn.de/" rel="schema:memberOf" resource="http://dbpedia.org/resource/University_of_Bonn">University of Bonn</a>, <a about="http://csarven.ca/#i" href="mailto:info@csarven.ca" rel="schema:email">info@csarven.ca</a></dd>
-                        <dd id="Amy-Guy" inlist="" rel="bibo:authorList" resource="http://rhiaro.co.uk/#me"><span about="" rel=" schema:author"><a about="http://rhiaro.co.uk/#me" href="http://rhiaro.co.uk/" property="schema:name" rel="schema:url" typeof="schema:Person"><span property="schema:givenName">Amy</span> <span property="schema:familyName">Guy</span></a></span>, <a about="http://rhiaro.co.uk/#me" href="http://inf.ed.ac.uk/" rel="schema:memberOf" resource="http://dbpedia.org/resource/University_of_Edinburgh">University of Edinburgh</a>, <a about="http://rhiaro.co.uk/#me" href="mailto:amy@rhiaro.co.uk" rel="schema:email">amy@rhiaro.co.uk</a></dd>
+                        <dd id="Sarven-Capadisli" data-editor-id="46140" inlist="" rel="bibo:authorList" resource="http://csarven.ca/#i"><span about="" rel="schema:creator schema:author"><a about="http://csarven.ca/#i" href="http://csarven.ca/" property="schema:name" rel="schema:url" typeof="schema:Person"><span property="schema:givenName">Sarven</span> <span property="schema:familyName">Capadisli</span></a></span>, <a about="http://csarven.ca/#i" href="http://uni-bonn.de/" rel="schema:memberOf" resource="http://dbpedia.org/resource/University_of_Bonn">University of Bonn</a>, <a about="http://csarven.ca/#i" href="mailto:info@csarven.ca" rel="schema:email">info@csarven.ca</a></dd>
+                        <dd id="Amy-Guy" data-editor-id="69000" inlist="" rel="bibo:authorList" resource="http://rhiaro.co.uk/#me"><span about="" rel=" schema:author"><a about="http://rhiaro.co.uk/#me" href="http://rhiaro.co.uk/" property="schema:name" rel="schema:url" typeof="schema:Person"><span property="schema:givenName">Amy</span> <span property="schema:familyName">Guy</span></a></span>, <a about="http://rhiaro.co.uk/#me" href="http://inf.ed.ac.uk/" rel="schema:memberOf" resource="http://dbpedia.org/resource/University_of_Edinburgh">University of Edinburgh</a>, <a about="http://rhiaro.co.uk/#me" href="mailto:amy@rhiaro.co.uk" rel="schema:email">amy@rhiaro.co.uk</a></dd>
                     </dl>
                 </div>
 
@@ -152,7 +154,7 @@ left:4.5em;
 
                 <dl id="document-modified">
                     <dt>Modified</dt>
-                    <dd><time datatype="xsd:dateTime" datetime="2016-08-17T00:00:00Z" property="schema:dateModified">2016-08-17</time></dd>
+                    <dd><time datatype="xsd:dateTime" datetime="2016-08-23T00:00:00Z" property="schema:dateModified">2016-08-23</time></dd>
                 </dl>
 
                 <dl id="document-repository">
@@ -171,18 +173,18 @@ left:4.5em;
                         </div>
                     </section>
 
-                    <section id="document-status" inlist="" rel="schema:hasPart" resource="#document-status">
+                    <section class="introductory" id="sotd" inlist="" rel="schema:hasPart" resource="#sotd">
                         <h2 property="schema:name">Status of This Document</h2>
-                        <div datatype="rdf:HTML" property="schema:description">
-                            <p><em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at http://www.w3.org/TR/.</em></p>
+                        <div property="schema:description" datatype="rdf:HTML">
+                            <p><em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at https://www.w3.org/TR/.</em></p>
 
-                            <p>This document was published by the <a href="http://www.w3.org/Social/WG">Social Web Working Group</a> as a Editor's Draft. If you wish to make comments regarding this document, please send them to <a href="mailto:public-socialweb@w3.org">public-socialweb@w3.org</a> (<a href="mailto:public-socialweb-request@w3.org?subject=subscribe">subscribe</a>, <a href="http://lists.w3.org/Archives/Public/public-socialweb/">archives</a>). All comments are welcome.</p>
+                            <p>This document was published by the <a href="https://www.w3.org/Social/WG">Social Web Working Group</a> as a Working Draft. This document is intended to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation. If you wish to make comments regarding this document, please send them to <a href="mailto:public-socialweb@w3.org">public-socialweb@w3.org</a> (<a href="mailto:public-socialweb-request@w3.org?subject=subscribe">subscribe</a>, <a href="https://lists.w3.org/Archives/Public/public-socialweb/">archives</a>). All comments are welcome.</p>
 
-                            <p>Publication as a Editor's Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.</p>
+                            <p>Publication as a Working Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.</p>
 
-                            <p>This document was produced by a group operating under the <a id="sotd_patent" property="w3p:patentRules" href="http://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="http://www.w3.org/2004/01/pp-impl/73180/status" rel="disclosure">public list of any patent disclosures</a> made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="http://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.</p>
+                            <p>This document was produced by a group operating under the <a id="sotd_patent" property="w3p:patentRules" href="https://www.w3.org/Consortium/Patent-Policy-20040205/">5 February 2004 <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="https://www.w3.org/2004/01/pp-impl/72531/status" rel="disclosure">public list of any patent disclosures</a> made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains <a href="https://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential">Essential Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.</p>
 
-                            <p>This document is governed by the <a id="w3c_process_revision" href="http://www.w3.org/2015/Process-20150901/">1 September 2015 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.</p>
+                            <p>This document is governed by the <a id="w3c_process_revision" href="https://www.w3.org/2015/Process-20150901/">1 September 2015 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.</p>
                         </div>
                     </section>
 
@@ -726,7 +728,7 @@ left:4.5em;
                         <h2 property="schema:name">Change Log</h2>
                         <div datatype="rdf:HTML" property="schema:description">
                             <p><em>This section is non-normative.</em></p>
-                            <section id="Changes-from-27-July-2016-WD-to-this-version" inlist="" rel="schema:hasPart" resource="#Changes-from-27-July-2016-WD-to-this-version">
+                            <section id="change-log-Changes-from-27-July-2016-WD-to-this-version" inlist="" rel="schema:hasPart" resource="#change-log-Changes-from-27-July-2016-WD-to-this-version">
                                 <h3 property="schema:name">Changes from 27 July 2016 WD to this version</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <ul>
@@ -739,11 +741,44 @@ left:4.5em;
                         </div>
                     </section>
 
-                    <section id="references">
-                        <h2 about="#references" property="schema:name" typeof="deo:Reference">References</h2>
-                        <div>
+                    <section class="appendix" id="references" typeof="bibo:Chapter" resource="#references" property="bibo:hasPart">
+                      <h2 id="h-references" resource="#h-references">
+                        <span resource="xhv:heading" property="xhv:role">References</span>
+                      </h2>
+                      <div>
+                          <section id="normative-references" typeof="bibo:Chapter" resource="#normative-references" property="bibo:hasPart">
+                            <h3 id="h-normative-references" resource="#h-normative-references">
+                              <span resource="xhv:heading" property="xhv:role">Normative references</span>
+                            </h3>
+                            <dl class="bibliography" resource="">
+                              <dt id="bib-ldp">[ldp]</dt>
+                              <dd>Steve Speicher; John Arwe; Ashok Malhotra. W3C. <a href="https://www.w3.org/TR/ldp/" property="dc:requires"><cite>Linked Data Platform 1.0</cite></a>. 26 February 2015. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ldp/" property="dc:requires">https://www.w3.org/TR/ldp/</a></dd>
+                              <dt id="bib-rfc2119">[rfc2119]</dt>
+                              <dd>S. Bradner. IETF. <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires">https://tools.ietf.org/html/rfc2119</a></dd>
+                              <dt id="bib-rfc6906">[rfc6906]</dt>
+                              <dd>E. Wilde. IETF. <a href="https://tools.ietf.org/html/rfc6906" property="dc:requires"><cite>The 'profile' Link Relation Type</cite></a>. March 2013. Informational. URL: <a href="https://tools.ietf.org/html/rfc6906" property="dc:requires">https://tools.ietf.org/html/rfc6906</a></dd>
+                            </dl>
+                          </section>
+                          <section id="informative-references" typeof="bibo:Chapter" resource="#informative-references" property="bibo:hasPart">
+                            <h3 id="h-informative-references" resource="#h-informative-references">
+                              <span resource="xhv:heading" property="xhv:role">Informative references</span>
+                            </h3>
+                            <dl class="bibliography" resource="">
+                              <dt id="bib-accept-post">[accept-post]</dt>
+                              <dd>J. Arwe; S. Speicher; E. Wilde. IETF. <a href="http://tools.ietf.org/html/draft-wilde-accept-post" property="dc:references"><cite>The Accept-Post HTTP Header</cite></a>. Internet Draft. URL: <a href="http://tools.ietf.org/html/draft-wilde-accept-post" property="dc:references">http://tools.ietf.org/html/draft-wilde-accept-post</a></dd>
+                              <dt id="bib-activitystreams-core">[activitystreams-core]</dt>
+                              <dd>James Snell; Evan Prodromou. W3C. <a href="https://www.w3.org/TR/activitystreams-core/" property="dc:references"><cite>Activity Streams 2.0</cite></a>. 12 July 2016. W3C Working Draft. URL: <a href="https://www.w3.org/TR/activitystreams-core/" property="dc:references">https://www.w3.org/TR/activitystreams-core/</a></dd>
+                              <dt id="bib-annotation-protocol">[annotation-protocol]</dt>
+                              <dd>Robert Sanderson. W3C. <a href="https://www.w3.org/TR/annotation-protocol/" property="dc:references"><cite>Web Annotation Protocol</cite></a>. 12 July 2016. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/annotation-protocol/" property="dc:references">https://www.w3.org/TR/annotation-protocol/</a></dd>
+                              <dt id="bib-shacl">[shacl]</dt>
+                              <dd>Holger Knublauch; Dimitris Kontokostas. W3C. <a href="https://www.w3.org/TR/shacl/" property="dc:references"><cite>Shapes Constraint Language (SHACL)</cite></a>. 30 May 2016. W3C Working Draft. URL: <a href="https://www.w3.org/TR/shacl/" property="dc:references">https://www.w3.org/TR/shacl/</a></dd>
+                              <dt id="bib-social-web-protocols">[social-web-protocols]</dt>
+                              <dd>Amy Guy. W3C. <a href="https://www.w3.org/TR/social-web-protocols/" property="dc:references"><cite>Social Web Protocols</cite></a>. 3 June 2016. W3C Working Draft. URL: <a href="https://www.w3.org/TR/social-web-protocols/" property="dc:references">https://www.w3.org/TR/social-web-protocols/</a></dd>
+                            </dl>
+                          </section>
                         </div>
                     </section>
+
                 </div>
             </article>
         </main>
