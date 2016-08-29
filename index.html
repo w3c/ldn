@@ -213,7 +213,7 @@ left:4.5em;
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>A sender is triggered, either by a human or an automatic process, to deliver a notification to a server. The notification is data intended for the attention of the receiver, for example: a personal message from a friend; a pingback link; a comment on a blog post; an invitation to collaborate; a calendar reminder.</p>
 
-                                    <p>The sender discovers where to deliver the notification based on the addressee or subject of the notification (the receiver) who advertises the appropriate location to send it to (the Inbox). The receiver also exposes the notification data (according to appropriate access control) for use by consumers.</p>
+                                    <p>The sender discovers where to deliver the notification based on the addressee or subject of the notification (the receiver) who advertises the appropriate location to send it to (the Inbox). Any resource can have its own Inbox. The receiver also exposes the notification data (according to appropriate access control) for use by consumers.</p>
 
                                     <p>Consumers discover the location of the Inbox in the same way as the sender, and may perform further processing on the notifications, combine it with some other data, or simply present it in a suitable human-readable way.</p>
                                 </div>
@@ -264,7 +264,7 @@ left:4.5em;
                             <section id="discovery" inlist="" rel="schema:hasPart" resource="#discovery">
                                 <h3 property="schema:name">Discovery</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>An <em>Inbox</em>, the endpoint which notifications are sent to or consumed from, can be discovered from any resource, for example a blog post, a dataset, a user profile. The starting point for discovery is the resource which the notification is to or about: the <em>target</em>. Choosing the most appropriate target resource from which to begin discovery is at the discretion of the sender or consumer.</p>
+                                    <p>An <em>Inbox</em>, the endpoint which notifications are sent to or consumed from, can be discovered from any resource, for example a blog post, a user profile, a dataset, a video. The starting point for discovery is the resource which the notification is to or about: the <em>target</em>. Choosing the most appropriate target resource from which to begin discovery is at the discretion of the sender or consumer, since any resource (RDF or non-RDF) may have its own Inbox.</p>
 
                                     <p>To discover the Inbox URL, senders and consumers <em class="rfc2119">MUST</em>:</p>
                                     <ul>
@@ -518,7 +518,6 @@ left:4.5em;
                                         </div>
                                     </section>
 
-
                                     <section id="qualified-relations" inlist="" rel="schema:hasPart" resource="#qualified-relations">
                                         <h4 property="schema:name">Qualified relations</h4>
                                         <div datatype="rdf:HTML" property="schema:description">
@@ -571,7 +570,6 @@ left:4.5em;
                                             </figure>
                                         </div>
                                     </section>
-
 
                                     <section id="any-data" inlist="" rel="schema:hasPart" resource="#any-data">
                                         <h4 property="schema:name">Any data</h4>
