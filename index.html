@@ -226,7 +226,7 @@ left:4.5em;
                             <section id="summary" inlist="" rel="schema:hasPart" resource="#summary">
                                 <h3 property="schema:name">Summary</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p id="summary-discovery">Senders and consumers <strong><a href="#discovery">discover</a></strong> a resource's <em>Inbox</em> URL(s) through a relation in the HTTP <code>Link</code> header or body of the resource.</p>
+                                    <p id="summary-discovery">Senders and consumers <strong><a href="#discovery">discover</a></strong> a resource's <em>Inbox</em> URL through a relation in the HTTP <code>Link</code> header or body of the resource.</p>
 
                                     <p id="summary-sender">The <strong><a href="#sending">Sender</a></strong>:</p>
                                     <ul>
@@ -272,8 +272,8 @@ left:4.5em;
 
                                     <p>To discover the Inbox URL, senders and consumers <em class="rfc2119">MUST</em>:</p>
                                     <ul>
-                                        <li>make a <code>HEAD</code> request on the target URL, to check for an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code></li>
-                                        <li>fetch the target URL (and follow redirects) and use the object URI(s) of the predicate <code>http://www.w3.org/ns/ldp#inbox</code> in RDF Sources [<cite><a class="bibref" href="#bib-ldp">LDP-RS</a></cite>]</li>
+                                        <li>make a <code>HEAD</code> or <code>GET</code> request on the target URL, to check for an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code></li>
+                                        <li>make a <code>GET</code> request on the target URL and, for RDF sources [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF 1.1</a></cite>], the Inbox is the object of the predicate <code>http://www.w3.org/ns/ldp#inbox</code> (for any suitable subject URI).</li>
                                     </ul>
 
                                     <p>These may be carried out in either order, but if the first fails to result in an Inbox the second <em class="rfc2119">MUST</em> be tried.</p>
@@ -336,9 +336,7 @@ left:4.5em;
                             <section id="sending" inlist="" rel="schema:hasPart" resource="#sending">
                                 <h3 property="schema:name">Sending</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>The sender <em class="rfc2119">MUST</em> discover the Inbox through the <code>ldp:inbox</code> relation either through a <code>HEAD</code> request or in response body (<a href="#discovery">see discovery</a>).</p>
-
-                                    <p>Senders <em class="rfc2119">MUST</em> deliver notifications through a <code>POST</code> request to the Inbox URL. Senders can expect a <code>201 Created</code> (with a <code>Location</code> Link header) in response to a successful request.</p>
+                                    <p>Following <a href="#discovery">discovery</a>, senders <em class="rfc2119">MUST</em> deliver notifications through a <code>POST</code> request to the Inbox URL. Senders can expect a <code>201 Created</code> (with a <code>Location</code> Link header) in response to a successful request.</p>
 
                                     <p>The sender <em class="rfc2119">MAY</em> use an <code>OPTIONS</code> request to determine the RDF content types accepted by the server, and serialize the notification in the request body according to the value of the <code>Accept-Post</code> header [<cite><a class="bibref" href="http://tools.ietf.org/html/draft-wilde-accept-post">Accept-Post</a></cite>] returned. Otherwise, the body of the <code>POST</code> request <em class="rfc2119">MUST</em> contain the notification <a href="#payload">payload</a> in JSON-LD.</p>
 
@@ -457,7 +455,7 @@ left:4.5em;
 
                                             <p>Data about the Inbox itself <em class="rfc2119">MAY</em> also be returned.</p>
 
-                                            <p>Each notification URI <em class="rfc2119">MUST</em> be related to the Inbox URL with the <code>ldp:contains</code> predicate. Each notification <em class="rfc2119">MUST</em> be an <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source"><abbr title="Resource Description Framework">RDF</abbr> Source</a>. If non-RDF resources are returned, the consumer <em class="rfc2119">MAY</em> ignore them. Receivers <em class="rfc2119">MAY</em> respect an <code>Accept</code> header sent by the consumer, but otherwise <em class="rfc2119">MUST</em> return notifications as JSON-LD (<code>Content-Type: application/ld+json</code>).</p>
+                                            <p>Each notification URI <em class="rfc2119">MUST</em> be related to the Inbox URL with the <code>ldp:contains</code> predicate. Each notification <em class="rfc2119">MUST</em> be an <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source">RDF source</a>. If non-RDF resources are returned, the consumer <em class="rfc2119">MAY</em> ignore them. Receivers <em class="rfc2119">MAY</em> respect an <code>Accept</code> header sent by the consumer, but otherwise <em class="rfc2119">MUST</em> return notifications as JSON-LD (<code>Content-Type: application/ld+json</code>).</p>
 
                                             <figure class="listing example" id="results-example-inbox-contains-ldp" rel="schema:hasPart" resource="#results-example-inbox-contains-ldp">
                                                 <pre about="#results-example-inbox-contains-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
@@ -771,6 +769,8 @@ left:4.5em;
                             <dl class="bibliography" resource="">
                               <dt id="bib-ldp">[ldp]</dt>
                               <dd>Steve Speicher; John Arwe; Ashok Malhotra. W3C. <a href="https://www.w3.org/TR/ldp/" property="dc:requires"><cite>Linked Data Platform 1.0</cite></a>. 26 February 2015. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ldp/" property="dc:requires">https://www.w3.org/TR/ldp/</a></dd>
+                              <dt id="bib-rdf11-concepts">[rdf11-concepts]</dt>
+                              <dd>Richard Cyganiak; David Wood; Markus Lanthaler. W3C. <a href="https://www.w3.org/TR/rdf11-concepts/" property="dc:requires"><cite>RDF 1.1 Concepts and Abstract Syntax</cite></a>. 25 February 2014. W3C Recommendation. URL: <a href="https://www.w3.org/TR/rdf11-concepts/" property="dc:requires">https://www.w3.org/TR/rdf11-concepts/</a></dd>
                               <dt id="bib-rfc2119">[rfc2119]</dt>
                               <dd>S. Bradner. IETF. <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires">https://tools.ietf.org/html/rfc2119</a></dd>
                               <dt id="bib-rfc6906">[rfc6906]</dt>
