@@ -46,11 +46,16 @@ margin: 1em 0;
 padding: 1em 1.2em 0.5em;
 position: relative;
 }
-.issue h2, .issue h3, .issue h4, .issue h5, .issue h6 {
-color: #ae1e1e;
+div.issue h4, div.note h4 {
 margin:0;
 text-transform: uppercase;
 font-weight:normal;
+}
+div.issue h4 {
+color:#ae1e1e;
+}
+div.note h4 {
+color:#22bb22;
 }
 header address a[href] {
 float: right;
@@ -277,6 +282,13 @@ left:4.5em;
                                     </ul>
 
                                     <p>These may be carried out in either order, but if the first fails to result in an Inbox the second <em class="rfc2119">MUST</em> be tried.</p>
+
+                                    <div class="note" id="note-requested-resource-of-link-header" rel="schema:hasPart" resource="#note-requested-resource-of-link-header">
+                                        <h4 property="schema:name">Note</h4>
+                                        <div datatype="rdf:HTML" property="schema:description">
+                                            <p>Note that the subject of the relation <code>http://www.w3.org/ns/ldp#inbox</code> conveyed in the <code>Link</code> header field is the requested HTTP URI.</p>
+                                        </div>
+                                    </div>
 
                                     <p>A resource <em class="rfc2119">MUST</em> advertise only one Inbox. One Inbox <em class="rfc2119">MAY</em> be used by multiple resources, for example using the same Inbox for replies to all of my blog posts and shares of all of my photos.</p>
 
