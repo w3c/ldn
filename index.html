@@ -397,6 +397,13 @@ left:4.5em;
                                     <p>The consumer <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization.</p>
 
                                     <p>Consumers <em class="rfc2119">MAY</em> perform additional fetching or inferring of information from the payload (e.g., dereferencing resources referenced in the notification to fetch their contents) at their discretion.</p>
+
+                                    <div class="note" id="note-request-uri-and-relative-id" rel="schema:hasPart" resource="#note-request-uri-and-body-and-relative-id">
+                                        <h4 property="schema:name">Note</h4>
+                                        <div datatype="rdf:HTML" property="schema:description">
+                                            <p>Note that the fetched URI may not necessarily be same as the resolved value of <code>@id</code> against the base URI after serialising. In other words, the fetched URI can contain RDF statements with subject IRIs different than the requested URI itself. This is pertinent when the body of the notification uses relative IRIs.</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </section>
 
