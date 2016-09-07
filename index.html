@@ -392,7 +392,7 @@ left:4.5em;
 
                                     <p>The URIs of the notifications <em class="rfc2119">MUST</em> be discoverable through the <code>ldp:contains</code> predicate of the Inbox URL.</p>
 
-                                    <p>When retrieving individual notifications, the consumer <em class="rfc2119">MAY</em> send an <code>Accept</code> header to indicate preferred content types. If no <code>Accept</code> header is sent, or the receiver cannot comply with the content type requested, the consumer <em class="rfc2119">MUST</em> accept JSON-LD. Fetching the notifications — if any, how many, or according to a particular criteria (e.g., content-length, timestamp) — is at the discretion of the consumer.</p>
+                                    <p>When retrieving the Inbox or the individual notifications, the consumer <em class="rfc2119">SHOULD</em> explicitly set the <code>Accept</code> header to indicate preferred content types. Fetching the notifications — if any, how many, or according to a particular criteria (e.g., content-length, timestamp) — is at the discretion of the consumer.</p>
 
                                     <p>The consumer <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization.</p>
 
@@ -470,7 +470,7 @@ left:4.5em;
                                         <div datatype="rdf:HTML" property="schema:description">
                                             <p>A successful <code>GET</code> request on the Inbox <em class="rfc2119">MUST</em> return a <code>HTTP 200 OK</code> with the URIs of notifications, which <em class="rfc2119">MAY</em> be subject to paging or access control restrictions at the receivers discretion (returning <code>4xx</code> error codes as applicable). The receivers <em class="rfc2119">MAY</em> only return URIs of notifications in the Inbox that the consumer is able to access.</p>
 
-                                            <p>If the <code>GET</code> request has no <code>Accept</code> header, the results <em class="rfc2119">MUST</em> be returned as JSON-LD; otherwise the receiver <em class="rfc2119">SHOULD</em> return the results in the serialization requested, or a <code>415 Unsupported Media Type</code> error if the requested serialization is not available.</p>
+                                            <p>If the <code>GET</code> request has no <code>Accept</code> header, the results <em class="rfc2119">SHOULD</em> be returned as JSON-LD or Turtle; otherwise the receiver <em class="rfc2119">MUST</em> return the results in the serialization requested, or a <code>415 Unsupported Media Type</code> error if the requested serialization is not available.</p>
 
                                             <p>Data about the Inbox itself <em class="rfc2119">MAY</em> also be returned.</p>
 
