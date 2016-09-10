@@ -258,12 +258,34 @@ left:4.5em;
                     <section id="conformance" inlist="" rel="schema:hasPart" resource="#conformance">
                         <h2 property="schema:name">Conformance</h2>
                         <div datatype="rdf:HTML" property="schema:description">
-                            <p>The key words "<em class="rfc2119">MUST</em>", "<em class="rfc2119">MUST NOT</em>", "<em class="rfc2119">REQUIRED</em>", "<em class="rfc2119">SHALL</em>", "<em class="rfc2119">SHALL NOT</em>", "<em class="rfc2119">SHOULD</em>", "<em class="rfc2119">SHOULD NOT</em>", "<em class="rfc2119">RECOMMENDED</em>", "<em class="rfc2119">MAY</em>", and "<em class="rfc2119">OPTIONAL</em>" in this document are to be interpreted as described in [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>].</p>
+                            <p>The key words "<em class="rfc2119">MUST</em>", "<em class="rfc2119">MUST NOT</em>", "<em class="rfc2119">REQUIRED</em>", "<em class="rfc2119">SHALL</em>", "<em class="rfc2119">SHALL NOT</em>", "<em class="rfc2119">SHOULD</em>", "<em class="rfc2119">SHOULD NOT</em>", "<em class="rfc2119">RECOMMENDED</em>", "<em class="rfc2119">MAY</em>", and "<em class="rfc2119">OPTIONAL</em>" in this document are to be interpreted as described in [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>]. As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative.</p>
 
                             <section id="conformance-classes" inlist="" rel="schema:hasPart" resource="#conformance-classes">
                                 <h3 property="schema:name">Conformance Classes</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Implementations may consist of one or more of <em>senders</em>, <em>receivers</em> or <em>consumers</em>. The specification indicates the role(s) for which the feature is normatively required. As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative.</p>
+                                    <p>LDN implementations may be <em>senders</em>, <em>receivers</em> or <em>consumers</em>. The conformance criteria for each of these roles are described in their respective sections of this specification.</p>
+                                </div>
+                            </section>
+
+                            <section id="exit-criteria" inlist="" rel="schema:hasPart" resource="#exit-criteria">
+                                <h3 property="schema:name">Exit Criteria</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>For this specification to advance to Proposed Recommendation, there must be at least two independent, interoperable implementations of each feature. Each feature may be implemented by a different set of products. There is no requirement that all features be implemented by a single product.</p>
+                                    <ul>
+                                        <li><strong>Independent</strong> implementations are developed by different parties and cannot share, reuse or derive form another qualifying implementation code which is directly pertinent to the implementation of this specification.</li>
+                                        <li><strong>Interoperability</strong> occurs between senders and receivers, or between consumers and receivers, when the sender/consumer makes a request to the receiver, and the receiver sends the expected response, as defined by this specification.</li>
+                                        <li>An <strong>implementation</strong> is an LDN sender, receiver or consumer which implements the corresponding conformance class of the specification.</li>
+                                    </ul>
+
+                                    <p id="features">For the purposes of evaluating exit criteria, each of the following is considered a feature:</p>
+                                    <ul>
+                                        <li>Advertising the Inbox of a given resource through the <code>Link</code> header.</li>
+                                        <li>Advertising the Inbox of a given resource through the body of the resource.</li>
+                                        <li>Sending a notification to the Inbox of a given target.</li>
+                                        <li>Reading the Inbox listing of a given target.</li>
+                                        <li>Reading the individual notifications in the Inbox of a given target.</li>
+                                        <li>Receiving a notification and responding with the appropriate status code according to how it was processed and if it was accepted. Responding to <code>GET</code> requests on the Inbox with the Inbox listing, and responding to <code>GET</code> requests on the individual notifications with their representations.</li>
+                                    </ul>
                                 </div>
                             </section>
                         </div>
