@@ -39,7 +39,7 @@ Implementation Classes:
 
 ### Sending
 
-* MUST send a valid JSON-LD payload with `ld+json` content-type
+* MUST send a valid JSON-LD payload with `Content-Type: application/ld+json`
   * [ ] Test
   * ...
 * MAY send a different valid RDF payload according to `Accept-Post` negotiation
@@ -48,6 +48,10 @@ Implementation Classes:
 * [ ] MUST accept 201 as success
 * [ ] MUST accept 202 as success
 * ...
+
+### Security considerations
+* [ ] This implementation can consume constraints (e.g., SHACL via `ldp:constrainedBy`) and assemble a compliant output to send. Please describe mechanism: _____
+
 
 ## Consumers
 
@@ -73,7 +77,7 @@ Implementation Classes:
 * If no `Accept` header, SHOULD accept responses in JSON-LD or Turtle
   * [ ] Test
   * ...
-* MUST find notification URIs through `ldp:contains`
+* MUST find notification URIs through `http://www.w3.org/ns/ldp#contains`
   * [ ] Test
   * ...
 * MAY find other information about the Inbox
@@ -87,7 +91,7 @@ What does this implementation do with retrieved notifications? _____
 
 ## Receivers
 
-* MUST accept `POST` requests with `ld+json` `Content-Type`
+* MUST accept `POST` requests with `Content-Type: application/ld+json`
   * [ ] Test
   * ...
 * [ ] MAY advertise other content types in `Accept-Post` header. Please list:
@@ -98,7 +102,7 @@ What does this implementation do with retrieved notifications? _____
   * [ ] 201 Created
   * [ ] 202 Accepted
 
-* MUST respond to `GET` requests with `ld+json` `Accept` header with JSON-LD, and include `ldp:contains` listing:
+* MUST respond to `GET` requests with `Accept: application/ld+json` header with JSON-LD, and include `http://www.w3.org/ns/ldp#contains` listing:
   * [ ] Test
   * ...
 * SHOULD return JSON-LD or Turtle if `Accept` header is missing:
@@ -110,13 +114,13 @@ What does this implementation do with retrieved notifications? _____
   * [ ] Other: ___
 * [ ] MUST respond with `415` for unavailable content types in Accept header.
 
-#### Security considerations
+### Security considerations
 
 * [ ] This implementation has the capability to filter or verify incoming notifications (SHOULD). Please describe mechanism and criteria: _____
 * [ ] This implementation restricts read access to notifications. Please describe mechanism and criteria: _____
 * ...
 
-#### Storage
+### Storage
 
 How does this implementation store notifications? (optional)
 
