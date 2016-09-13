@@ -502,7 +502,7 @@ left:4.5em;
 
                                             <p>Data about the Inbox itself <em class="rfc2119">MAY</em> also be returned.</p>
 
-                                            <p>Each notification URI <em class="rfc2119">MUST</em> be related to the Inbox URL with the <code>ldp:contains</code> predicate. Each notification <em class="rfc2119">MUST</em> be an <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source">RDF source</a>. If non-RDF resources are returned, the consumer <em class="rfc2119">MAY</em> ignore them. Receivers <em class="rfc2119">MAY</em> respect an <code>Accept</code> header sent by the consumer, but otherwise <em class="rfc2119">MUST</em> return notifications as JSON-LD (<code>Content-Type: application/ld+json</code>).</p>
+                                            <p>Each notification URI <em class="rfc2119">MUST</em> be related to the Inbox URL with the <code>ldp:contains</code> predicate. Each notification <em class="rfc2119">MUST</em> be an <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source">RDF source</a>. If non-RDF resources are returned, the consumer <em class="rfc2119">MAY</em> ignore them.</p>
 
                                             <figure class="listing example" id="results-example-inbox-contains-ldp" rel="schema:hasPart" resource="#results-example-inbox-contains-ldp">
                                                 <pre about="#results-example-inbox-contains-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
