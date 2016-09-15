@@ -241,16 +241,16 @@ left:4.5em;
                                         <li>Sends the notification to the Inbox URL by making a <code>POST</code> request, containing the body in JSON-LD or in another serialization acceptable by the server.</li>
                                     </ul>
 
-                                    <p id="summary-consumer">The <strong><a href="#consuming">Consumer</a></strong>:</p>
-                                    <ul>
-                                        <li>Retrieves the contents of the Inbox URL with a <code>GET</code> request, and uses according to the needs of application.</li>
-                                    </ul>
-
                                     <p id="summary-receiver">The <strong><a href="#receiving">Receiver</a></strong>:</p>
                                     <ul>
                                         <li>Responds to <code>GET</code> requests made to the Inbox URL with a JSON-LD representation (or if possible, requested serialization) of the URLs of the notifications that have previously been sent to the Inbox.</li>
                                         <li>Accepts <code>POST</code> requests at the Inbox URL to create notifications.</li>
                                         <li>Optionally enforces constraints on notifications sent to the Inbox.</li>
+                                    </ul>
+
+                                    <p id="summary-consumer">The <strong><a href="#consuming">Consumer</a></strong>:</p>
+                                    <ul>
+                                        <li>Retrieves the contents of the Inbox URL with a <code>GET</code> request, and uses according to the needs of application.</li>
                                     </ul>
                                 </div>
                             </section>
@@ -413,28 +413,6 @@ left:4.5em;
                                 </div>
                             </section>
 
-                            <section id="consuming" inlist="" rel="schema:hasPart" resource="#consuming">
-                                <h3 property="schema:name">Consuming</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Consumers retrieve the URIs of notifications in an Inbox through making a <code>GET</code> request on the Inbox URL (to find this URL, see <a href="#discovery">discovery</a>).</p>
-
-                                    <p>The URIs of the notifications <em class="rfc2119">MUST</em> be discoverable through the <code>http://www.w3.org/ns/ldp#contains</code> predicate of the Inbox URL.</p>
-
-                                    <p>When retrieving the Inbox or the individual notifications, the consumer <em class="rfc2119">SHOULD</em> explicitly set the <code>Accept</code> header to indicate preferred content types. Fetching the notifications — if any, how many, or according to a particular criteria (e.g., content-length, timestamp) — is at the discretion of the consumer.</p>
-
-                                    <p>The consumer <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization.</p>
-
-                                    <p>Consumers <em class="rfc2119">MAY</em> perform additional fetching or inferring of information from the payload (e.g., dereferencing resources referenced in the notification to fetch their contents) at their discretion.</p>
-
-                                    <div class="note" id="note-request-uri-and-relative-id" rel="schema:hasPart" resource="#note-request-uri-and-body-and-relative-id">
-                                        <h4 property="schema:name">Note</h4>
-                                        <div datatype="rdf:HTML" property="schema:description">
-                                            <p>Note that the fetched URI may not necessarily be same as the resolved value of <code>@id</code> against the base URI after serialising. In other words, the fetched URI can contain RDF statements with subject IRIs different than the requested URI itself. This is pertinent when the body of the notification uses relative IRIs.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-
                             <section id="receiving" inlist="" rel="schema:hasPart" resource="#receiving">
                                 <h3 property="schema:name">Receiving</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
@@ -529,6 +507,28 @@ left:4.5em;
                                             </section>
                                         </div>
                                     </section>
+                                </div>
+                            </section>
+
+                            <section id="consuming" inlist="" rel="schema:hasPart" resource="#consuming">
+                                <h3 property="schema:name">Consuming</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>Consumers retrieve the URIs of notifications in an Inbox through making a <code>GET</code> request on the Inbox URL (to find this URL, see <a href="#discovery">discovery</a>).</p>
+
+                                    <p>The URIs of the notifications <em class="rfc2119">MUST</em> be discoverable through the <code>http://www.w3.org/ns/ldp#contains</code> predicate of the Inbox URL.</p>
+
+                                    <p>When retrieving the Inbox or the individual notifications, the consumer <em class="rfc2119">SHOULD</em> explicitly set the <code>Accept</code> header to indicate preferred content types. Fetching the notifications — if any, how many, or according to a particular criteria (e.g., content-length, timestamp) — is at the discretion of the consumer.</p>
+
+                                    <p>The consumer <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization.</p>
+
+                                    <p>Consumers <em class="rfc2119">MAY</em> perform additional fetching or inferring of information from the payload (e.g., dereferencing resources referenced in the notification to fetch their contents) at their discretion.</p>
+
+                                    <div class="note" id="note-request-uri-and-relative-id" rel="schema:hasPart" resource="#note-request-uri-and-body-and-relative-id">
+                                        <h4 property="schema:name">Note</h4>
+                                        <div datatype="rdf:HTML" property="schema:description">
+                                            <p>Note that the fetched URI may not necessarily be same as the resolved value of <code>@id</code> against the base URI after serialising. In other words, the fetched URI can contain RDF statements with subject IRIs different than the requested URI itself. This is pertinent when the body of the notification uses relative IRIs.</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </section>
                         </div>
