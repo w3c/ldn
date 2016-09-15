@@ -518,7 +518,7 @@ left:4.5em;
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>Consumers retrieve the URIs of notifications in an Inbox through making a <code>GET</code> request on the Inbox URL (to find this URL, see <a href="#discovery">discovery</a>).</p>
 
-                                    <p>The URIs of the notifications <em class="rfc2119">MUST</em> be discoverable through the <code>http://www.w3.org/ns/ldp#contains</code> predicate of the Inbox URL.</p>
+                                    <p>The URIs of the notifications <em class="rfc2119">MUST</em> be discoverable through the <code>http://www.w3.org/ns/ldp#contains</code> predicate of the Inbox URL (see <a href="#results-example-inbox-contains-ldp">example</a> for Inbox content).</p>
 
                                     <p>When retrieving the Inbox or the individual notifications, the consumer <em class="rfc2119">SHOULD</em> explicitly set the <code>Accept</code> header to indicate preferred content types. Fetching the notifications — if any, how many, or according to a particular criteria (e.g., content-length, timestamp) — is at the discretion of the consumer.</p>
 
