@@ -476,11 +476,11 @@ left:4.5em;
                                         <div datatype="rdf:HTML" property="schema:description">
                                             <p>A successful <code>GET</code> request on the Inbox <em class="rfc2119">MUST</em> return a <code>HTTP 200 OK</code> with the URIs of notifications, which <em class="rfc2119">MAY</em> be subject to paging or access control restrictions at the receivers discretion (returning <code>4xx</code> error codes as applicable). The receivers <em class="rfc2119">MAY</em> only return URIs of notifications in the Inbox that the consumer is able to access.</p>
 
-                                            <p>If the <code>GET</code> request has no <code>Accept</code> header, the results <em class="rfc2119">SHOULD</em> be returned as JSON-LD or Turtle; otherwise the receiver <em class="rfc2119">MUST</em> return the results in the serialization requested, or a <code>415 Unsupported Media Type</code> error if the requested serialization is not available.</p>
+                                            <p>Each notification URI <em class="rfc2119">MUST</em> be related to the Inbox URL with the <code>http://www.w3.org/ns/ldp#contains</code> predicate. Each notification <em class="rfc2119">MUST</em> be an <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source">RDF source</a>. If non-RDF resources are returned, the consumer <em class="rfc2119">MAY</em> ignore them.</p>
+                                            
+                                            <p>The JSON-LD content type <em class="rfc2119">MUST</em> be available for all resources, but clients may send <code>Accept</code> headers preferring other content types ([<a href="#bib-rdfc7231">RFC7231</a>] Section 3.4 - Content Negotiation). If the client sends no <code>Accept</code> header, the server may send the data JSON-LD or any format which faithfully conveys the same information (e.g. Turtle).</p>
 
                                             <p>Data about the Inbox itself <em class="rfc2119">MAY</em> also be returned.</p>
-
-                                            <p>Each notification URI <em class="rfc2119">MUST</em> be related to the Inbox URL with the <code>http://www.w3.org/ns/ldp#contains</code> predicate. Each notification <em class="rfc2119">MUST</em> be an <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source">RDF source</a>. If non-RDF resources are returned, the consumer <em class="rfc2119">MAY</em> ignore them.</p>
 
                                             <figure class="listing example" id="results-example-inbox-contains-ldp" rel="schema:hasPart" resource="#results-example-inbox-contains-ldp">
                                                 <pre about="#results-example-inbox-contains-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
@@ -520,7 +520,7 @@ left:4.5em;
 
                                     <p>The URIs of the notifications <em class="rfc2119">MUST</em> be discoverable through the <code>http://www.w3.org/ns/ldp#contains</code> predicate of the Inbox URL (see <a href="#results-example-inbox-contains-ldp">example</a> for Inbox content).</p>
 
-                                    <p>When retrieving the Inbox or the individual notifications, the consumer <em class="rfc2119">SHOULD</em> explicitly set the <code>Accept</code> header to indicate preferred content types. Fetching the notifications — if any, how many, or according to a particular criteria (e.g., content-length, timestamp) — is at the discretion of the consumer.</p>
+                                    <p>When retrieving the Inbox or the individual notifications, the consumer <em class="rfc2119">SHOULD</em> explicitly set the <code>Accept</code> header to indicate preferred content types, including for JSON-LD. Fetching the notifications — if any, how many, or according to a particular criteria (e.g., content-length, timestamp) — is at the discretion of the consumer.</p>
 
                                     <p>The consumer <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization.</p>
 
@@ -805,6 +805,8 @@ left:4.5em;
                               <dd>Julien Genestoux. W3C. <a property="dc:references" href="https://github.com/w3c/pubshubhubbub/"><cite>PubSubHubbub</cite></a>. W3C Editor's Draft. URL: <a property="dc:references" href="https://github.com/w3c/pubshubhubbub/">https://github.com/w3c/pubshubhubbub/</a></dd>
                               <dt id="bib-rfc6455">[rfc6455]</dt>
                               <dd>I. Fette; A. Melnikov. IETF. <a href="https://tools.ietf.org/html/rfc6455" property="dc:references"><cite>The WebSocket Protocol</cite></a>. December 2011. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc6455" property="dc:references">https://tools.ietf.org/html/rfc6455</a></dd>
+                              <dt id="bib-rdfc7231">[rfc7231]</dt>
+                              <dd>R. Fielding, Ed.; J. Reschke, Ed.. <a href="https://tools.ietf.org/html/rfc7231" property="dc:references"><cite>Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content</cite></a>. June 2014. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc7231" property="dc:references">https://tools.ietf.org/html/rfc7231</a></dd>
                               <dt id="bib-shacl">[shacl]</dt>
                               <dd>Holger Knublauch; Dimitris Kontokostas. W3C. <a href="https://www.w3.org/TR/shacl/" property="dc:references"><cite>Shapes Constraint Language (SHACL)</cite></a>. 14 August 2016. W3C Working Draft. URL: <a href="https://www.w3.org/TR/shacl/" property="dc:references">https://www.w3.org/TR/shacl/</a></dd>
                               <dt id="bib-social-web-protocols">[social-web-protocols]</dt>
