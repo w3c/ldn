@@ -284,9 +284,9 @@ left:4.5em;
                                         <li>Advertising the Inbox of a given resource through the <code>Link</code> header.</li>
                                         <li>Advertising the Inbox of a given resource through the body of the resource.</li>
                                         <li>Sending a notification to the Inbox of a given target.</li>
+                                        <li>Receiving a notification and responding with the appropriate status code according to how it was processed and if it was accepted. Responding to <code>GET</code> requests on the Inbox with the Inbox listing, and responding to <code>GET</code> requests on the individual notifications with their representations.</li>
                                         <li>Reading the Inbox listing of a given target.</li>
                                         <li>Reading the individual notifications in the Inbox of a given target.</li>
-                                        <li>Receiving a notification and responding with the appropriate status code according to how it was processed and if it was accepted. Responding to <code>GET</code> requests on the Inbox with the Inbox listing, and responding to <code>GET</code> requests on the individual notifications with their representations.</li>
                                     </ul>
                                 </div>
                             </section>
@@ -487,10 +487,10 @@ left:4.5em;
                                             <p>A successful <code>GET</code> request on the Inbox <em class="rfc2119">MUST</em> return a <code>HTTP 200 OK</code> with the URIs of notifications, which <em class="rfc2119">MAY</em> be subject to paging or access control restrictions at the receivers discretion (returning <code>4xx</code> error codes as applicable). The receivers <em class="rfc2119">MAY</em> only return URIs of notifications in the Inbox that the consumer is able to access.</p>
 
                                             <p>Each notification URI <em class="rfc2119">MUST</em> be related to the Inbox URL with the <code>http://www.w3.org/ns/ldp#contains</code> predicate. Each notification <em class="rfc2119">MUST</em> be an <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source">RDF source</a>. If non-RDF resources are returned, the consumer <em class="rfc2119">MAY</em> ignore them.</p>
-                                            
-                                            <p>The JSON-LD content type <em class="rfc2119">MUST</em> be available for all resources, but clients may send <code>Accept</code> headers preferring other content types ([<a href="#bib-rdfc7231">RFC7231</a>] Section 3.4 - Content Negotiation). If the client sends no <code>Accept</code> header, the server may send the data JSON-LD or any format which faithfully conveys the same information (e.g. Turtle).</p>
 
-                                            <p>Data about the Inbox itself <em class="rfc2119">MAY</em> also be returned.</p>
+                                            <p>The JSON-LD content type <em class="rfc2119">MUST</em> be available for all resources, but clients may send <code>Accept</code> headers preferring other content types ([<a href="#bib-rdfc7231">RFC7231</a>] Section 3.4 - Content Negotiation). If the client sends no <code>Accept</code> header, the server may send the data in JSON-LD or any format which faithfully conveys the same information (e.g., Turtle).</p>
+
+                                            <p>Any additional description about the Inbox itself <em class="rfc2119">MAY</em> also be returned (e.g., <a href="#constraints">Constraints</a>).</p>
 
                                             <figure class="listing example" id="results-example-inbox-contains-ldp" rel="schema:hasPart" resource="#results-example-inbox-contains-ldp">
                                                 <pre about="#results-example-inbox-contains-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
