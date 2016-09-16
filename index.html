@@ -303,20 +303,13 @@ left:4.5em;
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>An <em>Inbox</em>, the endpoint which notifications are sent to or consumed from, can be discovered from any resource, for example a blog post, a user profile, a dataset, a video. The starting point for discovery is the resource which the notification is to or about: the <em>target</em>. Choosing the most appropriate target resource from which to begin discovery is at the discretion of the sender or consumer, since any resource (RDF or non-RDF) may have its own Inbox.</p>
 
-                                    <p>To discover the Inbox URL, senders and consumers <em class="rfc2119">MUST</em>:</p>
+                                    <p>To discover the Inbox URL, senders and consumers:</p>
                                     <ul>
                                         <li>make a <code>HEAD</code> or <code>GET</code> request on the target URL, to check for an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code></li>
-                                        <li>make a <code>GET</code> request on the target URL and, for RDF sources [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF 1.1</a></cite>], the Inbox is the object of the predicate <code>http://www.w3.org/ns/ldp#inbox</code> (for any suitable subject URI).</li>
+                                        <li>make a <code>GET</code> request on the target URL and, for RDF sources [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF 1.1</a></cite>], the Inbox is the object of the predicate <code>http://www.w3.org/ns/ldp#inbox</code>.</li>
                                     </ul>
 
-                                    <p>These may be carried out in either order, but if the first fails to result in an Inbox the second <em class="rfc2119">MUST</em> be tried.</p>
-
-                                    <div class="note" id="note-requested-resource-of-link-header" rel="schema:hasPart" resource="#note-requested-resource-of-link-header">
-                                        <h4 property="schema:name">Note</h4>
-                                        <div datatype="rdf:HTML" property="schema:description">
-                                            <p>Note that the subject of the relation <code>http://www.w3.org/ns/ldp#inbox</code> conveyed in the <code>Link</code> header field is the requested HTTP URI.</p>
-                                        </div>
-                                    </div>
+                                    <p>These may be carried out in either order, but if the first fails to result in an Inbox the second <em class="rfc2119">MUST</em> be tried. However, if the target contains a fragment identifier, the fragment is not part of the request to the server so any Inbox found in the <code>Link</code> headers will be for the resolved URL (without the fragment). Thus, senders and consumers <em class="rfc2119">SHOULD</em> omit the <code>Link</code> header discovery when targeting URIs with fragment identifiers.</p>
 
                                     <p>A resource <em class="rfc2119">MUST</em> advertise only one Inbox. One Inbox <em class="rfc2119">MAY</em> be used by multiple resources, for example using the same Inbox for replies to all of my blog posts and shares of all of my photos.</p>
 
