@@ -15,7 +15,7 @@ If you have an implementation in progress or plan to submit a report, add yours 
 
 ---
 
-This file is a sample implementation report. Fork this repository, copy this file to a new `.md` file and change the name to your project name (in lower case with hyphens between words), and fill out the information in the report based on your implementation. When you are finished, submit a (https://help.github.com/articles/using-pull-requests/">pull request</a> and your report will be reviewed and added to the main repository.
+This file is a sample implementation report. Fork this repository, copy this file to a new `.md` file and change the name to your project name (in lower case with hyphens between words), and fill out the information in the report based on your implementation. When you are finished, submit a [pull request](https://help.github.com/articles/using-pull-requests/) and your report will be reviewed and added to the main repository.
 
 Complete this report by filling out the checkboxes as appropriate. To mark one as successful/complete/true, add an `x` between the brackets, e.g. `[x]`. If the statement does not apply to your implementation, use `[na]` and add a sentence explaining why it does not apply.
 
