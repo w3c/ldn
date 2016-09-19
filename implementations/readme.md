@@ -11,7 +11,7 @@ If you have an implementation in progress or plan to submit a report, add yours 
 * [solid-client](https://github.com/solid/solid-client) (sender)
 * [solid words](https://github.com/melvincarvalho/vocab) (sender)
 * [mayktso](https://github.com/csarven/mayktso) (receiver)
-* [Virtuoso](https://github.com/openlink/virtuoso-opensource) + [ODS-Framework](http://virtuoso.openlinksw.com/dataspace/doc/dav/wiki/Main/OdsFramework) (receiver)
+* [Virtuoso](https://github.com/openlink/virtuoso-opensource) + [ODS Briefcase](http://virtuoso.openlinksw.com/dataspace/doc/dav/wiki/Main/OdsBriefcase) (receiver)
 
 ---
 
