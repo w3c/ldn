@@ -1,6 +1,21 @@
 *NOTE: This report template is a work in progress*
 
-This file is a sample implementation report. Fork this repository, copy this file to a new `.md` file and change the name to your project name (in lower case with hyphens between words), and fill out the information in the report based on your implementation. When you are finished, submit a <a href="https://help.github.com/articles/using-pull-requests/">pull request</a> and your report will be reviewed and added to the main repository.
+If you have an implementation in progress or plan to submit a report, add yours to this list for now until the tests and the report is finalised:
+
+* Any [LDP implementation](https://www.w3.org/wiki/LDP_Implementations) (receiver)
+* [node solid server](https://github.com/solid/node-solid-server) (receiver)
+* [sloph](https://github.com/rhiaro/sloph) (receiver)
+* [errol](https://github.com/linkeddata/errol) (sender)
+* [dokieli](https://dokie.li/) (sender, consumer)
+* [solid-inbox](https://github.com/solid/solid-inbox) (consumer)
+* [solid-client](https://github.com/solid/solid-client) (sender)
+* [solid words](https://github.com/melvincarvalho/vocab) (sender)
+* [mayktso](https://github.com/csarven/mayktso) (receiver)
+* [Virtuoso](https://github.com/openlink/virtuoso-opensource) + [ODS-Framework](http://virtuoso.openlinksw.com/dataspace/doc/dav/wiki/Main/OdsFramework) (receiver)
+
+---
+
+This file is a sample implementation report. Fork this repository, copy this file to a new `.md` file and change the name to your project name (in lower case with hyphens between words), and fill out the information in the report based on your implementation. When you are finished, submit a (https://help.github.com/articles/using-pull-requests/">pull request</a> and your report will be reviewed and added to the main repository.
 
 Complete this report by filling out the checkboxes as appropriate. To mark one as successful/complete/true, add an `x` between the brackets, e.g. `[x]`. If the statement does not apply to your implementation, use `[na]` and add a sentence explaining why it does not apply.
 
