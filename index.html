@@ -422,14 +422,13 @@ left:4.5em;
 
                                             <p>Receivers <em class="rfc2119">MAY</em> accept other RDF content types (e.g., <code>text/turtle</code>, <code>text/html</code>), and <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept-Post</code> header on the Inbox URL.</p>
 
-                                            <p>Example Request:</p>
                                             <figure class="listing example" id="request-response-example" rel="schema:hasPart" resource="#request-response-example">
                                                 <pre about="#request-example" class="hljs http" property="schema:description" typeof="fabio:Script">
 <code><span class="hljs-request">HEAD <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
 <code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
-<code><span class="hljs-attribute">Allow</span>: <span class="hljs-string">HEAD, GET, POST</span></code>
+<code><span class="hljs-attribute">Allow</span>: <span class="hljs-string">GET, HEAD, OPTIONS, POST</span></code>
 <code><span class="hljs-attribute">Accept-Post</span>: <span class="hljs-string">application/ld+json</span>, <span class="hljs-string">text/turtle</span></code>
 <code></code>
 <code><span class="hljs-request">POST <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
@@ -477,6 +476,10 @@ left:4.5em;
 
                                             <figure class="listing example" id="results-example-inbox-contains-ldp" rel="schema:hasPart" resource="#results-example-inbox-contains-ldp">
                                                 <pre about="#results-example-inbox-contains-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
+<code><span class="hljs-request">GET <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
+<code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json</span></code>
+<code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json</span></code>
 <code></code>
