@@ -476,7 +476,7 @@ left:4.5em;
                                     <section id="receiving-inbox-contents" inlist="" rel="schema:hasPart" resource="#receiving-inbox-contents">
                                         <h4 property="schema:name">Making Inbox contents available to consumers</h4>
                                         <div datatype="rdf:HTML" property="schema:description">
-                                            <p>A successful <code>GET</code> request on the Inbox <em class="rfc2119">MUST</em> return a <code>HTTP 200 OK</code> with the URIs of notifications, which <em class="rfc2119">MAY</em> be subject to paging or access control restrictions at the receivers discretion (returning <code>4xx</code> error codes as applicable). The receivers <em class="rfc2119">MAY</em> only return URIs of notifications in the Inbox that the consumer is able to access.</p>
+                                            <p>A successful <code>GET</code> request on the Inbox <em class="rfc2119">MUST</em> return a <code>HTTP 200 OK</code> with the URIs of notifications (returning <code>4xx</code> error codes as applicable). The receivers <em class="rfc2119">MAY</em> only return URIs of notifications in the Inbox that the consumer is able to access.</p>
 
                                             <p>Each notification URI <em class="rfc2119">MUST</em> be related to the Inbox URL with the <code>http://www.w3.org/ns/ldp#contains</code> predicate. Each notification <em class="rfc2119">MUST</em> be an <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source">RDF source</a>. If non-RDF resources are returned, the consumer <em class="rfc2119">MAY</em> ignore them.</p>
 
@@ -679,6 +679,15 @@ left:4.5em;
                                     <p><em>This section is non-normative.</em></p>
 
                                     <p>Given the nature of the notification payload, consumers may want to take precautions when ascertaining the veracity of the contents. The <q>open-world assumption</q> applies here.</p>
+                                </div>
+                            </section>
+
+                            <section id="paging" inlist="" rel="schema:hasPart" resource="#paging">
+                                <h3 property="schema:name">Paging</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p><em>This section is non-normative.</em></p>
+
+                                    <p>Inbox contents may be subject to paging at the receivers discretion.</p>
                                 </div>
                             </section>
 
