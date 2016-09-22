@@ -9,6 +9,8 @@ If you have an implementation in progress or plan to submit a report, add yours 
 * [dokieli](https://dokie.li/) (sender, consumer)
 * [solid-inbox](https://github.com/solid/solid-inbox) (consumer)
 * [solid-client](https://github.com/solid/solid-client) (sender)
+* [solid-notifications](https://github.com/solid/solid-notifications)
+  (sender, consumer)
 * [solid words](https://github.com/melvincarvalho/vocab) (sender)
 * [mayktso](https://github.com/csarven/mayktso) (receiver)
 * [Virtuoso](https://github.com/openlink/virtuoso-opensource) + [ODS Briefcase](http://ods.openlinksw.com/wiki/ODS/OdsBriefcase) (receiver)
@@ -24,12 +26,12 @@ When you are complete, send a pull request with the addition of your report file
 
 # Implementation Name (Replace this header)
 
-Implementation Home Page URL: 
+Implementation Home Page URL:
 
-Source Code repo URL(s) (optional): 
+Source Code repo URL(s) (optional):
 * [ ] 100% open source implementation
 
-Programming Language(s): 
+Programming Language(s):
 
 Developer(s): [Name](http://you.example.com)
 
@@ -50,7 +52,7 @@ Implementation Classes:
 * MUST be able to discover Inbox through a resource's body:
   * [ ] Test 1
   * [ ] Test 2
-  * ... 
+  * ...
 
 ### Sending
 
@@ -59,7 +61,7 @@ Implementation Classes:
   * ...
 * MAY send a different valid RDF payload according to `Accept-Post` negotiation
   *  [ ] Test
-  *  ... 
+  *  ...
 * [ ] MUST accept 201 as success
 * [ ] MUST accept 202 as success
 * ...
@@ -79,7 +81,7 @@ Implementation Classes:
 * MUST be able to discover Inbox through a resource's body:
   * [ ] Test 1
   * [ ] Test 2
-  * ... 
+  * ...
 
 ### Consuming
 
@@ -143,7 +145,7 @@ How does this implementation store notifications? (optional)
 
 This is not a conformance class, but please indicate here documents or resources which advertise inboxes (whether these are your own implementation of a receiver, or someone else's).
 
-Resource URL: 
+Resource URL:
 
 * [ ] Advertises Inbox using `Link` header
 * [ ] Advertises Inbox using body
