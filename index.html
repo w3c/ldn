@@ -484,6 +484,13 @@ left:4.5em;
 
                                             <p>Any additional description about the Inbox itself <em class="rfc2119">MAY</em> also be returned (e.g., <a href="#constraints">Constraints</a>).</p>
 
+                                            <div class="note" id="note-paging" rel="schema:hasPart" resource="#note-paging">
+                                                <h4 property="schema:name">Note</h4>
+                                                <div datatype="rdf:HTML" property="schema:description">
+                                                    <p>This specification does not define a paging mechanism to serve the list of notifications in an Inbox. Implementations that wish to enable paging may want to use existing mechanisms to allow efficient retrievals e.g., [<cite><a class="bibref" href="#bib-ldp-paging">LDP Paging</a></cite>], [<cite><a class="bibref" href="#bib-activitystreams">Activity Streams 2.0 Collection</a></cite>].</p>
+                                                </div>
+                                            </div>
+
                                             <figure class="listing example" id="results-example-inbox-contains-ldp" rel="schema:hasPart" resource="#results-example-inbox-contains-ldp">
                                                 <pre about="#results-example-inbox-contains-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
 <code><span class="hljs-request">GET <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
@@ -682,15 +689,6 @@ left:4.5em;
                                 </div>
                             </section>
 
-                            <section id="paging" inlist="" rel="schema:hasPart" resource="#paging">
-                                <h3 property="schema:name">Paging</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p><em>This section is non-normative.</em></p>
-
-                                    <p>Inbox contents may be subject to paging at the receivers discretion.</p>
-                                </div>
-                            </section>
-
                             <section id="sender-verification" inlist="" rel="schema:hasPart" resource="#sender-verification">
                                 <h3 property="schema:name">Sender Verification</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
@@ -841,6 +839,8 @@ left:4.5em;
                               <dd>James Snell; Evan Prodromou. W3C. <a href="https://www.w3.org/TR/activitystreams-core/" property="dc:references"><cite>Activity Streams 2.0</cite></a>. 12 July 2016. W3C Working Draft. URL: <a href="https://www.w3.org/TR/activitystreams-core/" property="dc:references">https://www.w3.org/TR/activitystreams-core/</a></dd>
                               <dt id="bib-annotation-protocol">[annotation-protocol]</dt>
                               <dd>Robert Sanderson. W3C. <a href="https://www.w3.org/TR/annotation-protocol/" property="dc:references"><cite>Web Annotation Protocol</cite></a>. 12 July 2016. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/annotation-protocol/" property="dc:references">https://www.w3.org/TR/annotation-protocol/</a></dd>
+                              <dt id="bib-ldp-paging">[bib-ldp-paging]</dt>
+                              <dd>Steve Speicher; John Arwe; Ashok Malhotra. W3C. <a href="https://www.w3.org/TR/ldp-paging/" property="dc:references"><cite>Linked Data Platform Paging 1.0</cite></a>. 30 June 2015. W3C Note. URL: <a href="https://www.w3.org/TR/ldp-paging/" property="dc:references">https://www.w3.org/TR/ldp-paging/</a></dd>
                               <dt id="bib-pubsubhubbub">[pubsubhubbub]</dt>
                               <dd>Julien Genestoux. W3C. <a property="dc:references" href="https://github.com/w3c/pubshubhubbub/"><cite>PubSubHubbub</cite></a>. W3C Editor's Draft. URL: <a property="dc:references" href="https://github.com/w3c/pubshubhubbub/">https://github.com/w3c/pubshubhubbub/</a></dd>
                               <dt id="bib-rfc6455">[rfc6455]</dt>
