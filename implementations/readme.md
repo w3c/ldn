@@ -14,6 +14,7 @@ If you have an implementation in progress or plan to submit a report, add yours 
 * [solid words](https://github.com/melvincarvalho/vocab) (sender)
 * [mayktso](https://github.com/csarven/mayktso) (receiver)
 * [Virtuoso](https://github.com/openlink/virtuoso-opensource) + [ODS Briefcase](http://ods.openlinksw.com/wiki/ODS/OdsBriefcase) (receiver)
+* [RDF::LinkedData::Notifications](https://github.com/kjetilk/p5-rdf-linkeddata-notifications) (very partial receiver)
 
 ---
 
