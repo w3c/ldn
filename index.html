@@ -681,11 +681,11 @@ left:4.5em;
                     <section id="security-privacy-and-content-considerations" inlist="" rel="schema:hasPart" resource="#security-privacy-and-content-considerations">
                         <h2 property="schema:name">Security, Privacy and Content Considerations</h2>
                         <div datatype="rdf:HTML" property="schema:description">
+                            <p><em>This section is non-normative.</em></p>
+
                             <section id="constraints" inlist="" rel="schema:hasPart" resource="#constraints">
                                 <h3 property="schema:name">Constraints</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p><em>This section is non-normative.</em></p>
-
                                     <p>Inbox URLs can announce their own constraints (e.g., <cite><a class="bibref" href="#bib-shacl">SHACL</a></cite>, <cite><a class="bibref" href="#bib-annotation-protocol">Web Annotation Protocol</a></cite>) via an HTTP <code>Link</code> header or body of the resource with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#constrainedBy</code>. Senders should comply with constraint specifications or the receiver may reject their notification and return an appropriate <code>4xx</code> error code.</p>
                                 </div>
                             </section>
@@ -693,8 +693,6 @@ left:4.5em;
                             <section id="target-ownership" inlist="" rel="schema:hasPart" resource="#target-ownership">
                                 <h3 property="schema:name">Target Ownership</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p><em>This section is non-normative.</em></p>
-
                                     <p>Publishers of the resources advertising an Inbox (target) should do so on a server they trust. Publishers must be aware that third-party access to headers or content could result in notifications being redirected.</p>
                                 </div>
                             </section>
@@ -702,8 +700,6 @@ left:4.5em;
                             <section id="subscribing-to-notifications" inlist="" rel="schema:hasPart" resource="#subscribing-to-notifications">
                                 <h3 property="schema:name">Subscribing to Notifications</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p><em>This section is non-normative.</em></p>
-
                                     <p>This specification describes how consumers can read notifications from a receiver through <em>pull</em>, however consumers may want to ask to have incoming notifications or changes to Inbox's contents pushed to them. Similarly, receivers may wish to make a request for notifications from a particular sender. This kind of subscription mechanism left out of scope, but senders, receivers and consumers are not prohibited from making such an arrangement. Implementations that wish to enable subscribing may want to use existing mechanisms e.g., [<cite><a href="#bib-activitypub" class="bibref">ActivityPub</a></cite>], [<cite><a class="bibref" href="#bib-pubsubhubbub">PubSubHubbub</a></cite>], [<cite><a class="bibref" href="#bib-rfc6455">The WebSocket Protocol</a></cite>], [<cite><a class="bibref" href="#bib-webpush">HTTP Web Push</a></cite>].</p>
                                 </div>
                             </section>
@@ -711,8 +707,6 @@ left:4.5em;
                             <section id="activity-streams-2.0-support" inlist="" rel="schema:hasPart" resource="#activity-streams-2.0-support">
                                 <h3 property="schema:name">Activity Streams 2.0 Support</h3>
                                 <div property="schema:description">
-                                    <p><em>This section is non-normative.</em></p>
-
                                     <p>Receiver implementations that wish to support Activity Streams 2.0 Core can see the <a href="https://www.w3.org/TR/social-web-protocols/#inbox-interop">Social Web Protocols</a>.</p>
                                 </div>
                             </section>
