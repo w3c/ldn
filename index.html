@@ -323,6 +323,8 @@ left:4.5em;
 
                                     <p>A resource <em class="rfc2119">MUST</em> advertise only one Inbox. One Inbox <em class="rfc2119">MAY</em> be used by multiple resources, for example using the same Inbox for replies to all of my blog posts and shares of all of my photos.</p>
 
+                                    <p>Implementations ought to be courteous when carrying out discovery, per <a href="https://www.w3.org/TR/social-web-protocols/#targeting-and-discovery">Social Web Protocols</a>.</p>
+
                                     <div class="issue" id="issue-13" rel="schema:hasPart" resource="#issue-13">
                                         <h4 property="schema:name">Issue 13</h4>
                                         <div datatype="rdf:HTML" property="schema:description">
@@ -707,15 +709,6 @@ left:4.5em;
                                 <h3 property="schema:name">Privacy</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>In the case of sending sensitive information, the sender should be aware that the receiver may implement access control on the Inbox that allows for public reading of the contents.</p>
-                                </div>
-                            </section>
-
-                            <section id="retrying-discovery" inlist="" rel="schema:hasPart" resource="#retrying-discovery">
-                                <h3 property="schema:name">Retrying Discovery</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p><em>This section is non-normative.</em></p>
-
-                                    <p>Software that wants to retry discovery of the Inbox for a resource, or try discovery for multiple resources on the same domain, may want to follow the information in cache headers.</p>
                                 </div>
                             </section>
 
