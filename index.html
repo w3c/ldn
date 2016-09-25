@@ -462,16 +462,6 @@ left:4.5em;
                                                 </pre>
                                                 <figcaption property="schema:name">Example request and response</figcaption>
                                             </figure>
-                                            <section id="sending-activitystreams2-support" inlist="" rel="schema:hasPart" resource="#sending-activitystreams2-support">
-                                                <h5 property="schema:name">ActivityStreams 2.0 Support</h5>
-                                                <div property="schema:description">
-                                                    <p>Receivers <em class="rfc2119">SHOULD</em> treat the <code>application/activity+json</code> media type as equivalent to <code>application/ld+json; profile="http://www.w3.org/ns/activitystreams"</code>.</p>
-                                                    <div class="issue">
-                                                        <h4>At Risk</h4>
-                                                        <p>This requirement may be moved to <a href="https://w3.org/tr/social-web-protocols">Social Web Protocols</a>.</p><p>See also <a href="https://github.com/csarven/ldn/issues/10">LDN issue #10</a> and <a href="https://github.com/w3c-social/social-web-protocols/issues/36">SWP issue #36</a>.</p>
-                                                    </div>
-                                                </div>
-                                            </section>
                                         </div>
                                     </section>
 
@@ -513,16 +503,6 @@ left:4.5em;
                                                 </pre>
                                                 <figcaption>Results of GET request on Inbox.</figcaption>
                                             </figure>
-                                            <section id="consuming-activitystreams2-support" inlist="" rel="schema:hasPart" resource="#consuming-activitystreams2-support">
-                                                <h5 property="schema:name">ActivityStreams 2.0 Support</h5>
-                                                <div property="schema:description">
-                                                    <p>Receivers <em class="rfc2119">SHOULD</em> treat the requests from consumers for <code>application/activity+json</code> as equivalent to <code>application/ld+json; profile="http://www.w3.org/ns/activitystreams"</code>, but if doing so additionally <em class="rfc2119">MUST</em> return JSON-LD in compacted form.</p>
-                                                    <div class="issue">
-                                                        <h4>At Risk</h4>
-                                                        <p>This requirement may be moved to <a href="https://w3.org/tr/social-web-protocols">Social Web Protocols</a>.</p><p>See also <a href="https://github.com/csarven/ldn/issues/10">LDN issue #10</a> and <a href="https://github.com/w3c-social/social-web-protocols/issues/36">SWP issue #36</a>.</p>
-                                                    </div>
-                                                </div>
-                                            </section>
                                         </div>
                                     </section>
                                 </div>
@@ -727,6 +707,15 @@ left:4.5em;
                                     <p><em>This section is non-normative.</em></p>
 
                                     <p>This specification describes how consumers can read notifications from a receiver through <em>pull</em>, however consumers may want to ask to have incoming notifications or changes to Inbox's contents pushed to them. Similarly, receivers may wish to make a request for notifications from a particular sender. This kind of subscription mechanism left out of scope, but senders, receivers and consumers are not prohibited from making such an arrangement. Implementations that wish to enable subscribing may want to use existing mechanisms e.g., [<cite><a href="#bib-activitypub" class="bibref">ActivityPub</a></cite>], [<cite><a class="bibref" href="#bib-pubsubhubbub">PubSubHubbub</a></cite>], [<cite><a class="bibref" href="#bib-rfc6455">The WebSocket Protocol</a></cite>], [<cite><a class="bibref" href="#bib-webpush">HTTP Web Push</a></cite>].</p>
+                                </div>
+                            </section>
+
+                            <section id="activitystreams2-support" inlist="" rel="schema:hasPart" resource="#activitystreams2-support">
+                                <h3 property="schema:name">ActivityStreams 2.0 Support</h3>
+                                <div property="schema:description">
+                                    <p><em>This section is non-normative.</em></p>
+
+                                    <p>Receivers <em class="rfc2119">SHOULD</em> treat the requests from senders and consumers for <code>application/activity+json</code> as equivalent to <code>application/ld+json; profile="http://www.w3.org/ns/activitystreams"</code>, but if doing so additionally <em class="rfc2119">MUST</em> return JSON-LD in compacted form.</p>
                                 </div>
                             </section>
                         </div>
