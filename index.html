@@ -389,13 +389,6 @@ left:4.5em;
 
                                     <p>If the sender has any services that listen on localhost that don't require authentication, it's possible for a malicious script to run at the Inbox endpoint that could cause the sender to make an arbitrary <code>POST</code> request to itself. Senders <em class="rfc2119">SHOULD NOT</em> make <code>POST</code> requests to the Inbox that are localhost or a loopback IP address.</p>
 
-                                    <div class="note" id="note-privacy" rel="schema:hasPart" resource="#note-privacy">
-                                        <h4 property="schema:name">Note</h4>
-                                        <div datatype="rdf:HTML" property="schema:description">
-                                            <p>In the case of sending sensitive information, the sender should be aware that the receiver may implement access control on the Inbox that allows for public reading of the contents.</p>
-                                        </div>
-                                    </div>
-
                                     <p>Request:</p>
                                     <figure class="listing example" id="sending-notification" rel="schema:hasPart" resource="#sending-notification">
                                         <pre about="sending-notification" property="schema:description" typeof="fabio:Script">
@@ -708,6 +701,33 @@ left:4.5em;
                                 <h3 property="schema:name">Activity Streams 2.0 Support</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>Receiver implementations that wish to support Activity Streams 2.0 Core can see the <a href="https://www.w3.org/TR/social-web-protocols/#inbox-interop">Social Web Protocols</a>.</p>
+                                </div>
+                            </section>
+
+                            <section id="security-and-privacy-review" inlist="" rel="schema:hasPart" resource="#security-and-privacy-review">
+                                <h3 property="schema:name">Security and Privacy Review</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>These questions provide an overview of security and privacy considerations for this specification.</p>
+
+                                    <dl>
+                                        <dt><a href="https://w3ctag.github.io/security-questionnaire/#pii">Does this specification deal with personally-identifiable information?</a></dt><dd>Notification payloads may contain any data including that which identifies the sender or the receiver. Access to notification data is under the control of the receiver. In the case of sending sensitive information, the sender should be aware that the receiver may implement access control on the Inbox that allows for public reading of the contents.</dd>
+                                        <dt><a href="https://w3ctag.github.io/security-questionnaire/#credentials">Does this specification deal with high-value data?</a></dt><dd>Same implications as personally-identifiable information in notification payload (as mention above).</dd>
+                                        <dt><a href="https://w3ctag.github.io/security-questionnaire/#persistent-origin-specific-state">Does this specification introduce new state for an origin that persists across browsing sessions?</a></dt><dd>No.</dd>
+                                        <dt><a href="https://w3ctag.github.io/security-questionnaire/#persistent-identifiers">Does this specification expose persistent, cross-origin state to the web?</a></dt><dd>No.</dd>
+                                        <dt><a href="https://w3ctag.github.io/security-questionnaire/#other-data">Does this specification expose any other data to an origin that it doesn’t currently have access to?</a></dt><dd>No.</dd>
+                                        <dt><a href="https://w3ctag.github.io/security-questionnaire/#string-to-script">Does this specification enable new script execution/loading mechanisms?</a></dt><dd>No.</dd>
+                                        <dt><a href="https://w3ctag.github.io/security-questionnaire/#location">Does this specification allow an origin access to a user’s location?</a></dt><dd>No.</dd>
+                                        <dt><a href="https://w3ctag.github.io/security-questionnaire/#sensors">Does this specification allow an origin access to sensors on a user’s device?</a></dt><dd>No.</dd>
+                                        <dt><a href="https://w3ctag.github.io/security-questionnaire/#local-device">Does this specification allow an origin access to aspects of a user’s local computing environment?</a></dt><dd>No.</dd>
+                                        <dt><a href="https://w3ctag.github.io/security-questionnaire/#remote-device">Does this specification allow an origin access to other devices?</a></dt><dd>No.</dd>
+                                        <dt><a href="https://w3ctag.github.io/security-questionnaire/#native-ui">Does this specification allow an origin some measure of control over a user agent’s native UI?</a></dt><dd>No.</dd>
+                                        <dt><a href="https://w3ctag.github.io/security-questionnaire/#temporary-id">Does this specification expose temporary identifiers to the web?</a></dt><dd>No.</dd>
+                                        <dt><a href="https://w3ctag.github.io/security-questionnaire/#first-third-party">Does this specification distinguish between behavior in first-party and third-party contexts?</a></dt><dd>No.</dd>
+                                        <dt><a href="https://w3ctag.github.io/security-questionnaire/#incognito">How should this specification work in the context of a user agent’s "incognito" mode?</a></dt><dd>Works in such a way that the website would not be able to determine that the user was in "incognito".</dd>
+                                        <dt><a href="https://w3ctag.github.io/security-questionnaire/#storage">Does this specification persist data to a user’s local device?</a></dt><dd>No.</dd>
+                                        <dt><a href="https://w3ctag.github.io/security-questionnaire/#considerations">Does this specification have a "Security Considerations" and "Privacy Considerations" section?</a></dt><dd>:)</dd>
+                                        <dt><a href="https://w3ctag.github.io/security-questionnaire/#relaxed-sop">Does this specification allow downgrading default security characteristics?</a></dt><dd>No.</dd>
+                                    </dl>
                                 </div>
                             </section>
                         </div>
