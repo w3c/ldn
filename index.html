@@ -387,6 +387,8 @@ left:4.5em;
 
                                     <p>The sender <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization e.g., <code>Authorization: Bearer XXX</code>.</p>
 
+                                    <p>If the sender has any services that listen on localhost that don't require authentication, it's possible for a malicious script to run at the Inbox endpoint that could cause the sender to make an arbitrary <code>POST</code> request to itself. Senders <em class="rfc2119">SHOULD NOT</em> make <code>POST</code> requests to the Inbox that are localhost or a loopback IP address.</p>
+
                                     <p>Request:</p>
                                     <figure class="listing example" id="sending-notification" rel="schema:hasPart" resource="#sending-notification">
                                         <pre about="sending-notification" property="schema:description" typeof="fabio:Script">
@@ -505,6 +507,15 @@ left:4.5em;
                                             </figure>
                                         </div>
                                     </section>
+
+                                    <section id="preventing-abuse" inlist="" rel="schema:hasPart" resource="#preventing-abuse">
+                                        <h4 property="schema:name">Preventing Abuse</h4>
+                                        <div datatype="rdf:HTML" property="schema:description">
+                                            <p>Receivers <em class="rfc2119">SHOULD</em> use <a href="#constraints">constraints</a> to filter unwarranted notifications from being created on the server and exposed by the Inbox.</p>
+
+                                            <p>Receivers could consider implementing access control on the Inbox URL to restrict writing to a whitelist of trusted senders.</p>
+                                        </div>
+                                    </section>
                                 </div>
                             </section>
 
@@ -519,7 +530,7 @@ left:4.5em;
 
                                     <p>The consumer <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization.</p>
 
-                                    <p>Consumers <em class="rfc2119">MAY</em> perform additional fetching or inferring of information from the payload (e.g., dereferencing resources referenced in the notification to fetch their contents) at their discretion.</p>
+                                    <p>Consumers <em class="rfc2119">MAY</em> perform additional fetching or inferring of information from the payload (e.g., dereferencing resources referenced in the notification to fetch their contents) at their discretion. Consumers <em class="rfc2119">MAY</em> also want to check the notifications against any constraints as announced by an Inbox before further processing or use.</p>
 
                                     <div class="note" id="note-request-uri-and-relative-id" rel="schema:hasPart" resource="#note-request-uri-and-body-and-relative-id">
                                         <h4 property="schema:name">Note</h4>
@@ -671,17 +682,6 @@ left:4.5em;
                                         <li>retrieve a copy of the notification from the sender's domain to verify its origin</li>
                                         <li>checking a digital signature which accompanies the notification</li>
                                     </ul>
-                                </div>
-                            </section>
-
-                            <section id="preventing-abuse" inlist="" rel="schema:hasPart" resource="#preventing-abuse">
-                                <h3 property="schema:name">Preventing Abuse</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Receivers <em class="rfc2119">SHOULD</em> use <a href="#constraints">constraints</a> to filter unwarranted notifications from being created on the server and exposed by the Inbox. Consumers <em class="rfc2119">MAY</em> also want to check the notifications against any constraints as announced by an Inbox before further processing or use.</p>
-
-                                    <p>If the sender has any services that listen on localhost that don't require authentication, it's possible for a malicious script to run at the Inbox endpoint that could cause the sender to make an arbitrary <code>POST</code> request to itself. Senders <em class="rfc2119">SHOULD NOT</em> make <code>POST</code> requests to the Inbox that are localhost or a loopback IP address.</p>
-
-                                    <p>Receivers could consider implementing access control on the Inbox URL to restrict writing to a whitelist of trusted senders.</p>
                                 </div>
                             </section>
 
