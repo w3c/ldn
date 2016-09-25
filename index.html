@@ -508,6 +508,19 @@ left:4.5em;
                                         </div>
                                     </section>
 
+                                    <section id="sender-verification" inlist="" rel="schema:hasPart" resource="#sender-verification">
+                                        <h4 property="schema:name">Sender Verification</h4>
+                                        <div datatype="rdf:HTML" property="schema:description">
+                                            <p>Receivers <em class="rfc2119">SHOULD</em> verify the sender of the notification. For example:</p>
+                                            <ul>
+                                                <li>by having a whitelist of senders with write access to the Inbox</li>
+                                                <li>requiring authentication to enforce receiver's knowledge of every sender</li>
+                                                <li>retrieve a copy of the notification from the sender's domain to verify its origin</li>
+                                                <li>checking a digital signature which accompanies the notification</li>
+                                            </ul>
+                                        </div>
+                                    </section>
+
                                     <section id="preventing-abuse" inlist="" rel="schema:hasPart" resource="#preventing-abuse">
                                         <h4 property="schema:name">Preventing Abuse</h4>
                                         <div datatype="rdf:HTML" property="schema:description">
@@ -669,19 +682,6 @@ left:4.5em;
                                     <p><em>This section is non-normative.</em></p>
 
                                     <p>Given the nature of the notification payload, consumers may want to take precautions when ascertaining the veracity of the contents. The <q>open-world assumption</q> applies here.</p>
-                                </div>
-                            </section>
-
-                            <section id="sender-verification" inlist="" rel="schema:hasPart" resource="#sender-verification">
-                                <h3 property="schema:name">Sender Verification</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Receivers <em class="rfc2119">SHOULD</em> verify the sender of the notification, for example:</p>
-                                    <ul>
-                                        <li>by having a whitelist of senders with write access to the Inbox</li>
-                                        <li>requiring authentication to enforce receiver's knowledge of every sender</li>
-                                        <li>retrieve a copy of the notification from the sender's domain to verify its origin</li>
-                                        <li>checking a digital signature which accompanies the notification</li>
-                                    </ul>
                                 </div>
                             </section>
 
