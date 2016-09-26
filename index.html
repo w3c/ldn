@@ -350,6 +350,7 @@ left:4.5em;
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json</span></code>
 <code></code>
+<code>// Response in JSON-LD compact form</code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json</span></code>
 <code></code>
@@ -358,6 +359,19 @@ left:4.5em;
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/profile"</span></span>,</code>
 <code>  "<span class="hljs-attribute">inbox</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/inbox/"</span></span></code>
 <code>}</code>
+<code></code>
+<code>// Response in expanded JSON-LD</code>
+<code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
+<code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json</span></code>
+<code></code>
+<code>[</code>
+<code>  {</code>
+<code>    "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/profile"</span></span>,</code>
+<code>    "<span class="hljs-attribute">http://www.w3.org/ns/ldp#inbox</span>": [</code>
+<code>      { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/inbox/"</span></span> }</code>
+<code>    ]</code>
+<code>  }</code>
+<code>]</code>
                                         </pre>
                                         <figcaption>Discovering an Inbox with a GET request to retrieve JSON-LD.</figcaption>
                                     </figure>
