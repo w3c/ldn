@@ -207,7 +207,7 @@ left:4.5em;
                     <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
                         <h2 about="#introduction" property="schema:name" typeof="deo:Introduction">Introduction</h2>
                         <div datatype="rdf:HTML" property="schema:description">
-                            <p><dfn id="ldn">Linked Data Notifications (<abbr title="Linked Data Notifications">LDN</abbr>)</dfn> is a specialized use of Linked Data Platform [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>] for sending and consuming notifications. It is not dependent on a complete implementation of LDP, but an easy-to-implement subset. This specification describes the particular features necessary to make it easy to exchange notifications in a decentralised, interoperable way.</p>
+                            <p><dfn id="ldn">Linked Data Notifications (<abbr title="Linked Data Notifications">LDN</abbr>)</dfn> is a specialized use of Linked Data Platform [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>] for sending and consuming notifications. It is not dependent on a complete implementation of LDP, but an easy-to-implement subset. Having knowledge of LDP is not required to understand this specification, but those who do will find some concepts familiar. We describe the particular features necessary to make it easy to exchange notifications in a decentralised, interoperable way.</p>
 
                             <p>This protocol supports a modular approach to creating and storing data, in particular a decoupling between applications and data storage. Thus, where senders, receivers and consumers of notifications are independently implemented and run on different technology stacks, this protocol allows them to seamlessly work together.</p>
 
@@ -311,7 +311,7 @@ left:4.5em;
                             <section id="discovery" inlist="" rel="schema:hasPart" resource="#discovery">
                                 <h3 property="schema:name">Discovery</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>An <em>Inbox</em>, the endpoint which notifications are sent to or consumed from, can be discovered from any resource, for example a blog post, a user profile, a dataset, a video. The starting point for discovery is the resource which the notification is to or about: the <em>target</em>. Choosing the most appropriate target resource from which to begin discovery is at the discretion of the sender or consumer, since any resource (RDF or non-RDF) may have its own Inbox.</p>
+                                    <p>An <em>Inbox</em>, the endpoint to which notifications are sent or from which they are consumed, can be discovered from any resource, for example a blog post, a user profile, a dataset, a video. The starting point for discovery is the resource which the notification is to or about: the <em>target</em>. Choosing the most appropriate target resource from which to begin discovery is at the discretion of the sender or consumer, since any resource (RDF or non-RDF) may have its own Inbox.</p>
 
                                     <p>To discover the Inbox URL, senders and consumers:</p>
                                     <ul>
@@ -319,11 +319,11 @@ left:4.5em;
                                         <li>make a <code>GET</code> request on the target URL and, for RDF sources [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF 1.1</a></cite>], the Inbox is the object of the predicate <code>http://www.w3.org/ns/ldp#inbox</code>.</li>
                                     </ul>
 
-                                    <p>These may be carried out in either order, but if the first fails to result in an Inbox the second <em class="rfc2119">MUST</em> be tried. However, if the target contains a fragment identifier, the fragment is not part of the request to the server so any Inbox found in the <code>Link</code> headers will be for the resolved URL (without the fragment). Thus, senders and consumers <em class="rfc2119">SHOULD</em> omit the <code>Link</code> header discovery when targeting URIs with fragment identifiers.</p>
+                                    <p>These may be carried out in either order, but if the first fails to result in an Inbox the second <em class="rfc2119">MUST</em> be tried. However, if the target contains a fragment identifier, the fragment is not part of the request to the server so any Inbox found in the <code>Link</code> headers will be for the resolved URL (without the fragment). Thus, senders and consumers <em class="rfc2119">SHOULD</em> omit the <code>Link</code> header discovery when specifically targeting URIs with fragment identifiers.</p>
 
                                     <p>A resource <em class="rfc2119">MUST</em> advertise only one Inbox. One Inbox <em class="rfc2119">MAY</em> be used by multiple resources, for example using the same Inbox for replies to all of my blog posts and shares of all of my photos.</p>
 
-                                    <p>Implementations ought to be courteous when carrying out discovery, per <a href="https://www.w3.org/TR/social-web-protocols/#targeting-and-discovery">Social Web Protocols</a>.</p>
+                                    <p>Implementations ought to be courteous when making HTTP requests for discovery, per <a href="https://www.w3.org/TR/social-web-protocols/#targeting-and-discovery">Social Web Protocols</a>.</p>
 
                                     <figure class="listing example" id="discovery-head-example" rel="schema:hasPart" resource="#discovery-head-example">
                                         <pre>
@@ -387,7 +387,7 @@ left:4.5em;
                             <section id="sending" inlist="" rel="schema:hasPart" resource="#sending">
                                 <h3 property="schema:name">Sending</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Following <a href="#discovery">discovery</a>, senders <em class="rfc2119">MUST</em> deliver notifications through a <code>POST</code> request to the Inbox URL. Senders can expect a <code>201 Created</code> (with a <code>Location</code> Link header) in response to a successful request.</p>
+                                    <p>Following <a href="#discovery">discovery</a>, senders <em class="rfc2119">MUST</em> deliver notifications through a <code>POST</code> request to the Inbox URL. Senders can expect a <code>201 Created</code> (with a <code>Location</code> Link header) or a <code>202 Accepted</code> in response to a successful request.</p>
 
                                     <p>The sender <em class="rfc2119">MAY</em> use an <code>OPTIONS</code> request to determine the RDF content types accepted by the server, and serialize the notification in the request body according to the value of the <code>Accept-Post</code> header [<cite><a class="bibref" href="http://tools.ietf.org/html/draft-wilde-accept-post">Accept-Post</a></cite>] returned. Otherwise, the body of the <code>POST</code> request <em class="rfc2119">MUST</em> contain the notification <a href="#payload">payload</a> in JSON-LD with header <code>Content-Type: application/ld+json</code>. The <code>Content-Type</code> header <em class="rfc2119">MAY</em> include a <code>profile</code> URI [<cite><a class="bibref" href="#bib-rfc6906">RFC6906</a></cite>].</p>
 
@@ -438,9 +438,9 @@ left:4.5em;
 
                                             <p>Receivers which enforce constraints on the notifications (see <a href="#constraints">Constraints</a>) <em class="rfc2119">SHOULD</em> fail to process the notification if the constraints are not met and return the appropriate <code>4xx</code> error code.</p>
 
-                                            <p>Receivers <em class="rfc2119">MUST</em> accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>. The <code>Content-Type</code> header <em class="rfc2119">MAY</em> include a <code>profile</code> URI [<cite><a class="bibref" href="#bib-rfc6906">RFC6906</a></cite>].</p>
+                                            <p>Receivers <em class="rfc2119">MUST</em> accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>, which <em class="rfc2119">MAY</em> include a <code>profile</code> URI [<cite><a class="bibref" href="#bib-rfc6906">RFC6906</a></cite>].</p>
 
-                                            <p>Receivers <em class="rfc2119">MAY</em> accept other RDF content types (e.g., <code>text/turtle</code>, <code>text/html</code>), and <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept-Post</code> header on the Inbox URL.</p>
+                                            <p>Receivers <em class="rfc2119">MAY</em> accept other RDF content types (e.g., <code>text/turtle</code>, <code>text/html</code>), and if so, <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept-Post</code> header on the Inbox URL.</p>
 
                                             <figure class="listing example" id="request-response-example" rel="schema:hasPart" resource="#request-response-example">
                                                 <pre about="#request-example" class="hljs http" property="schema:description" typeof="fabio:Script">
@@ -476,7 +476,7 @@ left:4.5em;
                                     <section id="receiving-inbox-contents" inlist="" rel="schema:hasPart" resource="#receiving-inbox-contents">
                                         <h4 property="schema:name">Making Inbox contents available to consumers</h4>
                                         <div datatype="rdf:HTML" property="schema:description">
-                                            <p>A successful <code>GET</code> request on the Inbox <em class="rfc2119">MUST</em> return a <code>HTTP 200 OK</code> with the URIs of notifications (returning <code>4xx</code> error codes as applicable). The receivers <em class="rfc2119">MAY</em> only return URIs of notifications in the Inbox that the consumer is able to access.</p>
+                                            <p>A successful <code>GET</code> request on the Inbox <em class="rfc2119">MUST</em> return a <code>HTTP 200 OK</code> with the URIs of notifications, subject to the requester's access (returning <code>4xx</code> error codes as applicable). Receivers <em class="rfc2119">MAY</em> list only URIs of notifications in the Inbox that the consumer is able to access.</p>
 
                                             <p>Each notification URI <em class="rfc2119">MUST</em> be related to the Inbox URL with the <code>http://www.w3.org/ns/ldp#contains</code> predicate. Each notification <em class="rfc2119">MUST</em> be an <a href="http://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source">RDF source</a>. If non-RDF resources are returned, the consumer <em class="rfc2119">MAY</em> ignore them.</p>
 
@@ -521,7 +521,7 @@ left:4.5em;
                                             <ul>
                                                 <li>by having a whitelist of senders with write access to the Inbox</li>
                                                 <li>requiring authentication to enforce receiver's knowledge of every sender</li>
-                                                <li>retrieve a copy of the notification from the sender's domain to verify its origin</li>
+                                                <li>retrieving a copy of the notification from the sender's domain to verify its origin</li>
                                                 <li>checking a digital signature which accompanies the notification</li>
                                             </ul>
                                         </div>
@@ -545,7 +545,7 @@ left:4.5em;
 
                                     <p>The URIs of the notifications <em class="rfc2119">MUST</em> be discoverable through the <code>http://www.w3.org/ns/ldp#contains</code> predicate of the Inbox URL (see <a href="#results-example-inbox-contains-ldp">example</a> for Inbox content).</p>
 
-                                    <p>When retrieving the Inbox or the individual notifications, the consumer <em class="rfc2119">SHOULD</em> explicitly set the <code>Accept</code> header to indicate preferred content types, including for JSON-LD. Fetching the notifications — if any, how many, or according to a particular criteria (e.g., content-length, timestamp) — is at the discretion of the consumer.</p>
+                                    <p>When retrieving the Inbox or the individual notifications, the consumer <em class="rfc2119">SHOULD</em> explicitly set the <code>Accept</code> header to indicate preferred content types, including for JSON-LD. Fetching the individual notifications — if any, how many, or according to a particular criteria (e.g., content-length, timestamp) — is at the discretion of the consumer.</p>
 
                                     <p>The consumer <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization.</p>
 
@@ -572,12 +572,12 @@ left:4.5em;
                     <section id="payload" inlist="" rel="schema:hasPart" resource="#payload">
                         <h2 property="schema:name">Payload</h2>
                         <div datatype="rdf:HTML" property="schema:description">
-                            <p>The payload of the notification <em class="rfc2119">MUST</em> be a JSON-LD unless another RDF syntax has been negotiated with the receiver. To allow for a wide variety of use cases, the actual vocabulary of the payload is deliberately not specified by this specification.</p>
+                            <p>The payload of the notification <em class="rfc2119">MUST</em> be JSON-LD unless another RDF syntax has been negotiated with the receiver. To allow for a wide variety of use cases, the actual vocabulary of the payload is deliberately not specified here.</p>
 
                             <section id="payload-examples" inlist="" rel="schema:hasPart" resource="#payload-examples">
                                 <h3 property="schema:name">Payload Examples</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p><em>This section is non-normative.</em>:</p>
+                                    <p><em>This section is non-normative.</em></p>
 
                                     <p>A single triple statement is the simplest notification in terms of its data payload. It contains the most essential data which makes up a notification e.g, A note is a reply to an article:</p>
 
@@ -592,9 +592,9 @@ left:4.5em;
                                         <figcaption property="schema:name">Example notification type: single statement in JSON-LD</figcaption>
                                     </figure>
 
-                                    <p>This approach is useful if there is a need to further extend the statement's description or refer to it as a whole.</p>
+                                    <p>This allows a single triple statment to be referred to as a whole, through the URI generated by the receiver for the notification.</p>
 
-                                    <p>A particular grouping of triples which describe and qualify the relations, i.e., the vocabulary in use typically gives meaning to the statements when consumed as a whole. The examples below tend to refer to external resources where the body of the content can be discovered.</p>
+                                    <p>Larger collections of triples or qualified relations can also constitute a notification. The vocabulary in use typically gives meanings to the statements when consumed as a whole. The examples below tend to refer to external resources where the body of the content can be discovered.</p>
 
                                     <p>ActivityStreams 2.0:</p>
                                     <figure class="listing example" id="notification-qualified-relation" rel="schema:hasPart" resource="#notification-qualified-relation">
@@ -632,7 +632,7 @@ left:4.5em;
                                         <figcaption property="schema:name">Example notification type: Semantic Pingback.</figcaption>
                                     </figure>
 
-                                    <p>This is typically in cases where an application may want to create a notification containing arbitrary information. A notification may contain the complete payload and not necessarily refer to the origin data (external resource).</p>
+                                    <p>A notification may also contain arbitrary information, including the complete payload without necessarily refering to an external resource or origin of the data.</p>
 
                                     <figure class="listing example" id="notification-any-data" rel="schema:hasPart" resource="#notification-any-data">
                                         <pre about="#notification-any-data" property="schema:description" typeof="fabio:Script">
@@ -691,18 +691,18 @@ left:4.5em;
                             <section id="activity-streams-2-0-support" inlist="" rel="schema:hasPart" resource="#activity-streams-2-0-support">
                                 <h3 property="schema:name">Activity Streams 2.0 Support</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>Receiver implementations that wish to support Activity Streams 2.0 Core can see the <a href="https://www.w3.org/TR/social-web-protocols/#inbox-interop">Social Web Protocols</a>.</p>
+                                    <p>Receiver implementations that wish to support Activity Streams 2.0 Core can see <a href="https://www.w3.org/TR/social-web-protocols/#inbox-interop">Social Web Protocols - Inbox Interop</a> for content-type and vocabulary equivalences.</p>
                                 </div>
                             </section>
 
                             <section id="security-and-privacy-review" inlist="" rel="schema:hasPart" resource="#security-and-privacy-review">
                                 <h3 property="schema:name">Security and Privacy Review</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p>These questions provide an overview of security and privacy considerations for this specification [<a href="#bib-security-privacy-questionnaire-20151210">Self-Review Questionnaire: Security and Privacy</a>].</p>
+                                    <p>These questions provide an overview of security and privacy considerations for this specification as guided by [<a href="#bib-security-privacy-questionnaire-20151210">Self-Review Questionnaire: Security and Privacy</a>].</p>
 
                                     <dl>
                                         <dt><a href="https://www.w3.org/TR/2015/NOTE-security-privacy-questionnaire-20151210/#pii">Does this specification deal with personally-identifiable information?</a></dt><dd>Notification payloads may contain any data including that which identifies the sender or the receiver. Access to notification data is under the control of the receiver. In the case of sending sensitive information, the sender should be aware that the receiver may implement access control on the Inbox that allows for public reading of the contents.</dd>
-                                        <dt><a href="https://www.w3.org/TR/2015/NOTE-security-privacy-questionnaire-20151210/#credentials">Does this specification deal with high-value data?</a></dt><dd>Same implications as personally-identifiable information in notification payload (as mention above).</dd>
+                                        <dt><a href="https://www.w3.org/TR/2015/NOTE-security-privacy-questionnaire-20151210/#credentials">Does this specification deal with high-value data?</a></dt><dd>Same implications as personally-identifiable information in notification payload (as mentioned above).</dd>
                                         <dt><a href="https://www.w3.org/TR/2015/NOTE-security-privacy-questionnaire-20151210/#persistent-origin-specific-state">Does this specification introduce new state for an origin that persists across browsing sessions?</a></dt><dd>No.</dd>
                                         <dt><a href="https://www.w3.org/TR/2015/NOTE-security-privacy-questionnaire-20151210/#persistent-identifiers">Does this specification expose persistent, cross-origin state to the web?</a></dt><dd>No.</dd>
                                         <dt><a href="https://www.w3.org/TR/2015/NOTE-security-privacy-questionnaire-20151210/#other-data">Does this specification expose any other data to an origin that it doesn’t currently have access to?</a></dt><dd>No.</dd>
