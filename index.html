@@ -571,36 +571,28 @@ left:4.5em;
                             <section id="payload-examples" inlist="" rel="schema:hasPart" resource="#payload-examples">
                                 <h3 property="schema:name">Payload Examples</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
-                                    <p><em>This section is non-normative.</em> Here are some examples of notification content:</p>
+                                    <p><em>This section is non-normative.</em>:</p>
 
-                                    <section id="single-statement" inlist="" rel="schema:hasPart" resource="#single-statement">
-                                        <h4 property="schema:name">Single Statement</h4>
-                                        <div datatype="rdf:HTML" property="schema:description">
-                                            <p>A single triple statement is the simplest notification in terms of its data payload. It contains the most essential data which makes up a notification e.g, A note is a reply to an article:</p>
+                                    <p>A single triple statement is the simplest notification in terms of its data payload. It contains the most essential data which makes up a notification e.g, A note is a reply to an article:</p>
 
-                                            <figure class="listing example selected" id="notification-single-statement-json-ld" rel="schema:hasPart" resource="#notification-single-statement-json-ld">
-                                                <pre about="#notification-single-statement-turtle" property="schema:description" typeof="fabio:Script">
+                                    <figure class="listing example selected" id="notification-single-statement-json-ld" rel="schema:hasPart" resource="#notification-single-statement-json-ld">
+                                        <pre about="#notification-single-statement-turtle" property="schema:description" typeof="fabio:Script">
 <code>{</code>
 <code>  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://schema.org/"</span></span>,</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.org/note#foo"</span></span>,</code>
 <code>  "<span class="hljs-attribute">citation</span>": { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/article#bar"</span></span> }</code>
 <code>}</code>
-                                                </pre>
-                                                <figcaption property="schema:name">Example notification type: single statement in JSON-LD</figcaption>
-                                            </figure>
+                                        </pre>
+                                        <figcaption property="schema:name">Example notification type: single statement in JSON-LD</figcaption>
+                                    </figure>
 
-                                            <p>This approach is useful if there is a need to further extend the statement's description or refer to it as a whole.</p>
-                                        </div>
-                                    </section>
+                                    <p>This approach is useful if there is a need to further extend the statement's description or refer to it as a whole.</p>
 
-                                    <section id="qualified-relations" inlist="" rel="schema:hasPart" resource="#qualified-relations">
-                                        <h4 property="schema:name">Qualified relations</h4>
-                                        <div datatype="rdf:HTML" property="schema:description">
-                                            <p>A particular grouping of triples which describe and qualify the relations, i.e., the vocabulary in use typically gives meaning to the statements when consumed as a whole. The examples below tend to refer to external resources where the body of the content can be discovered.</p>
+                                    <p>A particular grouping of triples which describe and qualify the relations, i.e., the vocabulary in use typically gives meaning to the statements when consumed as a whole. The examples below tend to refer to external resources where the body of the content can be discovered.</p>
 
-                                            <p>ActivityStreams 2.0:</p>
-                                            <figure class="listing example" id="notification-qualified-relation" rel="schema:hasPart" resource="#notification-qualified-relation">
-                                                <pre about="#notification-qualified-relation" property="schema:description" typeof="fabio:Script">
+                                    <p>ActivityStreams 2.0:</p>
+                                    <figure class="listing example" id="notification-qualified-relation" rel="schema:hasPart" resource="#notification-qualified-relation">
+                                        <pre about="#notification-qualified-relation" property="schema:description" typeof="fabio:Script">
 <code>{</code>
 <code>  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"https://www.w3.org/ns/activitystreams"</span></span>,</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,</code>
@@ -610,13 +602,13 @@ left:4.5em;
 <code>  "<span class="hljs-attribute">target</span>": { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/article#introduction"</span></span> },</code>
 <code>  "<span class="hljs-attribute">updated</span>": <span class="hljs-value"><span class="hljs-string">"2016-06-23T15:03:01Z"</span></span></code>
 <code>}</code>
-                                                </pre>
-                                                <figcaption property="schema:name">Example notification type: qualified relation.</figcaption>
-                                            </figure>
+                                        </pre>
+                                        <figcaption property="schema:name">Example notification type: qualified relation.</figcaption>
+                                    </figure>
 
-                                            <p>Semantic Pingback:</p>
-                                            <figure class="listing example" id="notification-semantic-pingback" rel="schema:hasPart" resource="#notification-semantic-pingback">
-                                                <pre about="#notification-semantic-pingback" property="schema:description" typeof="fabio:Script">
+                                    <p>Semantic Pingback:</p>
+                                    <figure class="listing example" id="notification-semantic-pingback" rel="schema:hasPart" resource="#notification-semantic-pingback">
+                                        <pre about="#notification-semantic-pingback" property="schema:description" typeof="fabio:Script">
 <code>{</code>
 <code>  "@id": "",</code>
 <code>  "@type": "http://purl.org/net/pingback/Item",</code>
@@ -630,19 +622,14 @@ left:4.5em;
 <code>  pingback:source &lt;https://example.org/annotation-1&gt; ;</code>
 <code>  pingback:target &lt;https://user.example/article#introduction&gt; .</code>
 -->
-                                                </pre>
-                                                <figcaption property="schema:name">Example notification type: Semantic Pingback.</figcaption>
-                                            </figure>
-                                        </div>
-                                    </section>
+                                        </pre>
+                                        <figcaption property="schema:name">Example notification type: Semantic Pingback.</figcaption>
+                                    </figure>
 
-                                    <section id="any-data" inlist="" rel="schema:hasPart" resource="#any-data">
-                                        <h4 property="schema:name">Any data</h4>
-                                        <div datatype="rdf:HTML" property="schema:description">
-                                            <p>This is typically in cases where an application may want to create a notification containing arbitrary information. A notification may contain the complete payload and not necessarily refer to the origin data (external resource).</p>
+                                    <p>This is typically in cases where an application may want to create a notification containing arbitrary information. A notification may contain the complete payload and not necessarily refer to the origin data (external resource).</p>
 
-                                            <figure class="listing example" id="notification-any-data" rel="schema:hasPart" resource="#notification-any-data">
-                                                <pre about="#notification-any-data" property="schema:description" typeof="fabio:Script">
+                                    <figure class="listing example" id="notification-any-data" rel="schema:hasPart" resource="#notification-any-data">
+                                        <pre about="#notification-any-data" property="schema:description" typeof="fabio:Script">
 <code>{</code>
 <code>  "@context": [</code>
 <code>    { "sioc": "http://rdfs.org/sioc/ns#" },</code>
@@ -661,11 +648,9 @@ left:4.5em;
 <code>    "foaf:name": "Alice"</code>
 <code>  }</code>
 <code>}</code>
-                                                </pre>
-                                                <figcaption property="schema:name">Example notification type: any data.</figcaption>
-                                            </figure>
-                                        </div>
-                                    </section>
+                                        </pre>
+                                        <figcaption property="schema:name">Example notification type: any data.</figcaption>
+                                    </figure>
                                 </div>
                             </section>
                         </div>
