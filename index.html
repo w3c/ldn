@@ -207,15 +207,12 @@ left:4.5em;
                     <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction">
                         <h2 about="#introduction" property="schema:name" typeof="deo:Introduction">Introduction</h2>
                         <div datatype="rdf:HTML" property="schema:description">
-                            <p><dfn id="ldn">Linked Data Notifications (<abbr title="Linked Data Notifications">LDN</abbr>)</dfn> is a specialized use of Linked Data Platform [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>] for sending and consuming notifications. It is not dependent on a complete implementation of LDP, but an easy-to-implement subset. Having knowledge of LDP is not required to understand this specification, but those who do will find some concepts familiar. We describe the particular features necessary to make it easy to exchange notifications in a decentralised, interoperable way.</p>
+                            <p>Data on the Web should not be locked in to particular systems or only readable by the applications which created it. Users should be free to switch between applications and share data between them. Applications generate notifications about activities, interactions, and new information, which may be presented to the user or processed further.</p>
 
-                            <p>This protocol supports a modular approach to creating and storing data, in particular a decoupling between applications and data storage. Thus, where senders, receivers and consumers of notifications are independently implemented and run on different technology stacks, this protocol allows them to seamlessly work together.</p>
+                            <p><dfn id="ldn">Linked Data Notifications (<abbr title="Linked Data Notifications">LDN</abbr>)</dfn> supports sharing and reuse of notifications <em>across</em> applications, regardless of how they were generated. This allows for more modular systems, which decouple data storage from the applications which display or otherwise make use of the data. The protocol is intended to allow senders, receivers and consumers of notifications, which are independently implemented and run on different technology stacks, to seamlessly work together, contributing to decentralisation of our interactions on the Web.</p>
 
-                            <ul>
-                                <li>This specification enables the notion of a notification as an individual entity with its own URI which can be retrieved and reused.</li>
-                                <li>This specification deliberately does not define the vocabulary of the notification contents in order to allow for use in a range of different application domains.</li>
-                                <li>Authentication and verification of notifications is encouraged, but the mechanism to do so is at the discretion of receivers and consumers, as needs differ according to types of notification and different application domains.</li>
-                            </ul>
+                            <p>Instead of treating notifications as ephemeral or non-persistent entities, this specification enables the notion of a notification as an individual entity with its own URI. As such, notifications can be retrieved and reused.
+                            We support a range of different application domains, social and otherwise, thus the contents of notifications are left up to applications to define. Authentication and verification of notifications is encouraged, but the mechanism to do so is at the discretion of receivers and consumers, as needs differ according to types of notification and different application domains.</p>
 
                             <section id="social-web-working-group" inlist="" rel="schema:hasPart" resource="#social-web-working-group">
                                 <h3 property="schema:name">Social Web Working Group</h3>
@@ -237,6 +234,13 @@ left:4.5em;
                                     <p>The sender discovers where to deliver the notification based on the addressee or subject of the notification (the receiver) who advertises the appropriate location to send it to (the Inbox). Any resource can have its own Inbox. The receiver also exposes the notification data (according to appropriate access control) for use by consumers.</p>
 
                                     <p>Consumers discover the location of the Inbox in the same way as the sender, and may perform further processing on the notifications, combine it with some other data, or simply present it in a suitable human-readable way.</p>
+                                </div>
+                            </section>
+
+                            <section id="relation-to-ldp" inlist="" rel="schema:hasPart" resource="#relation-to-ldp">
+                                <h3 property="schema:name">Relation to Linked Data Platform</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p><abbr title="Linked Data Notifications">LDN</abbr> is a specialized use of Linked Data Platform [<cite><a class="bibref" href="#bib-ldp">LDP</a></cite>] for sending and consuming notifications. It is not dependent on a complete implementation of LDP, but an easy-to-implement subset. Having knowledge of LDP is not required to understand this specification, but those who do will find some concepts familiar. We describe the particular features necessary to make it easy to exchange notifications in a decentralised, interoperable way.</p>
                                 </div>
                             </section>
 
