@@ -341,13 +341,12 @@ left:4.5em;
                                         <figcaption>Discovering an Inbox with a HEAD request.</figcaption>
                                     </figure>
 
-                                    <figure class="listing example" id="discovery-json-example" rel="schema:hasPart" resource="#discovery-json-example">
+                                    <figure class="listing example" id="discovery-json-example-compact" rel="schema:hasPart" resource="#discovery-json-examplecompact">
                                         <pre>
 <code><span class="hljs-request">GET <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json</span></code>
 <code></code>
-<code>// Response in JSON-LD compact form</code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json</span></code>
 <code></code>
@@ -357,7 +356,16 @@ left:4.5em;
 <code>  "<span class="hljs-attribute">inbox</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/inbox/"</span></span></code>
 <code>}</code>
 <code></code>
-<code>// Response in expanded JSON-LD</code>
+                                        </pre>
+                                        <figcaption>Discovering an Inbox with a GET request to retrieve JSON-LD. Response in JSON-LD compact form.</figcaption>
+                                    </figure>
+
+                                    <figure class="listing example" id="discovery-json-example-expanded" rel="schema:hasPart" resource="#discovery-json-example-expanded">
+                                        <pre>
+<code><span class="hljs-request">GET <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
+<code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json</span></code>
+<code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json</span></code>
 <code></code>
@@ -370,8 +378,9 @@ left:4.5em;
 <code>  }</code>
 <code>]</code>
                                         </pre>
-                                        <figcaption>Discovering an Inbox with a GET request to retrieve JSON-LD.</figcaption>
+                                        <figcaption>Discovering an Inbox with a GET request to retrieve JSON-LD. Response in expanded JSON-LD.</figcaption>
                                     </figure>
+
                                     <figure class="listing example" id="discovery-html-example" rel="schema:hasPart" resource="#discovery-html-example">
                                         <pre>
 <code><span class="hljs-request">GET <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
