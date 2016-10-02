@@ -380,10 +380,28 @@ left:4.5em;
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/html</span></code>
 <code></code>
-<code>&lt;a href="/inbox/" rel="http://www.w3.org/ns/ldp#inbox"&gt;My inbox&lt;/a&gt;</code>
+<code><em>A visible Inbox of a person</em>:</code>
+<code>&lt;a about="#alice"</code>
+<code>  rel="http://www.w3.org/ns/ldp#inbox" href="/inbox/"&gt;My inbox&lt;/a&gt;</code>
+<code></code>
+<code></code>
+<code><span class="hljs-request">GET <span class="hljs-string">/article</span> HTTP/1.1</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
+<code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html</span></code>
+<code></code>
+<code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
+<code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/html</span></code>
+<code></code>
+<code><em>An invisible Inbox declared within the head element</em>:</code>
+<code>&lt;link href="/inbox/" rel="http://www.w3.org/ns/ldp#inbox" /&gt;</code>
+<code></code>
+<code><em>An invisible Inbox of a resource</em>:</code>
+<code>&lt;section id="introduction" about="#introduction"</code>
+<code>  property="http://www.w3.org/ns/ldp#inbox" resource="/inbox/"&gt;</code>
+<code>&lt;/section&gt;</code>
 <code></code>
                                         </pre>
-                                        <figcaption>Discovering an Inbox with a GET request to retrieve HTML.</figcaption>
+                                        <figcaption>Discovering an Inbox with a GET request to retrieve HTML serialized with RDFa.</figcaption>
                                     </figure>
                                 </div>
                             </section>
