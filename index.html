@@ -319,8 +319,8 @@ left:4.5em;
 
                                     <p>To discover the Inbox URL, senders and consumers:</p>
                                     <ul>
-                                        <li>make a <code>HEAD</code> or <code>GET</code> request on the target URL, to check for an HTTP <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code></li>
-                                        <li>make a <code>GET</code> request on the target URL and, for RDF sources [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF 1.1</a></cite>], the Inbox is the object of the predicate <code>http://www.w3.org/ns/ldp#inbox</code>.</li>
+                                        <li>make an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, to check for a <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code></li>
+                                        <li>make a HTTP <code>GET</code> request on the target URL and, for RDF sources [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF 1.1</a></cite>], the Inbox is the object of the predicate <code>http://www.w3.org/ns/ldp#inbox</code>.</li>
                                     </ul>
 
                                     <p>These may be carried out in either order, but if the first fails to result in an Inbox the second <em class="rfc2119">MUST</em> be tried. However, if the target contains a fragment identifier, the fragment is not part of the request to the server so any Inbox found in the <code>Link</code> headers will be for the resolved URL (without the fragment). Thus, senders and consumers <em class="rfc2119">SHOULD</em> omit the <code>Link</code> header discovery when specifically targeting URIs with fragment identifiers.</p>
