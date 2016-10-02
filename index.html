@@ -338,7 +338,7 @@ left:4.5em;
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
 <code><span class="hljs-attribute">Link</span>: <span class="hljs-string">&lt;https://user.example/inbox/&gt;; rel="http://www.w3.org/ns/ldp#inbox"</span></code>
                                         </pre>
-                                        <figcaption>Discovering an Inbox with a HEAD request.</figcaption>
+                                        <figcaption>Discovering an Inbox with a <code>HEAD</code> request.</figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="discovery-json-example-compact" rel="schema:hasPart" resource="#discovery-json-examplecompact">
@@ -355,33 +355,11 @@ left:4.5em;
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/profile"</span></span>,</code>
 <code>  "<span class="hljs-attribute">inbox</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/inbox/"</span></span></code>
 <code>}</code>
-<code></code>
                                         </pre>
-                                        <figcaption>Discovering an Inbox with a GET request to retrieve JSON-LD. Response in JSON-LD compact form.</figcaption>
+                                        <figcaption>Discovering an Inbox with a <code>GET</code> request to retrieve JSON-LD. Response in JSON-LD compact form.</figcaption>
                                     </figure>
 
-                                    <figure class="listing example" id="discovery-json-example-expanded" rel="schema:hasPart" resource="#discovery-json-example-expanded">
-                                        <pre>
-<code><span class="hljs-request">GET <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
-<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
-<code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json</span></code>
-<code></code>
-<code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
-<code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json</span></code>
-<code></code>
-<code>[</code>
-<code>  {</code>
-<code>    "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/profile"</span></span>,</code>
-<code>    "<span class="hljs-attribute">http://www.w3.org/ns/ldp#inbox</span>": [</code>
-<code>      { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/inbox/"</span></span> }</code>
-<code>    ]</code>
-<code>  }</code>
-<code>]</code>
-                                        </pre>
-                                        <figcaption>Discovering an Inbox with a GET request to retrieve JSON-LD. Response in expanded JSON-LD.</figcaption>
-                                    </figure>
-
-                                    <figure class="listing example" id="discovery-html-example" rel="schema:hasPart" resource="#discovery-html-example">
+                                    <figure class="listing example" id="discovery-html-example-a" rel="schema:hasPart" resource="#discovery-html-example-a">
                                         <pre>
 <code><span class="hljs-request">GET <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
@@ -390,28 +368,38 @@ left:4.5em;
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/html</span></code>
 <code></code>
-<code><em>A visible Inbox of a person</em>:</code>
 <code>&lt;a about="#alice"</code>
 <code>  rel="http://www.w3.org/ns/ldp#inbox" href="/inbox/"&gt;My inbox&lt;/a&gt;</code>
-<code></code>
-<code></code>
-<code><span class="hljs-request">GET <span class="hljs-string">/article</span> HTTP/1.1</span></code>
+                                        </pre>
+                                        <figcaption>Discovering an Inbox with a <code>GET</code> request to retrieve HTML serialized with RDFa. A visible Inbox of a person.</figcaption>
+                                    </figure>
+
+                                    <figure class="listing example" id="discovery-html-example-link" rel="schema:hasPart" resource="#discovery-html-example-link">
+                                        <pre><code><span class="hljs-request">GET <span class="hljs-string">/article</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
-<code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html</span></code>
+<code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html, application/ld+json</span></code>
 <code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
-<code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/html, application/ld+json</span></code>
+<code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/html</span></code>
 <code></code>
-<code><em>An invisible Inbox declared within the head element</em>:</code>
 <code>&lt;link href="/inbox/" rel="http://www.w3.org/ns/ldp#inbox" /&gt;</code>
+                                        </pre>
+                                        <figcaption>Discovering an Inbox with a <code>GET</code> request to retrieve HTML serialized with RDFa. An invisible Inbox declared on the <code>link</code> element.</figcaption>
+                                    </figure>
+
+                                    <figure class="listing example" id="discovery-html-example-section" rel="schema:hasPart" resource="#discovery-html-example-section">
+                                        <pre><code><span class="hljs-request">GET <span class="hljs-string">/article</span> HTTP/1.1</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
+<code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html, application/ld+json</span></code>
 <code></code>
-<code><em>An invisible Inbox of a resource</em>:</code>
+<code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
+<code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/html</span></code>
+<code></code>
 <code>&lt;section id="introduction" about="#introduction"</code>
 <code>  property="http://www.w3.org/ns/ldp#inbox" resource="/inbox/"&gt;</code>
 <code>&lt;/section&gt;</code>
-<code></code>
                                         </pre>
-                                        <figcaption>Discovering an Inbox with a GET request to retrieve HTML serialized with RDFa.</figcaption>
+                                        <figcaption>Discovering an Inbox with a <code>GET</code> request to retrieve HTML serialized with RDFa. An invisible Inbox on a resource.</figcaption>
                                     </figure>
                                 </div>
                             </section>
