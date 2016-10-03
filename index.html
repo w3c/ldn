@@ -681,14 +681,11 @@ left:4.5em;
 <code>  "@type": "Announce",</code>
 <code>  "actor": "http://csarven.ca/#i",</code>
 <code>  "object": {</code>
+<code>  "@context": "http://www.w3.org/ns/anno.jsonld",</code>
 <code>    "@id": "http://example.net/note",</code>
-<code>    "@type": "http://www.w3.org/ns/oa#Annotation",</code>
-<code>    "http://www.w3.org/ns/oa#motivation": {</code>
-<code>      "@id": "http://www.w3.org/ns/oa#assessing"</code>
-<code>    },</code>
-<code>    "https://schema.org/license": {</code>
-<code>      "@id": "https://creativecommons.org/licenses/by/4.0/"</code>
-<code>    }</code>
+<code>    "@type": "Annotation",</code>
+<code>    "motivation": "http://www.w3.org/ns/oa#assessing",</code>
+<code>    "rights": "http://creativecommons.org/licenses/by/4.0/"</code>
 <code>  },</code>
 <code>  "target": {</code>
 <code>    "@id": "http://example.org/article"</code>
