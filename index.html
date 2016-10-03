@@ -331,12 +331,12 @@ left:4.5em;
 
                                     <figure class="listing example" id="discovery-head-example" rel="schema:hasPart" resource="#discovery-head-example">
                                         <pre>
-<code><span class="hljs-request">HEAD <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
-<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
+<code><span class="hljs-request">HEAD <span class="hljs-string">/article</span> HTTP/1.1</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json</span></code>
 <code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
-<code><span class="hljs-attribute">Link</span>: <span class="hljs-string">&lt;https://user.example/inbox/&gt;; rel="http://www.w3.org/ns/ldp#inbox"</span></code>
+<code><span class="hljs-attribute">Link</span>: <span class="hljs-string">&lt;http://example.org/inbox/&gt;; rel="http://www.w3.org/ns/ldp#inbox"</span></code>
                                         </pre>
                                         <figcaption>Discovering an Inbox with a <code>HEAD</code> request.</figcaption>
                                     </figure>
@@ -376,7 +376,7 @@ left:4.5em;
 
                                     <figure class="listing example" id="discovery-html-example-link" rel="schema:hasPart" resource="#discovery-html-example-link">
                                         <pre><code><span class="hljs-request">GET <span class="hljs-string">/article</span> HTTP/1.1</span></code>
-<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html, application/ld+json</span></code>
 <code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
