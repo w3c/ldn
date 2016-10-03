@@ -672,6 +672,35 @@ left:4.5em;
                                         </pre>
                                         <figcaption property="schema:name">Example notification type: any data.</figcaption>
                                     </figure>
+
+                                    <figure class="listing example" id="notification-announce-annotation" rel="schema:hasPart" resource="#notification-announce-annotation">
+                                        <pre about="#announce-annotation" property="schema:description" typeof="fabio:Script">
+<code>{</code>
+<code>  "@context": "https://www.w3.org/ns/activitystreams",</code>
+<code>  "@id": "http://example.org/inbox/14a792f0",</code>
+<code>  "@type": "Announce",</code>
+<code>  "actor": "http://csarven.ca/#i",</code>
+<code>  "object": {</code>
+<code>    "@id": "http://example.net/note",</code>
+<code>    "@type": "http://www.w3.org/ns/oa#Annotation",</code>
+<code>    "http://www.w3.org/ns/oa#motivation": {</code>
+<code>      "@id": "http://www.w3.org/ns/oa#assessing"</code>
+<code>    },</code>
+<code>    "https://schema.org/license": {</code>
+<code>      "@id": "https://creativecommons.org/licenses/by/4.0/"</code>
+<code>    }</code>
+<code>  },</code>
+<code>  "target": {</code>
+<code>    "@id": "http://example.org/article"</code>
+<code>  },</code>
+<code>  "updated": {</code>
+<code>    "@type": "http://www.w3.org/2001/XMLSchema#dateTime",</code>
+<code>    "@value": "2016-06-28T19:56:20.114Z"</code>
+<code>  }</code>
+<code>}</code>
+                                        </pre>
+                                        <figcaption property="schema:name">Example notification: Announcing an Annotation of an assessment.</figcaption>
+                                    </figure>
                                 </div>
                             </section>
                         </div>
