@@ -344,7 +344,7 @@ left:4.5em;
                                     <figure class="listing example" id="discovery-json-example-compact" rel="schema:hasPart" resource="#discovery-json-examplecompact">
                                         <pre>
 <code><span class="hljs-request">GET <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
-<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json</span></code>
 <code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
@@ -352,8 +352,8 @@ left:4.5em;
 <code></code>
 <code>{</code>
 <code>  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/ldp"</span></span>,</code>
-<code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/profile"</span></span>,</code>
-<code>  "<span class="hljs-attribute">inbox</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/inbox/"</span></span></code>
+<code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/profile"</span></span>,</code>
+<code>  "<span class="hljs-attribute">inbox</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/inbox/"</span></span></code>
 <code>}</code>
                                         </pre>
                                         <figcaption>Discovering an Inbox with a <code>GET</code> request to retrieve JSON-LD. Response in JSON-LD compact form.</figcaption>
@@ -483,7 +483,7 @@ left:4.5em;
                                             <figure class="listing example" id="request-response-example" rel="schema:hasPart" resource="#request-response-example">
                                                 <pre about="#request-example" class="hljs http" property="schema:description" typeof="fabio:Script">
 <code><span class="hljs-request">HEAD <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
-<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
 <code><span class="hljs-attribute">Allow</span>: <span class="hljs-string">GET, HEAD, OPTIONS, POST</span></code>
@@ -532,7 +532,7 @@ left:4.5em;
                                             <figure class="listing example" id="results-example-inbox-contains-ldp" rel="schema:hasPart" resource="#results-example-inbox-contains-ldp">
                                                 <pre about="#results-example-inbox-contains-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
 <code><span class="hljs-request">GET <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
-<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json</span></code>
 <code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
@@ -540,7 +540,7 @@ left:4.5em;
 <code></code>
 <code>{</code>
 <code>  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/ldp"</span></span>,</code>
-<code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/inbox/"</span></span>,</code>
+<code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/inbox/"</span></span>,</code>
 <code>  "<span class="hljs-attribute">contains</span>": <span class="hljs-value">[</span></code>
 <code>    <span class="hljs-value"><span class="hljs-string">"http://example.org/inbox/5c6ca040"</span></span>,</code>
 <code>    <span class="hljs-value"><span class="hljs-string">"http://example.org/inbox/92d72f00"</span></span></code>
@@ -617,7 +617,7 @@ left:4.5em;
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p><em>This section is non-normative.</em></p>
 
-                                    <p>A single triple statement is the simplest notification in terms of its data payload. It contains the most essential data which makes up a notification e.g, A note is a reply to an article:</p>
+                                    <p>A single triple statement is the simplest notification in terms of its data payload. It contains the most essential data which makes up a notification e.g, A note cites an article's results fragment:</p>
 
                                     <figure class="listing example selected" id="notification-single-statement-json-ld" rel="schema:hasPart" resource="#notification-single-statement-json-ld">
                                         <pre about="#notification-single-statement-turtle" property="schema:description" typeof="fabio:Script">
@@ -654,12 +654,11 @@ left:4.5em;
                                     <figure class="listing example" id="notification-semantic-pingback" rel="schema:hasPart" resource="#notification-semantic-pingback">
                                         <pre about="#notification-semantic-pingback" property="schema:description" typeof="fabio:Script">
 <code>{</code>
+<code>  "@context": { "pingback": "http://purl.org/net/pingback/" }</code>
 <code>  "@id": "",</code>
-<code>  "@type": "http://purl.org/net/pingback/Item",</code>
-<code>  "http://purl.org/net/pingback/source":</code>
-<code>    { "@id": "https://example.org/annotation-1" },</code>
-<code>  "http://purl.org/net/pingback/target":</code>
-<code>    { "@id": "https://user.example/article#introduction" }</code>
+<code>  "@type": "pingback:Item",</code>
+<code>  "pingback:source": { "@id": "http://example.net/note#foo" },</code>
+<code>  "pingback:target": { "@id": "http://example.org/article#results" }</code>
 <code>}</code>
                                         </pre>
                                         <figcaption property="schema:name">Example notification type: Semantic Pingback.</figcaption>
@@ -676,14 +675,14 @@ left:4.5em;
 <code>  ],</code>
 <code>  "@id": "",</code>
 <code>  "@type": "sioc:Comment",</code>
-<code>  "sioc:reply_of": { "@id": "https://user.example/article" },</code>
+<code>  "sioc:reply_of": { "@id": "http://example.org/article" },</code>
 <code>  "sioc:created_at": "2015-12-23T16:44:21Z",</code>
 <code>  "sioc:content" : "This is a great article!",</code>
 <code>  "sioc:has_creator": {</code>
-<code>    "@id": "https://example.org/profile/",</code>
+<code>    "@id": "http://example.org/profile/",</code>
 <code>    "@type": "sioc:UserAccount",</code>
-<code>    "sioc:account_of": { "@id": "https://example.org/profile#alice" },</code>
-<code>    "sioc:avatar": { "@id": "https://example.org/profile/avatar.png" },</code>
+<code>    "sioc:account_of": { "@id": "http://example.org/profile#alice" },</code>
+<code>    "sioc:avatar": { "@id": "http://example.org/profile/avatar.png" },</code>
 <code>    "foaf:name": "Alice"</code>
 <code>  }</code>
 <code>}</code>
