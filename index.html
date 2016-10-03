@@ -376,7 +376,8 @@ left:4.5em;
                                     </figure>
 
                                     <figure class="listing example" id="discovery-html-example-link" rel="schema:hasPart" resource="#discovery-html-example-link">
-                                        <pre><code><span class="hljs-request">GET <span class="hljs-string">/article</span> HTTP/1.1</span></code>
+                                        <pre>
+<code><span class="hljs-request">GET <span class="hljs-string">/article</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html, application/ld+json</span></code>
 <code></code>
@@ -389,7 +390,8 @@ left:4.5em;
                                     </figure>
 
                                     <figure class="listing example" id="discovery-html-example-section" rel="schema:hasPart" resource="#discovery-html-example-section">
-                                        <pre><code><span class="hljs-request">GET <span class="hljs-string">/article</span> HTTP/1.1</span></code>
+                                        <pre>
+<code><span class="hljs-request">GET <span class="hljs-string">/article</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html, application/ld+json</span></code>
 <code></code>
@@ -401,6 +403,21 @@ left:4.5em;
 <code>&lt;/section&gt;</code>
                                         </pre>
                                         <figcaption>Discovering an Inbox with a <code>GET</code> request to retrieve HTML serialized with RDFa. An invisible Inbox on a resource.</figcaption>
+                                    </figure>
+
+                                    <figure class="listing example" id="discovery-turtle-example-webid" rel="schema:hasPart" resource="#discovery-turtle-example-webid">
+                                        <pre>
+<code><span class="hljs-request">GET <span class="hljs-string">/</span> HTTP/1.1</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">csarven.ca</span></code>
+<code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/turtle, application/ld+json</span></code>
+<code></code>
+<code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
+<code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/turtle</span></code>
+<code></code>
+<code>&lt;http://csarven.ca/#i&gt;</code>
+<code>  &lt;http://www.w3.org/ns/ldp#inbox&gt; &lt;http://csarven.ca/inbox/&gt; .</code>
+                                        </pre>
+                                        <figcaption>Discovering a WebID's Inbox using Turtle.</figcaption>
                                     </figure>
                                 </div>
                             </section>
