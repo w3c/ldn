@@ -330,20 +330,17 @@ left:4.5em;
                                     <p>Please see <a href="https://www.w3.org/TR/social-web-protocols/#targeting-and-discovery">Social Web Protocols</a> for recommendations on how to carry out discovery, particularly with consideration to servers which may be unaware of this protocol.</p>
 
                                     <figure class="listing example" id="discovery-head-example" rel="schema:hasPart" resource="#discovery-head-example">
-                                        <pre>
-<code><span class="hljs-request">HEAD <span class="hljs-string">/article</span> HTTP/1.1</span></code>
+                                        <pre><code><span class="hljs-request">HEAD <span class="hljs-string">/article</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json</span></code>
 <code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
-<code><span class="hljs-attribute">Link</span>: <span class="hljs-string">&lt;http://example.org/inbox/&gt;; rel="http://www.w3.org/ns/ldp#inbox"</span></code>
-                                        </pre>
+<code><span class="hljs-attribute">Link</span>: <span class="hljs-string">&lt;http://example.org/inbox/&gt;; rel="http://www.w3.org/ns/ldp#inbox"</span></code></pre>
                                         <figcaption>Discovering an Inbox with a <code>HEAD</code> request.</figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="discovery-json-example-compact" rel="schema:hasPart" resource="#discovery-json-examplecompact">
-                                        <pre>
-<code><span class="hljs-request">GET <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
+                                        <pre><code><span class="hljs-request">GET <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json</span></code>
 <code></code>
@@ -354,14 +351,12 @@ left:4.5em;
 <code>  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/ldp"</span></span>,</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/profile"</span></span>,</code>
 <code>  "<span class="hljs-attribute">inbox</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/inbox/"</span></span></code>
-<code>}</code>
-                                        </pre>
+<code>}</code></pre>
                                         <figcaption>Discovering an Inbox with a <code>GET</code> request to retrieve JSON-LD. Response in JSON-LD compact form.</figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="discovery-html-example-a" rel="schema:hasPart" resource="#discovery-html-example-a">
-                                        <pre>
-<code><span class="hljs-request">GET <span class="hljs-string">/event</span> HTTP/1.1</span></code>
+                                        <pre><code><span class="hljs-request">GET <span class="hljs-string">/event</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html, application/ld+json</span></code>
 <code></code>
@@ -370,28 +365,24 @@ left:4.5em;
 <code></code>
 <code>&lt;body about="http://example.org/event" typeof="http://schema.org/Event"&gt;</code>
 <code>  &lt;a rel="http://www.w3.org/ns/ldp#inbox" href="/inbox/"&gt;RSVP&lt;/a&gt;</code>
-<code>&lt;/body&gt;</code>
-                                        </pre>
+<code>&lt;/body&gt;</code></pre>
                                         <figcaption>Discovering an Inbox with a <code>GET</code> request to retrieve HTML serialized with RDFa. A visible Inbox of an event.</figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="discovery-html-example-link" rel="schema:hasPart" resource="#discovery-html-example-link">
-                                        <pre>
-<code><span class="hljs-request">GET <span class="hljs-string">/article</span> HTTP/1.1</span></code>
+                                        <pre><code><span class="hljs-request">GET <span class="hljs-string">/article</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html, application/ld+json</span></code>
 <code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/html</span></code>
 <code></code>
-<code>&lt;link href="/inbox/" rel="http://www.w3.org/ns/ldp#inbox" /&gt;</code>
-                                        </pre>
+<code>&lt;link href="/inbox/" rel="http://www.w3.org/ns/ldp#inbox" /&gt;</code></pre>
                                         <figcaption>Discovering an Inbox with a <code>GET</code> request to retrieve HTML serialized with RDFa. An invisible Inbox declared on the <code>link</code> element.</figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="discovery-html-example-section" rel="schema:hasPart" resource="#discovery-html-example-section">
-                                        <pre>
-<code><span class="hljs-request">GET <span class="hljs-string">/article</span> HTTP/1.1</span></code>
+                                        <pre><code><span class="hljs-request">GET <span class="hljs-string">/article</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html, application/ld+json</span></code>
 <code></code>
@@ -400,14 +391,12 @@ left:4.5em;
 <code></code>
 <code>&lt;section id="results" about="#results"</code>
 <code>  property="http://www.w3.org/ns/ldp#inbox" resource="/inbox/"&gt;</code>
-<code>&lt;/section&gt;</code>
-                                        </pre>
+<code>&lt;/section&gt;</code></pre>
                                         <figcaption>Discovering an Inbox with a <code>GET</code> request to retrieve HTML serialized with RDFa. An invisible Inbox on a resource.</figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="discovery-turtle-example-webid" rel="schema:hasPart" resource="#discovery-turtle-example-webid">
-                                        <pre>
-<code><span class="hljs-request">GET <span class="hljs-string">/</span> HTTP/1.1</span></code>
+                                        <pre><code><span class="hljs-request">GET <span class="hljs-string">/</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">csarven.ca</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/turtle, application/ld+json</span></code>
 <code></code>
@@ -415,8 +404,7 @@ left:4.5em;
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/turtle</span></code>
 <code></code>
 <code>&lt;http://csarven.ca/#i&gt;</code>
-<code>  &lt;http://www.w3.org/ns/ldp#inbox&gt; &lt;http://csarven.ca/inbox/&gt; .</code>
-                                        </pre>
+<code>  &lt;http://www.w3.org/ns/ldp#inbox&gt; &lt;http://csarven.ca/inbox/&gt; .</code></pre>
                                         <figcaption>Discovering a WebID's Inbox using Turtle.</figcaption>
                                     </figure>
                                 </div>
@@ -435,8 +423,7 @@ left:4.5em;
 
                                     <p>Request:</p>
                                     <figure class="listing example" id="sending-notification" rel="schema:hasPart" resource="#sending-notification">
-                                        <pre about="sending-notification" property="schema:description" typeof="fabio:Script">
-<code><span class="hljs-request">POST <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
+                                        <pre about="sending-notification" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">POST <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json; profile="https://www.w3.org/ns/activitystreams"</span></code>
 <code></code>
@@ -448,17 +435,14 @@ left:4.5em;
 <code>  "<span class="hljs-attribute">object</span>": <span class="hljs-value"><span class="hljs-string">"http://example.net/note"</span></span>,</code>
 <code>  "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/article"</span></span>,</code>
 <code>  "<span class="hljs-attribute">updated</span>": <span class="hljs-value"><span class="hljs-string">"2016-06-28T19:56:20.114Z"</span></span></code>
-<code>}</code>
-                                        </pre>
+<code>}</code></pre>
                                         <figcaption property="schema:name">Example notification send request to an Inbox.</figcaption>
                                     </figure>
 
                                     <p>Response:</p>
                                     <figure class="listing example" id="sending-notification-response" rel="schema:hasPart" resource="#sending-notification-response">
-                                        <pre about="sending-notification-response" property="schema:description" typeof="fabio:Script">
-<code><span class="hljs-request">HTTP/1.1 <span class="hljs-string">201</span> Created</span></code>
-<code><span class="hljs-attribute">Location</span>: <span class="hljs-string">http://example.org/inbox/5c6ca040</span></code>
-                                        </pre>
+                                        <pre about="sending-notification-response" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">HTTP/1.1 <span class="hljs-string">201</span> Created</span></code>
+<code><span class="hljs-attribute">Location</span>: <span class="hljs-string">http://example.org/inbox/5c6ca040</span></code></pre>
                                         <figcaption property="schema:name">Example response to a request</figcaption>
                                     </figure>
                                 </div>
@@ -481,8 +465,7 @@ left:4.5em;
                                             <p>Receivers <em class="rfc2119">MAY</em> accept other RDF content types (e.g., <code>text/turtle</code>, <code>text/html</code>), and if so, <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept-Post</code> header on the Inbox URL.</p>
 
                                             <figure class="listing example" id="request-response-example" rel="schema:hasPart" resource="#request-response-example">
-                                                <pre about="#request-example" class="hljs http" property="schema:description" typeof="fabio:Script">
-<code><span class="hljs-request">HEAD <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
+                                                <pre about="#request-example" class="hljs http" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">HEAD <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
@@ -504,8 +487,7 @@ left:4.5em;
 <code>}</code>
 <code></code>
 <code><span class="hljs-request">HTTP/1.1 <span class="hljs-string">201</span> Created</span></code>
-<code><span class="hljs-attribute">Location</span>: <span class="hljs-string">http://example.org/inbox/92d72f00</span></code>
-                                                </pre>
+<code><span class="hljs-attribute">Location</span>: <span class="hljs-string">http://example.org/inbox/92d72f00</span></code></pre>
                                                 <figcaption property="schema:name">Example request and response</figcaption>
                                             </figure>
                                         </div>
@@ -530,8 +512,7 @@ left:4.5em;
                                             </div>
 
                                             <figure class="listing example" id="results-example-inbox-contains-ldp" rel="schema:hasPart" resource="#results-example-inbox-contains-ldp">
-                                                <pre about="#results-example-inbox-contains-ldp" class="hljs" property="schema:description" typeof="fabio:Script">
-<code><span class="hljs-request">GET <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
+                                                <pre about="#results-example-inbox-contains-ldp" class="hljs" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">GET <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json</span></code>
 <code></code>
@@ -545,8 +526,7 @@ left:4.5em;
 <code>    <span class="hljs-value"><span class="hljs-string">"http://example.org/inbox/5c6ca040"</span></span>,</code>
 <code>    <span class="hljs-value"><span class="hljs-string">"http://example.org/inbox/92d72f00"</span></span></code>
 <code>  <span class="hljs-value">]</span></code>
-<code>}</code>
-                                                </pre>
+<code>}</code></pre>
                                                 <figcaption>Results of GET request on Inbox.</figcaption>
                                             </figure>
                                         </div>
@@ -620,13 +600,11 @@ left:4.5em;
                                     <p>A single triple statement is the simplest notification in terms of its data payload. It contains the most essential data which makes up a notification e.g, A note cites an article's results fragment:</p>
 
                                     <figure class="listing example selected" id="notification-single-statement-json-ld" rel="schema:hasPart" resource="#notification-single-statement-json-ld">
-                                        <pre about="#notification-single-statement-turtle" property="schema:description" typeof="fabio:Script">
-<code>{</code>
+                                        <pre about="#notification-single-statement-turtle" property="schema:description" typeof="fabio:Script"><code>{</code>
 <code>  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://schema.org/"</span></span>,</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.net/note#foo"</span></span>,</code>
 <code>  "<span class="hljs-attribute">citation</span>": { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/article#results"</span></span> }</code>
-<code>}</code>
-                                        </pre>
+<code>}</code></pre>
                                         <figcaption property="schema:name">Example notification type: single statement in JSON-LD</figcaption>
                                     </figure>
 
@@ -636,8 +614,7 @@ left:4.5em;
 
                                     <p>ActivityStreams 2.0:</p>
                                     <figure class="listing example" id="notification-qualified-relation" rel="schema:hasPart" resource="#notification-qualified-relation">
-                                        <pre about="#notification-qualified-relation" property="schema:description" typeof="fabio:Script">
-<code>{</code>
+                                        <pre about="#notification-qualified-relation" property="schema:description" typeof="fabio:Script"><code>{</code>
 <code>  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"https://www.w3.org/ns/activitystreams"</span></span>,</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,</code>
 <code>  "<span class="hljs-attribute">@type</span>": <span class="hljs-value"><span class="hljs-string">"Announce"</span></span>,</code>
@@ -645,30 +622,26 @@ left:4.5em;
 <code>  "<span class="hljs-attribute">object</span>": <span class="hljs-value"><span class="hljs-string">"http://example.net/note"</span></span>,</code>
 <code>  "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/article"</span></span>,</code>
 <code>  "<span class="hljs-attribute">updated</span>": <span class="hljs-value"><span class="hljs-string">"2016-06-28T19:56:20.114Z"</span></span></code>
-<code>}</code>
-                                        </pre>
+<code>}</code></pre>
                                         <figcaption property="schema:name">Example notification type: qualified relation.</figcaption>
                                     </figure>
 
                                     <p>Semantic Pingback:</p>
                                     <figure class="listing example" id="notification-semantic-pingback" rel="schema:hasPart" resource="#notification-semantic-pingback">
-                                        <pre about="#notification-semantic-pingback" property="schema:description" typeof="fabio:Script">
-<code>{</code>
+                                        <pre about="#notification-semantic-pingback" property="schema:description" typeof="fabio:Script"><code>{</code>
 <code>  "@context": { "pingback": "http://purl.org/net/pingback/" }</code>
 <code>  "@id": "",</code>
 <code>  "@type": "pingback:Item",</code>
 <code>  "pingback:source": { "@id": "http://example.net/note#foo" },</code>
 <code>  "pingback:target": { "@id": "http://example.org/article#results" }</code>
-<code>}</code>
-                                        </pre>
+<code>}</code></pre>
                                         <figcaption property="schema:name">Example notification type: Semantic Pingback.</figcaption>
                                     </figure>
 
                                     <p>A notification may also contain arbitrary information, including the complete payload without necessarily refering to an external resource or origin of the data.</p>
 
                                     <figure class="listing example" id="notification-any-data" rel="schema:hasPart" resource="#notification-any-data">
-                                        <pre about="#notification-any-data" property="schema:description" typeof="fabio:Script">
-<code>{</code>
+                                        <pre about="#notification-any-data" property="schema:description" typeof="fabio:Script"><code>{</code>
 <code>  "@context": [</code>
 <code>    { "sioc": "http://rdfs.org/sioc/ns#" },</code>
 <code>    { "foaf": "http://xmlns.com/foaf/0.1/" }</code>
@@ -685,14 +658,12 @@ left:4.5em;
 <code>    "sioc:avatar": { "@id": "http://example.org/profile/avatar.png" },</code>
 <code>    "foaf:name": "Alice"</code>
 <code>  }</code>
-<code>}</code>
-                                        </pre>
+<code>}</code></pre>
                                         <figcaption property="schema:name">Example notification type: any data.</figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="notification-announce-annotation" rel="schema:hasPart" resource="#notification-announce-annotation">
-                                        <pre about="#announce-annotation" property="schema:description" typeof="fabio:Script">
-<code>{</code>
+                                        <pre about="#announce-annotation" property="schema:description" typeof="fabio:Script"><code>{</code>
 <code>  "@context": "https://www.w3.org/ns/activitystreams",</code>
 <code>  "@id": "http://example.org/inbox/14a792f0",</code>
 <code>  "@type": "Announce",</code>
@@ -709,21 +680,18 @@ left:4.5em;
 <code>    "@type": "http://www.w3.org/2001/XMLSchema#dateTime",</code>
 <code>    "@value": "2016-06-28T19:56:20.114Z"</code>
 <code>  }</code>
-<code>}</code>
-                                        </pre>
+<code>}</code></pre>
                                         <figcaption property="schema:name">Example notification: Announcing an Annotation of an assessment.</figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="notification-event-rsvp" rel="schema:hasPart" resource="#notification-event-rsvp">
-                                        <pre about="#notification-event-rsvp" property="schema:description" typeof="fabio:Script">
-<code>{</code>
+                                        <pre about="#notification-event-rsvp" property="schema:description" typeof="fabio:Script"><code>{</code>
 <code>  "@context": "http://schema.org/",</code>
 <code>  "@id": "",</code>
 <code>  "@type": "RsvpAction",</code>
 <code>  "event": { "@id": "http://example.org/event" },</code>
 <code>  "agent": { "@id": "http://csarven.ca/#i" }</code>
-<code>}</code>
-                                        </pre>
+<code>}</code></pre>
                                         <figcaption property="schema:name">Example notification type: Event RSVP.</figcaption>
                                     </figure>
                                 </div>
