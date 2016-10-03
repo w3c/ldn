@@ -389,13 +389,13 @@ left:4.5em;
 
                                     <figure class="listing example" id="discovery-html-example-section" rel="schema:hasPart" resource="#discovery-html-example-section">
                                         <pre><code><span class="hljs-request">GET <span class="hljs-string">/article</span> HTTP/1.1</span></code>
-<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html, application/ld+json</span></code>
 <code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/html</span></code>
 <code></code>
-<code>&lt;section id="introduction" about="#introduction"</code>
+<code>&lt;section id="results" about="#results"</code>
 <code>  property="http://www.w3.org/ns/ldp#inbox" resource="/inbox/"&gt;</code>
 <code>&lt;/section&gt;</code>
                                         </pre>
@@ -605,8 +605,8 @@ left:4.5em;
                                         <pre about="#notification-single-statement-turtle" property="schema:description" typeof="fabio:Script">
 <code>{</code>
 <code>  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://schema.org/"</span></span>,</code>
-<code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.org/note#foo"</span></span>,</code>
-<code>  "<span class="hljs-attribute">citation</span>": { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/article#bar"</span></span> }</code>
+<code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.net/note#foo"</span></span>,</code>
+<code>  "<span class="hljs-attribute">citation</span>": { "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">"https://example.org/article#results"</span></span> }</code>
 <code>}</code>
                                         </pre>
                                         <figcaption property="schema:name">Example notification type: single statement in JSON-LD</figcaption>
