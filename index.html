@@ -437,17 +437,17 @@ left:4.5em;
                                     <figure class="listing example" id="sending-notification" rel="schema:hasPart" resource="#sending-notification">
                                         <pre about="sending-notification" property="schema:description" typeof="fabio:Script">
 <code><span class="hljs-request">POST <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
-<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json; profile="https://www.w3.org/ns/activitystreams"</span></code>
 <code></code>
 <code>{</code>
 <code>  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"https://www.w3.org/ns/activitystreams"</span></span>,</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,</code>
 <code>  "<span class="hljs-attribute">@type</span>": <span class="hljs-value"><span class="hljs-string">"Announce"</span></span>,</code>
-<code>  "<span class="hljs-attribute">actor</span>": <span class="hljs-value"><span class="hljs-string">"https://example.org/profile#alice"</span></span>,</code>
-<code>  "<span class="hljs-attribute">object</span>": <span class="hljs-value"><span class="hljs-string">"https://example.org/annotation-1"</span></span>,</code>
-<code>  "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/article#introduction"</span></span>,</code>
-<code>  "<span class="hljs-attribute">updated</span>": <span class="hljs-value"><span class="hljs-string">"2016-06-23T15:03:01Z"</span></span></code>
+<code>  "<span class="hljs-attribute">actor</span>": <span class="hljs-value"><span class="hljs-string">"https://rhiaro.co.uk/#me"</span></span>,</code>
+<code>  "<span class="hljs-attribute">object</span>": <span class="hljs-value"><span class="hljs-string">"http://example.net/note"</span></span>,</code>
+<code>  "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/article"</span></span>,</code>
+<code>  "<span class="hljs-attribute">updated</span>": <span class="hljs-value"><span class="hljs-string">"2016-06-28T19:56:20.114Z"</span></span></code>
 <code>}</code>
                                         </pre>
                                         <figcaption property="schema:name">Example notification send request to an Inbox.</figcaption>
@@ -490,17 +490,17 @@ left:4.5em;
 <code><span class="hljs-attribute">Accept-Post</span>: <span class="hljs-string">application/ld+json</span>, <span class="hljs-string">text/turtle</span></code>
 <code></code>
 <code><span class="hljs-request">POST <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
-<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">user.example</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json; profile="https://www.w3.org/ns/activitystreams"</span></code>
 <code></code>
 <code>{</code>
 <code>  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"https://www.w3.org/ns/activitystreams"</span></span>,</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,</code>
 <code>  "<span class="hljs-attribute">@type</span>": <span class="hljs-value"><span class="hljs-string">"Announce"</span></span>,</code>
-<code>  "<span class="hljs-attribute">actor</span>": <span class="hljs-value"><span class="hljs-string">"https://example.org/profile#alice"</span></span>,</code>
-<code>  "<span class="hljs-attribute">object</span>": <span class="hljs-value"><span class="hljs-string">"https://example.org/annotation-1"</span></span>,</code>
-<code>  "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/article#introduction"</span></span>,</code>
-<code>  "<span class="hljs-attribute">updated</span>": <span class="hljs-value"><span class="hljs-string">"2016-06-23T15:03:01Z"</span></span></code>
+<code>  "<span class="hljs-attribute">actor</span>": <span class="hljs-value"><span class="hljs-string">"https://rhiaro.co.uk/#me"</span></span>,</code>
+<code>  "<span class="hljs-attribute">object</span>": <span class="hljs-value"><span class="hljs-string">"http://example.net/note"</span></span>,</code>
+<code>  "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/article"</span></span>,</code>
+<code>  "<span class="hljs-attribute">updated</span>": <span class="hljs-value"><span class="hljs-string">"2016-06-28T19:56:20.114Z"</span></span></code>
 <code>}</code>
 <code></code>
 <code><span class="hljs-request">HTTP/1.1 <span class="hljs-string">201</span> Created</span></code>
@@ -641,10 +641,10 @@ left:4.5em;
 <code>  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"https://www.w3.org/ns/activitystreams"</span></span>,</code>
 <code>  "<span class="hljs-attribute">@id</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,</code>
 <code>  "<span class="hljs-attribute">@type</span>": <span class="hljs-value"><span class="hljs-string">"Announce"</span></span>,</code>
-<code>  "<span class="hljs-attribute">actor</span>": <span class="hljs-value"><span class="hljs-string">"https://example.org/profile#alice"</span></span>,</code>
-<code>  "<span class="hljs-attribute">object</span>": <span class="hljs-value"><span class="hljs-string">"https://example.org/annotation-1"</span></span>,</code>
-<code>  "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"https://user.example/article#introduction"</span></span>,</code>
-<code>  "<span class="hljs-attribute">updated</span>": <span class="hljs-value"><span class="hljs-string">"2016-06-23T15:03:01Z"</span></span></code>
+<code>  "<span class="hljs-attribute">actor</span>": <span class="hljs-value"><span class="hljs-string">"https://rhiaro.co.uk/#me"</span></span>,</code>
+<code>  "<span class="hljs-attribute">object</span>": <span class="hljs-value"><span class="hljs-string">"http://example.net/note"</span></span>,</code>
+<code>  "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/article"</span></span>,</code>
+<code>  "<span class="hljs-attribute">updated</span>": <span class="hljs-value"><span class="hljs-string">"2016-06-28T19:56:20.114Z"</span></span></code>
 <code>}</code>
                                         </pre>
                                         <figcaption property="schema:name">Example notification type: qualified relation.</figcaption>
