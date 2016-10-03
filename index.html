@@ -330,7 +330,7 @@ left:4.5em;
                                     <p>Please see <a href="https://www.w3.org/TR/social-web-protocols/#targeting-and-discovery">Social Web Protocols</a> for recommendations on how to carry out discovery, particularly with consideration to servers which may be unaware of this protocol.</p>
 
                                     <figure class="listing example" id="discovery-head-example" rel="schema:hasPart" resource="#discovery-head-example">
-                                        <pre><code><span class="hljs-request">HEAD <span class="hljs-string">/article</span> HTTP/1.1</span></code>
+                                        <pre about="#discovery-head-example" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">HEAD <span class="hljs-string">/article</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json</span></code>
 <code></code>
@@ -339,8 +339,8 @@ left:4.5em;
                                         <figcaption>Discovering an Inbox with a <code>HEAD</code> request.</figcaption>
                                     </figure>
 
-                                    <figure class="listing example" id="discovery-json-example-compact" rel="schema:hasPart" resource="#discovery-json-examplecompact">
-                                        <pre><code><span class="hljs-request">GET <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
+                                    <figure class="listing example" id="discovery-json-example-compact" rel="schema:hasPart" resource="#discovery-json-example-compact">
+                                        <pre about="#discovery-json-example-compact" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">GET <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json</span></code>
 <code></code>
@@ -356,7 +356,7 @@ left:4.5em;
                                     </figure>
 
                                     <figure class="listing example" id="discovery-html-example-a" rel="schema:hasPart" resource="#discovery-html-example-a">
-                                        <pre><code><span class="hljs-request">GET <span class="hljs-string">/event</span> HTTP/1.1</span></code>
+                                        <pre about="#discovery-html-example-a" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">GET <span class="hljs-string">/event</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html, application/ld+json</span></code>
 <code></code>
@@ -370,7 +370,7 @@ left:4.5em;
                                     </figure>
 
                                     <figure class="listing example" id="discovery-html-example-link" rel="schema:hasPart" resource="#discovery-html-example-link">
-                                        <pre><code><span class="hljs-request">GET <span class="hljs-string">/article</span> HTTP/1.1</span></code>
+                                        <pre about="#discovery-html-example-link" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">GET <span class="hljs-string">/article</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html, application/ld+json</span></code>
 <code></code>
@@ -382,7 +382,7 @@ left:4.5em;
                                     </figure>
 
                                     <figure class="listing example" id="discovery-html-example-section" rel="schema:hasPart" resource="#discovery-html-example-section">
-                                        <pre><code><span class="hljs-request">GET <span class="hljs-string">/article</span> HTTP/1.1</span></code>
+                                        <pre about="#discovery-html-example-section" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">GET <span class="hljs-string">/article</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html, application/ld+json</span></code>
 <code></code>
@@ -396,7 +396,7 @@ left:4.5em;
                                     </figure>
 
                                     <figure class="listing example" id="discovery-turtle-example-webid" rel="schema:hasPart" resource="#discovery-turtle-example-webid">
-                                        <pre><code><span class="hljs-request">GET <span class="hljs-string">/</span> HTTP/1.1</span></code>
+                                        <pre about="#discovery-turtle-example-webid" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">GET <span class="hljs-string">/</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">csarven.ca</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/turtle, application/ld+json</span></code>
 <code></code>
@@ -423,7 +423,7 @@ left:4.5em;
 
                                     <p>Request:</p>
                                     <figure class="listing example" id="sending-notification" rel="schema:hasPart" resource="#sending-notification">
-                                        <pre about="sending-notification" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">POST <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
+                                        <pre about="#sending-notification" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">POST <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json; profile="https://www.w3.org/ns/activitystreams"</span></code>
 <code></code>
@@ -441,7 +441,7 @@ left:4.5em;
 
                                     <p>Response:</p>
                                     <figure class="listing example" id="sending-notification-response" rel="schema:hasPart" resource="#sending-notification-response">
-                                        <pre about="sending-notification-response" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">HTTP/1.1 <span class="hljs-string">201</span> Created</span></code>
+                                        <pre about="#sending-notification-response" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">HTTP/1.1 <span class="hljs-string">201</span> Created</span></code>
 <code><span class="hljs-attribute">Location</span>: <span class="hljs-string">http://example.org/inbox/5c6ca040</span></code></pre>
                                         <figcaption property="schema:name">Example response to a request</figcaption>
                                     </figure>
