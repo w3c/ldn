@@ -318,13 +318,20 @@ left:4.5em;
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>An <em>Inbox</em>, the endpoint to which notifications are sent or from which they are consumed, can be discovered from any resource, for example a blog post, a user profile, a dataset, a video. The starting point for discovery is the resource which the notification is to or about: the <em>target</em>. Choosing the most appropriate target resource from which to begin discovery is at the discretion of the sender or consumer, since any resource (RDF or non-RDF) may have its own Inbox.</p>
 
-                                    <p>Senders and consumers can discover the Inbox URL by:</p>
+                                    <p>Senders and consumers do the following to discover the Inbox URL:</p>
                                     <ul>
                                         <li>make an HTTP <code>HEAD</code> or <code>GET</code> request on the target URL, to check for a <code>Link</code> header with a <code>rel</code> value of <code>http://www.w3.org/ns/ldp#inbox</code></li>
                                         <li>make an HTTP <code>GET</code> request on the target URL and, for RDF sources [<cite><a class="bibref" href="#bib-rdf11-concepts">RDF 1.1</a></cite>], the Inbox is the object of the predicate <code>http://www.w3.org/ns/ldp#inbox</code>.</li>
                                     </ul>
 
-                                    <p>These may be carried out in either order, but if the first fails to result in an Inbox the second <em class="rfc2119">MUST</em> be tried. However, if the target contains a fragment identifier, the fragment is not part of the request to the server so any Inbox found in the <code>Link</code> header will be for the resolved URL (without the fragment) [<cite><a class="bibref" href="#bib-cooluris">Cool URIs for the Semantic Web</a> - Hash URIs</cite>]. Thus, senders and consumers <em class="rfc2119">SHOULD</em> omit the <code>Link</code> header discovery when specifically targeting URIs with fragment identifiers.</p>
+                                    <p>These may be carried out in either order, but if the first fails to result in an Inbox the second <em class="rfc2119">MUST</em> be tried. Senders and consumers <em class="rfc2119">SHOULD</em> omit the <code>Link</code> header discovery when specifically targeting URIs with fragment identifiers.</p>
+
+                                    <div class="note" id="note-fragments" rel="schema:hasPart" resource="#note-fragments">
+                                        <h4 property="schema:name">Note</h4>
+                                        <div datatype="rdf:HTML" property="schema:description">
+                                           <p>If the target contains a fragment identifier, the fragment is not part of the request to the server. Senders and consumers should be aware that any Inbox found in the <code>Link</code> header will be for the resolved URL, <em>without</em> the fragment. See [<cite><a class="bibref" href="#bib-cooluris">Cool URIs for the Semantic Web</a> - Hash URIs</cite>].</p>
+                                        </div>
+                                    </div>
 
                                     <p>A resource <em class="rfc2119">MUST</em> advertise only one Inbox. One Inbox <em class="rfc2119">MAY</em> be used by multiple resources, for example using the same Inbox for replies to all of my blog posts and shares of all of my photos.</p>
 
@@ -844,8 +851,6 @@ left:4.5em;
                                 <h3 property="schema:name">Normative References</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <dl class="bibliography" resource="">
-                                        <dt id="bib-cooluris">[cooluris]</dt>
-                                        <dd>Leo Sauermann; Richard Cyganiak. W3C. <a href="https://www.w3.org/TR/cooluris" property="dc:requires"><cite>Cool URIs for the Semantic Web</cite></a>. 3 December 2008. W3C Note. URL: <a href="https://www.w3.org/TR/cooluris" rel="schema:citation">https://www.w3.org/TR/cooluris</a></dd>
                                         <dt id="bib-ldp">[ldp]</dt>
                                         <dd>Steve Speicher; John Arwe; Ashok Malhotra. W3C. <a href="https://www.w3.org/TR/ldp/" property="dc:requires"><cite>Linked Data Platform 1.0</cite></a>. 26 February 2015. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ldp/" rel="schema:citation">https://www.w3.org/TR/ldp/</a></dd>
                                         <dt id="bib-rdf11-concepts">[rdf11-concepts]</dt>
@@ -870,6 +875,8 @@ left:4.5em;
                                         <dd>James Snell; Evan Prodromou. W3C. <a href="https://www.w3.org/TR/activitystreams-core/" property="dc:references"><cite>Activity Streams 2.0</cite></a>. 6 September 2016. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/activitystreams-core/" rel="schema:citation">https://www.w3.org/TR/activitystreams-core/</a></dd>
                                         <dt id="bib-annotation-protocol">[annotation-protocol]</dt>
                                         <dd>Robert Sanderson. W3C. <a href="https://www.w3.org/TR/annotation-protocol/" property="dc:references"><cite>Web Annotation Protocol</cite></a>. 6 September 2016. W3C Candidate Recommendation. URL: <a href="https://www.w3.org/TR/annotation-protocol/" rel="schema:citation">https://www.w3.org/TR/annotation-protocol/</a></dd>
+                                        <dt id="bib-cooluris">[cooluris]</dt>
+                                        <dd>Leo Sauermann; Richard Cyganiak. W3C. <a href="https://www.w3.org/TR/cooluris" property="dc:requires"><cite>Cool URIs for the Semantic Web</cite></a>. 3 December 2008. W3C Note. URL: <a href="https://www.w3.org/TR/cooluris" rel="schema:citation">https://www.w3.org/TR/cooluris</a></dd>
                                         <dt id="bib-ldp-paging">[ldp-paging]</dt>
                                         <dd>Steve Speicher; John Arwe; Ashok Malhotra. W3C. <a href="https://www.w3.org/TR/ldp-paging/" property="dc:references"><cite>Linked Data Platform Paging 1.0</cite></a>. 30 June 2015. W3C Note. URL: <a href="https://www.w3.org/TR/ldp-paging/" rel="schema:citation">https://www.w3.org/TR/ldp-paging/</a></dd>
                                         <dt id="bib-pubsubhubbub">[pubsubhubbub]</dt>
