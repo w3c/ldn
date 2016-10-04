@@ -250,7 +250,8 @@ left:4.5em;
 
                                     <p id="summary-receiver">The <strong><a href="#receiving">Receiver</a></strong>:</p>
                                     <ul>
-                                        <li>Responds to <code>GET</code> requests made to the Inbox URL with a JSON-LD representation (or if possible, requested serialization) of the URLs of the notifications that have previously been sent to the Inbox.</li>
+                                        <li>Responds to <code>GET</code> requests made to the Inbox URL with a listing of the URLs of notifications that have previously been accepted.</li>
+                                        <li>Responds to <code>GET</code> requests made to the individual notification URLs with JSON-LD (or optionally other serializations).</li>
                                         <li>Accepts <code>POST</code> requests at the Inbox URL to create notifications.</li>
                                         <li>Optionally enforces constraints on notifications sent to the Inbox.</li>
                                     </ul>
