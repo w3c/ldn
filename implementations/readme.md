@@ -113,6 +113,10 @@ What does this implementation do with retrieved notifications? _____
 * MUST accept `POST` requests with `Content-Type: application/ld+json`
   * [ ] Test
   * ...
+* Indicate the methods the `Accept-Post` header is announced in response to requests:
+  * [ ] OPTIONS
+  * [ ] HEAD
+  * [ ] Other:___
 * [ ] MAY advertise other content types in `Accept-Post` header. Please list:
   * [ ] Turtle
   * [ ] HTML
