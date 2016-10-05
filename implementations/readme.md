@@ -31,7 +31,7 @@ When you are complete, send a pull request with the addition of your report file
 Implementation Home Page URL:
 
 Source Code repo URL(s) (optional):
-* [ ] 100% open source implementation
+* [ ] Open source implementation
 
 Programming Language(s):
 
@@ -48,8 +48,9 @@ Implementation Classes:
 ### Discovery
 
 * MUST be able to discover Inbox through a resource's `Link` header:
-  * [ ] Test 1
-  * [ ] Test 2
+  * [ ] Relative URL in rel
+  * [ ] Absolute URL in rel
+  * [ ] Multiple URLs in rel
   * ...
 * MUST be able to discover Inbox through a resource's body:
   * [ ] Test 1
@@ -157,5 +158,5 @@ Resource URL:
 * [ ] Advertises Inbox using body
   * [ ] JSON-LD (MUST)
   * [ ] Turtle
-  * [ ] HTML/RDFa
+  * [ ] HTML+RDFa
   * [ ] Other: ___
