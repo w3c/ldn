@@ -424,7 +424,7 @@ left:4.5em;
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>Following <a href="#discovery">discovery</a>, senders <em class="rfc2119">MUST</em> deliver notifications through a <code>POST</code> request to the Inbox URL. Senders can expect a <code>201 Created</code> (with a <code>Location</code> Link header) or a <code>202 Accepted</code> in response to a successful request.</p>
 
-                                    <p>The sender <em class="rfc2119">MAY</em> use an <code>OPTIONS</code> request to determine the RDF content types accepted by the server, and serialize the notification in the request body according to the value of the <code>Accept-Post</code> header [<cite><a class="bibref" href="http://tools.ietf.org/html/draft-wilde-accept-post">Accept-Post</a></cite>] returned. Otherwise, the body of the <code>POST</code> request <em class="rfc2119">MUST</em> contain the notification <a href="#payload">payload</a> in JSON-LD with header <code>Content-Type: application/ld+json</code>. The <code>Content-Type</code> header <em class="rfc2119">MAY</em> include a <code>profile</code> URI [<cite><a class="bibref" href="#bib-rfc6906">RFC6906</a></cite>].</p>
+                                    <p>The sender <em class="rfc2119">MAY</em> use an <code>OPTIONS</code> request to determine the RDF content types accepted by the server, and serialize the notification in the request body according to the value of the <code>Accept-Post</code> header [<cite><a class="bibref" href="#bib-accept-post">Accept-Post</a></cite>] returned. Otherwise, the body of the <code>POST</code> request <em class="rfc2119">MUST</em> contain the notification <a href="#payload">payload</a> in JSON-LD with header <code>Content-Type: application/ld+json</code>. The <code>Content-Type</code> header <em class="rfc2119">MAY</em> include a <code>profile</code> URI [<cite><a class="bibref" href="#bib-rfc6906">RFC6906</a></cite>].</p>
 
                                     <p>The sender <em class="rfc2119">MAY</em> include additional headers or content for the purposes of authentication or authorization e.g., <code>Authorization: Bearer XXX</code>.</p>
 
@@ -471,7 +471,7 @@ left:4.5em;
 
                                             <p>Receivers <em class="rfc2119">MUST</em> accept notifications where the request body is JSON-LD, with the <code>Content-Type: application/ld+json</code>, which <em class="rfc2119">MAY</em> include a <code>profile</code> URI [<cite><a class="bibref" href="#bib-rfc6906">RFC6906</a></cite>].</p>
 
-                                            <p>Receivers <em class="rfc2119">MAY</em> accept other RDF content types (e.g., <code>text/turtle</code>, <code>text/html</code>), and if so, <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept-Post</code> header on the Inbox URL.</p>
+                                            <p>Receivers <em class="rfc2119">MAY</em> accept other RDF content types (e.g., <code>text/turtle</code>, <code>text/html</code>), and if so, <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept-Post</code> [<cite><a class="bibref" href="#bib-accept-post">Accept-Post</a></cite>] header in response to an <code>OPTIONS</code> request on the Inbox URL.</p>
 
                                             <figure class="listing example" id="request-response-example" rel="schema:hasPart" resource="#request-response-example">
                                                 <pre about="#request-example" class="hljs http" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">HEAD <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
@@ -785,6 +785,7 @@ left:4.5em;
                                 <h3 property="schema:name">Changes from 27 July 2016 WD to this version</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <ul>
+                                        <li>Fix Accept-Post reference and be explicit about its appearance in <code>OPTIONS</code></li>
                                         <li>Improve examples; update, syntactical fixes, @context in https</li>
                                         <li>Typos, punctuation, naming</li>
                                         <li>Use informative discretion about the payload</li>
@@ -869,7 +870,7 @@ left:4.5em;
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <dl class="bibliography" resource="">
                                         <dt id="bib-accept-post">[accept-post]</dt>
-                                        <dd>J. Arwe; S. Speicher; E. Wilde. IETF. <a href="http://tools.ietf.org/html/draft-wilde-accept-post" property="dc:references"><cite>The Accept-Post HTTP Header</cite></a>. Internet Draft. URL: <a href="http://tools.ietf.org/html/draft-wilde-accept-post" rel="schema:citation">http://tools.ietf.org/html/draft-wilde-accept-post</a></dd>
+                                        <dd>Steve Speicher; John Arwe; Ashok Malhotra. W3C. <a href="https://www.w3.org/TR/ldp/#header-accept-post" property="dc:requires"><cite>The Accept-Post Response Header (Linked Data Platform 1.0)</cite></a>. 26 February 2015. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ldp/#header-accept-post" rel="schema:citation">https://www.w3.org/TR/ldp/#header-accept-post</a></dd></dd>
                                         <dt id="bib-activitypub">[activitypub]</dt>
                                         <dd>Christopher Webber; Jessica Tallon; Owen Shepherd. W3C. <a property="dc:references" href="https://www.w3.org/TR/activitypub/"><cite>ActivityPub</cite></a>. 13 September 2016. W3C Working Draft. URL: <a rel="schema:citation" href="https://www.w3.org/TR/activitypub/">https://www.w3.org/TR/activitypub/</a></dd>
                                         <dt id="bib-activitystreams-core">[activitystreams-core]</dt>
