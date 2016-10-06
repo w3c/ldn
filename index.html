@@ -370,7 +370,7 @@ left:4.5em;
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html, application/ld+json</span></code>
 <code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
-<code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/html</span></code>
+<code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/html; charset=UTF-8</span></code>
 <code></code>
 <code>&lt;body about="http://example.org/event" typeof="http://schema.org/Event"&gt;</code>
 <code>  &lt;a rel="http://www.w3.org/ns/ldp#inbox" href="/inbox/"&gt;RSVP&lt;/a&gt;</code>
@@ -384,7 +384,7 @@ left:4.5em;
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html, application/ld+json</span></code>
 <code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
-<code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/html</span></code>
+<code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/html; charset=UTF-8</span></code>
 <code></code>
 <code>&lt;link href="/inbox/" rel="http://www.w3.org/ns/ldp#inbox" /&gt;</code></pre>
                                         <figcaption>Discovering an Inbox with a <code>GET</code> request to retrieve HTML serialized with RDFa. An invisible Inbox declared on the <code>link</code> element.</figcaption>
@@ -396,7 +396,7 @@ left:4.5em;
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html, application/ld+json</span></code>
 <code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
-<code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/html</span></code>
+<code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/html; charset=UTF-8</span></code>
 <code></code>
 <code>&lt;section id="results" about="#results"</code>
 <code>  property="http://www.w3.org/ns/ldp#inbox" resource="/inbox/"&gt;</code>
@@ -706,12 +706,31 @@ left:4.5em;
 
                                     <figure class="listing example" id="notification-provenance" rel="schema:hasPart" resource="#notification-provenance">
                                         <pre about="#notification-provenance" property="schema:description" typeof="fabio:Script"><code>{</code>
-<code>  "@context": [</code>
-<code>    { "prov": "http://www.w3.org/ns/prov#" },</code>
-<code>    { "dcterms": "http://purl.org/dc/terms/" }</code>
-<code>  ],</code>
-<code>  "@id": "http://example.org/inbox/bee290c0",</code>
-<code>  "@type": "prov:Activity"</code>
+<code>  "@context": [{"prov": "http://www.w3.org/ns/prov#"}],</code>
+<code>  "@id": "http://example.org/activity/804c4e7efaa828e146b4ada1c805617ffbc79dc7",</code>
+<code>  "@type": "prov:Activity",</code>
+<code>  "http://www.w3.org/2000/01/rdf-schema#label": {</code>
+<code>    "@language": "en",</code>
+<code>    "@value": "Make it so"</code>
+<code>  },</code>
+<code>  "prov:endedAtTime": {</code>
+<code>    "@type": "http://www.w3.org/2001/XMLSchema#dateTime",</code>
+<code>    "@value": "2016-06-14T20:57:39.000Z"</code>
+<code>  },</code>
+<code>  "prov:generated": {</code>
+<code>    "@id": "http://example.org/entity/804c4e7efaa828e146b4ada1c805617ffbc79dc7",</code>
+<code>    "@type": "prov:Entity",</code>
+<code>    "prov:specializationOf": {</code>
+<code>      "@id": "http://example.org/entity/file"</code>
+<code>    },</code>
+<code>    "prov:wasGeneratedBy": {</code>
+<code>      "@id": "http://example.org/activity/804c4e7efaa828e146b4ada1c805617ffbc79dc7"</code>
+<code>    }</code>
+<code>  },</code>
+<code>  "prov:wasAssociatedWith": {</code>
+<code>    "@id": "http://csarven.ca/#i",</code>
+<code>    "@type": "prov:Agent"</code>
+<code>  }</code>
 <code>}</code></pre>
                                         <figcaption property="schema:name">Example notification type: Provenance / Change log.</figcaption>
                                     </figure>
@@ -882,7 +901,7 @@ left:4.5em;
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <dl class="bibliography" resource="">
                                         <dt id="bib-accept-post">[accept-post]</dt>
-                                        <dd>Steve Speicher; John Arwe; Ashok Malhotra. W3C. <a href="https://www.w3.org/TR/ldp/#header-accept-post" property="dc:requires"><cite>The Accept-Post Response Header (Linked Data Platform 1.0)</cite></a>. 26 February 2015. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ldp/#header-accept-post" rel="schema:citation">https://www.w3.org/TR/ldp/#header-accept-post</a></dd></dd>
+                                        <dd>Steve Speicher; John Arwe; Ashok Malhotra. W3C. <a href="https://www.w3.org/TR/ldp/#header-accept-post" property="dc:requires"><cite>The Accept-Post Response Header (Linked Data Platform 1.0)</cite></a>. 26 February 2015. W3C Recommendation. URL: <a href="https://www.w3.org/TR/ldp/#header-accept-post" rel="schema:citation">https://www.w3.org/TR/ldp/#header-accept-post</a></dd>
                                         <dt id="bib-activitypub">[activitypub]</dt>
                                         <dd>Christopher Webber; Jessica Tallon; Owen Shepherd. W3C. <a property="dc:references" href="https://www.w3.org/TR/activitypub/"><cite>ActivityPub</cite></a>. 13 September 2016. W3C Working Draft. URL: <a rel="schema:citation" href="https://www.w3.org/TR/activitypub/">https://www.w3.org/TR/activitypub/</a></dd>
                                         <dt id="bib-activitystreams-core">[activitystreams-core]</dt>
