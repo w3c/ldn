@@ -372,9 +372,9 @@ left:4.5em;
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/html; charset=UTF-8</span></code>
 <code></code>
-<code>&lt;body about="http://example.org/event" typeof="http://schema.org/Event"&gt;</code>
-<code>  &lt;a rel="http://www.w3.org/ns/ldp#inbox" href="/inbox/"&gt;RSVP&lt;/a&gt;</code>
-<code>&lt;/body&gt;</code></pre>
+<code>&lt;p about="http://example.org/event" typeof="http://schema.org/Event" lang="en"&gt;</code>
+<code>  &lt;a rel="http://www.w3.org/ns/ldp#inbox" href="/inbox/"&gt;RSVP&lt;/a&gt; to event</code>
+<code>&lt;/p&gt;</code></pre>
                                         <figcaption>Discovering an Inbox with a <code>GET</code> request to retrieve HTML serialized with RDFa. A visible Inbox of an event.</figcaption>
                                     </figure>
 
@@ -724,16 +724,18 @@ left:4.5em;
 <code>  "prov:generated": {</code>
 <code>    "@id": "http://example.org/entity/804c4e7efaa828e146b4ada1c805617ffbc79dc7",</code>
 <code>    "@type": "prov:Entity",</code>
-<code>    "prov:specializationOf": {</code>
-<code>      "@id": "http://example.org/entity/file"</code>
-<code>    },</code>
+<code>    "prov:specializationOf": { "@id": "http://example.org/entity/file" },</code>
 <code>    "prov:wasGeneratedBy": {</code>
 <code>      "@id": "http://example.org/activity/804c4e7efaa828e146b4ada1c805617ffbc79dc7"</code>
 <code>    }</code>
 <code>  },</code>
 <code>  "prov:wasAssociatedWith": {</code>
 <code>    "@id": "http://csarven.ca/#i",</code>
-<code>    "@type": "prov:Agent"</code>
+<code>    "@type": "prov:Agent",</code>
+<code>    "http://xmlns.com/foaf/0.1/name": {</code>
+<code>      "@language": "hy",</code>
+<code>      "@value": "Սարվէն Չափատիշլի"</code>
+<code>    }</code>
 <code>  }</code>
 <code>}</code></pre>
                                         <figcaption property="schema:name">Example notification type: Provenance / Change log.</figcaption>
