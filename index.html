@@ -605,6 +605,43 @@ left:4.5em;
                         <div datatype="rdf:HTML" property="schema:description">
                             <p>The payload of the notification <em class="rfc2119">MUST</em> be JSON-LD unless another RDF syntax has been negotiated with the receiver. To allow for a wide variety of use cases, the actual vocabulary of the payload is deliberately not specified here.</p>
 
+                            <figure class="listing example" id="notification-announce-annotation" rel="schema:hasPart" resource="#notification-announce-annotation">
+                                <pre about="#notification-announce-annotation" class="hljs" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">GET <span class="hljs-string">/inbox/14a792f0</span> HTTP/1.1</span></code>
+<code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
+<code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json, text/turtle, application/xhtml+xml, text/html</span></code>
+<code><span class="hljs-attribute">Accept-Language</span>: <span class="hljs-string">en</span></code>
+<code></code>
+<code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
+<code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json; charset=UTF-8</span></code>
+<code><span class="hljs-attribute">Content-Language</span>: <span class="hljs-string">en</span></code>
+<code></code>
+<code>{</code>
+<code>  "@context": [</code>
+<code>    "https://www.w3.org/ns/activitystreams",</code>
+<code>    { "@language": "en" }</code>
+<code>  ],</code>
+<code>  "@id": "http://example.org/inbox/14a792f0",</code>
+<code>  "@type": "Announce",</code>
+<code>  "actor": {</code>
+<code>    "@id": "http://csarven.ca/#i",</code>
+<code>    "name": "Sarven Capadisli"</code>
+<code>  },</code>
+<code>  "object": {</code>
+<code>    "@context": "http://www.w3.org/ns/anno.jsonld",</code>
+<code>    "@id": "http://example.net/note",</code>
+<code>    "@type": "Annotation",</code>
+<code>    "motivation": "http://www.w3.org/ns/oa#assessing",</code>
+<code>    "rights": "http://creativecommons.org/licenses/by/4.0/"</code>
+<code>  },</code>
+<code>  "target": "http://example.org/article",</code>
+<code>  "updated": {</code>
+<code>    "@type": "http://www.w3.org/2001/XMLSchema#dateTime",</code>
+<code>    "@value": "2016-06-28T19:56:20.114Z"</code>
+<code>  }</code>
+<code>}</code></pre>
+                                <figcaption>Result of a GET request of an Inbox notification.</figcaption>
+                            </figure>
+
                             <section id="payload-examples" inlist="" rel="schema:hasPart" resource="#payload-examples">
                                 <h3 property="schema:name">Payload Examples</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
@@ -677,28 +714,6 @@ left:4.5em;
 <code>  }</code>
 <code>}</code></pre>
                                         <figcaption property="schema:name">Example notification type: any data.</figcaption>
-                                    </figure>
-
-                                    <figure class="listing example" id="notification-announce-annotation" rel="schema:hasPart" resource="#notification-announce-annotation">
-                                        <pre about="#announce-annotation" property="schema:description" typeof="fabio:Script"><code>{</code>
-<code>  "@context": "https://www.w3.org/ns/activitystreams",</code>
-<code>  "@id": "http://example.org/inbox/14a792f0",</code>
-<code>  "@type": "Announce",</code>
-<code>  "actor": "http://csarven.ca/#i",</code>
-<code>  "object": {</code>
-<code>    "@context": "http://www.w3.org/ns/anno.jsonld",</code>
-<code>    "@id": "http://example.net/note",</code>
-<code>    "@type": "Annotation",</code>
-<code>    "motivation": "http://www.w3.org/ns/oa#assessing",</code>
-<code>    "rights": "http://creativecommons.org/licenses/by/4.0/"</code>
-<code>  },</code>
-<code>  "target": "http://example.org/article",</code>
-<code>  "updated": {</code>
-<code>    "@type": "http://www.w3.org/2001/XMLSchema#dateTime",</code>
-<code>    "@value": "2016-06-28T19:56:20.114Z"</code>
-<code>  }</code>
-<code>}</code></pre>
-                                        <figcaption property="schema:name">Example notification: Announcing an Annotation of an assessment.</figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="notification-event-rsvp" rel="schema:hasPart" resource="#notification-event-rsvp">
