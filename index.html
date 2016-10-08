@@ -435,6 +435,7 @@ left:4.5em;
                                         <pre about="#sending-notification" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">POST <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json; charset=UTF-8; profile="https://www.w3.org/ns/activitystreams"</span></code>
+<code><span class="hljs-attribute">Content-Language</span>: <span class="hljs-string">en</span></code>
 <code></code>
 <code>{</code>
 <code>  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"https://www.w3.org/ns/activitystreams"</span></span>,</code>
@@ -484,6 +485,7 @@ left:4.5em;
 <code><span class="hljs-request">POST <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json; charset=UTF-8; profile="https://www.w3.org/ns/activitystreams"</span></code>
+<code><span class="hljs-attribute">Content-Language</span>: <span class="hljs-string">en</span></code>
 <code></code>
 <code>{</code>
 <code>  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"https://www.w3.org/ns/activitystreams"</span></span>,</code>
@@ -524,9 +526,11 @@ left:4.5em;
                                                 <pre about="#results-example-inbox-contains-ldp" class="hljs" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">GET <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json</span></code>
+<code><span class="hljs-attribute">Accept-Language</span>: <span class="hljs-string">en-GB,en;q=0.8,en-US;q=0.6</span></code>
 <code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json; charset=UTF-8</span></code>
+<code><span class="hljs-attribute">Content-Language</span>: <span class="hljs-string">en</span></code>
 <code></code>
 <code>{</code>
 <code>  "<span class="hljs-attribute">@context</span>": <span class="hljs-value"><span class="hljs-string">"http://www.w3.org/ns/ldp"</span></span>,</code>
