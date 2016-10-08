@@ -651,16 +651,17 @@ left:4.5em;
 
                                     <figure class="listing example" id="notification-any-data" rel="schema:hasPart" resource="#notification-any-data">
                                         <pre about="#notification-any-data" property="schema:description" typeof="fabio:Script"><code>{</code>
-<code>  "@context": [</code>
-<code>    { "sioc": "http://rdfs.org/sioc/ns#" },</code>
-<code>    { "foaf": "http://xmlns.com/foaf/0.1/" }</code>
-<code>  ],</code>
+<code>  "@context": {</code>
+<code>    "@language": "en",</code>
+<code>    "sioc": "http://rdfs.org/sioc/ns#",</code>
+<code>    "foaf": "http://xmlns.com/foaf/0.1/"</code>
+<code>  },</code>
 <code>  "@id": "",</code>
 <code>  "@type": "sioc:Comment",</code>
 <code>  "sioc:reply_of": { "@id": "http://example.org/article" },</code>
 <code>  "sioc:created_at": {</code>
 <code>    "@type": "http://www.w3.org/2001/XMLSchema#dateTime",</code>
-<code>    "@value": "2015-12-23T16:44:21Z",</code>
+<code>    "@value": "2015-12-23T16:44:21Z"</code>
 <code>  },</code>
 <code>  "sioc:content" : "This is a great article!",</code>
 <code>  "sioc:has_creator": {</code>
