@@ -439,8 +439,8 @@ left:4.5em;
 
                                     <p>If the sender has any services that listen on localhost that don't require authentication, it's possible for a malicious script to run at the Inbox endpoint that could cause the sender to make an arbitrary <code>POST</code> request to itself. Senders <em class="rfc2119">SHOULD NOT</em> make <code>POST</code> requests to the Inbox that are localhost or a loopback IP address.</p>
 
-                                    <p>Request:</p>
                                     <figure class="listing example" id="sending-notification" rel="schema:hasPart" resource="#sending-notification">
+                                        <div class="example-title marker"><span>Sending example request</span></div>
                                         <pre about="#sending-notification" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">POST <span class="hljs-string">/inbox/</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">application/ld+json; charset=utf-8; profile="https://www.w3.org/ns/activitystreams"</span></code>
@@ -455,14 +455,14 @@ left:4.5em;
 <code>  "<span class="hljs-attribute">target</span>": <span class="hljs-value"><span class="hljs-string">"http://example.org/article"</span></span>,</code>
 <code>  "<span class="hljs-attribute">updated</span>": <span class="hljs-value"><span class="hljs-string">"2016-06-28T19:56:20.114Z"</span></span></code>
 <code>}</code></pre>
-                                        <figcaption property="schema:name">Example notification send request to an Inbox.</figcaption>
+                                        <figcaption property="schema:name">Example request to send to an Inbox.</figcaption>
                                     </figure>
 
-                                    <p>Response:</p>
                                     <figure class="listing example" id="sending-notification-response" rel="schema:hasPart" resource="#sending-notification-response">
+                                        <div class="example-title marker"><span>Sending example response</span></div>
                                         <pre about="#sending-notification-response" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">HTTP/1.1 <span class="hljs-string">201</span> Created</span></code>
 <code><span class="hljs-attribute">Location</span>: <span class="hljs-string">http://example.org/inbox/5c6ca040</span></code></pre>
-                                        <figcaption property="schema:name">Example response to a request</figcaption>
+                                        <figcaption property="schema:name">Example response to a <code>POST</code> request on an Inbox.</figcaption>
                                     </figure>
                                 </div>
                             </section>
