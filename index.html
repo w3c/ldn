@@ -336,8 +336,6 @@ left:4.5em;
 
                                     <p>A resource <em class="rfc2119">MUST</em> advertise only one Inbox. One Inbox <em class="rfc2119">MAY</em> be used by multiple resources, for example using the same Inbox for replies to all of my blog posts and shares of all of my photos.</p>
 
-                                    <p>Please see <a href="https://www.w3.org/TR/social-web-protocols/#targeting-and-discovery">Social Web Protocols</a> for recommendations on how to carry out discovery, particularly with consideration to servers which may be unaware of this protocol.</p>
-
                                     <figure class="listing example" id="discovery-head-example" rel="schema:hasPart" resource="#discovery-head-example">
                                         <pre about="#discovery-head-example" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">HEAD <span class="hljs-string">/article</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
@@ -416,6 +414,8 @@ left:4.5em;
 <code>  &lt;http://www.w3.org/ns/ldp#inbox&gt; &lt;http://csarven.ca/inbox/&gt; .</code></pre>
                                         <figcaption>Discovering a WebID's Inbox using Turtle.</figcaption>
                                     </figure>
+
+                                    <p>Please see <a href="https://www.w3.org/TR/social-web-protocols/#targeting-and-discovery">Social Web Protocols</a> for recommendations on how to carry out discovery, particularly with consideration to servers which may be unaware of this protocol.</p>
                                 </div>
                             </section>
 
