@@ -340,16 +340,18 @@ left:4.5em;
                                     <p>A resource <em class="rfc2119">MUST</em> advertise only one Inbox. One Inbox <em class="rfc2119">MAY</em> be used by multiple resources, for example using the same Inbox for replies to all of my blog posts and shares of all of my photos.</p>
 
                                     <figure class="listing example" id="discovery-head-example" rel="schema:hasPart" resource="#discovery-head-example">
+                                        <div class="example-title marker"><span>Discovery example 1: Link header</span></div>
                                         <pre about="#discovery-head-example" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">HEAD <span class="hljs-string">/article</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json</span></code>
 <code></code>
 <code><span class="hljs-status">HTTP/1.1 <span class="hljs-number">200</span> OK</span></code>
 <code><span class="hljs-attribute">Link</span>: <span class="hljs-string">&lt;http://example.org/inbox/&gt;; rel="http://www.w3.org/ns/ldp#inbox"</span></code></pre>
-                                        <figcaption>Discovering an Inbox with a <code>HEAD</code> request.</figcaption>
+                                        <figcaption>Request and response when discovering an Inbox with a <code>HEAD</code> request, and receiving a <code>Link</code> header.</figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="discovery-json-example-compact" rel="schema:hasPart" resource="#discovery-json-example-compact">
+                                        <div class="example-title marker"><span>Discovery example 2: JSON-LD</span></div>
                                         <pre about="#discovery-json-example-compact" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">GET <span class="hljs-string">/profile</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">application/ld+json</span></code>
@@ -366,6 +368,7 @@ left:4.5em;
                                     </figure>
 
                                     <figure class="listing example" id="discovery-html-example-a" rel="schema:hasPart" resource="#discovery-html-example-a">
+                                        <div class="example-title marker"><span>Discovery example 3: Visible HTML</span></div>
                                         <pre about="#discovery-html-example-a" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">GET <span class="hljs-string">/event</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html, application/ld+json</span></code>
@@ -376,10 +379,11 @@ left:4.5em;
 <code>&lt;p about="http://example.org/event" typeof="http://schema.org/Event" lang="en"&gt;</code>
 <code>  &lt;a rel="http://www.w3.org/ns/ldp#inbox" href="/inbox/"&gt;RSVP&lt;/a&gt; to event</code>
 <code>&lt;/p&gt;</code></pre>
-                                        <figcaption>Discovering an Inbox with a <code>GET</code> request to retrieve HTML serialized with RDFa. A visible Inbox of an event.</figcaption>
+                                        <figcaption>Discovering an Inbox with a <code>GET</code> request to retrieve HTML. The Inbox link is visible to humans, and marked up with RDFa so the Inbox URL can be discovered by machines.</figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="discovery-html-example-link" rel="schema:hasPart" resource="#discovery-html-example-link">
+                                        <div class="example-title marker"><span>Discovery example 4: Invisible HTML</span></div>
                                         <pre about="#discovery-html-example-link" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">GET <span class="hljs-string">/article</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html, application/ld+json</span></code>
@@ -388,10 +392,11 @@ left:4.5em;
 <code><span class="hljs-attribute">Content-Type</span>: <span class="hljs-string">text/html; charset=utf-8</span></code>
 <code></code>
 <code>&lt;link href="/inbox/" rel="http://www.w3.org/ns/ldp#inbox" /&gt;</code></pre>
-                                        <figcaption>Discovering an Inbox with a <code>GET</code> request to retrieve HTML serialized with RDFa. An invisible Inbox declared on the <code>link</code> element.</figcaption>
+                                        <figcaption>Discovering an Inbox with a <code>GET</code> request to retrieve HTML. An invisible Inbox expressed with a <code>link</code> element, marked up with RDFa for machine discovery.</figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="discovery-html-example-section" rel="schema:hasPart" resource="#discovery-html-example-section">
+                                        <div class="example-title marker"><span>Discovery example 5: Invisible HTML</span></div>
                                         <pre about="#discovery-html-example-section" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">GET <span class="hljs-string">/article</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">example.org</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/html, application/ld+json</span></code>
@@ -402,10 +407,11 @@ left:4.5em;
 <code>&lt;section id="results" about="#results"</code>
 <code>  property="http://www.w3.org/ns/ldp#inbox" resource="/inbox/"&gt;</code>
 <code>&lt;/section&gt;</code></pre>
-                                        <figcaption>Discovering an Inbox with a <code>GET</code> request to retrieve HTML serialized with RDFa. An invisible Inbox on a resource.</figcaption>
+                                        <figcaption>Discovering an Inbox with a <code>GET</code> request to retrieve HTML. An invisible Inbox expressed with the RDFa <code>property</code> attribute, so that a resource identified with a fragment URI may be the target.</figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="discovery-turtle-example-webid" rel="schema:hasPart" resource="#discovery-turtle-example-webid">
+                                        <div class="example-title marker"><span>Discovery example 6: Turtle</span></div>
                                         <pre about="#discovery-turtle-example-webid" property="schema:description" typeof="fabio:Script"><code><span class="hljs-request">GET <span class="hljs-string">/</span> HTTP/1.1</span></code>
 <code><span class="hljs-attribute">Host</span>: <span class="hljs-string">csarven.ca</span></code>
 <code><span class="hljs-attribute">Accept</span>: <span class="hljs-string">text/turtle, application/ld+json</span></code>
@@ -415,7 +421,7 @@ left:4.5em;
 <code></code>
 <code>&lt;http://csarven.ca/#i&gt;</code>
 <code>  &lt;http://www.w3.org/ns/ldp#inbox&gt; &lt;http://csarven.ca/inbox/&gt; .</code></pre>
-                                        <figcaption>Discovering a WebID's Inbox using Turtle.</figcaption>
+                                        <figcaption>Discovering an Inbox with a <code>GET</code> request to retrieve Turtle.</figcaption>
                                     </figure>
 
                                     <p>Please see <a href="https://www.w3.org/TR/social-web-protocols/#targeting-and-discovery">Social Web Protocols</a> for recommendations on how to carry out discovery, particularly with consideration to servers which may be unaware of this protocol.</p>
