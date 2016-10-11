@@ -685,10 +685,22 @@ left:4.5em;
                                         <figcaption property="schema:name">A pingback notification described by the Semantic Pingback vocabulary.</figcaption>
                                     </figure>
 
+                                    <figure class="listing example" id="notification-event-rsvp" rel="schema:hasPart" resource="#notification-event-rsvp">
+                                        <div class="example-title marker"><span>Payload example 4</span></div>
+                                        <pre about="#notification-event-rsvp" property="schema:description" typeof="fabio:Script"><code>{</code>
+<code>  "@context": "http://schema.org/",</code>
+<code>  "@id": "",</code>
+<code>  "@type": "RsvpAction",</code>
+<code>  "event": { "@id": "http://example.org/event" },</code>
+<code>  "agent": { "@id": "https://rhiaro.co.uk/#me" }</code>
+<code>}</code></pre>
+                                        <figcaption property="schema:name">An event RSVP described by the schema.org vocabulary.</figcaption>
+                                    </figure>
+
                                     <p>A notification may contain arbitrary information, including references to multiple resources with their own URIs, without necessarily referring to one particular external resource or origin for the data. The receiver is expected to return all triples that were initially sent when such a notification is requested by a consumer.</p>
 
                                     <figure class="listing example" id="notification-any-data" rel="schema:hasPart" resource="#notification-any-data">
-                                        <div class="example-title marker"><span>Payload example 4</span></div>
+                                        <div class="example-title marker"><span>Payload example 5</span></div>
                                         <pre about="#notification-any-data" property="schema:description" typeof="fabio:Script"><code>{</code>
 <code>  "@context": {</code>
 <code>    "@language": "en",</code>
@@ -712,18 +724,6 @@ left:4.5em;
 <code>  }</code>
 <code>}</code></pre>
                                         <figcaption property="schema:name">A notification containing data about a comment and the user who created the comment, described by the Semantically Interlinked Online Communities (SIOC) and Friend-of-a-Friend (FOAF) vocabularies.</figcaption>
-                                    </figure>
-
-                                    <figure class="listing example" id="notification-event-rsvp" rel="schema:hasPart" resource="#notification-event-rsvp">
-                                        <div class="example-title marker"><span>Payload example 5</span></div>
-                                        <pre about="#notification-event-rsvp" property="schema:description" typeof="fabio:Script"><code>{</code>
-<code>  "@context": "http://schema.org/",</code>
-<code>  "@id": "",</code>
-<code>  "@type": "RsvpAction",</code>
-<code>  "event": { "@id": "http://example.org/event" },</code>
-<code>  "agent": { "@id": "https://rhiaro.co.uk/#me" }</code>
-<code>}</code></pre>
-                                        <figcaption property="schema:name">An event RSVP described by the schema.org vocabulary.</figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="notification-provenance" rel="schema:hasPart" resource="#notification-provenance">
