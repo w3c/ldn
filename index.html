@@ -649,19 +649,18 @@ left:4.5em;
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p><em>This section is non-normative.</em></p>
 
-                                    <p>Citation with schema.org:</p>
-
                                     <figure class="listing example selected" id="notification-single-statement-json-ld" rel="schema:hasPart" resource="#notification-single-statement-json-ld">
+                                        <div class="example-title marker"><span>Payload example 1</span></div>
                                         <pre about="#notification-single-statement-turtle" property="schema:description" typeof="fabio:Script"><code>{</code>
 <code>  "@context": "http://schema.org/",</code>
 <code>  "@id": "http://example.net/note#foo",</code>
 <code>  "citation": { "@id": "http://example.org/article#results" }</code>
 <code>}</code></pre>
-                                        <figcaption property="schema:name">Example notification type: single statement in JSON-LD</figcaption>
+                                        <figcaption property="schema:name">A citation described by a single statement, using the schema.org vocabulary.</figcaption>
                                     </figure>
 
-                                    <p>ActivityStreams 2.0:</p>
                                     <figure class="listing example" id="notification-qualified-relation" rel="schema:hasPart" resource="#notification-qualified-relation">
+                                        <div class="example-title marker"><span>Payload example 2</span></div>
                                         <pre about="#notification-qualified-relation" property="schema:description" typeof="fabio:Script"><code>{</code>
 <code>  "@context": "https://www.w3.org/ns/activitystreams",</code>
 <code>  "@id": "",</code>
@@ -671,11 +670,11 @@ left:4.5em;
 <code>  "target": "http://example.org/article",</code>
 <code>  "updated": "2016-06-28T19:56:20.114Z"</code>
 <code>}</code></pre>
-                                        <figcaption property="schema:name">Example notification type: qualified relation.</figcaption>
+                                        <figcaption property="schema:name">An announcement of one resource to another, including a date and actor, described using the ActivityStreams 2.0 vocabulary.</figcaption>
                                     </figure>
 
-                                    <p>Semantic Pingback:</p>
                                     <figure class="listing example" id="notification-semantic-pingback" rel="schema:hasPart" resource="#notification-semantic-pingback">
+                                        <div class="example-title marker"><span>Payload example 3</span></div>
                                         <pre about="#notification-semantic-pingback" property="schema:description" typeof="fabio:Script"><code>{</code>
 <code>  "@context": { "pingback": "http://purl.org/net/pingback/" }</code>
 <code>  "@id": "",</code>
@@ -683,12 +682,13 @@ left:4.5em;
 <code>  "pingback:source": { "@id": "http://example.net/note#foo" },</code>
 <code>  "pingback:target": { "@id": "http://example.org/article#results" }</code>
 <code>}</code></pre>
-                                        <figcaption property="schema:name">Example notification type: Semantic Pingback.</figcaption>
+                                        <figcaption property="schema:name">A pingback notification described by the Semantic Pingback vocabulary.</figcaption>
                                     </figure>
 
-                                    <p>A notification may also contain arbitrary information, including the complete payload without necessarily referring to an external resource or origin of the data.</p>
+                                    <p>A notification may contain arbitrary information, including references to multiple resources with their own URIs, without necessarily referring to one particular external resource or origin for the data. The receiver is expected to return all triples that were initially sent when such a notification is requested by a consumer.</p>
 
                                     <figure class="listing example" id="notification-any-data" rel="schema:hasPart" resource="#notification-any-data">
+                                        <div class="example-title marker"><span>Payload example 4</span></div>
                                         <pre about="#notification-any-data" property="schema:description" typeof="fabio:Script"><code>{</code>
 <code>  "@context": {</code>
 <code>    "@language": "en",</code>
@@ -711,10 +711,11 @@ left:4.5em;
 <code>    "foaf:name": "Alice"</code>
 <code>  }</code>
 <code>}</code></pre>
-                                        <figcaption property="schema:name">Example notification type: any data.</figcaption>
+                                        <figcaption property="schema:name">A notification containing data about a comment and the user who created the comment, described by the Semantically Interlinked Online Communities (SIOC) and Friend-of-a-Friend (FOAF) vocabularies.</figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="notification-event-rsvp" rel="schema:hasPart" resource="#notification-event-rsvp">
+                                        <div class="example-title marker"><span>Payload example 5</span></div>
                                         <pre about="#notification-event-rsvp" property="schema:description" typeof="fabio:Script"><code>{</code>
 <code>  "@context": "http://schema.org/",</code>
 <code>  "@id": "",</code>
@@ -722,10 +723,11 @@ left:4.5em;
 <code>  "event": { "@id": "http://example.org/event" },</code>
 <code>  "agent": { "@id": "https://rhiaro.co.uk/#me" }</code>
 <code>}</code></pre>
-                                        <figcaption property="schema:name">Example notification type: Event RSVP.</figcaption>
+                                        <figcaption property="schema:name">An event RSVP described by the schema.org vocabulary.</figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="notification-provenance" rel="schema:hasPart" resource="#notification-provenance">
+                                        <div class="example-title marker"><span>Payload example 6</span></div>
                                         <pre about="#notification-provenance" property="schema:description" typeof="fabio:Script"><code>{</code>
 <code>  "@context": [{"prov": "http://www.w3.org/ns/prov#"}],</code>
 <code>  "@id": "http://example.org/activity/804c4e7efaa828e146b4ada1c805617ffbc79dc7",</code>
@@ -755,7 +757,7 @@ left:4.5em;
 <code>    }</code>
 <code>  }</code>
 <code>}</code></pre>
-                                        <figcaption property="schema:name">Example notification type: Provenance / Change log.</figcaption>
+                                        <figcaption property="schema:name">A changelog entry described by the Provenance vocabulary.</figcaption>
                                     </figure>
                                 </div>
                             </section>
