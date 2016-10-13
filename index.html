@@ -342,7 +342,7 @@ left:4.5em;
 <code>Accept: application/ld+json</code>
 <code></code>
 <code>HTTP/1.1 200 OK</code>
-<code>Content-Type: application/ld+json; charset=utf-8</code>
+<code>Content-Type: application/ld+json</code>
 <code></code>
 <code>{</code>
 <code>  "@context": "http://www.w3.org/ns/ldp",</code>
@@ -359,7 +359,7 @@ left:4.5em;
 <code>Accept: text/html, application/ld+json</code>
 <code></code>
 <code>HTTP/1.1 200 OK</code>
-<code>Content-Type: text/html; charset=utf-8</code>
+<code>Content-Type: text/html;charset=utf-8</code>
 <code></code>
 <code>&lt;p about="http://example.org/event" typeof="http://schema.org/Event" lang="en"&gt;</code>
 <code>  &lt;a rel="http://www.w3.org/ns/ldp#inbox" href="/inbox/"&gt;RSVP&lt;/a&gt; to event</code>
@@ -374,7 +374,7 @@ left:4.5em;
 <code>Accept: text/html, application/ld+json</code>
 <code></code>
 <code>HTTP/1.1 200 OK</code>
-<code>Content-Type: text/html; charset=utf-8</code>
+<code>Content-Type: text/html;charset=utf-8</code>
 <code></code>
 <code>&lt;link href="/inbox/" rel="http://www.w3.org/ns/ldp#inbox" /&gt;</code></pre>
                                         <figcaption>Discovering an Inbox with a <code>GET</code> request to retrieve HTML. An invisible Inbox expressed with a <code>link</code> element, marked up with RDFa for machine discovery.</figcaption>
@@ -387,7 +387,7 @@ left:4.5em;
 <code>Accept: text/html, application/ld+json</code>
 <code></code>
 <code>HTTP/1.1 200 OK</code>
-<code>Content-Type: text/html; charset=utf-8</code>
+<code>Content-Type: text/html;charset=utf-8</code>
 <code></code>
 <code>&lt;section id="results" about="#results"</code>
 <code>  property="http://www.w3.org/ns/ldp#inbox" resource="/inbox/"&gt;</code>
@@ -402,7 +402,7 @@ left:4.5em;
 <code>Accept: text/turtle, application/ld+json</code>
 <code></code>
 <code>HTTP/1.1 200 OK</code>
-<code>Content-Type: text/turtle; charset=utf-8</code>
+<code>Content-Type: text/turtle;charset=utf-8</code>
 <code></code>
 <code>&lt;http://csarven.ca/#i&gt;</code>
 <code>  &lt;http://www.w3.org/ns/ldp#inbox&gt; &lt;http://csarven.ca/inbox/&gt; .</code></pre>
@@ -428,7 +428,7 @@ left:4.5em;
                                         <div class="example-title marker"><span>Sending example request</span></div>
                                         <pre about="#sending-notification-request" property="schema:description" typeof="fabio:Script"><code>POST /inbox/ HTTP/1.1</code>
 <code>Host: example.org</code>
-<code>Content-Type: application/ld+json; charset=utf-8; profile="https://www.w3.org/ns/activitystreams"</code>
+<code>Content-Type: application/ld+json;profile="https://www.w3.org/ns/activitystreams"</code>
 <code>Content-Language: en</code>
 <code></code>
 <code>{</code>
@@ -484,7 +484,7 @@ left:4.5em;
                                                 <pre about="#receiver-post-example" property="schema:description" typeof="fabio:Script">
 <code>POST /inbox/ HTTP/1.1</code>
 <code>Host: example.org</code>
-<code>Content-Type: application/ld+json; charset=utf-8; profile="https://www.w3.org/ns/activitystreams"</code>
+<code>Content-Type: application/ld+json;profile="https://www.w3.org/ns/activitystreams"</code>
 <code>Content-Language: en</code>
 <code></code>
 <code>{</code>
@@ -530,7 +530,7 @@ left:4.5em;
 <code>Accept-Language: en-GB,en;q=0.8, en-US;q=0.6</code>
 <code></code>
 <code>HTTP/1.1 200 OK</code>
-<code>Content-Type: application/ld+json; charset=utf-8</code>
+<code>Content-Type: application/ld+json</code>
 <code>Content-Language: en</code>
 <code></code>
 <code>{</code>
@@ -605,7 +605,7 @@ left:4.5em;
 <code>Accept-Language: en-GB,en;q=0.8, en-US;q=0.6</code>
 <code></code>
 <code>HTTP/1.1 200 OK</code>
-<code>Content-Type: application/ld+json; charset=utf-8; profile="https://www.w3.org/ns/activitystreams"</code>
+<code>Content-Type: application/ld+json;profile="https://www.w3.org/ns/activitystreams"</code>
 <code>Content-Language: en</code>
 <code></code>
 <code>{</code>
