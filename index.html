@@ -42,8 +42,11 @@ color:#ae1e1e;
 div.note h4 {
 color:#22bb22;
 }
-div.example-title {
-    text-align: left;
+figure .example-h {
+margin-top:0;
+text-align: left;
+text-transform: uppercase;
+color:#827017;
 }
 header address a[href] {
 float: right;
@@ -325,7 +328,7 @@ left:4.5em;
                                     <p>A resource <em class="rfc2119">MUST</em> advertise only one Inbox. One Inbox <em class="rfc2119">MAY</em> be used by multiple resources, for example using the same Inbox for replies to all of my blog posts and shares of all of my photos.</p>
 
                                     <figure class="listing example" id="discovery-head-example" rel="schema:hasPart" resource="#discovery-head-example">
-                                        <div class="example-title marker"><span>Discovery example 1: Link header</span></div>
+                                        <p class="example-h">Discovery example 1: Link header</p>
                                         <pre about="#discovery-head-example" property="schema:description" typeof="fabio:Script"><code>HEAD /article HTTP/1.1</code>
 <code>Host: example.org</code>
 <code>Accept: application/ld+json</code>
@@ -336,7 +339,7 @@ left:4.5em;
                                     </figure>
 
                                     <figure class="listing example" id="discovery-json-example-compact" rel="schema:hasPart" resource="#discovery-json-example-compact">
-                                        <div class="example-title marker"><span>Discovery example 2: JSON-LD</span></div>
+                                        <p class="example-h">Discovery example 2: JSON-LD</p>
                                         <pre about="#discovery-json-example-compact" property="schema:description" typeof="fabio:Script"><code>GET /profile HTTP/1.1</code>
 <code>Host: example.org</code>
 <code>Accept: application/ld+json</code>
@@ -353,7 +356,7 @@ left:4.5em;
                                     </figure>
 
                                     <figure class="listing example" id="discovery-html-example-a" rel="schema:hasPart" resource="#discovery-html-example-a">
-                                        <div class="example-title marker"><span>Discovery example 3: Visible HTML</span></div>
+                                        <p class="example-h">Discovery example 3: Visible HTML</p>
                                         <pre about="#discovery-html-example-a" property="schema:description" typeof="fabio:Script"><code>GET /event HTTP/1.1</code>
 <code>Host: example.org</code>
 <code>Accept: text/html, application/ld+json</code>
@@ -368,7 +371,7 @@ left:4.5em;
                                     </figure>
 
                                     <figure class="listing example" id="discovery-html-example-link" rel="schema:hasPart" resource="#discovery-html-example-link">
-                                        <div class="example-title marker"><span>Discovery example 4: Invisible HTML</span></div>
+                                        <p class="example-h">Discovery example 4: Invisible HTML</p>
                                         <pre about="#discovery-html-example-link" property="schema:description" typeof="fabio:Script"><code>GET /article HTTP/1.1</code>
 <code>Host: example.org</code>
 <code>Accept: text/html, application/ld+json</code>
@@ -381,7 +384,7 @@ left:4.5em;
                                     </figure>
 
                                     <figure class="listing example" id="discovery-html-example-section" rel="schema:hasPart" resource="#discovery-html-example-section">
-                                        <div class="example-title marker"><span>Discovery example 5: Invisible HTML</span></div>
+                                        <p class="example-h">Discovery example 5: Invisible HTML</p>
                                         <pre about="#discovery-html-example-section" property="schema:description" typeof="fabio:Script"><code>GET /article HTTP/1.1</code>
 <code>Host: example.org</code>
 <code>Accept: text/html, application/ld+json</code>
@@ -396,7 +399,7 @@ left:4.5em;
                                     </figure>
 
                                     <figure class="listing example" id="discovery-turtle-example-webid" rel="schema:hasPart" resource="#discovery-turtle-example-webid">
-                                        <div class="example-title marker"><span>Discovery example 6: Turtle</span></div>
+                                        <p class="example-h">Discovery example 6: Turtle</p>
                                         <pre about="#discovery-turtle-example-webid" property="schema:description" typeof="fabio:Script"><code>GET / HTTP/1.1</code>
 <code>Host: csarven.ca</code>
 <code>Accept: text/turtle, application/ld+json</code>
@@ -425,7 +428,7 @@ left:4.5em;
                                     <p>If the sender has any services that listen on localhost that don't require authentication, it's possible for a malicious script to run at the Inbox endpoint that could cause the sender to make an arbitrary <code>POST</code> request to itself. Senders <em class="rfc2119">SHOULD NOT</em> make <code>POST</code> requests to the Inbox that are localhost or a loopback IP address.</p>
 
                                     <figure class="listing example" id="sending-notification-request" rel="schema:hasPart" resource="#sending-notification-request">
-                                        <div class="example-title marker"><span>Sending example request</span></div>
+                                        <p class="example-h">Sending example request</p>
                                         <pre about="#sending-notification-request" property="schema:description" typeof="fabio:Script"><code>POST /inbox/ HTTP/1.1</code>
 <code>Host: example.org</code>
 <code>Content-Type: application/ld+json;profile="https://www.w3.org/ns/activitystreams"</code>
@@ -444,7 +447,7 @@ left:4.5em;
                                     </figure>
 
                                     <figure class="listing example" id="sending-notification-response" rel="schema:hasPart" resource="#sending-notification-response">
-                                        <div class="example-title marker"><span>Sending example response</span></div>
+                                        <p class="example-h">Sending example response</p>
                                         <pre about="#sending-notification-response" property="schema:description" typeof="fabio:Script"><code>HTTP/1.1 201 Created</code>
 <code>Location: http://example.org/inbox/5c6ca040</code></pre>
                                         <figcaption property="schema:name">Example response to a <code>POST</code> request on an Inbox.</figcaption>
@@ -469,7 +472,7 @@ left:4.5em;
                                             <p>Receivers <em class="rfc2119">MAY</em> accept other RDF content types (e.g., <code>text/turtle</code>, <code>text/html</code>), and if so, <em class="rfc2119">SHOULD</em> advertise the content types they accept with an <code>Accept-Post</code> [<cite><a class="bibref" href="#bib-accept-post">Accept-Post</a></cite>] header in response to an <code>OPTIONS</code> request on the Inbox URL.</p>
 
                                             <figure class="listing example" id="receiver-options-example" rel="schema:hasPart" resource="#receiver-options-example">
-                                                <div class="example-title marker"><span>Receiver example 1: options response</span></div>
+                                                <p class="example-h">Receiver example 1: options response</p>
                                                 <pre about="#receiver-options-example" property="schema:description" typeof="fabio:Script"><code>OPTIONS /inbox/ HTTP/1.1</code>
 <code>Host: example.org</code>
 <code></code>
@@ -480,7 +483,7 @@ left:4.5em;
                                             </figure>
 
                                             <figure class="listing example" id="receiver-post-example" rel="schema:hasPart" resource="#receiver-post-example">
-                                                <div class="example-title marker"><span>Receiver example 2: post response</span></div>
+                                                <p class="example-h">Receiver example 2: post response</p>
                                                 <pre about="#receiver-post-example" property="schema:description" typeof="fabio:Script">
 <code>POST /inbox/ HTTP/1.1</code>
 <code>Host: example.org</code>
@@ -523,7 +526,7 @@ left:4.5em;
                                             </div>
 
                                             <figure class="listing example" id="get-inbox-response" rel="schema:hasPart" resource="#get-inbox-response">
-                                                <div class="example-title marker"><span>Receiver example 3: get response</span></div>
+                                                <p class="example-h">Receiver example 3: get response</p>
                                                 <pre about="#get-inbox-response" property="schema:description" typeof="fabio:Script"><code>GET /inbox/ HTTP/1.1</code>
 <code>Host: example.org</code>
 <code>Accept: application/ld+json</code>
@@ -598,7 +601,7 @@ left:4.5em;
                                     </div>
 
                                     <figure class="listing example" id="notification-announce-annotation" rel="schema:hasPart" resource="#notification-announce-annotation">
-                                        <div class="example-title marker"><span>Consumer example: getting a notification</span></div>
+                                        <p class="example-h">Consumer example: getting a notification</p>
                                         <pre about="#notification-announce-annotation" property="schema:description" typeof="fabio:Script"><code>GET /inbox/14a792f0 HTTP/1.1</code>
 <code>Host: example.org</code>
 <code>Accept: application/ld+json, text/turtle, application/xhtml+xml, text/html</code>
@@ -650,7 +653,7 @@ left:4.5em;
                                     <p><em>This section is non-normative.</em></p>
 
                                     <figure class="listing example selected" id="notification-single-statement-json-ld" rel="schema:hasPart" resource="#notification-single-statement-json-ld">
-                                        <div class="example-title marker"><span>Payload example 1</span></div>
+                                        <p class="example-h">Payload example 1</p>
                                         <pre about="#notification-single-statement-turtle" property="schema:description" typeof="fabio:Script"><code>{</code>
 <code>  "@context": "http://schema.org/",</code>
 <code>  "@id": "http://example.net/note#foo",</code>
@@ -660,7 +663,7 @@ left:4.5em;
                                     </figure>
 
                                     <figure class="listing example" id="notification-qualified-relation" rel="schema:hasPart" resource="#notification-qualified-relation">
-                                        <div class="example-title marker"><span>Payload example 2</span></div>
+                                        <p class="example-h">Payload example 2</p>
                                         <pre about="#notification-qualified-relation" property="schema:description" typeof="fabio:Script"><code>{</code>
 <code>  "@context": "https://www.w3.org/ns/activitystreams",</code>
 <code>  "@id": "",</code>
@@ -674,7 +677,7 @@ left:4.5em;
                                     </figure>
 
                                     <figure class="listing example" id="notification-semantic-pingback" rel="schema:hasPart" resource="#notification-semantic-pingback">
-                                        <div class="example-title marker"><span>Payload example 3</span></div>
+                                        <p class="example-h">Payload example 3</p>
                                         <pre about="#notification-semantic-pingback" property="schema:description" typeof="fabio:Script"><code>{</code>
 <code>  "@context": { "pingback": "http://purl.org/net/pingback/" }</code>
 <code>  "@id": "",</code>
@@ -686,7 +689,7 @@ left:4.5em;
                                     </figure>
 
                                     <figure class="listing example" id="notification-event-rsvp" rel="schema:hasPart" resource="#notification-event-rsvp">
-                                        <div class="example-title marker"><span>Payload example 4</span></div>
+                                        <p class="example-h">Payload example 4</p>
                                         <pre about="#notification-event-rsvp" property="schema:description" typeof="fabio:Script"><code>{</code>
 <code>  "@context": "http://schema.org/",</code>
 <code>  "@id": "",</code>
@@ -700,7 +703,7 @@ left:4.5em;
                                     <p>A notification may contain arbitrary information, including references to multiple resources with their own URIs, without necessarily referring to one particular external resource or origin for the data. The receiver is expected to return all triples that were initially sent when such a notification is requested by a consumer.</p>
 
                                     <figure class="listing example" id="notification-any-data" rel="schema:hasPart" resource="#notification-any-data">
-                                        <div class="example-title marker"><span>Payload example 5</span></div>
+                                        <p class="example-h">Payload example 5</p>
                                         <pre about="#notification-any-data" property="schema:description" typeof="fabio:Script"><code>{</code>
 <code>  "@context": {</code>
 <code>    "@language": "en",</code>
@@ -727,7 +730,7 @@ left:4.5em;
                                     </figure>
 
                                     <figure class="listing example" id="notification-provenance" rel="schema:hasPart" resource="#notification-provenance">
-                                        <div class="example-title marker"><span>Payload example 6</span></div>
+                                        <p class="example-h">Payload example 6</p>
                                         <pre about="#notification-provenance" property="schema:description" typeof="fabio:Script"><code>{</code>
 <code>  "@context": [{"prov": "http://www.w3.org/ns/prov#"}],</code>
 <code>  "@id": "http://example.org/activity/804c4e7efaa828e146b4ada1c805617ffbc79dc7",</code>
