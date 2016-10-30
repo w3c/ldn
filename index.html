@@ -817,6 +817,14 @@ left:4.5em;
                                 </div>
                             </section>
 
+                            <section id="authenticated-inboxes" inlist="" rel="schema:hasPart" resource="#authenticated-inboxes">
+                                <h3 property="schema:name">Authenticated Inboxes</h3>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p>If a receiver expects senders or consumers to authenticate, it should check the validity of their credentials before returning any other data, including other error codes. For example, the receiver should <em>not</em> first check for the existence of the inbox and return <code>404 Not Found</code> if the requester has not been verified.</p>
+                                    <p>Authentication involving token passing must be done over HTTPS.</p>
+                                </div>
+                            </section>
+
                             <section id="security-and-privacy-review" inlist="" rel="schema:hasPart" resource="#security-and-privacy-review">
                                 <h3 property="schema:name">Security and Privacy Review</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
