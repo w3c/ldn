@@ -17,6 +17,7 @@ If you have an implementation in progress or plan to submit a report, add yours 
 * [RDF::LinkedData::Notifications](https://github.com/kjetilk/p5-rdf-linkeddata-notifications) (very partial receiver)
 * [IndieAnndroid](https://github.com/Kongaloosh/IndieAnndroid) which powers [kongaloosh](http://kongaloosh.com) (reciever)
 * [pyldn](https://github.com/albertmeronyo/pyldn) (receiver)
+* [Linked Edit Rules](https://github.com/albertmeronyo/linked-edit-rules) (sender)
 
 ---
 

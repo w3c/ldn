@@ -1,6 +1,29 @@
-# pyldn
+*NOTE: This report template is a work in progress*
 
-Implementation Home Page URL: https://github.com/albertmeronyo/pyldn
+If you have an implementation in progress or plan to submit a report, add yours to this list for now until the tests and the report is finalised:
+
+* Any [LDP implementation](https://www.w3.org/wiki/LDP_Implementations) (receiver)
+* [node solid server](https://github.com/solid/node-solid-server) (receiver)
+* [sloph](https://github.com/rhiaro/sloph) (receiver)
+* [errol](https://github.com/linkeddata/errol) (sender)
+* [dokieli](https://dokie.li/) (sender, consumer)
+* [solid-inbox](https://github.com/solid/solid-inbox) (consumer)
+* [solid-client](https://github.com/solid/solid-client) (sender)
+* [solid-notifications](https://github.com/solid/solid-notifications)
+  (sender, consumer)
+* [solid words](https://github.com/melvincarvalho/vocab) (sender)
+* [mayktso](https://github.com/csarven/mayktso) (receiver)
+* [Virtuoso](https://github.com/openlink/virtuoso-opensource) + [ODS Briefcase](http://ods.openlinksw.com/wiki/ODS/OdsBriefcase) (receiver)
+* [RDF::LinkedData::Notifications](https://github.com/kjetilk/p5-rdf-linkeddata-notifications) (very partial receiver)
+* [IndieAnndroid](https://github.com/Kongaloosh/IndieAnndroid) which powers [kongaloosh](http://kongaloosh.com) (reciever)
+* [pyldn](https://github.com/albertmeronyo/pyldn) (receiver)
+* [Linked Edit Rules](https://github.com/albertmeronyo/linked-edit-rules) (sender)
+
+---
+
+# Linked Edit Rules
+
+Implementation Home Page URL: https://github.com/albertmeronyo/linked-edit-rules
 
 Source Code repo URL(s) (optional):
 * [x] Open source implementation
@@ -11,9 +34,9 @@ Developer(s): [Albert Meroño Peñuela](http://www.albertmeronyo.org)
 
 Implementation Classes:
 
-* [ ] Sender
+* [x] Sender
 * [ ] Consumer
-* [x] Receiver
+* [ ] Receiver
 
 ## Senders
 
@@ -21,23 +44,23 @@ Implementation Classes:
 
 * MUST be able to discover Inbox through a resource's `Link` header:
   * [ ] Relative URL in rel
-  * [ ] Absolute URL in rel
+  * [x] Absolute URL in rel
   * [ ] Multiple URLs in rel
   * ...
 * MUST be able to discover Inbox through a resource's body:
-  * [ ] Test 1
+  * [x] Test 1
   * [ ] Test 2
   * ...
 
 ### Sending
 
 * MUST send a valid JSON-LD payload with `Content-Type: application/ld+json`
-  * [ ] Test
+  * [ ] Test # So far sends text/turtle by default! Adding issue: https://github.com/albertmeronyo/linked-edit-rules/issues/1
   * ...
 * MAY send a different valid RDF payload according to `Accept-Post` negotiation
-  *  [ ] Test
+  *  [ ] Test # TO DO: https://github.com/albertmeronyo/linked-edit-rules/issues/2
   *  ...
-* [ ] MUST accept 201 as success
+* [ ] MUST accept 201 as success # TO DO: https://github.com/albertmeronyo/linked-edit-rules/issues/3
 * [ ] MUST accept 202 as success
 * ...
 
@@ -84,31 +107,31 @@ What does this implementation do with retrieved notifications? _____
 ## Receivers
 
 * MUST accept `POST` requests with `Content-Type: application/ld+json`
-  * [x] Test
+  * [ ] Test
   * ...
 * Indicate the methods the `Accept-Post` header is announced in response to requests:
-  * [x] OPTIONS
-  * [x] HEAD
-  * [x] Other: GET, POST
+  * [ ] OPTIONS
+  * [ ] HEAD
+  * [ ] Other: ___
 * [ ] MAY advertise other content types in `Accept-Post` header. Please list:
-  * [x] Turtle
+  * [ ] Turtle
   * [ ] HTML
   * [ ] Other: ___
 * Indicate which type of response the receiver provides on a successful POST:
-  * [x] 201 Created
+  * [ ] 201 Created
   * [ ] 202 Accepted
 
 * MUST respond to `GET` requests with `Accept: application/ld+json` header with JSON-LD, and include `http://www.w3.org/ns/ldp#contains` listing:
-  * [x] Test
+  * [ ] Test
   * ...
 * SHOULD return JSON-LD or Turtle if `Accept` header is missing:
-  * [x] JSON-LD
+  * [ ] JSON-LD
   * [ ] Turtle
 * MAY respect other content-types in `Accept` header. Please list:
-  * [x] Turtle
+  * [ ] Turtle
   * [ ] HTML
   * [ ] Other: ___
-* [x] MUST respond with `415` for unavailable content types in Accept header.
+* [ ] MUST respond with `415` for unavailable content types in Accept header.
 
 ### Security considerations
 
@@ -124,9 +147,9 @@ How does this implementation store notifications? (optional)
 
 This is not a conformance class, but please indicate here documents or resources which advertise inboxes (whether these are your own implementation of a receiver, or someone else's).
 
-Resource URL: http://pyldn.amp.ops.labs.vu.nl/
+Resource URL: http://www.linkededitrules.org
 
-* [x] Advertises Inbox using `Link` header
+* [ ] Advertises Inbox using `Link` header
 * [ ] Advertises Inbox using body
   * [ ] JSON-LD (MUST)
   * [ ] Turtle
