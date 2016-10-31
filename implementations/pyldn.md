@@ -16,32 +16,26 @@ If you have an implementation in progress or plan to submit a report, add yours 
 * [Virtuoso](https://github.com/openlink/virtuoso-opensource) + [ODS Briefcase](http://ods.openlinksw.com/wiki/ODS/OdsBriefcase) (receiver)
 * [RDF::LinkedData::Notifications](https://github.com/kjetilk/p5-rdf-linkeddata-notifications) (very partial receiver)
 * [IndieAnndroid](https://github.com/Kongaloosh/IndieAnndroid) which powers [kongaloosh](http://kongaloosh.com) (reciever)
+* [pyldn](https://github.com/albertmeronyo/pyldn) (receiver)
 
 ---
 
-This file is a sample implementation report. Fork this repository, copy this file to a new `.md` file and change the name to your project name (in lower case with hyphens between words), and fill out the information in the report based on your implementation. When you are finished, submit a [pull request](https://help.github.com/articles/using-pull-requests/) and your report will be reviewed and added to the main repository.
+# pyldn
 
-Complete this report by filling out the checkboxes as appropriate. To mark one as successful/complete/true, add an `x` between the brackets, e.g. `[x]`. If the statement does not apply to your implementation, use `[na]` and add a sentence explaining why it does not apply.
-
-When you are complete, send a pull request with the addition of your report file. Please remove this entire top section, and any implementation class sections that do not apply to you, before submitting.
-
-
-# Implementation Name (Replace this header)
-
-Implementation Home Page URL:
+Implementation Home Page URL: https://github.com/albertmeronyo/pyldn
 
 Source Code repo URL(s) (optional):
-* [ ] Open source implementation
+* [x] Open source implementation
 
-Programming Language(s):
+Programming Language(s): Python
 
-Developer(s): [Name](http://you.example.com)
+Developer(s): [Name](http://www.albertmeronyo.org)
 
 Implementation Classes:
 
 * [ ] Sender
 * [ ] Consumer
-* [ ] Receiver
+* [x] Receiver
 
 ## Senders
 
@@ -112,31 +106,31 @@ What does this implementation do with retrieved notifications? _____
 ## Receivers
 
 * MUST accept `POST` requests with `Content-Type: application/ld+json`
-  * [ ] Test
+  * [x] Test
   * ...
 * Indicate the methods the `Accept-Post` header is announced in response to requests:
-  * [ ] OPTIONS
-  * [ ] HEAD
-  * [ ] Other:___
+  * [x] OPTIONS
+  * [x] HEAD
+  * [x] Other: GET, POST
 * [ ] MAY advertise other content types in `Accept-Post` header. Please list:
-  * [ ] Turtle
+  * [x] Turtle
   * [ ] HTML
   * [ ] Other: ___
 * Indicate which type of response the receiver provides on a successful POST:
-  * [ ] 201 Created
+  * [x] 201 Created
   * [ ] 202 Accepted
 
 * MUST respond to `GET` requests with `Accept: application/ld+json` header with JSON-LD, and include `http://www.w3.org/ns/ldp#contains` listing:
-  * [ ] Test
+  * [x] Test
   * ...
 * SHOULD return JSON-LD or Turtle if `Accept` header is missing:
-  * [ ] JSON-LD
+  * [x] JSON-LD
   * [ ] Turtle
 * MAY respect other content-types in `Accept` header. Please list:
-  * [ ] Turtle
+  * [x] Turtle
   * [ ] HTML
   * [ ] Other: ___
-* [ ] MUST respond with `415` for unavailable content types in Accept header.
+* [x] MUST respond with `415` for unavailable content types in Accept header.
 
 ### Security considerations
 
@@ -152,9 +146,9 @@ How does this implementation store notifications? (optional)
 
 This is not a conformance class, but please indicate here documents or resources which advertise inboxes (whether these are your own implementation of a receiver, or someone else's).
 
-Resource URL:
+Resource URL: http://pyldn.amp.ops.labs.vu.nl/
 
-* [ ] Advertises Inbox using `Link` header
+* [x] Advertises Inbox using `Link` header
 * [ ] Advertises Inbox using body
   * [ ] JSON-LD (MUST)
   * [ ] Turtle
