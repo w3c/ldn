@@ -588,7 +588,7 @@ left:4.5em;
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>Consumers retrieve the URIs of notifications in an Inbox through making a <code>GET</code> request on the Inbox URL (to find this URL, see <a href="#discovery">discovery</a>).</p>
 
-                                    <p>The URIs of the notifications <em class="rfc2119">MUST</em> be discoverable through the <code>http://www.w3.org/ns/ldp#contains</code> predicate of the Inbox URL (see <a href="#results-example-inbox-contains-ldp">example</a> for Inbox content).</p>
+                                    <p>The URIs of the notifications <em class="rfc2119">MUST</em> be discoverable through the <code>http://www.w3.org/ns/ldp#contains</code> predicate of the Inbox URL (see <a href="#get-inbox-response">example</a> for Inbox content).</p>
 
                                     <p>When retrieving the Inbox or the individual notifications, the consumer <em class="rfc2119">SHOULD</em> explicitly set the <code>Accept</code> header to indicate preferred content types, including for JSON-LD. Fetching the individual notifications — if any, how many, or according to a particular criteria (e.g., content-length, timestamp) — is at the discretion of the consumer.</p>
 
@@ -988,7 +988,7 @@ left:4.5em;
                                         <dd>I. Fette; A. Melnikov. IETF. <a href="https://tools.ietf.org/html/rfc6455" property="dc:references"><cite>The WebSocket Protocol</cite></a>. December 2011. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc6455" rel="schema:citation">https://tools.ietf.org/html/rfc6455</a></dd>
                                         <dt id="bib-rdfc7231">[rfc7231]</dt>
                                         <dd>R. Fielding, Ed.; J. Reschke, Ed.. <a href="https://tools.ietf.org/html/rfc7231" property="dc:references"><cite>Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content</cite></a>. June 2014. Proposed Standard. URL: <a href="https://tools.ietf.org/html/rfc7231" rel="schema:citation">https://tools.ietf.org/html/rfc7231</a></dd>
-                                        <dt id="bib-security-privacy-questionnaire">[security-privacy-questionnaire-20151210]</dt>
+                                        <dt id="bib-security-privacy-questionnaire-20151210">[security-privacy-questionnaire-20151210]</dt>
                                         <dd>Mike West. W3C. <a href="https://www.w3.org/TR/2015/NOTE-security-privacy-questionnaire-20151210/" property="dc:references"><cite>Self-Review Questionnaire: Security and Privacy</cite></a>. 10 December 2015. W3C Note. URL: <a href="https://www.w3.org/TR/2015/NOTE-security-privacy-questionnaire-20151210/" rel="schema:citation">https://www.w3.org/TR/2015/NOTE-security-privacy-questionnaire-20151210/</a></dd>
                                         <dt id="bib-shacl">[shacl]</dt>
                                         <dd>Holger Knublauch; Dimitris Kontokostas. W3C. <a href="https://www.w3.org/TR/shacl/" property="dc:references"><cite>Shapes Constraint Language (SHACL)</cite></a>. 14 August 2016. W3C Working Draft. URL: <a href="https://www.w3.org/TR/shacl/" rel="schema:citation">https://www.w3.org/TR/shacl/</a></dd>
