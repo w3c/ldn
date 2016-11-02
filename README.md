@@ -8,4 +8,5 @@
   * https://www.w3.org/TR/2016/WD-ldn-20160913/
   * https://www.w3.org/TR/2016/WD-ldn-20160926/
   * https://www.w3.org/TR/2016/WD-ldn-20161011/
+  * https://www.w3.org/TR/2016/CR-ldn-20161101/
 * Test Suite: https://github.com/csarven/ldn-tests
