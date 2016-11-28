@@ -107,6 +107,10 @@ aside.note.do blockquote dl.rights {
 top:-2em;
 left:4.5em;
 }
+
+#acknowledgements li { display:inline; }
+#acknowledgements li:after { content: ", "; }
+#acknowledgements li:last-child:after { content: ""; }
 </style>
         <script src="https://dokie.li/scripts/simplerdf.js"></script>
         <script src="https://dokie.li/scripts/medium-editor.min.js"></script>
@@ -857,7 +861,43 @@ left:4.5em;
                     <section id="acknowledgements" inlist="" rel="schema:hasPart" resource="#acknowledgements">
                         <h2 about="#acknowledgements" property="schema:name" typeof="deo:Acknowledgements">Acknowledgements</h2>
                         <div datatype="rdf:HTML" property="schema:description">
-                            <p>..</p>
+                            <p>We would like to thank and acknowledge the following people for their contributions to this specification:</p>
+
+                            <ul>
+                                <li>Aaron Coburn</li>
+                                <li>Addison Phillips</li>
+                                <li>Adrian Pohl</li>
+                                <li>Albert Meroño Peñuela</li>
+                                <li>Alex Kearney</li>
+                                <li>Andre Vlad Sambra</li>
+                                <li>Andreas Kuckartz</li>
+                                <li>Bart van Leeuwen</li>
+                                <li>Benjamin Young</li>
+                                <li>Bernadette Hyland</li>
+                                <li>Chris Webber</li>
+                                <li>Christian M. Amsüss</li>
+                                <li>Dan Brickley</li>
+                                <li>Dmitri Zagidulin</li>
+                                <li>Erik Wilde</li>
+                                <li>Fabien Gandon</li>
+                                <li>Felix Sasaki</li>
+                                <li>Graham Klyne</li>
+                                <li>Henry Story</li>
+                                <li>Jodi Schneider</li>
+                                <li>John Klensin</li>
+                                <li>Kingsley Kidehen</li>
+                                <li>Kjetil Kjernsmo</li>
+                                <li>Melvin Carvalho</li>
+                                <li>Nathanel Arndt</li>
+                                <li>Nick Smith</li>
+                                <li>Nicola Grecko</li>
+                                <li>Nuno Freire</li>
+                                <li>Richard Ishida</li>
+                                <li>Rob Sanderson</li>
+                                <li>Sandro Hawke</li>
+                                <li>Stian Soiland-Reyes</li>
+                                <li>Tim Berners-Lee</li>
+                            </ul>
                         </div>
                     </section>
 
