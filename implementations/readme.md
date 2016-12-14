@@ -19,6 +19,7 @@ If you have an implementation in progress or plan to submit a report, add yours 
 * [pyldn](https://github.com/albertmeronyo/pyldn) (receiver)
 * [Linked Edit Rules](https://github.com/albertmeronyo/linked-edit-rules) (sender)
 * [onscreen](https://github.com/rhiaro/onscreen) (consumer)
+* [Carbon LDP](https://carbonldp.com) (receiver)
 
 ---
 
