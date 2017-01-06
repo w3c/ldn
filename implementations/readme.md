@@ -17,10 +17,8 @@ to this list for now until the tests and the report is finalised:
   (sender, consumer)
 * [solid words](https://github.com/melvincarvalho/vocab) (sender)
 * [mayktso](https://github.com/csarven/mayktso) (receiver)
-
 * [Virtuoso](https://github.com/openlink/virtuoso-opensource) +[ODS
 * [Briefcase](http://ods.openlinksw.com/wiki/ODS/OdsBriefcase) (receiver)
-
 * [RDF::LinkedData::Notifications](https://github.com/kjetilk/p5-rdf-linkeddata-notifications)
 (very partial receiver)
 * [IndieAnndroid](https://github.com/Kongaloosh/IndieAnndroid) which powers
