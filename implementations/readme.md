@@ -1,9 +1,10 @@
 Use https://github.com/csarven/ldn-tests to run LDN tests locally and/or when
 ready to submit use https://linkedresearch.org/ldn/tests/ to run the tests and
-then submit the implementation report.
+then submit the implementation report using the form (appears after the test
+results).
 
 If you have an implementation in progress or plan to submit a report, add yours
-to this list for now until the tests and the report is finalised:
+to this list:
 
 * Any [LDP implementation](https://www.w3.org/wiki/LDP_Implementations)
 (receiver)
