@@ -1,3 +1,10 @@
+Note: This is an informal list below, and the reports (in .md) listed in this directory
+are based on earlier reports. Some reports were submitted which are not in this repository.
+All official reports will soon be accessible from:
+
+https://linkedresearch.org/ldn/tests/
+
+
 Use https://github.com/csarven/ldn-tests to run LDN tests locally and/or when
 ready to submit use https://linkedresearch.org/ldn/tests/ to run the tests and
 then submit the implementation report using the form (appears after the test
