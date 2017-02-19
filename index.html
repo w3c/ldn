@@ -246,13 +246,13 @@ left:4.5em;
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p id="summary-discovery">Senders and consumers <strong><a href="#discovery">discover</a></strong> a resource’s <em>Inbox</em> URL through a relation in the HTTP <code>Link</code> header or body of the resource.</p>
 
-                                    <p id="summary-sender">The <strong><a href="#sending">Sender</a></strong>:</p>
+                                    <p id="summary-sender">The <strong><a href="#sender">Sender</a></strong>:</p>
                                     <ul>
                                         <li>Creates the body of the notification according to the needs of application.</li>
                                         <li>Sends the notification to the Inbox URL by making a <code>POST</code> request, containing the body in JSON-LD or in another serialization acceptable by the server.</li>
                                     </ul>
 
-                                    <p id="summary-receiver">The <strong><a href="#receiving">Receiver</a></strong>:</p>
+                                    <p id="summary-receiver">The <strong><a href="#receiver">Receiver</a></strong>:</p>
                                     <ul>
                                         <li>Responds to <code>GET</code> requests made to the Inbox URL with a listing of the URLs of notifications that have previously been accepted.</li>
                                         <li>Responds to <code>GET</code> requests made to the individual notification URLs with JSON-LD (or optionally other serializations).</li>
@@ -260,7 +260,7 @@ left:4.5em;
                                         <li>Optionally enforces constraints on notifications sent to the Inbox.</li>
                                     </ul>
 
-                                    <p id="summary-consumer">The <strong><a href="#consuming">Consumer</a></strong>:</p>
+                                    <p id="summary-consumer">The <strong><a href="#consumer">Consumer</a></strong>:</p>
                                     <ul>
                                         <li>Retrieves the contents of the Inbox URL with a <code>GET</code> request, and uses according to the needs of application.</li>
                                     </ul>
@@ -428,8 +428,8 @@ left:4.5em;
                                 </div>
                             </section>
 
-                            <section id="sending" inlist="" rel="schema:hasPart" resource="#sending">
-                                <h3 property="schema:name">Sending</h3>
+                            <section id="sender" inlist="" rel="schema:hasPart" resource="#sender">
+                                <h3 property="schema:name">Sender</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>Following <a href="#discovery">discovery</a>, senders who want to send notifications <em class="rfc2119">MUST</em> deliver them through a <code>POST</code> request to the Inbox URL. Senders can expect a <code>201 Created</code> (with a <code>Location</code> Link header) or a <code>202 Accepted</code> in response to a successful request.</p>
 
@@ -467,15 +467,15 @@ left:4.5em;
                                 </div>
                             </section>
 
-                            <section id="receiving" inlist="" rel="schema:hasPart" resource="#receiving">
-                                <h3 property="schema:name">Receiving</h3>
+                            <section id="receiver" inlist="" rel="schema:hasPart" resource="#receiver">
+                                <h3 property="schema:name">Receiver</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>Receivers <em class="rfc2119">MUST</em> support <code>GET</code> and <code>POST</code> requests on the Inbox URL. In LDP terms, an Inbox is a <em>Container</em>.</p>
 
                                     <section id="receiving-notifications" inlist="" rel="schema:hasPart" resource="#receiving-notifications">
                                         <h4 property="schema:name">Receiving notifications</h4>
                                         <div datatype="rdf:HTML" property="schema:description">
-                                            <p>Upon receipt of a <code>POST</code> request, if the notification resource was processed successfully, receivers <em class="rfc2119">MUST</em> respond with status code <code>201 Created</code> and the <code>Location</code> header set to the URL from which the notification data can be retrieved (see <a href="#consuming">Consuming</a>). If the request was queued to be processed asynchronously, the receiver <em class="rfc2119">MUST</em> respond with a status code of <code>202 Accepted</code> and include information about the status of the request in the body of the response.</p>
+                                            <p>Upon receipt of a <code>POST</code> request, if the notification resource was processed successfully, receivers <em class="rfc2119">MUST</em> respond with status code <code>201 Created</code> and the <code>Location</code> header set to the URL from which the notification data can be retrieved (see <a href="#consumer">Consumer</a>). If the request was queued to be processed asynchronously, the receiver <em class="rfc2119">MUST</em> respond with a status code of <code>202 Accepted</code> and include information about the status of the request in the body of the response.</p>
 
                                             <p>Receivers which enforce constraints on the notifications (see <a href="#constraints">Constraints</a>) <em class="rfc2119">SHOULD</em> fail to process the notification if the constraints are not met and return the appropriate <code>4xx</code> error code.</p>
 
@@ -585,8 +585,8 @@ left:4.5em;
                                 </div>
                             </section>
 
-                            <section id="consuming" inlist="" rel="schema:hasPart" resource="#consuming">
-                                <h3 property="schema:name">Consuming</h3>
+                            <section id="consumer" inlist="" rel="schema:hasPart" resource="#consumer">
+                                <h3 property="schema:name">Consumer</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>Consumers retrieve the URIs of notifications in an Inbox through making a <code>GET</code> request on the Inbox URL (to find this URL, see <a href="#discovery">discovery</a>).</p>
 
