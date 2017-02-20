@@ -589,7 +589,7 @@ left:4.5em;
                                 <div datatype="rdf:HTML" property="schema:description" resource="#consumer" typeof="skos:Concept">
                                     <p>Consumers retrieve the URIs of notifications in an Inbox through making a <code>GET</code> request on the Inbox URL (to find this URL, see <a href="#discovery">discovery</a>).</p>
 
-                                    <p about="#test-consumer-listing-json-ld-compacted" id="test-consumer-listing-json-ld-compacted" property="skos:definition" rel="skos:topConceptOf" resource="#ldn-tests-receiver" typeof="skos:Concept"><span about="#test-consumer-listing-json-ld-expanded" id="test-consumer-listing-json-ld-expanded" property="skos:definition" rel="skos:topConceptOf" resource="#ldn-tests-receiver" typeof="skos:Concept">The URIs of the notifications <em class="rfc2119">MUST</em> be discoverable through the <code>http://www.w3.org/ns/ldp#contains</code> predicate of the Inbox URL (see <a href="#get-inbox-response">example</a> for Inbox content).</span></p>
+                                    <p about="#test-consumer-listing-json-ld-compacted" id="test-consumer-listing-json-ld-compacted" property="skos:definition" rel="skos:topConceptOf" resource="#ldn-tests-consumer" typeof="skos:Concept"><span about="#test-consumer-listing-json-ld-expanded" id="test-consumer-listing-json-ld-expanded" property="skos:definition" rel="skos:topConceptOf" resource="#ldn-tests-consumer" typeof="skos:Concept">The URIs of the notifications <em class="rfc2119">MUST</em> be discoverable through the <code>http://www.w3.org/ns/ldp#contains</code> predicate of the Inbox URL (see <a href="#get-inbox-response">example</a> for Inbox content).</span></p>
 
                                     <p>When retrieving the Inbox or the individual notifications, the consumer <em class="rfc2119">SHOULD</em> explicitly set the <code>Accept</code> header to indicate preferred content types, including for JSON-LD. Fetching the individual notifications — if any, how many, or according to a particular criteria (e.g., content-length, timestamp) — is at the discretion of the consumer.</p>
 
@@ -646,7 +646,7 @@ left:4.5em;
 <code>    "@value": "2016-06-28T19:56:20.114Z"</code>
 <code>  }</code>
 <code>}</code></pre>
-                                        <figcaption>Result of a GET request on an individual notification discovered in an Inbox.</figcaption>
+                                        <figcaption><span about="#test-consumer-notification-assessing" id="test-consumer-notification-assessing" property="skos:definition" rel="skos:topConceptOf" resource="#ldn-tests-consumer" typeof="skos:Concept">Result of a GET request on an individual notification discovered in an Inbox.</span></figcaption>
                                     </figure>
                                 </div>
                             </section>
@@ -670,7 +670,7 @@ left:4.5em;
 <code>  "@id": "http://example.net/note#foo",</code>
 <code>  "citation": { "@id": "http://example.org/article#results" }</code>
 <code>}</code></pre>
-                                        <figcaption property="schema:name">A citation described by a single statement, using the schema.org vocabulary.</figcaption>
+                                        <figcaption property="schema:name"><span about="#test-consumer-notification-citation" id="test-consumer-notification-citation" property="skos:definition" rel="skos:topConceptOf" resource="#ldn-tests-consumer" typeof="skos:Concept">A citation described by a single statement, using the schema.org vocabulary.</span></figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="notification-qualified-relation" rel="schema:hasPart" resource="#notification-qualified-relation">
@@ -684,7 +684,7 @@ left:4.5em;
 <code>  "target": "http://example.org/article",</code>
 <code>  "updated": "2016-06-28T19:56:20.114Z"</code>
 <code>}</code></pre>
-                                        <figcaption property="schema:name">An announcement of one resource to another, including a date and actor, described using the ActivityStreams 2.0 vocabulary.</figcaption>
+                                        <figcaption property="schema:name"><span about="#test-consumer-notification-announce" id="test-consumer-notification-announce" property="skos:definition" rel="skos:topConceptOf" resource="#ldn-tests-consumer" typeof="skos:Concept">An announcement of one resource to another, including a date and actor, described using the ActivityStreams 2.0 vocabulary.</span></figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="notification-semantic-pingback" rel="schema:hasPart" resource="#notification-semantic-pingback">
@@ -708,7 +708,7 @@ left:4.5em;
 <code>  "event": { "@id": "http://example.org/event" },</code>
 <code>  "agent": { "@id": "https://rhiaro.co.uk/#me" }</code>
 <code>}</code></pre>
-                                        <figcaption property="schema:name">An event RSVP described by the schema.org vocabulary.</figcaption>
+                                        <figcaption property="schema:name"><span about="#test-consumer-notification-rsvp" id="test-consumer-notification-rsvp" property="skos:definition" rel="skos:topConceptOf" resource="#ldn-tests-consumer" typeof="skos:Concept">An event RSVP described by the schema.org vocabulary.</span></figcaption>
                                     </figure>
 
                                     <p>A notification may contain arbitrary information, including references to multiple resources with their own URIs, without necessarily referring to one particular external resource or origin for the data. The receiver is expected to return all triples that were initially sent when such a notification is requested by a consumer.</p>
@@ -737,7 +737,7 @@ left:4.5em;
 <code>    "foaf:name": "Alice"</code>
 <code>  }</code>
 <code>}</code></pre>
-                                        <figcaption property="schema:name">A notification containing data about a comment and the user who created the comment, described by the Semantically Interlinked Online Communities (SIOC) and Friend-of-a-Friend (FOAF) vocabularies.</figcaption>
+                                        <figcaption property="schema:name"><span about="#test-consumer-notification-comment" id="test-consumer-notification-comment" property="skos:definition" rel="skos:topConceptOf" resource="#ldn-tests-consumer" typeof="skos:Concept">A notification containing data about a comment and the user who created the comment, described by the Semantically Interlinked Online Communities (SIOC) and Friend-of-a-Friend (FOAF) vocabularies.</span></figcaption>
                                     </figure>
 
                                     <figure class="listing example" id="notification-provenance" rel="schema:hasPart" resource="#notification-provenance">
@@ -771,7 +771,7 @@ left:4.5em;
 <code>    }</code>
 <code>  }</code>
 <code>}</code></pre>
-                                        <figcaption property="schema:name">A changelog entry described by the Provenance vocabulary.</figcaption>
+                                        <figcaption property="schema:name"><span about="#test-consumer-notification-changelog" id="test-consumer-notification-changelog" property="skos:definition" rel="skos:topConceptOf" resource="#ldn-tests-consumer" typeof="skos:Concept">A changelog entry described by the Provenance vocabulary.</span></figcaption>
                                     </figure>
                                 </div>
                             </section>
