@@ -214,8 +214,7 @@ left:4.5em;
 
                             <p><dfn id="ldn">Linked Data Notifications (<abbr title="Linked Data Notifications">LDN</abbr>)</dfn> supports sharing and reuse of notifications <em>across</em> applications, regardless of how they were generated. This allows for more modular systems, which decouple data storage from the applications which display or otherwise make use of the data. The protocol is intended to allow senders, receivers and consumers of notifications, which are independently implemented and run on different technology stacks, to seamlessly work together, contributing to decentralisation of our interactions on the Web.</p>
 
-                            <p>Instead of treating notifications as ephemeral or non-persistent entities, this specification enables the notion of a notification as an individual entity with its own URI. As such, notifications can be retrieved and reused.
-                            We support a range of different application domains, social and otherwise, thus the contents of notifications are left up to applications to define. Authentication and verification of notifications is encouraged, but the mechanism to do so is at the discretion of receivers and consumers, as needs differ according to types of notification and different application domains.</p>
+                            <p>Instead of treating notifications as ephemeral or non-persistent entities, this specification enables the notion of a notification as an individual entity with its own URI. As such, notifications can be retrieved and reused. We support a range of different application domains, social and otherwise, thus the contents of notifications are left up to applications to define. Authentication and verification of notifications is encouraged, but the mechanism to do so is at the discretion of receivers and consumers, as needs differ according to types of notification and different application domains.</p>
 
                             <section id="social-web-working-group" inlist="" rel="schema:hasPart" resource="#social-web-working-group">
                                 <h3 property="schema:name">Social Web Working Group</h3>
@@ -283,8 +282,8 @@ left:4.5em;
 
                             <section id="conformance-classes" inlist="" rel="schema:hasPart" resource="#conformance-classes">
                                 <h3 property="schema:name">Conformance Classes</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p>LDN implementations may be <em>senders</em>, <em>receivers</em> or <em>consumers</em>. The conformance criteria for each of these roles are described in their respective sections of this specification.</p>
+                                <div rel="schema:hasPart">
+                                    <p about="#ldn-implementations" datatype="rdf:HTML" id="ldn-implementations" property="skos:definition" typeof="skos:ConceptScheme">LDN implementations may be <em rel="skos:hasTopConcept" resource="#senders">senders</em>, <em rel="skos:hasTopConcept" resource="#receivers">receivers</em> or <em rel="skos:hasTopConcept" resource="#consumers">consumers</em>. The conformance criteria for each of these roles are described in their respective sections of this specification.</p>
                                 </div>
                             </section>
 
