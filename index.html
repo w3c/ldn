@@ -430,7 +430,7 @@ left:4.5em;
 
                             <section id="sender" inlist="" rel="schema:hasPart" resource="#sender">
                                 <h3 property="schema:name">Sender</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
+                                <div datatype="rdf:HTML" property="schema:description" resource="#sender" typeof="skos:Concept">
                                     <p>Following <a href="#discovery">discovery</a>, senders who want to send notifications <em class="rfc2119">MUST</em> deliver them through a <code>POST</code> request to the Inbox URL. Senders can expect a <code>201 Created</code> (with a <code>Location</code> Link header) or a <code>202 Accepted</code> in response to a successful request.</p>
 
                                     <p>The sender <em class="rfc2119">MAY</em> use an <code>OPTIONS</code> request to determine the RDF content types accepted by the server, and serialize the notification in the request body according to the value of the <code>Accept-Post</code> header [<cite><a class="bibref" href="#bib-accept-post">Accept-Post</a></cite>] returned. Otherwise, the body of the <code>POST</code> request <em class="rfc2119">MUST</em> contain the notification <a href="#payload">payload</a> in JSON-LD with header <code>Content-Type: application/ld+json</code>. The <code>Content-Type</code> header <em class="rfc2119">MAY</em> include a <code>profile</code> URI [<cite><a class="bibref" href="#bib-rfc6906">RFC6906</a></cite>].</p>
@@ -469,7 +469,7 @@ left:4.5em;
 
                             <section id="receiver" inlist="" rel="schema:hasPart" resource="#receiver">
                                 <h3 property="schema:name">Receiver</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
+                                <div datatype="rdf:HTML" property="schema:description" resource="#receiver" typeof="skos:Concept">
                                     <p>Receivers <em class="rfc2119">MUST</em> support <code>GET</code> and <code>POST</code> requests on the Inbox URL. In LDP terms, an Inbox is a <em>Container</em>.</p>
 
                                     <section id="receiving-notifications" inlist="" rel="schema:hasPart" resource="#receiving-notifications">
@@ -587,7 +587,7 @@ left:4.5em;
 
                             <section id="consumer" inlist="" rel="schema:hasPart" resource="#consumer">
                                 <h3 property="schema:name">Consumer</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
+                                <div datatype="rdf:HTML" property="schema:description" resource="#consumer" typeof="skos:Concept">
                                     <p>Consumers retrieve the URIs of notifications in an Inbox through making a <code>GET</code> request on the Inbox URL (to find this URL, see <a href="#discovery">discovery</a>).</p>
 
                                     <p>The URIs of the notifications <em class="rfc2119">MUST</em> be discoverable through the <code>http://www.w3.org/ns/ldp#contains</code> predicate of the Inbox URL (see <a href="#get-inbox-response">example</a> for Inbox content).</p>
