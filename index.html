@@ -246,13 +246,13 @@ left:4.5em;
                                     <p id="summary-discovery">Senders and consumers <strong><a href="#discovery">discover</a></strong> a resource’s <em>Inbox</em> URL through a relation in the HTTP <code>Link</code> header or body of the resource.</p>
 
                                     <p id="summary-sender">The <strong><a href="#sender">Sender</a></strong>:</p>
-                                    <ul>
+                                    <ul about="#sender" property="skos:definition">
                                         <li>Creates the body of the notification according to the needs of application.</li>
                                         <li>Sends the notification to the Inbox URL by making a <code>POST</code> request, containing the body in JSON-LD or in another serialization acceptable by the server.</li>
                                     </ul>
 
                                     <p id="summary-receiver">The <strong><a href="#receiver">Receiver</a></strong>:</p>
-                                    <ul>
+                                    <ul about="#receiver" property="skos:definition">
                                         <li>Responds to <code>GET</code> requests made to the Inbox URL with a listing of the URLs of notifications that have previously been accepted.</li>
                                         <li>Responds to <code>GET</code> requests made to the individual notification URLs with JSON-LD (or optionally other serializations).</li>
                                         <li>Accepts <code>POST</code> requests at the Inbox URL to create notifications.</li>
@@ -260,7 +260,7 @@ left:4.5em;
                                     </ul>
 
                                     <p id="summary-consumer">The <strong><a href="#consumer">Consumer</a></strong>:</p>
-                                    <ul>
+                                    <ul about="#consumer" property="skos:definition">
                                         <li>Retrieves the contents of the Inbox URL with a <code>GET</code> request, and uses according to the needs of application.</li>
                                     </ul>
                                 </div>
@@ -282,16 +282,68 @@ left:4.5em;
 
                             <section id="conformance-classes" inlist="" rel="schema:hasPart" resource="#conformance-classes">
                                 <h3 property="schema:name">Conformance Classes</h3>
-                                <div rel="schema:hasPart">
-                                    <p about="#ldn-implementations" datatype="rdf:HTML" id="ldn-implementations" property="skos:definition" typeof="skos:ConceptScheme"><span property="skos:prefLabel">LDN implementations</span> may be <em rel="skos:hasTopConcept" resource="#senders">senders</em>, <em rel="skos:hasTopConcept" resource="#receivers">receivers</em> or <em rel="skos:hasTopConcept" resource="#consumers">consumers</em>. The conformance criteria for each of these roles are described in their respective sections of this specification.</p>
-                                    <span about="" rel="rdfs:seeAlso"><span about="#data-structure-definition" typeof="qb:DataStructureDefinition"><span rel="qb:component" resource="#component-dimension-subject" typeof="qb:ComponentSpecification"><span rel="qb:componentProperty qb:dimension" resource="earl:subject" typeof="qb:DimensionProperty"><span property="skos:prefLabel" content="Subject"></span></span></span><span rel="qb:component" resource="#component-dimension-test" typeof="qb:ComponentSpecification"><span rel="qb:componentProperty qb:dimension" resource="earl:test" typeof="qb:DimensionProperty"><span property="skos:prefLabel" content="Test"></span></span></span><span rel="qb:component" resource="#component-dimension-mode" typeof="qb:ComponentSpecification"><span rel="qb:componentProperty qb:dimension" resource="earl:mode" typeof="qb:DimensionProperty"><span property="skos:prefLabel" content="Mode"></span></span></span><span rel="qb:component" resource="#component-measure-outcome" typeof="qb:ComponentSpecification"><span rel="qb:componentProperty qb:measure" resource="earl:outcome" typeof="qb:MeasureProperty"><span property="skos:prefLabel" content="Outcome"></span></span></span><span rel="qb:component" resource="#component-measure-info" typeof="qb:ComponentSpecification"><span rel="qb:componentProperty qb:measure" resource="earl:info" typeof="qb:MeasureProperty"><span property="skos:prefLabel" content="Info"></span></span></span></span></span>
+                                <div datatype="rdf:HTML" property="schema:description">
+                                    <p about="" rel="schema:hasPart"><span about="#ldn-implementations" datatype="rdf:HTML" id="ldn-implementations" property="skos:definition" typeof="skos:ConceptScheme"><span property="skos:prefLabel">LDN implementations</span> may be <em rel="skos:hasTopConcept" resource="#senders">senders</em>, <em rel="skos:hasTopConcept" resource="#receivers">receivers</em> or <em rel="skos:hasTopConcept" resource="#consumers">consumers</em>. The conformance criteria for each of these roles are described in their respective sections of this specification.</span></p>
+
+                                    <span about="" rel="schema:hasPart">
+                                        <span about="#data-structure-definition" typeof="qb:DataStructureDefinition">
+                                            <span rel="qb:component" resource="#component-dimension-subject" typeof="qb:ComponentSpecification"><span rel="qb:componentProperty qb:dimension" resource="earl:subject" typeof="qb:DimensionProperty"><span property="skos:prefLabel" content="Subject"></span></span></span>
+                                            <span rel="qb:component" resource="#component-dimension-test" typeof="qb:ComponentSpecification"><span rel="qb:componentProperty qb:dimension" resource="earl:test" typeof="qb:DimensionProperty"><span property="skos:prefLabel" content="Test"></span></span></span>
+                                            <span rel="qb:component" resource="#component-dimension-mode" typeof="qb:ComponentSpecification"><span rel="qb:componentProperty qb:dimension" resource="earl:mode" typeof="qb:DimensionProperty"><span property="skos:prefLabel" content="Mode"></span></span></span>
+                                            <span rel="qb:component" resource="#component-measure-outcome" typeof="qb:ComponentSpecification"><span rel="qb:componentProperty qb:measure" resource="earl:outcome" typeof="qb:MeasureProperty"><span property="skos:prefLabel" content="Outcome"></span></span></span>
+                                            <span rel="qb:component" resource="#component-measure-info" typeof="qb:ComponentSpecification"><span rel="qb:componentProperty qb:measure" resource="earl:info" typeof="qb:MeasureProperty"><span property="skos:prefLabel" content="Info"></span></span></span>
+                                        </span>
+                                    </span>
                                 </div>
+
+                                <span about="" rel="schema:hasPart">
+                                    <span about="#ldn-tests-sender" property="skos:prefLabel" content="LDN Tests Sender" typeof="skos:ConceptScheme">
+                                      <meta property="skos:hasTopConcept" resource="#test-sender-header-discovery" />
+                                      <meta property="skos:hasTopConcept" resource="#test-sender-body-discovery" />
+                                      <meta property="skos:hasTopConcept" resource="#test-sender-header-post-request" />
+                                      <meta property="skos:hasTopConcept" resource="#test-sender-body-post-request" />
+                                      <meta property="skos:hasTopConcept" resource="#test-header-post-content-type-json-ld" />
+                                      <meta property="skos:hasTopConcept" resource="#test-sender-body-post-content-type-json-ld" />
+                                      <meta property="skos:hasTopConcept" resource="#test-sender-header-post-valid-json-ld" />
+                                      <meta property="skos:hasTopConcept" resource="#test-sender-body-post-valid-json-ld" />
+                                    </span>
+                                    <span about="#ldn-tests-receiver" property="skos:prefLabel" content="LDN Tests Receiver" typeof="skos:ConceptScheme">
+                                      <meta property="skos:hasTopConcept" resource="#test-receiver-get-response" />
+                                      <meta property="skos:hasTopConcept" resource="#test-receiver-get-ldp-contains" />
+                                      <meta property="skos:hasTopConcept" resource="#test-receiver-get-ldp-container" />
+                                      <meta property="skos:hasTopConcept" resource="#test-receiver-get-ldp-constrained-by" />
+                                      <meta property="skos:hasTopConcept" resource="#test-receiver-get-notifications-json-ld" />
+                                      <meta property="skos:hasTopConcept" resource="#test-receiver-get-notifiactions-limited" />
+                                      <meta property="skos:hasTopConcept" resource="#test-receiver-get-notifications-rdf-source" />
+                                      <meta property="skos:hasTopConcept" resource="#test-receiver-options-accept-post-contains-json-ld" />
+                                      <meta property="skos:hasTopConcept" resource="#test-receiver-options-accept-post" />
+                                      <meta property="skos:hasTopConcept" resource="#test-receiver-options-response" />
+                                      <meta property="skos:hasTopConcept" resource="#test-receiver-post-response" />
+                                      <meta property="skos:hasTopConcept" resource="#test-receiver-post-created" />
+                                      <meta property="skos:hasTopConcept" resource="#test-receiver-post-location" />
+                                      <meta property="skos:hasTopConcept" resource="#test-receiver-post-link-profile" />
+                                      <meta property="skos:hasTopConcept" resource="#test-receiver-post-response-contraints-unmet" />
+                                    </span>
+                                    <span about="#ldn-tests-consumer" property="skos:prefLabel" content="LDN Tests Consumer" typeof="skos:ConceptScheme">
+                                      <meta property="skos:hasTopConcept" resource="#test-consumer-header-discovery" />
+                                      <meta property="skos:hasTopConcept" resource="#test-consumer-body-discovery" />
+                                      <meta property="skos:hasTopConcept" resource="#test-consumer-listing-json-ld-compacted" />
+                                      <meta property="skos:hasTopConcept" resource="#test-consumer-listing-json-ld-expanded" />
+                                      <meta property="skos:hasTopConcept" resource="#test-consumer-notification-announce" />
+                                      <meta property="skos:hasTopConcept" resource="#test-consumer-notification-changelog" />
+                                      <meta property="skos:hasTopConcept" resource="#test-consumer-notification-citation" />
+                                      <meta property="skos:hasTopConcept" resource="#test-consumer-notification-assessing" />
+                                      <meta property="skos:hasTopConcept" resource="#test-consumer-notification-comment" />
+                                      <meta property="skos:hasTopConcept" resource="#test-consumer-notification-rsvp" />
+                                    </span>
+                                </span>
                             </section>
 
                             <section id="exit-criteria" inlist="" rel="schema:hasPart" resource="#exit-criteria">
                                 <h3 property="schema:name">Exit Criteria</h3>
                                 <div datatype="rdf:HTML" property="schema:description">
                                     <p>For this specification to advance to Proposed Recommendation, there must be at least two independent, interoperable implementations of each feature. Each feature may be implemented by a different set of products. There is no requirement that all features be implemented by a single product.</p>
+
                                     <ul>
                                         <li><strong>Independent</strong> implementations are developed by different parties and cannot share, reuse or derive form another qualifying implementation code which is directly pertinent to the implementation of this specification.</li>
                                         <li><strong>Interoperability</strong> occurs between senders and receivers, or between consumers and receivers, when the sender/consumer makes a request to the receiver, and the receiver sends the expected response, as defined by this specification.</li>
