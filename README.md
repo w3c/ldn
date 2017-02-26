@@ -10,7 +10,7 @@
   * https://www.w3.org/TR/2016/WD-ldn-20161011/
 * Candidate Recommendations:
   * https://www.w3.org/TR/2016/CR-ldn-20161101/
-  * https://www.w3.org/TR/2016/CR-ldn-20170223/
+  * https://www.w3.org/TR/2017/CR-ldn-20170223/
 * Test Suite:
   * Source: https://github.com/csarven/ldn-tests
   * Site: https://linkedresearch.org/ldn/tests/
