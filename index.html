@@ -74,26 +74,26 @@ font-size: 220%;
 font-weight:bold;
 }
 
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) {
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id="exit-criteria"]) {
 counter-increment:section;
 counter-reset:sub-section;
 }
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$="references"]) {
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$="references"]):not([id="exit-criteria"]) {
 counter-increment:sub-section;
 counter-reset:sub-sub-section;
 }
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$="references"]) section {
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$="references"]):not([id="exit-criteria"]) section {
 counter-increment:sub-sub-section;
 counter-reset:sub-sub-sub-section;
 }
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$="references"]) section section {
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]) section:not([id$="references"]):not([id="exit-criteria"]) section section {
 counter-increment:sub-sub-sub-section;
 counter-reset:sub-sub-sub-sub-section;
 }
-article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id^=table-of-]) > h2:before {
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=change-log]):not([id="exit-criteria"]):not([id^=table-of-]) > h2:before {
 content:counter(section) ".\00a0\00a0\00a0\00a0";
 }
-section:not([id$="references"]):not([id^=change-log]) > h3:before {
+section:not([id$="references"]):not([id^=change-log]):not([id="exit-criteria"]) > h3:before {
 content:counter(section) "." counter(sub-section) "\00a0\00a0\00a0";
 }
 section > h4:before {
@@ -339,28 +339,6 @@ left:4.5em;
                                 </span>
                             </section>
 
-                            <section id="exit-criteria" inlist="" rel="schema:hasPart" resource="#exit-criteria">
-                                <h3 property="schema:name">Exit Criteria</h3>
-                                <div datatype="rdf:HTML" property="schema:description">
-                                    <p>This specification advanced to Proposed Recommendation with at least two independent, interoperable implementations of each feature. Each feature was implemented by a different set of products. There was no requirement that all features needed to be implemented by a single product.</p>
-
-                                    <ul>
-                                        <li><strong>Independent</strong> implementations are developed by different parties and cannot share, reuse or derive form another qualifying implementation code which is directly pertinent to the implementation of this specification.</li>
-                                        <li><strong>Interoperability</strong> occurs between senders and receivers, or between consumers and receivers, when the sender/consumer makes a request to the receiver, and the receiver sends the expected response, as defined by this specification.</li>
-                                        <li>An <strong>implementation</strong> is an LDN sender, receiver or consumer which implements the corresponding conformance class of the specification.</li>
-                                    </ul>
-
-                                    <p id="features">For the purposes of evaluating exit criteria, each of the following is considered a feature:</p>
-                                    <ul>
-                                        <li>Advertising the Inbox of a given resource through the <code>Link</code> header.</li>
-                                        <li>Advertising the Inbox of a given resource through the body of the resource.</li>
-                                        <li>Sending a notification to the Inbox of a given target.</li>
-                                        <li>Receiving a notification and responding with the appropriate status code according to how it was processed and if it was accepted. Responding to <code>GET</code> requests on the Inbox with the Inbox listing, and responding to <code>GET</code> requests on the individual notifications with their representations.</li>
-                                        <li>Reading the Inbox listing of a given target.</li>
-                                        <li>Reading the individual notifications in the Inbox of a given target.</li>
-                                    </ul>
-                                </div>
-                            </section>
                         </div>
                     </section>
 
@@ -905,6 +883,29 @@ left:4.5em;
                                     </dl>
                                 </div>
                             </section>
+                        </div>
+                    </section>
+
+                    <section class="appendix" id="exit-criteria" inlist="" rel="schema:hasPart" resource="#exit-criteria">
+                        <h2 property="schema:name">Exit Criteria</h2>
+                        <div datatype="rdf:HTML" property="schema:description">
+                            <p>This specification advanced to Proposed Recommendation with at least two independent, interoperable implementations of each feature. Each feature was implemented by a different set of products. There was no requirement that all features needed to be implemented by a single product.</p>
+
+                            <ul>
+                                <li><strong>Independent</strong> implementations are developed by different parties and cannot share, reuse or derive form another qualifying implementation code which is directly pertinent to the implementation of this specification.</li>
+                                <li><strong>Interoperability</strong> occurs between senders and receivers, or between consumers and receivers, when the sender/consumer makes a request to the receiver, and the receiver sends the expected response, as defined by this specification.</li>
+                                <li>An <strong>implementation</strong> is an LDN sender, receiver or consumer which implements the corresponding conformance class of the specification.</li>
+                            </ul>
+
+                            <p id="features">For the purposes of evaluating exit criteria, each of the following was considered a feature:</p>
+                            <ul>
+                                <li>Advertising the Inbox of a given resource through the <code>Link</code> header.</li>
+                                <li>Advertising the Inbox of a given resource through the body of the resource.</li>
+                                <li>Sending a notification to the Inbox of a given target.</li>
+                                <li>Receiving a notification and responding with the appropriate status code according to how it was processed and if it was accepted. Responding to <code>GET</code> requests on the Inbox with the Inbox listing, and responding to <code>GET</code> requests on the individual notifications with their representations.</li>
+                                <li>Reading the Inbox listing of a given target.</li>
+                                <li>Reading the individual notifications in the Inbox of a given target.</li>
+                            </ul>
                         </div>
                     </section>
 
