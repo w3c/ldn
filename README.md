@@ -13,6 +13,8 @@
   * https://www.w3.org/TR/2017/CR-ldn-20170223/
 * Proposed Recommendation:
   * https://www.w3.org/TR/2017/PR-ldn-20170321/
+* Recommendation:
+  * https://www.w3.org/TR/2017/REC-ldn-20170502/
 * Test Suite:
   * Source: https://github.com/csarven/ldn-tests
   * Site: https://linkedresearch.org/ldn/tests/
